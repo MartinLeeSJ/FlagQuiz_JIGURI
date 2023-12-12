@@ -38,6 +38,8 @@
 		5B16F97F2B2890780011ACF7 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F97E2B2890780011ACF7 /* MainTabView.swift */; };
 		5B16F9832B2890CD0011ACF7 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9822B2890CD0011ACF7 /* ErrorView.swift */; };
 		5B16F9852B28A8570011ACF7 /* ButtonLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B16F9842B28A8570011ACF7 /* ButtonLocalizable.xcstrings */; };
+		5B559F062B28B84A00B131BE /* QuizSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F052B28B84A00B131BE /* QuizSettingView.swift */; };
+		5B559F082B28B85400B131BE /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F072B28B85400B131BE /* NewsView.swift */; };
 		5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */; };
 		5B5C2ACF2B280A32009A382B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2ACE2B280A32009A382B /* ContentView.swift */; };
 		5B5C2AD12B280A34009A382B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B5C2AD02B280A34009A382B /* Assets.xcassets */; };
@@ -91,6 +93,8 @@
 		5B16F97E2B2890780011ACF7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		5B16F9822B2890CD0011ACF7 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		5B16F9842B28A8570011ACF7 /* ButtonLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ButtonLocalizable.xcstrings; sourceTree = "<group>"; };
+		5B559F052B28B84A00B131BE /* QuizSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingView.swift; sourceTree = "<group>"; };
+		5B559F072B28B85400B131BE /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		5B5C2AC92B280A32009A382B /* FlagQuizSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlagQuizSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagQuizSwiftUIApp.swift; sourceTree = "<group>"; };
 		5B5C2ACE2B280A32009A382B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				5B16F9582B28471D0011ACF7 /* Auth */,
 				5B16F9412B2830570011ACF7 /* OnBoardingView.swift */,
 				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
+				5B559F092B28B85D00B131BE /* QuizSetting */,
+				5B559F0A2B28B86500B131BE /* News */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +245,22 @@
 				5B16F9822B2890CD0011ACF7 /* ErrorView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5B559F092B28B85D00B131BE /* QuizSetting */ = {
+			isa = PBXGroup;
+			children = (
+				5B559F052B28B84A00B131BE /* QuizSettingView.swift */,
+			);
+			path = QuizSetting;
+			sourceTree = "<group>";
+		};
+		5B559F0A2B28B86500B131BE /* News */ = {
+			isa = PBXGroup;
+			children = (
+				5B559F072B28B85400B131BE /* NewsView.swift */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		5B5C2AC02B280A32009A382B = {
@@ -454,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B16F9492B2833390011ACF7 /* AppDelegate.swift in Sources */,
+				5B559F062B28B84A00B131BE /* QuizSettingView.swift in Sources */,
 				5B16F9512B28456C0011ACF7 /* Services.swift in Sources */,
 				5B16F9772B287A600011ACF7 /* FQUserObject.swift in Sources */,
 				5B16F9422B2830570011ACF7 /* OnBoardingView.swift in Sources */,
@@ -461,6 +484,7 @@
 				5B16F96A2B2851560011ACF7 /* FQUserQuizCount.swift in Sources */,
 				5B16F96F2B286C670011ACF7 /* randomNonceString.swift in Sources */,
 				5B16F97D2B2883670011ACF7 /* Constant.swift in Sources */,
+				5B559F082B28B85400B131BE /* NewsView.swift in Sources */,
 				5B5C2ACF2B280A32009A382B /* ContentView.swift in Sources */,
 				5B16F9742B287A4C0011ACF7 /* FQUserRepository.swift in Sources */,
 				5B16F9572B28470E0011ACF7 /* AuthenticationRouterView.swift in Sources */,

@@ -1,5 +1,38 @@
 {
   "sourceLanguage" : "en",
-  "strings" : {},
+  "strings" : {
+    "tabs-news-title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "News"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "뉴스"
+          }
+        }
+      }
+    },
+    "tabs-quizSetting-title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈"
+          }
+        }
+      }
+    }
+  },
   "version" : "1.0"
 }
