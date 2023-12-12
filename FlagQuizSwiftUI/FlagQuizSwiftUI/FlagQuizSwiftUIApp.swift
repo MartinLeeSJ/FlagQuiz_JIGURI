@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct FlagQuizSwiftUIApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var container: DIContainer = .init(services: Services())
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(container)
         }
     }
 }
