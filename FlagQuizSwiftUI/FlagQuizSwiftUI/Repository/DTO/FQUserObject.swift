@@ -1,5 +1,5 @@
 //
-//  FQUser.swift
+//  FQUserObject.swift
 //  FlagQuizSwiftUI
 //
 //  Created by Martin on 12/12/23.
@@ -8,21 +8,20 @@
 import Foundation
 import FirebaseFirestore
 
-struct FQUser: Codable {
+struct FQUserObject: Codable {
     var id: String
-    var createdAt: Date
+    var createdAt: Timestamp
     var email: String?
     var userName: String?
 }
 
-extension FQUser {
-    func toObject() -> FQUserObject {
+extension FQUserObject {
+    func toModel() -> FQUser {
         .init(
             id: id,
-            createdAt: Timestamp(date: createdAt),
+            createdAt: createdAt.dateValue(),
             email: email,
             userName: userName
         )
     }
 }
-

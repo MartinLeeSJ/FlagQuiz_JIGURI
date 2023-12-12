@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import AuthenticationServices
 
 import FirebaseCore
 import FirebaseAuth
@@ -17,13 +18,18 @@ import GoogleSignIn
 protocol AuthServiceType {
     func checkAuthenticationState() -> String?
     func signInWithGoogle() -> AnyPublisher<FQUser, AuthenticationServiceError>
+    func requestSignInWithApple(_ request: ASAuthorizationAppleIDRequest) -> String
+    func completeSignInWithApple(_ authorization: ASAuthorization, nonce: String) -> AnyPublisher<FQUser, AuthenticationServiceError>
+    func signOut() throws
     
 }
 
 enum AuthenticationServiceError: Error {
-    case invalidClientID
     case cannotfoundRootViewController
+    case invalidClientID
     case invalidUser
+    case invalidCredential
+    case invalidToken
     case invalidated
     case custom(Error)
 }
@@ -44,6 +50,25 @@ final class AuthService: AuthServiceType {
             }
         }
         .eraseToAnyPublisher()
+    }
+    
+    
+    public func requestSignInWithApple(_ request: ASAuthorizationAppleIDRequest) -> String {
+        request.requestedScopes = [.email, .fullName]
+        let nonce = randomNonceString()
+        request.nonce = sha256(nonce)
+        return nonce
+    }
+    
+    public func completeSignInWithApple(_ authorization: ASAuthorization, nonce: String) -> AnyPublisher<FQUser, AuthenticationServiceError> {
+        Future { [weak self] promise in
+            self?.completeSignInWithApple(authorization, nonce: nonce, completion: { promise($0) })
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func signOut() throws {
+        try Auth.auth().signOut()
     }
     
 }
@@ -88,6 +113,42 @@ extension AuthService {
     }
 }
 
+//MARK: - Sign In with Apple
+
+extension AuthService {
+    private func completeSignInWithApple(_ authorization: ASAuthorization,
+                                         nonce: String,
+                                         completion: @escaping((Result<FQUser, AuthenticationServiceError>) -> Void)) {
+        guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+            completion(.failure(.invalidCredential))
+            return
+        }
+        
+        guard let appleIDToken = appleIDCredential.identityToken,
+              let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+            completion(.failure(.invalidToken))
+            return
+        }
+        
+        let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                  idToken: idTokenString,
+                                                  rawNonce: nonce)
+        
+        authenticateUserWithFirebase(credetial: credential) { result in
+            switch result {
+            case .success(var user):
+                let name = [appleIDCredential.fullName?.givenName, appleIDCredential.fullName?.familyName]
+                    .compactMap { $0 }
+                    .joined(separator: " ")
+                user.userName = name
+                completion(.success(user))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+}
+
 //MARK: - Firestore
 extension AuthService {
     private func authenticateUserWithFirebase(
@@ -108,7 +169,7 @@ extension AuthService {
             let firebaseUser: User = result.user
             let user: FQUser = .init(
                 id: firebaseUser.uid,
-                createdAt: .init(date: Date.now),
+                createdAt: Date.now,
                 email: firebaseUser.email ?? "",
                 userName: firebaseUser.displayName ?? ""
             )
@@ -126,5 +187,17 @@ final class StubAuthService: AuthServiceType {
     
     func signInWithGoogle() -> AnyPublisher<FQUser, AuthenticationServiceError> {
         Empty().eraseToAnyPublisher()
+    }
+    
+    func requestSignInWithApple(_ request: ASAuthorizationAppleIDRequest) -> String {
+        ""
+    }
+    
+    func completeSignInWithApple(_ authorization: ASAuthorization, nonce: String) -> AnyPublisher<FQUser, AuthenticationServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func signOut() throws {
+        
     }
 }

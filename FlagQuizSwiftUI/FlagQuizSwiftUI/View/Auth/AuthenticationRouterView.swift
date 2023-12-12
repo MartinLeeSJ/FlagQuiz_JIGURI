@@ -8,11 +8,41 @@
 import SwiftUI
 
 struct AuthenticationRouterView: View {
+    @StateObject private var authViewModel: AuthenticationViewModel
+    
+    init(authViewModel: AuthenticationViewModel) {
+        self._authViewModel = StateObject(wrappedValue: authViewModel)
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                switch authViewModel.authState {
+                case .unauthenticated:
+                    LoginView()
+                case .authenticating:
+                    ProgressView()
+                case .authenticated:
+                    MainTabView()
+                case .failed:
+                    ErrorView {
+                        authViewModel.send(.retry)
+                    }
+                }
+            }
+            .onAppear {
+                authViewModel.send(.checkAuthenticationState)
+            }
+            .environmentObject(authViewModel)
+        }
+        
     }
 }
 
 #Preview {
-    AuthenticationRouterView()
+    AuthenticationRouterView(
+        authViewModel: AuthenticationViewModel(
+            container: .init(services: StubService())
+        )
+    )
 }

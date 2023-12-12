@@ -28,6 +28,16 @@
 		5B16F9682B2850000011ACF7 /* FQUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9672B2850000011ACF7 /* FQUser.swift */; };
 		5B16F96A2B2851560011ACF7 /* FQUserQuizCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9692B2851560011ACF7 /* FQUserQuizCount.swift */; };
 		5B16F96C2B2852AD0011ACF7 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F96B2B2852AD0011ACF7 /* ServiceError.swift */; };
+		5B16F96F2B286C670011ACF7 /* randomNonceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F96E2B286C670011ACF7 /* randomNonceString.swift */; };
+		5B16F9712B286C7D0011ACF7 /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9702B286C7D0011ACF7 /* SHA256.swift */; };
+		5B16F9742B287A4C0011ACF7 /* FQUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9732B287A4C0011ACF7 /* FQUserRepository.swift */; };
+		5B16F9772B287A600011ACF7 /* FQUserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9762B287A600011ACF7 /* FQUserObject.swift */; };
+		5B16F9792B287B700011ACF7 /* DBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9782B287B700011ACF7 /* DBError.swift */; };
+		5B16F97B2B287E750011ACF7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F97A2B287E750011ACF7 /* UserService.swift */; };
+		5B16F97D2B2883670011ACF7 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F97C2B2883670011ACF7 /* Constant.swift */; };
+		5B16F97F2B2890780011ACF7 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F97E2B2890780011ACF7 /* MainTabView.swift */; };
+		5B16F9832B2890CD0011ACF7 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9822B2890CD0011ACF7 /* ErrorView.swift */; };
+		5B16F9852B28A8570011ACF7 /* ButtonLocalizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B16F9842B28A8570011ACF7 /* ButtonLocalizable.xcstrings */; };
 		5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */; };
 		5B5C2ACF2B280A32009A382B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2ACE2B280A32009A382B /* ContentView.swift */; };
 		5B5C2AD12B280A34009A382B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B5C2AD02B280A34009A382B /* Assets.xcassets */; };
@@ -71,6 +81,16 @@
 		5B16F9672B2850000011ACF7 /* FQUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUser.swift; sourceTree = "<group>"; };
 		5B16F9692B2851560011ACF7 /* FQUserQuizCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizCount.swift; sourceTree = "<group>"; };
 		5B16F96B2B2852AD0011ACF7 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		5B16F96E2B286C670011ACF7 /* randomNonceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = randomNonceString.swift; sourceTree = "<group>"; };
+		5B16F9702B286C7D0011ACF7 /* SHA256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
+		5B16F9732B287A4C0011ACF7 /* FQUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserRepository.swift; sourceTree = "<group>"; };
+		5B16F9762B287A600011ACF7 /* FQUserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserObject.swift; sourceTree = "<group>"; };
+		5B16F9782B287B700011ACF7 /* DBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBError.swift; sourceTree = "<group>"; };
+		5B16F97A2B287E750011ACF7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		5B16F97C2B2883670011ACF7 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		5B16F97E2B2890780011ACF7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		5B16F9822B2890CD0011ACF7 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		5B16F9842B28A8570011ACF7 /* ButtonLocalizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = ButtonLocalizable.xcstrings; sourceTree = "<group>"; };
 		5B5C2AC92B280A32009A382B /* FlagQuizSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlagQuizSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagQuizSwiftUIApp.swift; sourceTree = "<group>"; };
 		5B5C2ACE2B280A32009A382B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +141,7 @@
 				5B5C2AD02B280A34009A382B /* Assets.xcassets */,
 				5B16F9462B2831300011ACF7 /* Colors.xcassets */,
 				5B16F9442B2830A60011ACF7 /* LaunchScreen.storyboard */,
+				5B16F9842B28A8570011ACF7 /* ButtonLocalizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -129,8 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				5B5C2ACE2B280A32009A382B /* ContentView.swift */,
+				5B16F9802B2890920011ACF7 /* Login */,
 				5B16F9582B28471D0011ACF7 /* Auth */,
 				5B16F9412B2830570011ACF7 /* OnBoardingView.swift */,
+				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -138,7 +161,10 @@
 		5B16F94C2B2845300011ACF7 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				5B16F9812B2890BA0011ACF7 /* View */,
+				5B16F96D2B286C2F0011ACF7 /* Utils */,
 				5B16F94D2B2845420011ACF7 /* DIContainer.swift */,
+				5B16F97C2B2883670011ACF7 /* Constant.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -146,9 +172,10 @@
 		5B16F94F2B2845600011ACF7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5B16F96B2B2852AD0011ACF7 /* ServiceError.swift */,
 				5B16F9502B28456C0011ACF7 /* Services.swift */,
 				5B16F9522B2845DF0011ACF7 /* AuthService.swift */,
-				5B16F96B2B2852AD0011ACF7 /* ServiceError.swift */,
+				5B16F97A2B287E750011ACF7 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -158,7 +185,6 @@
 			children = (
 				5B16F9562B28470E0011ACF7 /* AuthenticationRouterView.swift */,
 				5B16F9592B28472F0011ACF7 /* AuthenticationViewModel.swift */,
-				5B16F95C2B2847610011ACF7 /* LoginView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -170,6 +196,49 @@
 				5B16F9692B2851560011ACF7 /* FQUserQuizCount.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5B16F96D2B286C2F0011ACF7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5B16F96E2B286C670011ACF7 /* randomNonceString.swift */,
+				5B16F9702B286C7D0011ACF7 /* SHA256.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5B16F9722B287A390011ACF7 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				5B16F9752B287A510011ACF7 /* DTO */,
+				5B16F9732B287A4C0011ACF7 /* FQUserRepository.swift */,
+				5B16F9782B287B700011ACF7 /* DBError.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		5B16F9752B287A510011ACF7 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				5B16F9762B287A600011ACF7 /* FQUserObject.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		5B16F9802B2890920011ACF7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5B16F95C2B2847610011ACF7 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5B16F9812B2890BA0011ACF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5B16F9822B2890CD0011ACF7 /* ErrorView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5B5C2AC02B280A32009A382B = {
@@ -200,12 +269,13 @@
 				5B16F93F2B282CD60011ACF7 /* GoogleService-Info.plist */,
 				5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */,
 				5B16F9482B2833390011ACF7 /* AppDelegate.swift */,
-				5B16F9662B284FF70011ACF7 /* Model */,
+				5B16F9722B287A390011ACF7 /* Repository */,
 				5B16F94F2B2845600011ACF7 /* Service */,
 				5B16F94C2B2845300011ACF7 /* General */,
-				5B16F9432B2830640011ACF7 /* Resources */,
 				5B16F94A2B2845070011ACF7 /* View */,
+				5B16F9662B284FF70011ACF7 /* Model */,
 				5B5C2AD22B280A34009A382B /* Preview Content */,
+				5B16F9432B2830640011ACF7 /* Resources */,
 			);
 			path = FlagQuizSwiftUI;
 			sourceTree = "<group>";
@@ -330,6 +400,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 5B5C2AC02B280A32009A382B;
 			packageReferences = (
@@ -352,6 +423,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B16F9852B28A8570011ACF7 /* ButtonLocalizable.xcstrings in Resources */,
 				5B16F9472B2831300011ACF7 /* Colors.xcassets in Resources */,
 				5B5C2AD42B280A34009A382B /* Preview Assets.xcassets in Resources */,
 				5B16F9452B2830A60011ACF7 /* LaunchScreen.storyboard in Resources */,
@@ -383,17 +455,26 @@
 			files = (
 				5B16F9492B2833390011ACF7 /* AppDelegate.swift in Sources */,
 				5B16F9512B28456C0011ACF7 /* Services.swift in Sources */,
+				5B16F9772B287A600011ACF7 /* FQUserObject.swift in Sources */,
 				5B16F9422B2830570011ACF7 /* OnBoardingView.swift in Sources */,
 				5B16F94E2B2845420011ACF7 /* DIContainer.swift in Sources */,
 				5B16F96A2B2851560011ACF7 /* FQUserQuizCount.swift in Sources */,
+				5B16F96F2B286C670011ACF7 /* randomNonceString.swift in Sources */,
+				5B16F97D2B2883670011ACF7 /* Constant.swift in Sources */,
 				5B5C2ACF2B280A32009A382B /* ContentView.swift in Sources */,
+				5B16F9742B287A4C0011ACF7 /* FQUserRepository.swift in Sources */,
 				5B16F9572B28470E0011ACF7 /* AuthenticationRouterView.swift in Sources */,
+				5B16F97F2B2890780011ACF7 /* MainTabView.swift in Sources */,
 				5B16F9682B2850000011ACF7 /* FQUser.swift in Sources */,
 				5B16F96C2B2852AD0011ACF7 /* ServiceError.swift in Sources */,
+				5B16F9792B287B700011ACF7 /* DBError.swift in Sources */,
+				5B16F97B2B287E750011ACF7 /* UserService.swift in Sources */,
 				5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */,
+				5B16F9712B286C7D0011ACF7 /* SHA256.swift in Sources */,
 				5B16F9532B2845DF0011ACF7 /* AuthService.swift in Sources */,
 				5B16F95D2B2847610011ACF7 /* LoginView.swift in Sources */,
 				5B16F95A2B28472F0011ACF7 /* AuthenticationViewModel.swift in Sources */,
+				5B16F9832B2890CD0011ACF7 /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
