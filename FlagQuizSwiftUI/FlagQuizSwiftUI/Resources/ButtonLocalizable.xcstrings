@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "tabs-news-title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -18,6 +19,7 @@
       }
     },
     "tabs-quizSetting-title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
