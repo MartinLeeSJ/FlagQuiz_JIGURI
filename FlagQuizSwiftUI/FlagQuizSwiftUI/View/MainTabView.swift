@@ -13,8 +13,8 @@ enum Tabs: Int, Hashable, CaseIterable {
     
     var title: LocalizedStringKey {
         let result: LocalizedStringKey = switch self {
-        case .quizSetting: .init("tabs-quizSetting-title")
-        case .news: .init("tabs-news-title")
+        case .quizSetting: .init("tabs.quizSetting.title")
+        case .news: .init("tabs.news.title")
         }
         return result
     }
@@ -45,9 +45,7 @@ struct MainTabView: View {
                     }
                     .tabItem {
                         VStack {
-                            Text(tab.title,
-                                 tableName: LocalizableTable.button,
-                                 bundle: .main)
+                            Text(tab.title)
                             Image(systemName: tab.imageName)
                         }
                     }

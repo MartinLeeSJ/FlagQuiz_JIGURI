@@ -16,7 +16,7 @@ struct QuizSettingView: View {
                 .frame(height: 64)
             
             TypeWritingText(
-                originalText: String(localized: "QuizSetting-Intro", table: LocalizableTable.general),
+                originalText: String(localized: "quizSetting.intro"),
                 animation: .bouncy
             )
             .font(.system(size: 64))
@@ -34,7 +34,7 @@ struct QuizSettingView: View {
             Button {
                 
             } label: {
-                Text("StartQuiz", tableName: LocalizableTable.button)
+                Text("start.quiz")
             }
             .buttonStyle(QuizFilledButtonStyle())
             .padding()
@@ -45,11 +45,11 @@ struct QuizSettingView: View {
     
     private var quizCountPicker: some View {
         HStack {
-            Text("QuizIntro-QuizCountPicker-Title", tableName: LocalizableTable.general)
+            Text("quizIntro.quizCountPicker.title")
             
             Spacer()
 
-            Picker("QuizIntro-QuizCountPicker-Title", selection: $viewModel.quizCount) {
+            Picker("", selection: $viewModel.quizCount) {
                 ForEach(QuizCount.allCases, id: \.self) { quizCount in
                     Text("\(quizCount.rawValue)")
                         .tag(quizCount)
@@ -63,12 +63,11 @@ struct QuizSettingView: View {
     
     private var quizItemCountPicker: some View {
         HStack {
-            Text("QuizIntro-QuizItemCountPicker-Title",
-                 tableName: LocalizableTable.general)
+            Text("quizIntro.quizItemCountPicker.title")
             
             Spacer()
             
-            Picker("QuizIntro-QuizItemCountPicker-Title",
+            Picker("",
                    selection: $viewModel.quizItemCount) {
                 ForEach(QuizItemCount.allCases, id: \.self) { quizItemCount in
                     Text("\(quizItemCount.rawValue)")
