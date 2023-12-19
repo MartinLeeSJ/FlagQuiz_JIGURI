@@ -19,5 +19,6 @@ extension Constant {
     
     struct LocalizableTable {
         static let button: String = "ButtonLocalizable"
+        static let general: String = "General"
     }
 }
