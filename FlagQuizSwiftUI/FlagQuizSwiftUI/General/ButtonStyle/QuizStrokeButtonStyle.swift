@@ -1,27 +1,26 @@
 //
-//  QuizFilledButtonStyle.swift
+//  QuizStrokeButtonStyle.swift
 //  FlagQuizSwiftUI
 //
-//  Created by Martin on 12/19/23.
+//  Created by Martin on 12/20/23.
 //
 
 import SwiftUI
 
-
-struct QuizFilledButtonStyle: ButtonStyle {
+struct QuizStrokeButtonStyle: ButtonStyle {
     @Environment(\.colorScheme) private var scheme
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .fontWeight(scheme == .dark ? .bold : .medium)
-            .foregroundStyle(scheme == .dark ? Color.black : Color.fqAccent)
+            .fontWeight(.medium)
             .padding()
             .frame(maxWidth: .infinity)
             .background {
                 RoundedRectangle(cornerRadius: 8)
+                    .stroke(lineWidth: 1)
                     .foregroundStyle(scheme == .dark ? Color.fqAccent : .black)
             }
             .opacity(configuration.isPressed ? 0.5 : 1)
     }
-    
-    
 }
+

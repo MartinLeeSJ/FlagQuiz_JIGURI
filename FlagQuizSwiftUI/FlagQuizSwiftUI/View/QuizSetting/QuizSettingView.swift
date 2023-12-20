@@ -11,34 +11,39 @@ struct QuizSettingView: View {
     @StateObject private var viewModel = QuizSettingViewModel()
    
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Spacer()
-                .frame(height: 64)
-            
-            TypeWritingText(
-                originalText: String(localized: "quizSetting.intro"),
-                animation: .bouncy
-            )
-            .font(.system(size: 64))
-            .fontWeight(.heavy)
-            .padding(.horizontal)
-            
-            Spacer()
-            
-            Divider()
-        
-            quizCountPicker
-            
-            quizItemCountPicker
-           
-            Button {
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 16) {
+                Spacer()
+                    .frame(height: 64)
                 
-            } label: {
-                Text("start.quiz")
-            }
-            .buttonStyle(QuizFilledButtonStyle())
-            .padding()
+                TypeWritingText(
+                    originalText: String(localized: "quizSetting.intro"),
+                    animation: .bouncy
+                )
+                .font(.system(size: 64))
+                .fontWeight(.heavy)
+                .padding(.horizontal)
+                
+                Spacer()
+                
+                Divider()
             
+                quizCountPicker
+                
+                quizItemCountPicker
+                
+                NavigationLink("start.quiz") {
+                    QuizView(
+                        viewModel: QuizViewModel(
+                            quizCount: viewModel.quizCount.rawValue,
+                            quizOptionsCount: viewModel.quizItemCount.rawValue
+                        )
+                    )
+                }
+                .buttonStyle(QuizFilledButtonStyle(disabled: false))
+                .padding()
+                
+            }
         }
         
     }
@@ -49,7 +54,9 @@ struct QuizSettingView: View {
             
             Spacer()
 
-            Picker("", selection: $viewModel.quizCount) {
+            Picker("quizIntro.quizCountPicker.title",
+                   selection: $viewModel.quizCount
+            ) {
                 ForEach(QuizCount.allCases, id: \.self) { quizCount in
                     Text("\(quizCount.rawValue)")
                         .tag(quizCount)
@@ -67,8 +74,9 @@ struct QuizSettingView: View {
             
             Spacer()
             
-            Picker("",
-                   selection: $viewModel.quizItemCount) {
+            Picker("quizIntro.quizItemCountPicker.title",
+                   selection: $viewModel.quizItemCount
+            ) {
                 ForEach(QuizItemCount.allCases, id: \.self) { quizItemCount in
                     Text("\(quizItemCount.rawValue)")
                         .tag(quizItemCount)

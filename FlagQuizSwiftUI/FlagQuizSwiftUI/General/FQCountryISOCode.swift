@@ -19,9 +19,20 @@ struct FQCountryISOCode: Codable {
 
 extension FQCountryISOCode: Equatable { }
 
+extension FQCountryISOCode: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(numericCode)
+    }
+}
+
 extension FQCountryISOCode {
-    static func chooseRandomly(_ count: Int) -> [FQCountryISOCode] {
-        Array(Self.safeAllCodes.shuffled().prefix(upTo: count))
+    static func chooseRandomly(_ count: Int, except: FQCountryISOCode?) -> [FQCountryISOCode] {
+        Array(Self.safeAllCodes.filter {
+            if let except {
+                return ($0 != except)
+            }
+            return true
+        }.shuffled().prefix(upTo: count))
     }
     
     static var safeAllCodesCount: Int {
