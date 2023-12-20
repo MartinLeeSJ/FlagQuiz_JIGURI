@@ -6,31 +6,119 @@
 //
 
 import XCTest
+import Combine
 @testable import FlagQuizSwiftUI
 
-final class FlagQuizSwiftUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class MockCountryService: CountryServiceType {
+    private let apiClient: CountryAPIClientType
+    
+    init(apiClient: CountryAPIClientType) {
+        self.apiClient = apiClient
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func getCountries(ofCodes codes: [FlagQuizSwiftUI.FQCountryISOCode]) -> AnyPublisher<[FlagQuizSwiftUI.FQCountry], FlagQuizSwiftUI.ServiceError> {
+        apiClient.getCountries(.init(countryCodes: codes))
+            .encode(encoder: JSONEncoder())
+            .decode(type: [FQCountry].self, decoder: JSONDecoder())
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func getCountryDetails(ofCodes codes: [FlagQuizSwiftUI.FQCountryISOCode]) -> AnyPublisher<[FlagQuizSwiftUI.FQCountryDetail], FlagQuizSwiftUI.ServiceError> {
+        apiClient.getCountries(.init(countryCodes: codes))
+            .encode(encoder: JSONEncoder())
+            .decode(type: [FQCountryDetail].self, decoder: JSONDecoder())
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
     }
+}
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+final class MockCountryAPIClient: CountryAPIClientType {
+    func getCountries(_ request: FlagQuizSwiftUI.CountryRequest) -> AnyPublisher<[FlagQuizSwiftUI.CountryObject], FlagQuizSwiftUI.APIError> {
+        Future { promise in
+            do {
+                let objects = try JSONDecoder().decode([CountryObject].self, from: testCountryJSON170)
+                promise(.success(objects))
+            } catch {
+                promise(.failure(APIError.custom(error)))
+            }
         }
+        .eraseToAnyPublisher()
+    }
+}
+
+struct MockCountryRequest: CountryRequestType {
+    let countryCodes: [FlagQuizSwiftUI.FQCountryISOCode]
+    
+    init(countryCodes: [FlagQuizSwiftUI.FQCountryISOCode]) {
+        self.countryCodes = countryCodes
+    }
+}
+
+final class FlagQuizSwiftUITests: XCTestCase {
+    var countryService: CountryServiceType?
+    var countryAPIClient: CountryAPIClientType?
+    var subscriptions = Set<AnyCancellable>()
+    
+
+    func testDecodeCountryObject() {
+        countryAPIClient = MockCountryAPIClient()
+        
+        countryAPIClient?.getCountries(.init(countryCodes: [.init("170")]))
+            .sink{ completion in
+                if case .failure(let error) = completion {
+                    XCTFail(error.localizedDescription)
+                }
+            } receiveValue: { objects in
+                guard let object = objects.first else {
+                    XCTFail("")
+                    return
+                }
+                
+                XCTAssertEqual(object.ccn3, "170")
+            
+            }
+            .store(in: &subscriptions)
+    }
+    
+    
+    func testDecodeFQCountry() {
+        countryService = MockCountryService(apiClient: MockCountryAPIClient())
+        
+        countryService?.getCountries(ofCodes: [.init("170")])
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    XCTFail(error.localizedDescription)
+                }
+            } receiveValue: { countries in
+                guard let country = countries.first else {
+                    XCTFail("")
+                    return
+                }
+                
+                XCTAssertEqual(country.id, .init("170"))
+            }
+            .store(in: &subscriptions)
+    }
+    
+    func testDecodeFQCountryDetail() {
+        countryService = MockCountryService(apiClient: MockCountryAPIClient())
+        
+        countryService?.getCountryDetails(ofCodes: [.init("170")])
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    XCTFail(error.localizedDescription)
+                }
+            } receiveValue: { countries in
+                guard let country = countries.first else {
+                    XCTFail("")
+                    return
+                }
+                
+                XCTAssertEqual(country.id, .init("170"))
+            }
+            .store(in: &subscriptions)
     }
 
 }

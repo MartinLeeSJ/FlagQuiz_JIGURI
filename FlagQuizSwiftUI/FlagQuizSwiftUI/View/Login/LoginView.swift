@@ -28,7 +28,7 @@ struct LoginView: View {
                 Button {
                     authViewModel.send(.signInWithGoogle)
                 } label: {
-                    Text("GOOGLE으로 로그인 하기")
+                    Text("sign.in.with.google")
                         .font(.system(size: 14))
                         .foregroundStyle(.black)
                         .frame(maxWidth: .infinity)
