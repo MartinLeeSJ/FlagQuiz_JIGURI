@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct QuizSubmitButton: View {
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject private var viewModel: QuizViewModel
     
     private var currentQuizRound: FQQuizRound {
@@ -25,7 +26,11 @@ struct QuizSubmitButton: View {
     var body: some View {
         if viewModel.isSubmitted {
             Button {
-                viewModel.send(.nextQuiz)
+                viewModel.send(isLastQuiz ? .finish : .nextQuiz)
+                
+                if isLastQuiz {
+                    dismiss()
+                }
             } label: {
                 isLastQuiz ? Text("finish.quiz") : Text("next.quiz")
             }

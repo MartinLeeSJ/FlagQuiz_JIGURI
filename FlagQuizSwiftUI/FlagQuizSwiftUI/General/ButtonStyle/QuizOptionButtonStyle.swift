@@ -16,12 +16,14 @@ struct QuizOptionButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.callout)
+            .font(.caption)
+            .padding(4)
             .frame(minHeight: 100)
             .frame(maxWidth: .infinity)
-            .background {
+            .background(in: RoundedRectangle(cornerRadius: 10))
+            .overlay {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 1)
+                    .stroke(lineWidth: 1.5)
                     .foregroundStyle(isSelected ? Color.fqAccent : Color.fqQuizOptionGrey)
             }
     }
@@ -62,12 +64,14 @@ struct QuizOptionResultButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.callout)
+            .font(.caption)
+            .padding(4)
             .frame(minHeight: 100)
             .frame(maxWidth: .infinity)
-            .background {
+            .background(in: RoundedRectangle(cornerRadius: 10))
+            .overlay {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 1)
+                    .stroke(lineWidth: 1.5)
                     .foregroundStyle(strokeColor)
             }
             .overlay(alignment: .topTrailing) {
@@ -75,6 +79,7 @@ struct QuizOptionResultButtonStyle: ButtonStyle {
                     Image(systemName: imageName)
                         .imageScale(.medium)
                         .foregroundStyle(strokeColor)
+                        .offset(x: -10, y: 10)
                 }
             }
     }

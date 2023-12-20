@@ -13,14 +13,28 @@ struct FQQuiz {
     
     var quizRounds: [FQQuizRound]
     private(set) var currentQuizIndex: Int = 0
+    
     var currentQuizRound: FQQuizRound {
         quizRounds[currentQuizIndex]
     }
     
-    mutating func toNextIndex() -> Bool {
-        guard currentQuizIndex < (quizCount - 1) else { return false }
+    var correctQuizRoundsCount: Int {
+        quizRounds.filter { round in
+            guard let submittedCountryCode = round.submittedCountryCode else {
+                return false
+            }
+            
+            return round.answerCountryCode == submittedCountryCode
+        }.count
+    }
+    
+    var wrongQuizRoundsCount: Int {
+        quizCount - correctQuizRoundsCount
+    }
+    
+    mutating func toNextIndex() {
+        guard currentQuizIndex < (quizCount - 1) else { return }
         currentQuizIndex += 1
-        return true
     }
     
     init(quizCount: Int, quizOptionsCount: Int) {

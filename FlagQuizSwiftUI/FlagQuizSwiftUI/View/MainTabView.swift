@@ -58,4 +58,5 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
+        .environmentObject(DIContainer(services: StubService()))
 }

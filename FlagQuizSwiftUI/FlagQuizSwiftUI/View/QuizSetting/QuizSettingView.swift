@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct QuizSettingView: View {
+    @EnvironmentObject private var container: DIContainer
     @StateObject private var viewModel = QuizSettingViewModel()
    
     var body: some View {
@@ -35,6 +36,7 @@ struct QuizSettingView: View {
                 NavigationLink("start.quiz") {
                     QuizView(
                         viewModel: QuizViewModel(
+                            container: container,
                             quizCount: viewModel.quizCount.rawValue,
                             quizOptionsCount: viewModel.quizItemCount.rawValue
                         )

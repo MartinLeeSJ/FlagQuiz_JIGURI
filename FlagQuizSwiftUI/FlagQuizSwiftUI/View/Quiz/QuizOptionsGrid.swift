@@ -42,10 +42,9 @@ struct QuizOptionsGrid: View {
             ) { code in
                 if viewModel.isSubmitted {
                     optionsResultButton(of: code)
-                        .transition(.move(edge: .leading))
                 } else {
                     optionsButton(of: code)
-                        .transition(.move(edge: .trailing))
+                        .animation(.smooth, value: currentQuizRound.submittedCountryCode)
                 }
             }
         }

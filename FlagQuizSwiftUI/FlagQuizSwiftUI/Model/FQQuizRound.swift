@@ -18,7 +18,7 @@ struct FQQuizRound {
         self.answerCountryCode = answerCountryCode
         self.quizOptionsCount = quizOptionsCount
         self.optionsCountryCodes = Self.optionsCountryCodes(quizOptionsCount: quizOptionsCount,
-                                                            answerCountryCode: answerCountryCode)
+                                                           answerCountryCode: answerCountryCode)
     }
     
     
@@ -32,3 +32,5 @@ struct FQQuizRound {
         return options.shuffled()
     }
 }
+
+extension FQQuizRound: Equatable { }
