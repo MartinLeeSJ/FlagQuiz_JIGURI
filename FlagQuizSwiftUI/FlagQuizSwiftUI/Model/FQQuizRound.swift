@@ -34,3 +34,13 @@ struct FQQuizRound {
 }
 
 extension FQQuizRound: Equatable { }
+
+extension FQQuizRound {
+    func toObject() -> FQQuizRoundRecordObject {
+        .init(
+            answerCounrtyCode: answerCountryCode.numericCode,
+            submittedCountryCode: submittedCountryCode?.numericCode,
+            optionsCountryCodes: optionsCountryCodes.map { $0.numericCode }
+        )
+    }
+}
