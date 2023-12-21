@@ -34,7 +34,9 @@ struct QuizSubmitButton: View {
                 
                 if isLastQuiz {
                     withAnimation(.smooth) {
-                        settingsViewModel.destinations.append(QuizDestination.quizResult(viewModel.quiz))
+                        settingsViewModel.destinations.append(
+                            QuizDestination.quizResult(viewModel.quiz)
+                        )
                     }
                 }
             } label: {

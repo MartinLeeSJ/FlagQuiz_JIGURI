@@ -10,6 +10,7 @@ import SwiftUI
 enum QuizDestination: Hashable {    
     case quiz
     case quizResult(FQQuiz)
+    case countryDetail(FQCountryISOCode)
 }
 
 final class QuizSettingViewModel: ObservableObject {

@@ -56,8 +56,9 @@ struct QuizSettingView: View {
                     )
                     .environmentObject(viewModel)
                 case .quizResult(let quiz):
-                    Text(quiz.quizRounds.map{ $0.answerCountryCode.numericCode }.joined(separator: ", "))
-
+                    QuizResultView(quizResult: quiz)
+                case .countryDetail(let code):
+                    Text("detail")
                 }
             }
             
