@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct FQQuiz {
     let quizCount: Int
@@ -19,7 +20,7 @@ struct FQQuiz {
     }
     
     var correctQuizRoundsCount: Int {
-        quizRounds.filter { round in
+        quizRounds[0..<currentQuizIndex].filter { round in
             guard let submittedCountryCode = round.submittedCountryCode else {
                 return false
             }
@@ -29,7 +30,7 @@ struct FQQuiz {
     }
     
     var wrongQuizRoundsCount: Int {
-        quizCount - correctQuizRoundsCount
+        quizRounds[0..<currentQuizIndex].count - correctQuizRoundsCount
     }
     
     mutating func toNextIndex() {
@@ -47,5 +48,17 @@ struct FQQuiz {
         FQCountryISOCode.chooseRandomly(quizCount, except: nil).map {
             FQQuizRound(answerCountryCode: $0, quizOptionsCount: quizOptionsCount)
         }
+    }
+}
+
+
+extension FQQuiz {
+    func toRecordObject() -> FQQuizRecordObject {
+        .init(
+            quizCount: quizCount,
+            quizOptionsCount: quizOptionsCount,
+            quizRounds: quizRounds.map { $0.toObject() },
+            createdAt: .init(date: .now)
+        )
     }
 }

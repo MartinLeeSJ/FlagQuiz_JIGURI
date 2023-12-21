@@ -55,6 +55,8 @@ final class QuizViewModel: ObservableObject {
             quiz.toNextIndex()
             isSubmitted = false
         case .finish:
+            // 유저정보 저장
+            // 퀴즈 정보 저장
             break
         }
     }
