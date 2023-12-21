@@ -10,8 +10,11 @@ import IsoCountryCodes
 
 struct QuizView: View {
     @StateObject private var viewModel: QuizViewModel
-    
-    init(viewModel: QuizViewModel) {
+
+
+    init(
+        viewModel: QuizViewModel
+    ) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -35,48 +38,48 @@ struct QuizView: View {
     
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                Spacer()
-              
-                AsyncImage(url: flagImageUrl) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 100)
-                        .padding()
-                } placeholder: {
-                    Text(answerCountryFlagEmoji)
-                        .font(.system(size: 96))
-                }
-
-                Spacer()
-                quizQuestion
-                
-                QuizOptionsGrid(viewModel: viewModel)
-                
-                QuizSubmitButton(viewModel: viewModel)
-                    .animation(.smooth, value: viewModel.isSubmitted)
+        
+        VStack {
+            Spacer()
+            
+            AsyncImage(url: flagImageUrl) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 100)
                     .padding()
+            } placeholder: {
+                Text(answerCountryFlagEmoji)
+                    .font(.system(size: 96))
             }
-            .onAppear {
-                viewModel.send(.load)
+            
+            Spacer()
+            quizQuestion
+            
+            QuizOptionsGrid(viewModel: viewModel)
+            
+            QuizSubmitButton(viewModel: viewModel)
+                .animation(.smooth, value: viewModel.isSubmitted)
+                .padding()
+        }
+        .onAppear {
+            viewModel.send(.load)
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    
+                } label: {
+                    Text("Quit")
+                }
             }
-            .navigationBarBackButtonHidden()
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        
-                    } label: {
-                        Text("Quit")
-                    }
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    scoreView
-                }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                scoreView
             }
         }
+        
     }
     
     private var quizQuestion: some View {
@@ -132,7 +135,9 @@ struct QuizView: View {
 
 
 #Preview {
-    QuizView(
+    @State var destination: [QuizDestination] = []
+    
+    return QuizView(
         viewModel: QuizViewModel(
             container: .init(services: StubService()),
             quizCount: 2,

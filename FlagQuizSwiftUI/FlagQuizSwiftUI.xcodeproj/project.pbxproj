@@ -261,8 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				5B16F9672B2850000011ACF7 /* FQUser.swift */,
-				5BD3B7682B31ED8000B930E0 /* FQQuiz.swift */,
 				5B16F9692B2851560011ACF7 /* FQUserQuizStat.swift */,
+				5BD3B7682B31ED8000B930E0 /* FQQuiz.swift */,
 				5BD3B76A2B31EDA000B930E0 /* FQQuizRound.swift */,
 				5BE086592B31909800D38C01 /* Country */,
 				5B7BCAFF2B333E0C00E50C5F /* Quiz */,

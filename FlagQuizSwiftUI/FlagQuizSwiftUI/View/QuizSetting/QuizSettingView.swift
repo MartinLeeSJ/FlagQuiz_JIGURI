@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+
+
 struct QuizSettingView: View {
     @EnvironmentObject private var container: DIContainer
     @StateObject private var viewModel = QuizSettingViewModel()
-   
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $viewModel.destinations) {
             VStack(alignment: .leading, spacing: 16) {
                 Spacer()
                     .frame(height: 64)
@@ -33,7 +35,18 @@ struct QuizSettingView: View {
                 
                 quizItemCountPicker
                 
-                NavigationLink("start.quiz") {
+                Button {
+                    viewModel.destinations.append(QuizDestination.quiz)
+                } label: {
+                    Text("start.quiz")
+                }
+                .buttonStyle(QuizFilledButtonStyle(disabled: false))
+                .padding()
+                
+            }
+            .navigationDestination(for: QuizDestination.self) { destination in
+                switch destination {
+                case .quiz:
                     QuizView(
                         viewModel: QuizViewModel(
                             container: container,
@@ -41,11 +54,13 @@ struct QuizSettingView: View {
                             quizOptionsCount: viewModel.quizItemCount.rawValue
                         )
                     )
+                    .environmentObject(viewModel)
+                case .quizResult(let quiz):
+                    Text(quiz.quizRounds.map{ $0.answerCountryCode.numericCode }.joined(separator: ", "))
+
                 }
-                .buttonStyle(QuizFilledButtonStyle(disabled: false))
-                .padding()
-                
             }
+            
         }
         
     }
@@ -97,6 +112,5 @@ struct QuizSettingView: View {
 
 #Preview {
     QuizSettingView()
-    
 }
 

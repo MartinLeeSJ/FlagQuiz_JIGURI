@@ -34,6 +34,7 @@ struct FQQuizRound {
 }
 
 extension FQQuizRound: Equatable { }
+extension FQQuizRound: Hashable { }
 
 extension FQQuizRound {
     func toObject() -> FQQuizRoundRecordObject {

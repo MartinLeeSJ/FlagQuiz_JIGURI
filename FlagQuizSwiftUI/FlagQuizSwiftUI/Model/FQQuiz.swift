@@ -62,3 +62,5 @@ extension FQQuiz {
         )
     }
 }
+
+extension FQQuiz: Hashable { }
