@@ -10,13 +10,9 @@ import IsoCountryCodes
 
 struct QuizView: View {
     @EnvironmentObject private var viewModel: QuizViewModel
-    
-    private var quiz: FQQuiz {
-        viewModel.quiz ?? .init(quizCount: 10, quizOptionsCount: 4)
-    }
 
     private var currentQuizRound: FQQuizRound {
-        quiz.currentQuizRound
+        viewModel.quiz.currentQuizRound
     }
     
     private var answerCountryFlagEmoji: String {
@@ -81,7 +77,7 @@ struct QuizView: View {
     
     private var quizQuestion: some View {
         HStack {
-            Text("Q\(viewModel.quiz?.currentQuizIndex ?? 0 + 1)")
+            Text("Q\(viewModel.quiz.currentQuizIndex + 1)")
                 .padding()
                 .background(.ultraThinMaterial,
                             in: RoundedRectangle(cornerRadius: 8))
@@ -100,6 +96,8 @@ struct QuizView: View {
     
     private var scoreView: some View {
          VStack(alignment: .leading) {
+            let quiz = viewModel.quiz
+             
             HStack {
                 Text("current.quiz.description")
                 Spacer()
@@ -135,7 +133,7 @@ struct QuizView: View {
 #Preview {
     @StateObject var viewModel: QuizViewModel = .init(container: .init(services: StubService()))
     
-    viewModel.send(.createQuiz(count: 10, optionCount: 4))
+    viewModel.send(.setNewQuiz(count: 10, optionCount: 4))
     
     return QuizView().environmentObject(viewModel)
 }

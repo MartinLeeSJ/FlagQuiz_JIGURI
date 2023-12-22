@@ -18,7 +18,7 @@ struct QuizSubmitButton: View {
     }
     
     private var quiz: FQQuiz {
-        viewModel.quiz ?? .init(quizCount: 10, quizOptionsCount: 4)
+        viewModel.quiz
     }
     
     private var currentQuizRound: FQQuizRound {
@@ -33,12 +33,13 @@ struct QuizSubmitButton: View {
     var body: some View {
         if viewModel.isSubmitted {
             Button {
-                viewModel.send(isLastQuiz ? .finish : .nextQuiz)
-                
                 if isLastQuiz {
                     withAnimation(.smooth) {
+                        viewModel.send(.finishQuiz)
                         viewModel.send(.navigate(to: .quizResult(quiz)))
                     }
+                } else {   
+                    viewModel.send(.nextQuiz)
                 }
             } label: {
                 isLastQuiz ? Text("finish.quiz") : Text("next.quiz")

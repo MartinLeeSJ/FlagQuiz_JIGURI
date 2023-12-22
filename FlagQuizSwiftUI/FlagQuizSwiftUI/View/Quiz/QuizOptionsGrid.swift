@@ -16,7 +16,7 @@ struct QuizOptionsGrid: View {
     }
     
     private var quiz: FQQuiz {
-        viewModel.quiz ?? .init(quizCount: 10, quizOptionsCount: 4)
+        viewModel.quiz
     }
     
     private var currentQuizRound: FQQuizRound {

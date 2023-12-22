@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 protocol QuizStatServiceType {
-    
     func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStat
     
     func addQuizStat(ofUser userId: String,

@@ -147,6 +147,9 @@
         }
       }
     },
+    "logout" : {
+
+    },
     "N. America" : {
       "localizations" : {
         "en" : {

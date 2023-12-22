@@ -52,7 +52,7 @@ struct QuizSettingView: View {
                 quizItemCountPicker
                 
                 Button {
-                    viewModel.send(.createQuiz(count: quizCount.rawValue,
+                    viewModel.send(.setNewQuiz(count: quizCount.rawValue,
                                                optionCount: quizItemCount.rawValue))
                     viewModel.send(.navigate(to: .quiz))
                 } label: {

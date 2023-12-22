@@ -9,15 +9,17 @@ import Foundation
 import FirebaseFirestore
 
 struct FQUserObject: Codable {
-    var id: String
+    @DocumentID var id: String?
     var createdAt: Timestamp
     var email: String?
     var userName: String?
 }
 
 extension FQUserObject {
-    func toModel() -> FQUser {
-        .init(
+    func toModel() -> FQUser? {
+        guard let id else { return nil }
+        
+        return .init(
             id: id,
             createdAt: createdAt.dateValue(),
             email: email,

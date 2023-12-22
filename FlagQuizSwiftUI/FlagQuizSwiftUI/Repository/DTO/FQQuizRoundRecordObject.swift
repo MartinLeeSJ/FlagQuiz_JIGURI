@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FQQuizRoundRecordObject {
+struct FQQuizRoundRecordObject: Codable {
     let answerCounrtyCode: String
     let submittedCountryCode: String?
     let optionsCountryCodes: [String]

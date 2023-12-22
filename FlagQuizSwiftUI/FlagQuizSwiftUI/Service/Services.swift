@@ -27,8 +27,12 @@ class Services: ServiceType {
     init() {
         self.authService = AuthService()
         self.userService = UserService(repository: .init())
-        self.quizRecordService = QuizRecordService()
-        self.quizStatService = QuizStatService(repository: FQUserQuizStatRepository())
+        self.quizRecordService = QuizRecordService(
+            repository: FQQuizRecordRepository()
+        )
+        self.quizStatService = QuizStatService(
+            repository: FQUserQuizStatRepository()
+        )
         self.countryService = CountryService(apiClient: .init())
     }
 }

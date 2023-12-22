@@ -11,4 +11,5 @@ enum DBError: Error {
     case custom(Error)
     case emptyData
     case decodingError
+    case invalidObject
 }

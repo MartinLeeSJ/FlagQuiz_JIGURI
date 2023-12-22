@@ -21,7 +21,7 @@ class UserService: UserServiceType {
     
     func addUser(_ user: FQUser) -> AnyPublisher<FQUser, ServiceError> {
         repository.addUser(user.toObject())
-            .map { $0.toModel() }
+            .compactMap { $0.toModel() }
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()   
     }

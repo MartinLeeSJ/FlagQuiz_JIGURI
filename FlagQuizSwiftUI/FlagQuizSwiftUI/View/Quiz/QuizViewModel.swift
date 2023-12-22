@@ -15,7 +15,7 @@ enum QuizDestination: Hashable {
 }
 
 final class QuizViewModel: ObservableObject {
-    @Published var quiz: FQQuiz?
+    @Published var quiz: FQQuiz = .init(quizCount: 10, quizOptionsCount: 4)
     @Published var isSubmitted: Bool = false
     @Published var countries: [FQCountry] = []
     
@@ -25,13 +25,13 @@ final class QuizViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     enum Action {
-        case createQuiz(count: Int, optionCount: Int)
+        case setNewQuiz(count: Int, optionCount: Int)
         case navigate(to: QuizDestination)
         case loadCountryInfo
         case selectQuizOption(_ code: FQCountryISOCode)
         case submit
         case nextQuiz
-        case finish
+        case finishQuiz
     }
     
     init(
@@ -42,7 +42,7 @@ final class QuizViewModel: ObservableObject {
     
     func send(_ action: Action) {
         switch action {
-        case .createQuiz(let count, let optionCount):
+        case .setNewQuiz(let count, let optionCount):
             quiz = FQQuiz(quizCount: count, quizOptionsCount: optionCount)
             
         case .navigate(to: let destination):
@@ -56,21 +56,19 @@ final class QuizViewModel: ObservableObject {
             
         case .submit:
             isSubmitted = true
+            
         case .nextQuiz:
-            guard var quiz else { break }
             quiz.toNextIndex()
             isSubmitted = false
             
-        case .finish:
-            // 유저정보 저장
-            // 퀴즈 정보 저장
-            break
+        case .finishQuiz:
+            Task {
+                await finishQuiz()
+            }
         }
     }
     
     private func loadCountryInfo() {
-        guard let quiz = quiz else { return }
-        
         container.services.countryService.getCountries(ofCodes: quiz.quizRounds.map { $0.answerCountryCode })
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -84,8 +82,39 @@ final class QuizViewModel: ObservableObject {
     }
     
     private func selectQuizOption(of code: FQCountryISOCode) {
-        guard var quiz else { return }
-        
         quiz.quizRounds[quiz.currentQuizIndex].submittedCountryCode = code
+    }
+    
+    
+    private func finishQuiz() async {
+        guard let userId = container.services.authService.checkAuthenticationState() else {
+            return
+        }
+        
+        await addUserQuizStat(userId: userId)
+        addQuizRecord(userId: userId)
+    }
+    
+    @MainActor
+    private func addUserQuizStat(userId: String) async {
+        do {
+            try await container.services.quizStatService.addQuizStat(
+                ofUser: userId,
+                addingQuizCount: quiz.quizCount,
+                addingCorrectQuizCount: quiz.correctQuizRoundsCount
+            )
+        } catch {
+            //TODO: Error 처리
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func addQuizRecord(userId: String) {
+        do {
+            try container.services.quizRecordService.addQuizRecord(ofUser: userId, from: quiz)
+        } catch {
+            //TODO: Error 처리
+            print(error.localizedDescription)
+        }
     }
 }

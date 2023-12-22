@@ -24,7 +24,9 @@ struct LoginView: View {
                     .frame(width: 150)
                 
                 Spacer()
-              
+                
+                // 현재는 애플로그인시 이메일을 안불러옴 
+                /*
                 Button {
                     authViewModel.send(.signInWithGoogle)
                 } label: {
@@ -40,6 +42,7 @@ struct LoginView: View {
                                 .stroke(Color.black ,lineWidth: 1)
                         }
                 }
+                 */
                 
                 SignInWithAppleButton(.continue) { request in
                     authViewModel.send(.requestSignInWithApple(request))
