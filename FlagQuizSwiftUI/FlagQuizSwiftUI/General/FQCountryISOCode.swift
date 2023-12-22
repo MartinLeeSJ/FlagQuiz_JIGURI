@@ -6,12 +6,24 @@
 //
 
 import Foundation
+import IsoCountryCodes
 
 struct FQCountryISOCode: Codable {
     var numericCode: String
     
     init(_ numericCode: String) {
         self.numericCode = numericCode
+    }
+    
+    var localizedName: String? {
+        if let alpha2 = IsoCountryCodes.find(key: numericCode)?.alpha2 {
+            return Locale.current.localizedString(forRegionCode: alpha2)
+        }
+        return nil
+    }
+    
+    var flagEmoji: String? {
+        IsoCountryCodes.find(key: numericCode)?.flag
     }
     
 }

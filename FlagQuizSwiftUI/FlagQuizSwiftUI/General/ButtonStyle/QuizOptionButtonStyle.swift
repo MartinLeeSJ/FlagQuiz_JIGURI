@@ -18,7 +18,7 @@ struct QuizOptionButtonStyle: ButtonStyle {
         configuration.label
             .font(.caption)
             .padding(4)
-            .frame(minHeight: 100)
+            .frame(minHeight: 100, idealHeight: 100, maxHeight: 200)
             .frame(maxWidth: .infinity)
             .background(in: RoundedRectangle(cornerRadius: 10))
             .overlay {

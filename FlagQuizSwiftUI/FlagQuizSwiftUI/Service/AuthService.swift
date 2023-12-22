@@ -21,7 +21,7 @@ protocol AuthServiceType {
     func requestSignInWithApple(_ request: ASAuthorizationAppleIDRequest) -> String
     func completeSignInWithApple(_ authorization: ASAuthorization, nonce: String) -> AnyPublisher<FQUser, AuthenticationServiceError>
     func signOut() throws
-    
+    func deleteAccount() async throws -> String
 }
 
 enum AuthenticationServiceError: Error {
@@ -70,6 +70,18 @@ final class AuthService: AuthServiceType {
     func signOut() throws {
         try Auth.auth().signOut()
     }
+    
+    func deleteAccount() async throws -> String {
+        guard let user = Auth.auth().currentUser else {
+            throw AuthenticationServiceError.invalidUser
+        }
+        
+        // 여기서 발생하는 오류는 어떻게 관리하지?
+        try await user.delete()
+        return user.uid
+    }
+    
+    
     
 }
 
@@ -199,5 +211,9 @@ final class StubAuthService: AuthServiceType {
     
     func signOut() throws {
         
+    }
+    
+    func deleteAccount() async throws -> String {
+        ""
     }
 }

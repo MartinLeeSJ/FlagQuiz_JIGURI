@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import FirebaseFirestore
 
 struct FQUserQuizStat: Codable {
-    @DocumentID var userId: String?
+    var userId: String
     var correctCountryQuizCount: Int
     var countryQuizCount: Int
     

@@ -28,6 +28,7 @@ enum Tabs: Int, Hashable, CaseIterable {
 }
 
 struct MainTabView: View {
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @State private var tabSelection: Tabs = .quizSetting
     
@@ -38,7 +39,7 @@ struct MainTabView: View {
                     Group {
                         switch tab {
                         case .quizSetting:
-                            QuizSettingView()
+                            QuizSettingView(viewModel: .init(container: container))
                                 
                         case .news: NewsView()
                         }

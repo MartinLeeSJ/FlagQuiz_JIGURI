@@ -9,12 +9,8 @@ import SwiftUI
 import IsoCountryCodes
 
 struct QuizView: View {
-    @StateObject private var viewModel: QuizViewModel
-    
-    init(viewModel: QuizViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
-    }
-    
+    @EnvironmentObject private var viewModel: QuizViewModel
+
     private var currentQuizRound: FQQuizRound {
         viewModel.quiz.currentQuizRound
     }
@@ -35,48 +31,54 @@ struct QuizView: View {
     
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                Spacer()
-              
-                AsyncImage(url: flagImageUrl) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 100)
-                        .padding()
-                } placeholder: {
-                    Text(answerCountryFlagEmoji)
-                        .font(.system(size: 96))
-                }
-
-                Spacer()
-                quizQuestion
-                
-                QuizOptionsGrid(viewModel: viewModel)
-                
-                QuizSubmitButton(viewModel: viewModel)
-                    .animation(.smooth, value: viewModel.isSubmitted)
+        
+        VStack {
+            Spacer()
+            
+            //TODO: imageCache
+            AsyncImage(url: flagImageUrl) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 100)
                     .padding()
+            } placeholder: {
+                Text(answerCountryFlagEmoji)
+                    .font(.system(size: 96))
             }
-            .onAppear {
-                viewModel.send(.load)
-            }
-            .navigationBarBackButtonHidden()
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        
-                    } label: {
-                        Text("Quit")
-                    }
+            .padding()
+            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
+            
+            Spacer()
+            quizQuestion
+            
+            QuizOptionsGrid(viewModel: viewModel)
+            
+            QuizSubmitButton(viewModel: viewModel)
+                .animation(.smooth, value: viewModel.isSubmitted)
+                .padding()
+        }
+        .onAppear {
+            viewModel.send(.loadCountryInfo)
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    
+                } label: {
+                    Text("Quit")
                 }
                 
-                ToolbarItem(placement: .topBarTrailing) {
-                    scoreView
-                }
             }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                scoreView
+                    .zIndex(1)
+            }
+            
         }
+        
     }
     
     private var quizQuestion: some View {
@@ -95,28 +97,38 @@ struct QuizView: View {
         .padding()
         .background(.thickMaterial,
                     in: Rectangle())
+        .overlay(alignment: .bottom) {
+            let current = Float(viewModel.quiz.currentQuizIndex)
+            let total = Float(viewModel.quiz.quizCount)
+            
+            ProgressView(value: .init(current/total))
+                .animation(.easeIn(duration: 1.5), value: viewModel.quiz.currentQuizIndex)
+                .progressViewStyle(.linear)
+        }
         .padding(.vertical)
     }
     
     private var scoreView: some View {
-        VStack(alignment: .leading) {
+         VStack(alignment: .leading) {
+            let quiz = viewModel.quiz
+             
             HStack {
                 Text("current.quiz.description")
                 Spacer()
-                Text("current.quiz \(viewModel.quiz.currentQuizIndex + 1) / \(viewModel.quiz.quizCount)")
+                Text("current.quiz \(quiz.currentQuizIndex + 1) / \(quiz.quizCount)")
                     .fontWeight(.bold)
             }
             HStack {
                 Text("correct.quiz.description")
                 Spacer()
-                Text("correct.quiz.count \(viewModel.quiz.correctQuizRoundsCount)")
+                Text("correct.quiz.count \(quiz.correctQuizRoundsCount)")
                     .fontWeight(.bold)
             }
             
             HStack {
                 Text("wrong.quiz.description")
                 Spacer()
-                Text("wrong.quiz.count \(viewModel.quiz.wrongQuizRoundsCount)")
+                Text("wrong.quiz.count \(quiz.wrongQuizRoundsCount)")
                     .fontWeight(.bold)
             }
             
@@ -128,14 +140,17 @@ struct QuizView: View {
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
         .offset(y: 20)
     }
+    
 }
 
 
 #Preview {
-    QuizView(
-        viewModel: QuizViewModel(
-            container: .init(services: StubService()),
-            quizCount: 2,
-            quizOptionsCount: 5)
-    )
+    @StateObject var viewModel: QuizViewModel = .init(container: .init(services: StubService()))
+    
+    viewModel.send(.setNewQuiz(count: 10, optionCount: 3))
+    
+    return NavigationStack {
+        QuizView()
+            .environmentObject(viewModel)
+    }
 }

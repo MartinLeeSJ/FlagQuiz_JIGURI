@@ -18,7 +18,7 @@ struct FQUser: Codable {
 extension FQUser {
     func toObject() -> FQUserObject {
         .init(
-            id: id,
+            id: nil,
             createdAt: Timestamp(date: createdAt),
             email: email,
             userName: userName

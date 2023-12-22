@@ -7,12 +7,30 @@
 
 import SwiftUI
 
+enum QuizCount: Int, CaseIterable {
+    case five = 5
+    case ten = 10
+    case fifteen = 15
+}
+
+enum QuizItemCount: Int, CaseIterable {
+    case three = 3
+    case four = 4
+    case five = 5
+}
+
 struct QuizSettingView: View {
-    @EnvironmentObject private var container: DIContainer
-    @StateObject private var viewModel = QuizSettingViewModel()
-   
+    @StateObject private var viewModel: QuizViewModel
+    
+    @State private var quizCount: QuizCount = .ten
+    @State private var quizItemCount: QuizItemCount = .four
+    
+    init(viewModel: QuizViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $viewModel.destinations) {
             VStack(alignment: .leading, spacing: 16) {
                 Spacer()
                     .frame(height: 64)
@@ -33,19 +51,30 @@ struct QuizSettingView: View {
                 
                 quizItemCountPicker
                 
-                NavigationLink("start.quiz") {
-                    QuizView(
-                        viewModel: QuizViewModel(
-                            container: container,
-                            quizCount: viewModel.quizCount.rawValue,
-                            quizOptionsCount: viewModel.quizItemCount.rawValue
-                        )
-                    )
+                Button {
+                    viewModel.send(.setNewQuiz(count: quizCount.rawValue,
+                                               optionCount: quizItemCount.rawValue))
+                    viewModel.send(.navigate(to: .quiz))
+                } label: {
+                    Text("start.quiz")
                 }
                 .buttonStyle(QuizFilledButtonStyle(disabled: false))
                 .padding()
                 
             }
+            .navigationDestination(for: QuizDestination.self) { destination in
+                switch destination {
+                case .quiz:
+                    QuizView()
+                    .environmentObject(viewModel)
+                case .quizResult(let quiz):
+                    QuizResultView(quizResult: quiz)
+                        .environmentObject(viewModel)
+                case .countryDetail(_):
+                    Text("detail")
+                }
+            }
+            
         }
         
     }
@@ -57,7 +86,7 @@ struct QuizSettingView: View {
             Spacer()
 
             Picker("quizIntro.quizCountPicker.title",
-                   selection: $viewModel.quizCount
+                   selection: $quizCount
             ) {
                 ForEach(QuizCount.allCases, id: \.self) { quizCount in
                     Text("\(quizCount.rawValue)")
@@ -77,7 +106,7 @@ struct QuizSettingView: View {
             Spacer()
             
             Picker("quizIntro.quizItemCountPicker.title",
-                   selection: $viewModel.quizItemCount
+                   selection: $quizItemCount
             ) {
                 ForEach(QuizItemCount.allCases, id: \.self) { quizItemCount in
                     Text("\(quizItemCount.rawValue)")
@@ -89,14 +118,15 @@ struct QuizSettingView: View {
         }
         .padding(.horizontal)
     }
-    
-    
 }
 
 
 
+
+
+
+
 #Preview {
-    QuizSettingView()
-    
+    QuizSettingView(viewModel: .init(container: .init(services: StubService())))
 }
 

@@ -15,12 +15,16 @@ struct QuizOptionsGrid: View {
         self.viewModel = viewModel
     }
     
+    private var quiz: FQQuiz {
+        viewModel.quiz
+    }
+    
     private var currentQuizRound: FQQuizRound {
-        viewModel.quiz.currentQuizRound
+        quiz.currentQuizRound
     }
     
     private var columns: [GridItem] {
-        let isOddCount: Bool = (viewModel.quiz.quizOptionsCount) % 2 != 0
+        let isOddCount: Bool = (quiz.quizOptionsCount) % 2 != 0
         let columnsCount: Int = isOddCount ? 3 : 2
         
         return Array(
@@ -35,7 +39,7 @@ struct QuizOptionsGrid: View {
     }
     
     var body: some View {
-        LazyVGrid(columns: columns) {
+        LazyVGrid(columns: columns, spacing: 8) {
             ForEach(
                 currentQuizRound.optionsCountryCodes,
                 id: \.self
@@ -48,12 +52,13 @@ struct QuizOptionsGrid: View {
                 }
             }
         }
+        .frame(minHeight: 208)
         .padding(.horizontal)
     }
     
     private func optionsButton(of code: FQCountryISOCode) -> some View {
         Button {
-            viewModel.send(.select(code))
+            viewModel.send(.selectQuizOption(code))
         } label: {
             Text(countryName(of: code))
         }

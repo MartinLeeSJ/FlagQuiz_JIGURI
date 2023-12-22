@@ -4,6 +4,23 @@
     "%lld" : {
 
     },
+    "%lld out of %lld Problems" : {
+      "comment" : "Result View Score",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld out of %2$lld Problems"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2lld문제 중 %1lld문제"
+          }
+        }
+      }
+    },
     "correct.quiz.count %lld" : {
       "localizations" : {
         "en" : {
@@ -68,6 +85,9 @@
         }
       }
     },
+    "detail" : {
+
+    },
     "ErrorView" : {
 
     },
@@ -93,8 +113,58 @@
     "Hello, World!" : {
 
     },
-    "N. America" : {
+    "How about showing a little more interest in Earth's neighbors?" : {
+      "comment" : "Quiz result comment for middle, middle-low score",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How about showing a little more interest in Earth's neighbors?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구의 이웃들에게 조금만 더 관심을 가져볼까요?"
+          }
+        }
+      }
+    },
+    "It appears you're not very interested in Earth's neighbors." : {
+      "comment" : "Quiz result comment for low score",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It appears you're not very interested in Earth's neighbors."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구의 이웃들에게 관심이 너무 없으시군요."
+          }
+        }
+      }
+    },
+    "logout" : {
 
+    },
+    "N. America" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N. America"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "북아메리카"
+          }
+        }
+      }
     },
     "next.quiz" : {
       "localizations" : {
@@ -129,7 +199,52 @@
       }
     },
     "Quit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "끝내기"
+          }
+        }
+      }
+    },
+    "quiz.result.countries.info.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Countries Info"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더 알아보기"
+          }
+        }
+      }
+    },
+    "quiz.result.rounds.record.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Records"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 기록"
+          }
+        }
+      }
     },
     "quizIntro.quizCountPicker.title" : {
       "localizations" : {
@@ -196,9 +311,26 @@
       }
     },
     "S. America" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S. America"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "남아메리카"
+          }
+        }
+      }
+    },
+    "save.and.quit" : {
 
     },
     "sign.in.with.google" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -274,6 +406,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "오답"
+          }
+        }
+      }
+    },
+    "You are a true citizen of this Earth!" : {
+      "comment" : "Quiz result comment for high score",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are a true citizen of this Earth!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 지구의 참된 시민이십니다."
+          }
+        }
+      }
+    },
+    "You certainly have a rich knowledge about Earth's neighbors!" : {
+      "comment" : "Quiz result comment for middle-high score",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You certainly have a rich knowledge about Earth's neighbors!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구의 다른 이웃에 대한 상식이 풍부 하시네요!"
           }
         }
       }

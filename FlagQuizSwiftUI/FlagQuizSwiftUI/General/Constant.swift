@@ -15,6 +15,8 @@ typealias LocalizableTable = Constant.LocalizableTable
 extension Constant {
     struct CollectionKey {
         static let Users: String = "Users"
+        static let UserQuizStats: String = "UserQuizStats"
+        static let QuizRecord: String = "QuizRecord"
     }
     
     struct LocalizableTable {

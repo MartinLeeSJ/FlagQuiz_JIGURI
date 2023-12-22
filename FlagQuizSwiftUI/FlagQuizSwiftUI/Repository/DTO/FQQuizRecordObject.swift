@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct FQQuizRecordObject {
+struct FQQuizRecordObject: Codable {
     @DocumentID var id: String?
     let quizCount: Int
     let quizOptionsCount: Int
