@@ -39,7 +39,7 @@ struct QuizOptionsGrid: View {
     }
     
     var body: some View {
-        LazyVGrid(columns: columns) {
+        LazyVGrid(columns: columns, spacing: 8) {
             ForEach(
                 currentQuizRound.optionsCountryCodes,
                 id: \.self
@@ -52,6 +52,7 @@ struct QuizOptionsGrid: View {
                 }
             }
         }
+        .frame(minHeight: 208)
         .padding(.horizontal)
     }
     

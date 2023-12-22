@@ -25,7 +25,7 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                // 현재는 애플로그인시 이메일을 안불러옴 
+                // 현재는 애플로그인시 이메일을 안불러옴
                 /*
                 Button {
                     authViewModel.send(.signInWithGoogle)

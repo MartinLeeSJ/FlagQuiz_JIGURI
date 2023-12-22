@@ -35,6 +35,7 @@ struct QuizView: View {
         VStack {
             Spacer()
             
+            //TODO: imageCache
             AsyncImage(url: flagImageUrl) { image in
                 image
                     .resizable()
@@ -45,6 +46,8 @@ struct QuizView: View {
                 Text(answerCountryFlagEmoji)
                     .font(.system(size: 96))
             }
+            .padding()
+            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
             
             Spacer()
             quizQuestion
@@ -66,11 +69,14 @@ struct QuizView: View {
                 } label: {
                     Text("Quit")
                 }
+                
             }
             
             ToolbarItem(placement: .topBarTrailing) {
                 scoreView
+                    .zIndex(1)
             }
+            
         }
         
     }
@@ -91,6 +97,14 @@ struct QuizView: View {
         .padding()
         .background(.thickMaterial,
                     in: Rectangle())
+        .overlay(alignment: .bottom) {
+            let current = Float(viewModel.quiz.currentQuizIndex)
+            let total = Float(viewModel.quiz.quizCount)
+            
+            ProgressView(value: .init(current/total))
+                .animation(.easeIn(duration: 1.5), value: viewModel.quiz.currentQuizIndex)
+                .progressViewStyle(.linear)
+        }
         .padding(.vertical)
     }
     
@@ -133,7 +147,10 @@ struct QuizView: View {
 #Preview {
     @StateObject var viewModel: QuizViewModel = .init(container: .init(services: StubService()))
     
-    viewModel.send(.setNewQuiz(count: 10, optionCount: 4))
+    viewModel.send(.setNewQuiz(count: 10, optionCount: 3))
     
-    return QuizView().environmentObject(viewModel)
+    return NavigationStack {
+        QuizView()
+            .environmentObject(viewModel)
+    }
 }

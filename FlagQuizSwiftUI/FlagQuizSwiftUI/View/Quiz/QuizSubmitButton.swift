@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuizSubmitButton: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var hapticsManager: HapticsManager
     @ObservedObject private var viewModel: QuizViewModel
 
     init(
@@ -51,6 +52,11 @@ struct QuizSubmitButton: View {
         } else {
             Button {
                 viewModel.send(.submit)
+                
+                if let submittedCountryCode = currentQuizRound.submittedCountryCode {
+                    let isAnswerCorrect: Bool = (currentQuizRound.answerCountryCode == submittedCountryCode)
+                    hapticsManager.send(.complex(isAnswerCorrect ? .correct : .wrong))
+                }
             } label: {
                 Text("submit.quiz")
             }
@@ -61,6 +67,7 @@ struct QuizSubmitButton: View {
                 )
             )
             .transition(.opacity)
+            
         }
         
     }

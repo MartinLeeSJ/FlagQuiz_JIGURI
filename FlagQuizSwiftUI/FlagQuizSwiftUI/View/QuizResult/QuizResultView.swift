@@ -29,6 +29,14 @@ struct QuizResultView: View {
                 QuizRoundsCountriesInfoView(quizRounds: quizResult.quizRounds)
             }
         }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            Button {
+                viewModel.send(.backToRoot)
+            } label: {
+                Text("save.and.quit")
+            }
+        }
     }
    
     private var scoreDescription: some View {

@@ -12,6 +12,7 @@ import FirebaseFirestore
 
 protocol FQUserRepositoryType {
     func addUser(_ user: FQUser) -> AnyPublisher<FQUserObject, DBError>
+    func deleteUser(of userId: String) -> AnyPublisher<Void, DBError>
 }
 
 final class FQUserRepository: FQUserRepositoryType {
@@ -32,6 +33,20 @@ final class FQUserRepository: FQUserRepositoryType {
         }
         .eraseToAnyPublisher()
         
+    }
+    
+    func deleteUser(of userId: String) -> AnyPublisher<Void, DBError> {
+        let userDocRef = db.collection(CollectionKey.Users).document(userId)
+        
+        return Future { promise in
+            userDocRef.delete { error in
+                if let error {
+                    promise(.failure(DBError.custom(error)))
+                    return
+                }
+                promise(.success(()))
+            }
+        }.eraseToAnyPublisher()
     }
     
 }

@@ -41,6 +41,7 @@
 		5B34484E2B3553FC002E2222 /* FQUserQuizStatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484D2B3553FC002E2222 /* FQUserQuizStatRepository.swift */; };
 		5B3448502B355433002E2222 /* FQUserQuizStatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */; };
 		5B3448522B357600002E2222 /* FQQuizRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3448512B357600002E2222 /* FQQuizRecordRepository.swift */; };
+		5B3448582B35D3F1002E2222 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3448572B35D3F1002E2222 /* HapticsManager.swift */; };
 		5B559F062B28B84A00B131BE /* QuizSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F052B28B84A00B131BE /* QuizSettingView.swift */; };
 		5B559F082B28B85400B131BE /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F072B28B85400B131BE /* NewsView.swift */; };
 		5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */; };
@@ -131,6 +132,7 @@
 		5B34484D2B3553FC002E2222 /* FQUserQuizStatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStatRepository.swift; sourceTree = "<group>"; };
 		5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStatObject.swift; sourceTree = "<group>"; };
 		5B3448512B357600002E2222 /* FQQuizRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQQuizRecordRepository.swift; sourceTree = "<group>"; };
+		5B3448572B35D3F1002E2222 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		5B559F052B28B84A00B131BE /* QuizSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingView.swift; sourceTree = "<group>"; };
 		5B559F072B28B85400B131BE /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		5B5C2AC92B280A32009A382B /* FlagQuizSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlagQuizSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,6 +334,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		5B3448562B35D3E7002E2222 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5B3448572B35D3F1002E2222 /* HapticsManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		5B559F0A2B28B86500B131BE /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +378,7 @@
 				5B16F93F2B282CD60011ACF7 /* GoogleService-Info.plist */,
 				5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */,
 				5B16F9482B2833390011ACF7 /* AppDelegate.swift */,
+				5B3448562B35D3E7002E2222 /* Manager */,
 				5B16F9722B287A390011ACF7 /* Repository */,
 				5B16F94F2B2845600011ACF7 /* Service */,
 				5B16F94C2B2845300011ACF7 /* General */,
@@ -675,6 +686,7 @@
 				5BE086582B31907C00D38C01 /* FQCountryDetail.swift in Sources */,
 				5BE0865B2B3190AC00D38C01 /* FQCountryName.swift in Sources */,
 				5B9ECB772B34255100098BF3 /* QuizRoundsResultScroll.swift in Sources */,
+				5B3448582B35D3F1002E2222 /* HapticsManager.swift in Sources */,
 				5B16F9792B287B700011ACF7 /* DBError.swift in Sources */,
 				5B16F97B2B287E750011ACF7 /* UserService.swift in Sources */,
 				5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */,

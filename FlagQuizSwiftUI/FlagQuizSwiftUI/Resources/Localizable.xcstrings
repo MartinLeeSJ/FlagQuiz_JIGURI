@@ -326,7 +326,11 @@
         }
       }
     },
+    "save.and.quit" : {
+
+    },
     "sign.in.with.google" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

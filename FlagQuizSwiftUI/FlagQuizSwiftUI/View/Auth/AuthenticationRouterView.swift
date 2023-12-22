@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthenticationRouterView: View {
     @StateObject private var authViewModel: AuthenticationViewModel
-    
+    @EnvironmentObject private var hapticsManager: HapticsManager
     init(authViewModel: AuthenticationViewModel) {
         self._authViewModel = StateObject(wrappedValue: authViewModel)
     }
@@ -32,6 +32,7 @@ struct AuthenticationRouterView: View {
             }
             .onAppear {
                 authViewModel.send(.checkAuthenticationState)
+                hapticsManager.send(.prepare)
             }
             .environmentObject(authViewModel)
         }
@@ -45,4 +46,5 @@ struct AuthenticationRouterView: View {
             container: .init(services: StubService())
         )
     )
+    .environmentObject(HapticsManager())
 }

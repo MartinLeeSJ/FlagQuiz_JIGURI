@@ -17,6 +17,10 @@ struct QuizStrokeButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity)
             .background {
                 RoundedRectangle(cornerRadius: 8)
+                    .foregroundStyle(scheme == .dark ? .black : .white)
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 8)
                     .stroke(lineWidth: 1)
                     .foregroundStyle(scheme == .dark ? Color.fqAccent : .black)
             }

@@ -20,6 +20,7 @@ final class QuizViewModel: ObservableObject {
     @Published var countries: [FQCountry] = []
     
     @Published var destinations: NavigationPath = .init()
+//    @Published var destinations: [QuizDestination] = .init()
     
     private let container: DIContainer
     private var cancellables = Set<AnyCancellable>()
@@ -27,6 +28,8 @@ final class QuizViewModel: ObservableObject {
     enum Action {
         case setNewQuiz(count: Int, optionCount: Int)
         case navigate(to: QuizDestination)
+        case backToRoot
+        
         case loadCountryInfo
         case selectQuizOption(_ code: FQCountryISOCode)
         case submit
@@ -44,9 +47,15 @@ final class QuizViewModel: ObservableObject {
         switch action {
         case .setNewQuiz(let count, let optionCount):
             quiz = FQQuiz(quizCount: count, quizOptionsCount: optionCount)
+            isSubmitted = false
             
         case .navigate(to: let destination):
             destinations.append(destination)
+            
+        case .backToRoot:
+            while !destinations.isEmpty {
+                destinations.removeLast()
+            }
             
         case .loadCountryInfo:
             loadCountryInfo()
