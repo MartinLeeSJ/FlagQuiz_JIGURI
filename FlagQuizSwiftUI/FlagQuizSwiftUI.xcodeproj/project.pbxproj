@@ -37,6 +37,9 @@
 		5B16F97D2B2883670011ACF7 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F97C2B2883670011ACF7 /* Constant.swift */; };
 		5B16F97F2B2890780011ACF7 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F97E2B2890780011ACF7 /* MainTabView.swift */; };
 		5B16F9832B2890CD0011ACF7 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9822B2890CD0011ACF7 /* ErrorView.swift */; };
+		5B34484C2B35527F002E2222 /* QuizStatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484B2B35527F002E2222 /* QuizStatService.swift */; };
+		5B34484E2B3553FC002E2222 /* FQUserQuizStatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484D2B3553FC002E2222 /* FQUserQuizStatRepository.swift */; };
+		5B3448502B355433002E2222 /* FQUserQuizStatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */; };
 		5B559F062B28B84A00B131BE /* QuizSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F052B28B84A00B131BE /* QuizSettingView.swift */; };
 		5B559F082B28B85400B131BE /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F072B28B85400B131BE /* NewsView.swift */; };
 		5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */; };
@@ -72,7 +75,6 @@
 		5BE086612B3190F300D38C01 /* FQContinent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE086602B3190F300D38C01 /* FQContinent.swift */; };
 		5BE086632B31C25B00D38C01 /* TypeWritingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE086622B31C25B00D38C01 /* TypeWritingText.swift */; };
 		5BE086652B31D59C00D38C01 /* QuizFilledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE086642B31D59C00D38C01 /* QuizFilledButtonStyle.swift */; };
-		5BE7D2992B29A4760044C3D4 /* QuizSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D2982B29A4760044C3D4 /* QuizSettingViewModel.swift */; };
 		5BE7D29B2B29A4950044C3D4 /* QuizRecordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D29A2B29A4950044C3D4 /* QuizRecordService.swift */; };
 		5BE7D29D2B29A54A0044C3D4 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D29C2B29A54A0044C3D4 /* CountryService.swift */; };
 		5BE7D2A02B29A63A0044C3D4 /* FQCountryISOCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D29F2B29A63A0044C3D4 /* FQCountryISOCode.swift */; };
@@ -124,6 +126,9 @@
 		5B16F97C2B2883670011ACF7 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5B16F97E2B2890780011ACF7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		5B16F9822B2890CD0011ACF7 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		5B34484B2B35527F002E2222 /* QuizStatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStatService.swift; sourceTree = "<group>"; };
+		5B34484D2B3553FC002E2222 /* FQUserQuizStatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStatRepository.swift; sourceTree = "<group>"; };
+		5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStatObject.swift; sourceTree = "<group>"; };
 		5B559F052B28B84A00B131BE /* QuizSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingView.swift; sourceTree = "<group>"; };
 		5B559F072B28B85400B131BE /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		5B5C2AC92B280A32009A382B /* FlagQuizSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlagQuizSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,7 +166,6 @@
 		5BE086602B3190F300D38C01 /* FQContinent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQContinent.swift; sourceTree = "<group>"; };
 		5BE086622B31C25B00D38C01 /* TypeWritingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeWritingText.swift; sourceTree = "<group>"; };
 		5BE086642B31D59C00D38C01 /* QuizFilledButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFilledButtonStyle.swift; sourceTree = "<group>"; };
-		5BE7D2982B29A4760044C3D4 /* QuizSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingViewModel.swift; sourceTree = "<group>"; };
 		5BE7D29A2B29A4950044C3D4 /* QuizRecordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRecordService.swift; sourceTree = "<group>"; };
 		5BE7D29C2B29A54A0044C3D4 /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
 		5BE7D29F2B29A63A0044C3D4 /* FQCountryISOCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQCountryISOCode.swift; sourceTree = "<group>"; };
@@ -223,7 +227,6 @@
 				5B16F9412B2830570011ACF7 /* OnBoardingView.swift */,
 				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
 				5BD3B7672B31EC7900B930E0 /* Quiz */,
-				5B559F092B28B85D00B131BE /* QuizSetting */,
 				5B9ECB712B33EAF500098BF3 /* QuizResult */,
 				5B559F0A2B28B86500B131BE /* News */,
 			);
@@ -253,6 +256,7 @@
 				5B16F9522B2845DF0011ACF7 /* AuthService.swift */,
 				5B16F97A2B287E750011ACF7 /* UserService.swift */,
 				5BE7D29A2B29A4950044C3D4 /* QuizRecordService.swift */,
+				5B34484B2B35527F002E2222 /* QuizStatService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -291,6 +295,7 @@
 			children = (
 				5B16F9752B287A510011ACF7 /* DTO */,
 				5B16F9732B287A4C0011ACF7 /* FQUserRepository.swift */,
+				5B34484D2B3553FC002E2222 /* FQUserQuizStatRepository.swift */,
 				5B16F9782B287B700011ACF7 /* DBError.swift */,
 			);
 			path = Repository;
@@ -300,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				5B16F9762B287A600011ACF7 /* FQUserObject.swift */,
+				5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */,
 				5B7BCAFB2B3336B300E50C5F /* FQQuizRecordObject.swift */,
 				5B7BCAFD2B3336D900E50C5F /* FQQuizRoundRecordObject.swift */,
 			);
@@ -321,15 +327,6 @@
 				5BE086622B31C25B00D38C01 /* TypeWritingText.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		5B559F092B28B85D00B131BE /* QuizSetting */ = {
-			isa = PBXGroup;
-			children = (
-				5B559F052B28B84A00B131BE /* QuizSettingView.swift */,
-				5BE7D2982B29A4760044C3D4 /* QuizSettingViewModel.swift */,
-			);
-			path = QuizSetting;
 			sourceTree = "<group>";
 		};
 		5B559F0A2B28B86500B131BE /* News */ = {
@@ -439,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				5BD3B7652B31EC7400B930E0 /* QuizView.swift */,
+				5B559F052B28B84A00B131BE /* QuizSettingView.swift */,
 				5B7BCAF72B32DCC000E50C5F /* QuizSubmitButton.swift */,
 				5B7BCAF52B32DBED00E50C5F /* QuizOptionsGrid.swift */,
 				5BD3B76C2B31F1A300B930E0 /* QuizViewModel.swift */,
@@ -632,9 +630,10 @@
 				5B16F9492B2833390011ACF7 /* AppDelegate.swift in Sources */,
 				5B559F062B28B84A00B131BE /* QuizSettingView.swift in Sources */,
 				5BD3B76D2B31F1A300B930E0 /* QuizViewModel.swift in Sources */,
+				5B34484E2B3553FC002E2222 /* FQUserQuizStatRepository.swift in Sources */,
+				5B3448502B355433002E2222 /* FQUserQuizStatObject.swift in Sources */,
 				5BE086632B31C25B00D38C01 /* TypeWritingText.swift in Sources */,
 				5B16F9512B28456C0011ACF7 /* Services.swift in Sources */,
-				5BE7D2992B29A4760044C3D4 /* QuizSettingViewModel.swift in Sources */,
 				5B16F9772B287A600011ACF7 /* FQUserObject.swift in Sources */,
 				5B16F9422B2830570011ACF7 /* OnBoardingView.swift in Sources */,
 				5BE7D2A02B29A63A0044C3D4 /* FQCountryISOCode.swift in Sources */,
@@ -668,6 +667,7 @@
 				5B16F96C2B2852AD0011ACF7 /* ServiceError.swift in Sources */,
 				5B7BCAF62B32DBED00E50C5F /* QuizOptionsGrid.swift in Sources */,
 				5BE0865F2B3190DA00D38C01 /* FQMapsLinks.swift in Sources */,
+				5B34484C2B35527F002E2222 /* QuizStatService.swift in Sources */,
 				5BE086582B31907C00D38C01 /* FQCountryDetail.swift in Sources */,
 				5BE0865B2B3190AC00D38C01 /* FQCountryName.swift in Sources */,
 				5B9ECB772B34255100098BF3 /* QuizRoundsResultScroll.swift in Sources */,

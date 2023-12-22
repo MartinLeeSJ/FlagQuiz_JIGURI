@@ -9,5 +9,6 @@ import Foundation
 
 enum ServiceError: Error {
     case nilSelf
+    case failedToConvertObjectIntoModel
     case custom(Error)
 }

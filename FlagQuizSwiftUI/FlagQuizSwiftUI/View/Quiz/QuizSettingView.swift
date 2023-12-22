@@ -69,6 +69,7 @@ struct QuizSettingView: View {
                     .environmentObject(viewModel)
                 case .quizResult(let quiz):
                     QuizResultView(quizResult: quiz)
+                        .environmentObject(viewModel)
                 case .countryDetail(let code):
                     Text("detail")
                 }

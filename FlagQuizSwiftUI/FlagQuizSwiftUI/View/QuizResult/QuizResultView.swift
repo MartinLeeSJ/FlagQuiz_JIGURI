@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct QuizResultView: View {
+    @EnvironmentObject private var viewModel: QuizViewModel
+    
     private let quizResult: FQQuiz
     private let quizScore: FQQuizScore
     
@@ -17,9 +19,7 @@ struct QuizResultView: View {
                                totalQuizCount: quizResult.quizCount)
     }
     
-   
-    
-    
+
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: 24) {
