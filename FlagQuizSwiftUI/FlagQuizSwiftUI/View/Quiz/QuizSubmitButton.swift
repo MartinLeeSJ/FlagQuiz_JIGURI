@@ -9,7 +9,6 @@ import SwiftUI
 
 struct QuizSubmitButton: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject private var settingsViewModel: QuizSettingViewModel
     @ObservedObject private var viewModel: QuizViewModel
 
     init(
@@ -18,12 +17,16 @@ struct QuizSubmitButton: View {
         self.viewModel = viewModel
     }
     
+    private var quiz: FQQuiz {
+        viewModel.quiz ?? .init(quizCount: 10, quizOptionsCount: 4)
+    }
+    
     private var currentQuizRound: FQQuizRound {
-        viewModel.quiz.currentQuizRound
+        quiz.currentQuizRound
     }
     
     private var isLastQuiz: Bool {
-        viewModel.quiz.currentQuizIndex == (viewModel.quiz.quizCount - 1)
+        quiz.currentQuizIndex == (quiz.quizCount - 1)
     }
     
 
@@ -34,9 +37,7 @@ struct QuizSubmitButton: View {
                 
                 if isLastQuiz {
                     withAnimation(.smooth) {
-                        settingsViewModel.destinations.append(
-                            QuizDestination.quizResult(viewModel.quiz)
-                        )
+                        viewModel.send(.navigate(to: .quizResult(quiz)))
                     }
                 }
             } label: {

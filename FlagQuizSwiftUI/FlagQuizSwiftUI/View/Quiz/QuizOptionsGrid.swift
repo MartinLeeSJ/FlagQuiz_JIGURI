@@ -15,12 +15,16 @@ struct QuizOptionsGrid: View {
         self.viewModel = viewModel
     }
     
+    private var quiz: FQQuiz {
+        viewModel.quiz ?? .init(quizCount: 10, quizOptionsCount: 4)
+    }
+    
     private var currentQuizRound: FQQuizRound {
-        viewModel.quiz.currentQuizRound
+        quiz.currentQuizRound
     }
     
     private var columns: [GridItem] {
-        let isOddCount: Bool = (viewModel.quiz.quizOptionsCount) % 2 != 0
+        let isOddCount: Bool = (quiz.quizOptionsCount) % 2 != 0
         let columnsCount: Int = isOddCount ? 3 : 2
         
         return Array(
@@ -53,7 +57,7 @@ struct QuizOptionsGrid: View {
     
     private func optionsButton(of code: FQCountryISOCode) -> some View {
         Button {
-            viewModel.send(.select(code))
+            viewModel.send(.selectQuizOption(code))
         } label: {
             Text(countryName(of: code))
         }
