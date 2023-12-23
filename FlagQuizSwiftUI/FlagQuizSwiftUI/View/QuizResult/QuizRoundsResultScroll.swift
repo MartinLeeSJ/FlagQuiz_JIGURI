@@ -51,35 +51,11 @@ struct QuizRoundsResultScroll: View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: rows) {
                 ForEach(
-                    Array(zip(
-                        quizResult.quizRounds.indices,
-                        quizResult.quizRounds
-                    )),
+                    Array(zip(quizResult.quizRounds.indices, quizResult.quizRounds)),
                     id: \.0
                 ) { (index, round) in
-                    VStack(spacing: 4) {
-                        VStack {
-                            Text(round.answerCountryCode.flagEmoji ?? "none")
-                            
-                            Spacer()
-                            
-                            Divider()
-                            
-                            Spacer()
-                            
-                            if let flagEmoji = round.submittedCountryCode?.flagEmoji {
-                                Text(flagEmoji)
-                            } else {
-                                Image(systemName: "questionmark.square.dashed")
-                                    .foregroundStyle(resultColor(of: round))
-                            }
-                        }
-                        .font(.largeTitle)
-                        .padding(8)
-                        .background {
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(resultColor(of: round), lineWidth: 1)
-                        }
+                    VStack(spacing: 0) {
+                        resultBox(of: round)
                         
                         Text("Q\(index + 1)")
                             .font(.caption)
@@ -89,5 +65,42 @@ struct QuizRoundsResultScroll: View {
             .safeAreaInset(edge: .leading) {}
         }
         .scrollIndicators(.hidden)
+    }
+    
+    private func resultBox(of round: FQQuizRound) -> some View {
+        VStack {
+            Text(round.answerCountryCode.flagEmoji ?? "none")
+            
+            Spacer()
+            
+            Divider()
+            
+            Spacer()
+            
+            resultSymbol(of: round)
+          
+        }
+        .font(.largeTitle)
+        .padding(8)
+        .background {
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(resultColor(of: round), lineWidth: 1)
+        }
+        .padding(4)
+    }
+    
+    @ViewBuilder
+    private func resultSymbol(of round: FQQuizRound) -> some View {
+        if let submittedCountryCode = round.submittedCountryCode {
+            submittedCountryCode == round.answerCountryCode ?
+            Image(systemName: "circlebadge")
+                .foregroundStyle(resultColor(of: round)) :
+            Image(systemName: "xmark")
+                  .foregroundStyle(resultColor(of: round))
+
+        } else {
+            Image(systemName: "questionmark.square.dashed")
+                  .foregroundStyle(resultColor(of: round))
+        }
     }
 }

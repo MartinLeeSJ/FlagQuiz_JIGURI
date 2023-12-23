@@ -9,14 +9,14 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld out of %2$lld Problems"
+            "state" : "translated",
+            "value" : "You've got %1$lld out of %2$lld Problems"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%2lld문제 중 %1lld문제"
+            "value" : "%2lld문제 중 %1lld문제 맞추셨어요"
           }
         }
       }
@@ -85,9 +85,6 @@
         }
       }
     },
-    "detail" : {
-
-    },
     "ErrorView" : {
 
     },
@@ -148,7 +145,14 @@
       }
     },
     "logout" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그아웃"
+          }
+        }
+      }
     },
     "N. America" : {
       "localizations" : {
@@ -327,21 +331,17 @@
       }
     },
     "save.and.quit" : {
-
-    },
-    "sign.in.with.google" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sign In With Google"
+            "value" : "Quit"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Google로 로그인하기"
+            "value" : "퀴즈 종료"
           }
         }
       }
