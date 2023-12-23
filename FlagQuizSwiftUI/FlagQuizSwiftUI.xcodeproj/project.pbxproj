@@ -51,6 +51,9 @@
 		5B5C2ADE2B280A34009A382B /* FlagQuizSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2ADD2B280A34009A382B /* FlagQuizSwiftUITests.swift */; };
 		5B5C2AE82B280A34009A382B /* FlagQuizSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2AE72B280A34009A382B /* FlagQuizSwiftUIUITests.swift */; };
 		5B5C2AEA2B280A34009A382B /* FlagQuizSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2AE92B280A34009A382B /* FlagQuizSwiftUIUITestsLaunchTests.swift */; };
+		5B6742022B36A261007335A6 /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6742012B36A261007335A6 /* CountryDetailView.swift */; };
+		5B6742042B36A26B007335A6 /* CountryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6742032B36A26B007335A6 /* CountryDetailViewModel.swift */; };
+		5B67423C2B370F28007335A6 /* FlowingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B67423B2B370F28007335A6 /* FlowingText.swift */; };
 		5B7BCAF42B32C89600E50C5F /* QuizOptionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BCAF32B32C89600E50C5F /* QuizOptionButtonStyle.swift */; };
 		5B7BCAF62B32DBED00E50C5F /* QuizOptionsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BCAF52B32DBED00E50C5F /* QuizOptionsGrid.swift */; };
 		5B7BCAF82B32DCC000E50C5F /* QuizSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BCAF72B32DCC000E50C5F /* QuizSubmitButton.swift */; };
@@ -145,6 +148,9 @@
 		5B5C2AE32B280A34009A382B /* FlagQuizSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlagQuizSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B5C2AE72B280A34009A382B /* FlagQuizSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagQuizSwiftUIUITests.swift; sourceTree = "<group>"; };
 		5B5C2AE92B280A34009A382B /* FlagQuizSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagQuizSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5B6742012B36A261007335A6 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
+		5B6742032B36A26B007335A6 /* CountryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewModel.swift; sourceTree = "<group>"; };
+		5B67423B2B370F28007335A6 /* FlowingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowingText.swift; sourceTree = "<group>"; };
 		5B7BCAF32B32C89600E50C5F /* QuizOptionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionButtonStyle.swift; sourceTree = "<group>"; };
 		5B7BCAF52B32DBED00E50C5F /* QuizOptionsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionsGrid.swift; sourceTree = "<group>"; };
 		5B7BCAF72B32DCC000E50C5F /* QuizSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSubmitButton.swift; sourceTree = "<group>"; };
@@ -225,14 +231,15 @@
 		5B16F94A2B2845070011ACF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B16F9412B2830570011ACF7 /* OnBoardingView.swift */,
+				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
 				5B5C2ACE2B280A32009A382B /* ContentView.swift */,
 				5B16F9802B2890920011ACF7 /* Login */,
 				5B16F9582B28471D0011ACF7 /* Auth */,
-				5B16F9412B2830570011ACF7 /* OnBoardingView.swift */,
-				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
 				5BD3B7672B31EC7900B930E0 /* Quiz */,
 				5B9ECB712B33EAF500098BF3 /* QuizResult */,
 				5B559F0A2B28B86500B131BE /* News */,
+				5B6742002B36A23C007335A6 /* CountryDetail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -330,6 +337,7 @@
 			children = (
 				5B16F9822B2890CD0011ACF7 /* ErrorView.swift */,
 				5BE086622B31C25B00D38C01 /* TypeWritingText.swift */,
+				5B67423B2B370F28007335A6 /* FlowingText.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -414,6 +422,15 @@
 				5B5C2AE92B280A34009A382B /* FlagQuizSwiftUIUITestsLaunchTests.swift */,
 			);
 			path = FlagQuizSwiftUIUITests;
+			sourceTree = "<group>";
+		};
+		5B6742002B36A23C007335A6 /* CountryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				5B6742012B36A261007335A6 /* CountryDetailView.swift */,
+				5B6742032B36A26B007335A6 /* CountryDetailViewModel.swift */,
+			);
+			path = CountryDetail;
 			sourceTree = "<group>";
 		};
 		5B7BCAF22B32C87A00E50C5F /* ButtonStyle */ = {
@@ -660,6 +677,7 @@
 				5B16F94E2B2845420011ACF7 /* DIContainer.swift in Sources */,
 				5B16F96A2B2851560011ACF7 /* FQUserQuizStat.swift in Sources */,
 				5B7BCAF42B32C89600E50C5F /* QuizOptionButtonStyle.swift in Sources */,
+				5B6742042B36A26B007335A6 /* CountryDetailViewModel.swift in Sources */,
 				5B9ECB7A2B342A5B00098BF3 /* QuizRoundsCountriesInfoView.swift in Sources */,
 				5B16F96F2B286C670011ACF7 /* randomNonceString.swift in Sources */,
 				5B7BCAFA2B32DD4700E50C5F /* QuizStrokeButtonStyle.swift in Sources */,
@@ -668,6 +686,7 @@
 				5BE7D2A22B29A7F20044C3D4 /* FQCountry.swift in Sources */,
 				5B16F97D2B2883670011ACF7 /* Constant.swift in Sources */,
 				5BE7D2A82B29B2220044C3D4 /* CountryAPIClient.swift in Sources */,
+				5B6742022B36A261007335A6 /* CountryDetailView.swift in Sources */,
 				5B559F082B28B85400B131BE /* NewsView.swift in Sources */,
 				5B5C2ACF2B280A32009A382B /* ContentView.swift in Sources */,
 				5BE7D29B2B29A4950044C3D4 /* QuizRecordService.swift in Sources */,
@@ -687,6 +706,7 @@
 				5BE0865B2B3190AC00D38C01 /* FQCountryName.swift in Sources */,
 				5B9ECB772B34255100098BF3 /* QuizRoundsResultScroll.swift in Sources */,
 				5B3448582B35D3F1002E2222 /* HapticsManager.swift in Sources */,
+				5B67423C2B370F28007335A6 /* FlowingText.swift in Sources */,
 				5B16F9792B287B700011ACF7 /* DBError.swift in Sources */,
 				5B16F97B2B287E750011ACF7 /* UserService.swift in Sources */,
 				5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */,

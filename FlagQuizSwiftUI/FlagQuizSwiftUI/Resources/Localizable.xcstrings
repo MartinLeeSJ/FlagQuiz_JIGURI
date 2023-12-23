@@ -16,7 +16,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%2lld문제 중 %1lld문제 맞추셨어요"
+            "value" : "%1lld문제 중 %2lld문제 맞추셨어요"
           }
         }
       }

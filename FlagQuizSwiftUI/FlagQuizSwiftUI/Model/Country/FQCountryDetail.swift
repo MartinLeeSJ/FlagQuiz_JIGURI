@@ -63,3 +63,51 @@ struct FQCountryDetail: FQCountryRenderer, Codable {
 }
 
 
+extension FQCountryDetail {
+    private init(
+        id: FQCountryISOCode,
+        name: FQCountryName,
+        capitals: [String]?,
+        coordinates: [Double],
+        languages: [String],
+        mapsLinks: FQMapsLinks,
+        area: Double,
+        population: Int,
+        borderedCountries: [String]?,
+        timezones: [String],
+        continents: [FQContinent],
+        flagLinks: FQFlagLinks
+    ) {
+        self.id = id
+        self.name = name
+        self.capitals = capitals
+        self.coordinates = coordinates
+        self.languages = languages
+        self.mapsLinks = mapsLinks
+        self.area = area
+        self.population = population
+        self.borderedCountries = borderedCountries
+        self.timezones = timezones
+        self.continents = continents
+        self.flagLinks = flagLinks
+        
+    }
+    
+    static let mock: FQCountryDetail = .init(
+        id: .init("170"),
+        name: .init(
+            common: "This is wth whthththththkdjskfjsklfjkldjklskjdf",
+            official: "The Republic of Mockland"
+        ),
+        capitals: ["mokeoul"],
+        coordinates: [100, 33],
+        languages: ["mocklish"],
+        mapsLinks: .init(googleMaps: "", openStreetMaps: ""),
+        area: 111111,
+        population: 111111,
+        borderedCountries: ["fakeland", "fantasyland"],
+        timezones: ["UTF +4.0"],
+        continents: [.init(rawValue: "Asia")!],
+        flagLinks: .init(png: "", svg: "https://flagcdn.com/co.svg", alt: "")
+    )
+}
