@@ -72,6 +72,7 @@ final class HapticsManager: ObservableObject {
         }
     }
     
+    //TODO: - 햅틱 간격이 너무 멂, 수정 필요
     private func complexAnswerWasCorrect(_ events: inout [CHHapticEvent]) {
         let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
         let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
