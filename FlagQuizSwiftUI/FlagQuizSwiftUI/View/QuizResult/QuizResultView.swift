@@ -49,7 +49,7 @@ struct QuizResultView: View {
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
         }
-        .padding(.top, 80)
+        .padding(.top, 60)
         .padding(.bottom, 36)
     }
     

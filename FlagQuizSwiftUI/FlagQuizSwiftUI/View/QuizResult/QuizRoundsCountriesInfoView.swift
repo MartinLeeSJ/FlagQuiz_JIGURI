@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct QuizRoundsCountriesInfoView: View {
+    @EnvironmentObject private var viewModel: QuizViewModel
     private let quizRounds: [FQQuizRound]
     
     init(quizRounds: [FQQuizRound]) {
@@ -41,22 +42,14 @@ struct QuizRoundsCountriesInfoView: View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: rows, spacing: 16) {
                 ForEach(quizRounds, id: \.self) { round in
-                    HStack {
-                        Text(round.answerCountryCode.flagEmoji ?? "none")
-                            .font(.title)
-                      
-                        Text(round.answerCountryCode.localizedName ?? "none")
-                            .font(.caption)
-                            .fontWeight(.medium)
-                        
-                        Image(systemName: "chevron.right")
-                            .font(.caption)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .background {
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundStyle(Material.ultraThin)
+                    Button {
+                        viewModel.send(
+                            .navigate(
+                                to: .countryDetail(round.answerCountryCode)
+                            )
+                        )
+                    } label: {
+                        label(round)
                     }
                 }
             }
@@ -66,6 +59,27 @@ struct QuizRoundsCountriesInfoView: View {
         }
         .background(Material.ultraThin)
         .scrollIndicators(.never)
+    }
+    
+    private func label(_ round: FQQuizRound) -> some View {
+        HStack {
+            Text(round.answerCountryCode.flagEmoji ?? "none")
+                .font(.title)
+          
+            Text(round.answerCountryCode.localizedName ?? "none")
+                .font(.caption)
+                .fontWeight(.medium)
+            
+            Image(systemName: "chevron.right")
+                .font(.caption)
+        }
+        .foregroundStyle(Color(uiColor: .label))
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        .background {
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundStyle(Material.ultraThin)
+        }
     }
     
 }
