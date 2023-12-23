@@ -96,7 +96,7 @@ extension FQCountryDetail {
     static let mock: FQCountryDetail = .init(
         id: .init("170"),
         name: .init(
-            common: "This is wth whthththththkdjskfjsklfjkldjklskjdf",
+            common: "chadchadchadchadchad",
             official: "The Republic of Mockland"
         ),
         capitals: ["mokeoul"],

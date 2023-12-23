@@ -20,28 +20,41 @@ struct FlowingText: View {
     }
 
     var body: some View {
-        Text(originalText)
-            .opacity(0)
-            .lineLimit(1)
-            .overlay {
-                GeometryReader { geo in
-                    ScrollView(.horizontal) {
-                        Text(text)
-                            .opacity(0)
-                            .lineLimit(1)
-                            .overlay {
-                                GeometryReader { geo in
+        GeometryReader { outerGeo in
+            ScrollView(.horizontal) {
+                Text(originalText)
+                    .opacity(0)
+                    .lineLimit(1, reservesSpace: true)
+                    .overlay {
+                        GeometryReader { geo in
+                            if outerGeo.size.width > geo.size.width {
+                                Text(originalText)
+                                    .lineLimit(1)
+                            } else {
+                                ScrollView(.horizontal) {
                                     Text(text)
-                                        .offset(x: offset)
-                                        .onAppear {
-                                            flow(geo.size.width)
+                                        .opacity(0)
+                                        .lineLimit(1)
+                                        .overlay {
+                                            GeometryReader { geo in
+                                                Text(text)
+                                                    .offset(x: offset)
+                                                    .onAppear {
+                                                        flow(geo.size.width)
+                                                    }
+                                            }
                                         }
                                 }
+                                .scrollDisabled(true)
                             }
-                    }
-                    .scrollDisabled(true)
+                        }
                 }
+                
             }
+            .scrollDisabled(true)
+            
+            
+        }
         
         
     }
