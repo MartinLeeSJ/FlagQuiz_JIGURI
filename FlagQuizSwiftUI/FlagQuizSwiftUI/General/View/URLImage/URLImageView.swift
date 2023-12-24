@@ -15,7 +15,7 @@ struct URLImageView<Placeholder>: View where Placeholder: View {
     
     init(
         _ imageUrlString: String?,
-        placeholder: @escaping () -> Placeholder
+        @ViewBuilder placeholder: @escaping () -> Placeholder
     ) {
         self.imageUrlString = imageUrlString
         self.placeholder = placeholder
@@ -27,10 +27,13 @@ struct URLImageView<Placeholder>: View where Placeholder: View {
                 viewModel: .init(container: container, imageUrlString: imageUrlString),
                 placeholder: placeholder
             )
+            .id(imageUrlString)
         } else {
             placeholder()
         }
     }
+    
+    
 }
 
 fileprivate struct URLImageInnerView<Placeholder>: View where Placeholder: View{
@@ -38,24 +41,29 @@ fileprivate struct URLImageInnerView<Placeholder>: View where Placeholder: View{
     
     private let placeholder: () -> Placeholder
     
+    
+    
     init(
         viewModel: URLImageViewModel,
-        placeholder: @escaping () -> Placeholder
+        @ViewBuilder placeholder: @escaping () -> Placeholder
     ) {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self.placeholder = placeholder
     }
     
     var body: some View {
-        if let image = viewModel.image {
-            Image(uiImage: image)
-        } else {
-            placeholder()
-                .onAppear {
-                    if viewModel.loadingState == .none {
-                        viewModel.loadImage()
-                    }
-                }
+        Group {
+            if let image = viewModel.image {
+                Image(uiImage: image)
+                    .resizable()
+            } else {
+                placeholder()
+            }
+        }
+        .onAppear {
+            if viewModel.loadingState == .none {
+                viewModel.loadImage()
+            }
         }
     }
 }

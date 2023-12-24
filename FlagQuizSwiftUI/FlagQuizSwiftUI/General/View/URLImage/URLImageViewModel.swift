@@ -43,14 +43,14 @@ final class URLImageViewModel: ObservableObject {
             .subscribe(on: DispatchQueue.global())
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
-                if case .failure(let error) = completion {
+                if case .failure = completion {
                     self?.loadingState = .failed
                 }
             } receiveValue: { [weak self] image in
-                guard let image else {
-                    self?.loadingState = .empty
-                    return
-                }
+//                guard let image else {
+//                    self?.loadingState = .empty
+//                    return
+//                }
                 self?.image = image
                 self?.loadingState = .loaded
             }

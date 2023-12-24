@@ -44,7 +44,6 @@ class Services: ServiceType {
 }
 
 class StubService: ServiceType {
-    
     var authService: AuthServiceType
     var userService: UserServiceType
     var quizRecordService: QuizRecordServiceType

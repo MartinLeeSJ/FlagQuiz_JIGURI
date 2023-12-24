@@ -53,11 +53,7 @@ struct CountryDetailView: View {
     @ViewBuilder
     private var flagAndName: some View {
         HStack(alignment: .top, spacing: 16) {
-            AsyncImage(url: viewModel.countryDetail?.flagLinks.svgURL) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
+            URLImageView(viewModel.countryDetail?.flagLinks.png) {
                 Text(viewModel.countryDetail?.id.flagEmoji ?? "")
                     .font(.largeTitle)
             }
@@ -65,6 +61,8 @@ struct CountryDetailView: View {
             .frame(height: 90)
             .padding(8)
             .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
+            .accessibilityLabel(viewModel.countryDetail?.flagLinks.alt ?? "Flag")
+       
             
             
             VStack(alignment: .leading) {

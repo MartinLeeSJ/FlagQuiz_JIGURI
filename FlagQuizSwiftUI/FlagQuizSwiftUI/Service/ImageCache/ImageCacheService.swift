@@ -30,22 +30,22 @@ final class ImageCacheService: ImageCacheServiceType {
                 if let image {
                     return Just(image).eraseToAnyPublisher()
                 }
-                
                 return self.imageWithDiskCache(for: key)
+                
             }
             .eraseToAnyPublisher()
     }
     
     private func imageWithMemoryCache(for key: String) -> AnyPublisher<UIImage?, Never> {
         Future { [weak self] promise in
-            let image = self?.imageMemoryStorage.image(for: key)
+            let image: UIImage? = self?.imageMemoryStorage.image(for: key)
             promise(.success(image))
         }
         .eraseToAnyPublisher()
     }
     
     private func imageWithDiskCache(for key: String) -> AnyPublisher<UIImage?, Never> {
-        Future { [weak self] promise in
+        Future<UIImage?, Never> { [weak self] promise in
             do {
                 let image: UIImage? = try self?.imageDiskStorage.image(for: key)
                 promise(.success(image))
@@ -60,7 +60,6 @@ final class ImageCacheService: ImageCacheServiceType {
                         if let image {
                             self?.store(for: key, image: image, alsoInDisk: false)
                         }
-                        
                     })
                     .eraseToAnyPublisher()
             } else {

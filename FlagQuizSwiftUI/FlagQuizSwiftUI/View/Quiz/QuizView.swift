@@ -24,7 +24,7 @@ struct QuizView: View {
         if let country = viewModel.countries.first(where: {
             $0.id == currentQuizRound.answerCountryCode
         }) {
-            return country.flagLinks.svgURL
+            return country.flagLinks.pngURL
         }
         return nil
     }
@@ -35,20 +35,16 @@ struct QuizView: View {
         VStack {
             Spacer()
             
-            //TODO: imageCache
-            AsyncImage(url: flagImageUrl) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 100)
-                    .padding()
-            } placeholder: {
+            URLImageView(flagImageUrl?.absoluteString) {
                 Text(answerCountryFlagEmoji)
                     .font(.system(size: 96))
             }
+            .scaledToFit()
+            .frame(maxHeight: 100)
             .padding()
             .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
             
+
             Spacer()
             quizQuestion
             
