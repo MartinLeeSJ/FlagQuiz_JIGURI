@@ -54,6 +54,11 @@
 		5B6742022B36A261007335A6 /* CountryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6742012B36A261007335A6 /* CountryDetailView.swift */; };
 		5B6742042B36A26B007335A6 /* CountryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6742032B36A26B007335A6 /* CountryDetailViewModel.swift */; };
 		5B67423C2B370F28007335A6 /* FlowingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B67423B2B370F28007335A6 /* FlowingText.swift */; };
+		5B697EAF2B386D39003089F8 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B697EAE2B386D39003089F8 /* ImageCacheService.swift */; };
+		5B697EB12B386E0E003089F8 /* ImageMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B697EB02B386E0E003089F8 /* ImageMemoryStorage.swift */; };
+		5B697EB32B386E1E003089F8 /* ImageDiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B697EB22B386E1E003089F8 /* ImageDiskStorage.swift */; };
+		5B697EB62B38754D003089F8 /* URLImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B697EB52B38754D003089F8 /* URLImageViewModel.swift */; };
+		5B697EB82B387563003089F8 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B697EB72B387563003089F8 /* URLImageView.swift */; };
 		5B7BCAF42B32C89600E50C5F /* QuizOptionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BCAF32B32C89600E50C5F /* QuizOptionButtonStyle.swift */; };
 		5B7BCAF62B32DBED00E50C5F /* QuizOptionsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BCAF52B32DBED00E50C5F /* QuizOptionsGrid.swift */; };
 		5B7BCAF82B32DCC000E50C5F /* QuizSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BCAF72B32DCC000E50C5F /* QuizSubmitButton.swift */; };
@@ -151,6 +156,11 @@
 		5B6742012B36A261007335A6 /* CountryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailView.swift; sourceTree = "<group>"; };
 		5B6742032B36A26B007335A6 /* CountryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewModel.swift; sourceTree = "<group>"; };
 		5B67423B2B370F28007335A6 /* FlowingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowingText.swift; sourceTree = "<group>"; };
+		5B697EAE2B386D39003089F8 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
+		5B697EB02B386E0E003089F8 /* ImageMemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMemoryStorage.swift; sourceTree = "<group>"; };
+		5B697EB22B386E1E003089F8 /* ImageDiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDiskStorage.swift; sourceTree = "<group>"; };
+		5B697EB52B38754D003089F8 /* URLImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageViewModel.swift; sourceTree = "<group>"; };
+		5B697EB72B387563003089F8 /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		5B7BCAF32B32C89600E50C5F /* QuizOptionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionButtonStyle.swift; sourceTree = "<group>"; };
 		5B7BCAF52B32DBED00E50C5F /* QuizOptionsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionsGrid.swift; sourceTree = "<group>"; };
 		5B7BCAF72B32DCC000E50C5F /* QuizSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSubmitButton.swift; sourceTree = "<group>"; };
@@ -268,6 +278,7 @@
 				5B16F97A2B287E750011ACF7 /* UserService.swift */,
 				5BE7D29A2B29A4950044C3D4 /* QuizRecordService.swift */,
 				5B34484B2B35527F002E2222 /* QuizStatService.swift */,
+				5B697EAD2B386D2C003089F8 /* ImageCache */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -338,6 +349,7 @@
 				5B16F9822B2890CD0011ACF7 /* ErrorView.swift */,
 				5BE086622B31C25B00D38C01 /* TypeWritingText.swift */,
 				5B67423B2B370F28007335A6 /* FlowingText.swift */,
+				5B697EB42B387542003089F8 /* URLImage */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -431,6 +443,25 @@
 				5B6742032B36A26B007335A6 /* CountryDetailViewModel.swift */,
 			);
 			path = CountryDetail;
+			sourceTree = "<group>";
+		};
+		5B697EAD2B386D2C003089F8 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				5B697EAE2B386D39003089F8 /* ImageCacheService.swift */,
+				5B697EB02B386E0E003089F8 /* ImageMemoryStorage.swift */,
+				5B697EB22B386E1E003089F8 /* ImageDiskStorage.swift */,
+			);
+			path = ImageCache;
+			sourceTree = "<group>";
+		};
+		5B697EB42B387542003089F8 /* URLImage */ = {
+			isa = PBXGroup;
+			children = (
+				5B697EB52B38754D003089F8 /* URLImageViewModel.swift */,
+				5B697EB72B387563003089F8 /* URLImageView.swift */,
+			);
+			path = URLImage;
 			sourceTree = "<group>";
 		};
 		5B7BCAF22B32C87A00E50C5F /* ButtonStyle */ = {
@@ -692,6 +723,8 @@
 				5BE7D29B2B29A4950044C3D4 /* QuizRecordService.swift in Sources */,
 				5B16F9742B287A4C0011ACF7 /* FQUserRepository.swift in Sources */,
 				5B16F9572B28470E0011ACF7 /* AuthenticationRouterView.swift in Sources */,
+				5B697EAF2B386D39003089F8 /* ImageCacheService.swift in Sources */,
+				5B697EB12B386E0E003089F8 /* ImageMemoryStorage.swift in Sources */,
 				5B7BCAFC2B3336B300E50C5F /* FQQuizRecordObject.swift in Sources */,
 				5BD3B7692B31ED8000B930E0 /* FQQuiz.swift in Sources */,
 				5B16F97F2B2890780011ACF7 /* MainTabView.swift in Sources */,
@@ -711,8 +744,11 @@
 				5B16F97B2B287E750011ACF7 /* UserService.swift in Sources */,
 				5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */,
 				5BD3B76B2B31EDA000B930E0 /* FQQuizRound.swift in Sources */,
+				5B697EB82B387563003089F8 /* URLImageView.swift in Sources */,
 				5B7BCAFE2B3336D900E50C5F /* FQQuizRoundRecordObject.swift in Sources */,
 				5B16F9712B286C7D0011ACF7 /* SHA256.swift in Sources */,
+				5B697EB62B38754D003089F8 /* URLImageViewModel.swift in Sources */,
+				5B697EB32B386E1E003089F8 /* ImageDiskStorage.swift in Sources */,
 				5B16F9532B2845DF0011ACF7 /* AuthService.swift in Sources */,
 				5B16F95D2B2847610011ACF7 /* LoginView.swift in Sources */,
 				5B16F95A2B28472F0011ACF7 /* AuthenticationViewModel.swift in Sources */,
