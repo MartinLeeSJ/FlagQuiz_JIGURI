@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct FQCountryDetail: FQCountryRenderer, Codable {
     let id: FQCountryISOCode
@@ -110,4 +111,23 @@ extension FQCountryDetail {
         continents: [.init(rawValue: "Asia")!],
         flagLinks: .init(png: "", svg: "https://flagcdn.com/co.svg", alt: "")
     )
+}
+
+
+extension FQCountryDetail {
+    var coordinateRegion: MKCoordinateRegion? {
+        
+        guard let latitude = coordinates.first,
+              let longitude = coordinates.last else { return nil
+        }
+        let center: CLLocationCoordinate2D = .init(
+            latitude: latitude,
+            longitude: longitude
+        )
+        
+        let areaWidth: Double = sqrt(Double(area * 1_000_000))
+        
+        return MKCoordinateRegion(center: center, latitudinalMeters: .init(floatLiteral: areaWidth), longitudinalMeters: .init(floatLiteral: areaWidth))
+        
+    }
 }
