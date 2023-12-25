@@ -32,20 +32,9 @@ struct QuizView: View {
     
     var body: some View {
         
-        VStack {
-            Spacer()
+        VStack(spacing: 0) {
+            flagImage
             
-            URLImageView(flagImageUrl?.absoluteString) {
-                Text(answerCountryFlagEmoji)
-                    .font(.system(size: 96))
-            }
-            .scaledToFit()
-            .frame(maxHeight: 100)
-            .padding()
-            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
-            
-
-            Spacer()
             quizQuestion
             
             QuizOptionsGrid(viewModel: viewModel)
@@ -75,6 +64,24 @@ struct QuizView: View {
             
         }
         
+    }
+    
+    @ViewBuilder
+    private var flagImage: some View {
+        Spacer()
+        
+        ZStack {
+            URLImageView(flagImageUrl?.absoluteString) {
+                Text(answerCountryFlagEmoji)
+                    .font(.system(size: 96))
+            }
+            .scaledToFit()
+            .frame(maxHeight: 100)
+        }
+        .frame(minHeight: 180, idealHeight: 180, maxHeight: 200)
+        .frame(maxWidth: .infinity)
+        .background(.thinMaterial, in: Rectangle())
+        .padding(.bottom, 16)
     }
     
     private var quizQuestion: some View {

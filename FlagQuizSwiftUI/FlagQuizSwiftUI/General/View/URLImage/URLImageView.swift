@@ -60,6 +60,8 @@ fileprivate struct URLImageInnerView<Placeholder>: View where Placeholder: View{
                 placeholder()
             }
         }
+        .transition(.opacity)
+        .animation(.easeIn(duration: 1.0), value: viewModel.image)
         .onAppear {
             if viewModel.loadingState == .none {
                 viewModel.loadImage()
