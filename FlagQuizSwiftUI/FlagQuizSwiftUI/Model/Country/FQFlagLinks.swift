@@ -18,7 +18,7 @@ struct FQFlagLinks: Codable {
     }
     
     var svgURL: URL? {
-        guard let png = png else { return nil }
-        return URL(string: png)
+        guard let svg = svg else { return nil }
+        return URL(string: svg)
     }
 }

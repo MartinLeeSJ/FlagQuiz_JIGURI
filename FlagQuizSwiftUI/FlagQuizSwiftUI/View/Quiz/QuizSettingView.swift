@@ -20,6 +20,7 @@ enum QuizItemCount: Int, CaseIterable {
 }
 
 struct QuizSettingView: View {
+    @EnvironmentObject private var container: DIContainer
     @StateObject private var viewModel: QuizViewModel
     
     @State private var quizCount: QuizCount = .ten
@@ -71,7 +72,8 @@ struct QuizSettingView: View {
                     QuizResultView(quizResult: quiz)
                         .environmentObject(viewModel)
                 case .countryDetail(let countryCode):
-                    Text(countryCode.numericCode)
+                    CountryDetailView(viewModel: .init(container: container,
+                                                       countryCode: countryCode))
                 }
             }
             
@@ -128,5 +130,6 @@ struct QuizSettingView: View {
 
 #Preview {
     QuizSettingView(viewModel: .init(container: .init(services: StubService())))
+        .environmentObject(DIContainer(services: StubService()))
 }
 

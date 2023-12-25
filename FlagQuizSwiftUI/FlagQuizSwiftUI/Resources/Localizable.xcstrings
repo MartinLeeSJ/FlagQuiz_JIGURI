@@ -16,7 +16,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%2lld문제 중 %1lld문제 맞추셨어요"
+            "value" : "%1lld문제 중 %2lld문제 맞추셨어요"
           }
         }
       }
@@ -49,6 +49,134 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "정답"
+          }
+        }
+      }
+    },
+    "county.detail.title.area" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Area"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "면적"
+          }
+        }
+      }
+    },
+    "county.detail.title.borderedCountries" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bordered"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "인접국"
+          }
+        }
+      }
+    },
+    "county.detail.title.capitals" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capital"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "수도"
+          }
+        }
+      }
+    },
+    "county.detail.title.continents" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continents"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대륙"
+          }
+        }
+      }
+    },
+    "county.detail.title.coordinates" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lat. Long."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위도, 경도"
+          }
+        }
+      }
+    },
+    "county.detail.title.languages" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Languages"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "언어"
+          }
+        }
+      }
+    },
+    "county.detail.title.population" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Population"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "인구"
+          }
+        }
+      }
+    },
+    "county.detail.title.timezones" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timezones"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시간대"
           }
         }
       }
