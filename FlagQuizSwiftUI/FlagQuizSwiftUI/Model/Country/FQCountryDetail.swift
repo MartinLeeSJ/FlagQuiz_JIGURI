@@ -65,7 +65,7 @@ struct FQCountryDetail: FQCountryRenderer, Codable {
 
 
 extension FQCountryDetail {
-    private init(
+    init(
         id: FQCountryISOCode,
         name: FQCountryName,
         capitals: [String]?,

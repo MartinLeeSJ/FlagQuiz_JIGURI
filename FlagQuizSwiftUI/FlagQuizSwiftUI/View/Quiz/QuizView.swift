@@ -43,6 +43,9 @@ struct QuizView: View {
                 .animation(.smooth, value: viewModel.isSubmitted)
                 .padding()
         }
+        .onChange(of: currentQuizRound) { value in
+            
+        }
         .onAppear {
             viewModel.send(.loadCountryInfo)
         }

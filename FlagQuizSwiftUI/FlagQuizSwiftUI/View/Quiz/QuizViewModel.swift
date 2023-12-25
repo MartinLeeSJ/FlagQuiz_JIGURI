@@ -20,7 +20,6 @@ final class QuizViewModel: ObservableObject {
     @Published var countries: [FQCountry] = []
     
     @Published var destinations: NavigationPath = .init()
-//    @Published var destinations: [QuizDestination] = .init()
     
     private let container: DIContainer
     private var cancellables = Set<AnyCancellable>()
@@ -29,7 +28,6 @@ final class QuizViewModel: ObservableObject {
         case setNewQuiz(count: Int, optionCount: Int)
         case navigate(to: QuizDestination)
         case backToRoot
-        
         case loadCountryInfo
         case selectQuizOption(_ code: FQCountryISOCode)
         case submit
@@ -90,6 +88,7 @@ final class QuizViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+
     private func selectQuizOption(of code: FQCountryISOCode) {
         quiz.quizRounds[quiz.currentQuizIndex].submittedCountryCode = code
     }

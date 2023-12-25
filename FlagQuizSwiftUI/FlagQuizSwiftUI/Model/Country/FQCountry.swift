@@ -41,6 +41,20 @@ struct FQCountry: FQCountryRenderer, Codable {
 }
 
 
+extension FQCountry {
+    init (
+        id: FQCountryISOCode,
+        name: FQCountryName,
+        flagLinks: FQFlagLinks,
+        continents: [FQContinent]
+    ) {
+        self.id = id
+        self.name = name
+        self.flagLinks = flagLinks
+        self.continents = continents
+    }
+}
+
 
 
 

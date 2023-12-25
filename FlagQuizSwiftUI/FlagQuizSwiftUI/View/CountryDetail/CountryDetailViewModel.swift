@@ -43,21 +43,18 @@ final class CountryDetailViewModel: ObservableObject {
     
     public func send(_ action: Action) {
         switch action {
-        case .load:
-            Task {
-                await load()
-            }
-        
+        case .load: load()
         }
     }
     
-    @MainActor
+    
     private func load() {
         container.services.countryService.getCountryDetails(ofCodes: [countryCode])
-            .subscribe(on: DispatchQueue.global())
+//            .subscribe(on: DispatchQueue.global())
             .receive(on: DispatchQueue.main)
             .compactMap { $0.first }
             .sink { [weak self] completion in
+            
                 if case .failure(let error) = completion {
                     //TODO: Error Handling
                     print(error.localizedDescription)

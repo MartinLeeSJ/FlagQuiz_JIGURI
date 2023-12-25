@@ -21,18 +21,24 @@ final class CountryService: CountryServiceType {
     }
     
     public func getCountries(ofCodes codes:[FQCountryISOCode]) -> AnyPublisher<[FQCountry], ServiceError> {
-        apiClient.getCountries(.init(countryCodes: codes))
-            .encode(encoder: JSONEncoder())
-            .decode(type: [FQCountry].self, decoder: JSONDecoder())
+        apiClient.getCountries(of: codes)
+            .map{
+                $0.map { object in
+                    object.toCountryModel()
+                }
+            }
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()
            
     }
     
     public func getCountryDetails(ofCodes codes:[FQCountryISOCode]) -> AnyPublisher<[FQCountryDetail], ServiceError> {
-        apiClient.getCountries(.init(countryCodes: codes))
-            .encode(encoder: JSONEncoder())
-            .decode(type: [FQCountryDetail].self, decoder: JSONDecoder())
+        apiClient.getCountries(of: codes)
+            .map{
+                $0.map { object in
+                    object.toCountryDetailModel()
+                }
+            }
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()
     }
