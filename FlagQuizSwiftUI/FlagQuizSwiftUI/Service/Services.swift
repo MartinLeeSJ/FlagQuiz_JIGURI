@@ -48,7 +48,7 @@ class Services: ServiceType {
             )
         )
         
-        self.countryQuizStatService = CountryQuizStatService()
+        self.countryQuizStatService = CountryQuizStatService(repository: FQCountryQuizStatRepository())
         
         self.imageCacheService = ImageCacheService(
             imageMemoryStorage: ImageMemoryStorage(),

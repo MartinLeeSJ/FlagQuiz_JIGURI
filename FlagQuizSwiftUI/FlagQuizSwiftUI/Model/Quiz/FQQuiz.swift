@@ -15,6 +15,7 @@ struct FQQuiz {
     var quizRounds: [FQQuizRound]
     private(set) var currentQuizIndex: Int = 0
     
+    
     var currentQuizRound: FQQuizRound {
         quizRounds[currentQuizIndex]
     }
@@ -41,6 +42,18 @@ struct FQQuiz {
     
     var wrongQuizRoundsCountBeforeCurrentRound: Int {
         quizRounds[0..<currentQuizIndex].count - correctQuizRoundsCountBeforeCurrentRound
+    }
+    
+    public func getQuizRoundResult() -> (correct: [FQCountryISOCode], wrong: [FQCountryISOCode]) {
+        quizRounds.reduce(([FQCountryISOCode](), [FQCountryISOCode]())) { partial, currentRound in
+            guard let submittedCountryCode = currentRound.submittedCountryCode else { return partial }
+            
+            if currentRound.answerCountryCode == submittedCountryCode {
+                return (partial.0 + [currentRound.answerCountryCode], partial.1)
+            }
+            
+            return (partial.0, partial.1 + [currentRound.answerCountryCode])
+        }
     }
     
     mutating func toNextIndex() {

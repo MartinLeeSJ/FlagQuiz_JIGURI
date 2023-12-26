@@ -63,7 +63,7 @@ final class FQCountryQuizStatRepository: FQCountryQuizStatRepositoryType {
         }
         
         substracting.forEach {
-            collectionRef.document($0).setData(["quizStat":  FieldValue.increment(Int64(1))])
+            collectionRef.document($0).setData(["quizStat":  FieldValue.increment(Int64(-1))])
         }
         
         try await batch.commit()
