@@ -20,6 +20,16 @@ struct FQQuiz {
     }
     
     var correctQuizRoundsCount: Int {
+        quizRounds.filter { round in
+            guard let submittedCountryCode = round.submittedCountryCode else {
+                return false
+            }
+            
+            return round.answerCountryCode == submittedCountryCode
+        }.count
+    }
+    
+    var correctQuizRoundsCountBeforeCurrentRound: Int {
         quizRounds[0..<currentQuizIndex].filter { round in
             guard let submittedCountryCode = round.submittedCountryCode else {
                 return false
@@ -29,8 +39,8 @@ struct FQQuiz {
         }.count
     }
     
-    var wrongQuizRoundsCount: Int {
-        quizRounds[0..<currentQuizIndex].count - correctQuizRoundsCount
+    var wrongQuizRoundsCountBeforeCurrentRound: Int {
+        quizRounds[0..<currentQuizIndex].count - correctQuizRoundsCountBeforeCurrentRound
     }
     
     mutating func toNextIndex() {

@@ -8,6 +8,10 @@
 import Foundation
 
 enum APIError: Error {
+    case invalidated
     case invalidURL
+    case invalidResponse
+    case httpStatusError(statusCode: Int, description: String)
+    case emptyData
     case custom(Error)
 }

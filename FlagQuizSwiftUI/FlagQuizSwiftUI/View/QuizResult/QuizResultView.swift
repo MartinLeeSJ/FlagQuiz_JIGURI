@@ -41,7 +41,7 @@ struct QuizResultView: View {
    
     private var scoreDescription: some View {
         VStack(alignment: .leading) {
-            Text(quizScore.localizedDescription)
+            Text("\(quizResult.correctQuizRoundsCount).out.of.\(quizResult.quizCount).problems")
                 .font(.subheadline)
             
             Text(quizScore.classifiedScore.description)

@@ -65,7 +65,7 @@ struct FQCountryDetail: FQCountryRenderer, Codable {
 
 
 extension FQCountryDetail {
-    private init(
+    init(
         id: FQCountryISOCode,
         name: FQCountryName,
         capitals: [String]?,
@@ -125,7 +125,7 @@ extension FQCountryDetail {
             longitude: longitude
         )
         
-        let areaWidth: Double = sqrt(Double(area * 1_000_000))
+        let areaWidth: Double = sqrt(Double(area * 1_000_000)) * 1.5
         
         return MKCoordinateRegion(center: center, latitudinalMeters: .init(floatLiteral: areaWidth), longitudinalMeters: .init(floatLiteral: areaWidth))
         

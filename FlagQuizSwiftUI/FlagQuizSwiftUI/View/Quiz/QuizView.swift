@@ -43,6 +43,9 @@ struct QuizView: View {
                 .animation(.smooth, value: viewModel.isSubmitted)
                 .padding()
         }
+        .onChange(of: currentQuizRound) { value in
+            
+        }
         .onAppear {
             viewModel.send(.loadCountryInfo)
         }
@@ -124,14 +127,14 @@ struct QuizView: View {
             HStack {
                 Text("correct.quiz.description")
                 Spacer()
-                Text("correct.quiz.count \(quiz.correctQuizRoundsCount)")
+                Text("correct.quiz.count \(quiz.correctQuizRoundsCountBeforeCurrentRound)")
                     .fontWeight(.bold)
             }
             
             HStack {
                 Text("wrong.quiz.description")
                 Spacer()
-                Text("wrong.quiz.count \(quiz.wrongQuizRoundsCount)")
+                Text("wrong.quiz.count \(quiz.wrongQuizRoundsCountBeforeCurrentRound)")
                     .fontWeight(.bold)
             }
             

@@ -12,6 +12,7 @@ import MapKit
 
 struct CountryDetailView: View {
     @StateObject private var viewModel: CountryDetailViewModel
+    @State private var didTapOpenInMaps: Bool = false
     
     init(viewModel: CountryDetailViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -36,18 +37,42 @@ struct CountryDetailView: View {
     
     private var content: some View {
         VStack {
-            Map(coordinateRegion: $viewModel.region)
-                .frame(
-                    minHeight: 200,
-                    idealHeight: 250,
-                    maxHeight: 250
-                )
-                .frame(maxWidth: .infinity)
+            maps
             
             flagAndName
             
             informationGrid
         }
+    }
+    
+    private var maps: some View {
+        Map(coordinateRegion: $viewModel.region)
+            .frame(
+                minHeight: 200,
+                idealHeight: 250,
+                maxHeight: 250
+            )
+            .frame(maxWidth: .infinity)
+            .overlay(alignment: .bottomTrailing) {
+                Button {
+                    didTapOpenInMaps = true
+                } label: {
+                    Text("open.in.maps")
+                        .font(.caption)
+                }
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.capsule)
+                .offset(x: -10, y: -10)
+            }
+            .alert("leave.apps", isPresented: $didTapOpenInMaps) {
+                Button("open") {
+                    viewModel.send(.openInMaps)
+                    didTapOpenInMaps = false
+                }
+            } message: {
+                Text("will.open.in.maps.question")
+            }
+
     }
     
     @ViewBuilder
@@ -66,10 +91,13 @@ struct CountryDetailView: View {
             
             
             VStack(alignment: .leading) {
-                Text(viewModel.countryDetail?.name.official ?? "")
+                FlowingText(viewModel.countryDetail?.name.official ?? "-")
                     .font(.headline)
-                    .lineLimit(3, reservesSpace: true)
-                FlowingText(viewModel.countryDetail?.name.common ?? "")
+                
+                FlowingText(viewModel.countryDetail?.id.localizedName ?? "-" )
+                    .font(.subheadline)
+                
+                FlowingText(viewModel.countryDetail?.name.common ?? "-")
                     .font(.subheadline)
                 
             }

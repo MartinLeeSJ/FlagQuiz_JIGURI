@@ -17,7 +17,7 @@ final class ImageMemoryStorage: ImageMemoryStorageType {
     private var cache = NSCache<NSString, UIImage>()
     
     func image(for key: String) -> UIImage? {
-        cache.object(forKey: key as NSString) 
+        cache.object(forKey: key as NSString)
     }
     
     func store(for key: String, image: UIImage) {

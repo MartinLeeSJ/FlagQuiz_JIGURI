@@ -70,7 +70,11 @@ final class ImageCacheService: ImageCacheServiceType {
     }
     
     private func remoteImage(for urlString: String) -> AnyPublisher<UIImage?, Never> {
-        URLSession.shared.dataTaskPublisher(for: URL(string: urlString)!)
+        guard let url =  URL(string: urlString) else {
+            return Empty().eraseToAnyPublisher()
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
             .map { data, _ in
                 UIImage(data: data)
             }
