@@ -9,6 +9,10 @@ import Foundation
 import FirebaseFirestore
 
 protocol FQCountryQuizStatRepositoryType {
+    func getBestCountryQuizStat(
+        of userId: String
+    ) async throws -> FQCountryQuizStatObject?
+    
     func getCountryQuizStats(
         of userId: String
     ) async throws -> [FQCountryQuizStatObject]
@@ -23,7 +27,26 @@ protocol FQCountryQuizStatRepositoryType {
 final class FQCountryQuizStatRepository: FQCountryQuizStatRepositoryType {
     private let db = Firestore.firestore()
     
-    func getCountryQuizStats(of userId: String) async throws -> [FQCountryQuizStatObject] {
+    public func getBestCountryQuizStat(
+        of userId: String
+    ) async throws -> FQCountryQuizStatObject? {
+        let collectionRef = db.collection(CollectionKey.Users)
+            .document(userId)
+            .collection(CollectionKey.CountryQuizStats)
+        
+        let snapshots: QuerySnapshot = try await collectionRef.order(
+            by: "quizStat",
+            descending: true
+        ).limit(to: 1).getDocuments()
+        
+        let objects: [FQCountryQuizStatObject] = try snapshots.documents.compactMap {
+            try $0.data(as: FQCountryQuizStatObject.self)
+        }
+        
+        return objects.first
+    }
+    
+    public func getCountryQuizStats(of userId: String) async throws -> [FQCountryQuizStatObject] {
         let collectionRef = db.collection(CollectionKey.Users)
             .document(userId)
             .collection(CollectionKey.CountryQuizStats)
@@ -47,7 +70,7 @@ final class FQCountryQuizStatRepository: FQCountryQuizStatRepositoryType {
     }
     
     
-    func updateCountryQuizStats(
+    public func updateCountryQuizStats(
         userId: String,
         addingCodes adding: [String],
         substractingCodes substracting: [String]

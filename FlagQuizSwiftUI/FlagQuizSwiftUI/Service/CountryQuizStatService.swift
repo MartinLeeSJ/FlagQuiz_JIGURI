@@ -8,6 +8,10 @@
 import Foundation
 
 protocol CountryQuizStatServiceType {
+    func getBestCountryQuizStat(
+        of userId: String
+    ) async throws -> FQCountryQuizStat?
+    
     func getCountryQuizStats(
         of userId: String
     ) async throws -> [FQCountryQuizStat]
@@ -25,6 +29,14 @@ final class CountryQuizStatService: CountryQuizStatServiceType {
     
     init(repository: FQCountryQuizStatRepositoryType) {
         self.repository = repository
+    }
+    
+    func getBestCountryQuizStat(
+        of userId: String
+    ) async throws -> FQCountryQuizStat? {
+        let object: FQCountryQuizStatObject? = try await repository.getBestCountryQuizStat(of: userId)
+        
+        return object?.toModel()
     }
     
     func getCountryQuizStats(
@@ -49,6 +61,12 @@ final class CountryQuizStatService: CountryQuizStatServiceType {
 }
 
 final class StubCountryQuizStatService: CountryQuizStatServiceType {
+    
+    func getBestCountryQuizStat(
+        of userId: String
+    ) async throws -> FQCountryQuizStat? {
+        return nil
+    }
     
     func getCountryQuizStats(
         of userId: String
