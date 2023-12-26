@@ -272,8 +272,30 @@
         }
       }
     },
+    "leave.apps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave App?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱을 나가시겠습니까?"
+          }
+        }
+      }
+    },
     "logout" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log out"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -310,6 +332,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "다음 퀴즈"
+          }
+        }
+      }
+    },
+    "open" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "열기"
+          }
+        }
+      }
+    },
+    "open.in.maps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Maps"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지도에서 열기"
           }
         }
       }
@@ -502,6 +556,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퀴즈 제출"
+          }
+        }
+      }
+    },
+    "will.open.in.maps.question" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are about to open a \"Maps\" app. Continue?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"지도\" 앱을 열려고 합니다. 계속 하시겠습니까?"
           }
         }
       }

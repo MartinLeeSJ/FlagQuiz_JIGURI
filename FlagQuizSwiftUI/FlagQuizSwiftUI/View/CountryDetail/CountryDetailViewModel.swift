@@ -14,13 +14,13 @@ import MapKit
 
 @MainActor
 final class CountryDetailViewModel: ObservableObject {
-    
     @Published var countryDetail: FQCountryDetail? = nil
     @Published var region: MKCoordinateRegion = .init(.world)
     
     
     enum Action {
         case load
+        case openInMaps
     }
     
     private let container: DIContainer
@@ -38,6 +38,7 @@ final class CountryDetailViewModel: ObservableObject {
     public func send(_ action: Action) {
         switch action {
         case .load: load()
+        case .openInMaps: openInMaps()
             
         }
     }
@@ -61,7 +62,18 @@ final class CountryDetailViewModel: ObservableObject {
                 }
             }
             .store(in: &cancellables)
-
+    }
+    
+    private func openInMaps() {
+        guard let localizedName = countryDetail?.id.localizedName else { return }
+        let mapsURL: URL? = URL(
+            string: "maps://?ll=\(region.center.latitude),\(region.center.longitude)&spn=\(region.span)"
+        )
+        
+        if let mapsURL,
+           UIApplication.shared.canOpenURL(mapsURL) {
+            UIApplication.shared.open(mapsURL, options: [:], completionHandler: nil)
+        }
     }
     
     
