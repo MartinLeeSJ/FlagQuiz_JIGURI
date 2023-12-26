@@ -31,12 +31,12 @@ class CountryAPIClient: CountryAPIClientType {
                     !cachedObjects.contains { $0.ccn3 == code.numericCode }
                 }
                 
+                if codesShouldFetch.isEmpty {
+                    return Just(cachedObjects).setFailureType(to: APIError.self).eraseToAnyPublisher()
+                }
                 
                 return self.getRemoteCountrise(of: codesShouldFetch)
                     .map { $0 + cachedObjects }
-                    .map { test in
-                        test
-                    }
                     .eraseToAnyPublisher()
                     
             }
@@ -45,10 +45,6 @@ class CountryAPIClient: CountryAPIClientType {
     }
     
     func getRemoteCountrise(of codes: [FQCountryISOCode]) -> AnyPublisher<[CountryObject], APIError> {
-        guard !codes.isEmpty else {
-            return Empty().eraseToAnyPublisher()
-        }
-        
         let newRequest: CountryRequest = CountryRequest(countryCodes: codes)
         
         guard let url = newRequest.url else {

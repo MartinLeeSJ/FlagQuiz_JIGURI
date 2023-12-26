@@ -12,16 +12,10 @@ import MapKit
 
 
 
-
+@MainActor
 final class CountryDetailViewModel: ObservableObject {
-    //임시로 Mock
-    @Published var countryDetail: FQCountryDetail? = nil {
-        didSet {
-            if let coordinateRegion = countryDetail?.coordinateRegion {
-                self.region = coordinateRegion
-            }
-        }
-    }
+    
+    @Published var countryDetail: FQCountryDetail? = nil
     @Published var region: MKCoordinateRegion = .init(.world)
     
     
@@ -44,17 +38,17 @@ final class CountryDetailViewModel: ObservableObject {
     public func send(_ action: Action) {
         switch action {
         case .load: load()
+            
         }
     }
     
     
     private func load() {
         container.services.countryService.getCountryDetails(ofCodes: [countryCode])
-//            .subscribe(on: DispatchQueue.global())
+            .subscribe(on: DispatchQueue.global())
             .receive(on: DispatchQueue.main)
             .compactMap { $0.first }
             .sink { [weak self] completion in
-            
                 if case .failure(let error) = completion {
                     //TODO: Error Handling
                     print(error.localizedDescription)
@@ -62,6 +56,9 @@ final class CountryDetailViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] detail in
                 self?.countryDetail = detail
+                if let coordinateRegion = detail?.coordinateRegion {
+                    self?.region = coordinateRegion
+                }
             }
             .store(in: &cancellables)
 

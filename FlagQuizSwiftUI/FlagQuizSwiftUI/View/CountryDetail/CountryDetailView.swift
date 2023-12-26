@@ -66,10 +66,13 @@ struct CountryDetailView: View {
             
             
             VStack(alignment: .leading) {
-                Text(viewModel.countryDetail?.name.official ?? "")
+                FlowingText(viewModel.countryDetail?.name.official ?? "-")
                     .font(.headline)
-                    .lineLimit(3, reservesSpace: true)
-                FlowingText(viewModel.countryDetail?.name.common ?? "")
+                
+                FlowingText(viewModel.countryDetail?.id.localizedName ?? "-" )
+                    .font(.subheadline)
+                
+                FlowingText(viewModel.countryDetail?.name.common ?? "-")
                     .font(.subheadline)
                 
             }
