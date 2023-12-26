@@ -9,11 +9,11 @@ import Foundation
 import FirebaseFirestore
 
 protocol FQCountryQuizStatRepositoryType {
-    func getCountryQuizStat(
+    func getCountryQuizStats(
         of userId: String
     ) async throws -> [FQCountryQuizStatObject]
     
-    func updateCountryQuizStat(
+    func updateCountryQuizStats(
         userId: String,
         addingCodes adding: [String],
         substractingCodes substracting: [String]
@@ -23,7 +23,7 @@ protocol FQCountryQuizStatRepositoryType {
 final class FQCountryQuizStatRepository: FQCountryQuizStatRepositoryType {
     private let db = Firestore.firestore()
     
-    func getCountryQuizStat(of userId: String) async throws -> [FQCountryQuizStatObject] {
+    func getCountryQuizStats(of userId: String) async throws -> [FQCountryQuizStatObject] {
         let collectionRef = db.collection(CollectionKey.Users)
             .document(userId)
             .collection(CollectionKey.CountryQuizStats)
@@ -47,7 +47,7 @@ final class FQCountryQuizStatRepository: FQCountryQuizStatRepositoryType {
     }
     
     
-    func updateCountryQuizStat(
+    func updateCountryQuizStats(
         userId: String,
         addingCodes adding: [String],
         substractingCodes substracting: [String]
