@@ -109,7 +109,7 @@ final class QuizViewModel: ObservableObject {
             try await container.services.quizStatService.addQuizStat(
                 ofUser: userId,
                 addingQuizCount: quiz.quizCount,
-                addingCorrectQuizCount: quiz.correctQuizRoundsCount
+                addingCorrectQuizCount: quiz.correctQuizRoundsCountBeforeCurrentRound
             )
         } catch {
             //TODO: Error 처리

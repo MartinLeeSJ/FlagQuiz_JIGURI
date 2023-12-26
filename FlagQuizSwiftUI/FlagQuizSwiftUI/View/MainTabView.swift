@@ -12,11 +12,10 @@ enum Tabs: Int, Hashable, CaseIterable {
     case news
     
     var title: LocalizedStringKey {
-        let result: LocalizedStringKey = switch self {
-        case .quizSetting: .init("tabs.quizSetting.title")
-        case .news: .init("tabs.news.title")
+        switch self {
+        case .quizSetting: "tabs.quizSetting.title"
+        case .news: "tabs.news.title"
         }
-        return result
     }
     
     var imageName: String {

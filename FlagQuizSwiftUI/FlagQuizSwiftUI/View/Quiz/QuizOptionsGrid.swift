@@ -65,6 +65,7 @@ struct QuizOptionsGrid: View {
         .buttonStyle(
             QuizOptionButtonStyle(isSelected: currentQuizRound.submittedCountryCode == code)
         )
+        .id(UUID())
     }
     
     private func optionsResultButton(of code: FQCountryISOCode) -> some View {
@@ -84,6 +85,7 @@ struct QuizOptionsGrid: View {
         .buttonStyle(
             QuizOptionResultButtonStyle(submission: submission)
         )
+        .id(UUID())
     }
 }
 

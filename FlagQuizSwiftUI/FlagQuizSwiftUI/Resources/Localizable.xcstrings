@@ -4,8 +4,7 @@
     "%lld" : {
 
     },
-    "%lld out of %lld Problems" : {
-      "comment" : "Result View Score",
+    "%lld.out.of.%lld.problems" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -16,7 +15,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1lld문제 중 %2lld문제 맞추셨어요"
+            "value" : "%2$lld문제 중 %1$lld문제 맞추셨어요"
           }
         }
       }
@@ -556,6 +555,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퀴즈 제출"
+          }
+        }
+      }
+    },
+    "tabs.news.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "News"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "뉴스"
+          }
+        }
+      }
+    },
+    "tabs.quizSetting.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈"
           }
         }
       }
