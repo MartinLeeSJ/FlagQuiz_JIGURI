@@ -40,7 +40,8 @@ struct MainTabView: View {
                         case .quizSetting:
                             QuizSettingView(viewModel: .init(container: container))
                                 
-                        case .news: NewsView()
+                        case .news: 
+                            NewsView(viewModel: .init(container: container))
                         }
                     }
                     .tabItem {
