@@ -65,7 +65,10 @@ final class StubCountryQuizStatService: CountryQuizStatServiceType {
     func getBestCountryQuizStat(
         of userId: String
     ) async throws -> FQCountryQuizStat? {
-        return nil
+        FQCountryQuizStat(
+            id: FQCountryISOCode.randomCode(of: 1, except: nil).first ?? .init("170"),
+            quizStat: 6
+        )
     }
     
     func getCountryQuizStats(

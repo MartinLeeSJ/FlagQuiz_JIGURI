@@ -21,6 +21,7 @@ enum QuizItemCount: Int, CaseIterable {
 
 struct QuizSettingView: View {
     @EnvironmentObject private var container: DIContainer
+    @EnvironmentObject private var navigationModel: NavigationModel
     @StateObject private var viewModel: QuizViewModel
     
     @State private var quizCount: QuizCount = .ten
@@ -31,7 +32,6 @@ struct QuizSettingView: View {
     }
 
     var body: some View {
-        NavigationStack(path: $viewModel.destinations) {
             VStack(alignment: .leading, spacing: 16) {
                 Spacer()
                     .frame(height: 64)
@@ -55,7 +55,7 @@ struct QuizSettingView: View {
                 Button {
                     viewModel.send(.setNewQuiz(count: quizCount.rawValue,
                                                optionCount: quizItemCount.rawValue))
-                    viewModel.send(.navigate(to: .quiz))
+                    navigationModel.navigate(to: QuizDestination.quiz)
                 } label: {
                     Text("start.quiz")
                 }
@@ -77,7 +77,7 @@ struct QuizSettingView: View {
                 }
             }
             
-        }
+        
         
     }
     
@@ -131,5 +131,6 @@ struct QuizSettingView: View {
 #Preview {
     QuizSettingView(viewModel: .init(container: .init(services: StubService())))
         .environmentObject(DIContainer(services: StubService()))
+        .environmentObject(NavigationModel())
 }
 

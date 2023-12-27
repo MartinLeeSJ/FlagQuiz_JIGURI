@@ -68,7 +68,7 @@ struct FQQuiz {
     }
 
     static private func createQuizRounds(quizCount: Int, quizOptionsCount: Int) -> [FQQuizRound] {
-        FQCountryISOCode.chooseRandomly(quizCount, except: nil).map {
+        FQCountryISOCode.randomCode(of: quizCount, except: nil).map {
             FQQuizRound(answerCountryCode: $0, quizOptionsCount: quizOptionsCount)
         }
     }

@@ -14,7 +14,7 @@ import MapKit
 
 @MainActor
 final class CountryDetailViewModel: ObservableObject {
-    @Published var countryDetail: FQCountryDetail? = nil
+    @Published var countryDetail: FQCountryDetail? 
     @Published var region: MKCoordinateRegion = .init(.world)
     
     

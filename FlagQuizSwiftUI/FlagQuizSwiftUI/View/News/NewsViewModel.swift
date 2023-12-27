@@ -5,16 +5,17 @@
 //  Created by Martin on 12/26/23.
 //
 
-import Foundation
+import SwiftUI
 
 @MainActor
 final class NewsViewModel: ObservableObject {
-    // user정보
-    // 오늘의 국가정보
-    @Published var quizStat: FQUserQuizStat? = nil
-    @Published var countryQuizStat: FQCountryQuizStat? = nil
+    
+    @Published var quizStat: FQUserQuizStat?
+    @Published var countryQuizStat: FQCountryQuizStat?
+    
     
     private let container: DIContainer
+    
     
     init(container: DIContainer) {
         self.container = container

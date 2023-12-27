@@ -20,6 +20,9 @@
         }
       }
     },
+    "advertisement" : {
+
+    },
     "correct.quiz.count %lld" : {
       "localizations" : {
         "en" : {
@@ -51,6 +54,9 @@
           }
         }
       }
+    },
+    "CountryQuizStat" : {
+
     },
     "county.detail.title.area" : {
       "localizations" : {
@@ -231,8 +237,345 @@
         }
       }
     },
-    "Hello, world!" : {
-
+    "FQUserRank0" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Beginner"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "초심자"
+          }
+        }
+      }
+    },
+    "FQUserRank0_description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You are a beginner."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신은 초심자입니다."
+          }
+        }
+      }
+    },
+    "FQUserRank1" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bronze"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "브론즈"
+          }
+        }
+      }
+    },
+    "FQUserRank1_description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You are bronze rank."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신의 실력은 브론즈 클래스입니다."
+          }
+        }
+      }
+    },
+    "FQUserRank2" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Silver"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "실버"
+          }
+        }
+      }
+    },
+    "FQUserRank2_description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You are silver rank."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신의 실력은 실버 클래스입니다."
+          }
+        }
+      }
+    },
+    "FQUserRank3" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Gold"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "골드"
+          }
+        }
+      }
+    },
+    "FQUserRank3_description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You are gold rank."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신의 실력은 골드 클래스입니다."
+          }
+        }
+      }
+    },
+    "FQUserRank4" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Neighborhood\nInfluencer"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "동네 유명인사"
+          }
+        }
+      }
+    },
+    "FQUserRank4_description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your knowledge is unrivaled in this area."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신의 명성은 이 동네에서 드높습니다."
+          }
+        }
+      }
+    },
+    "FQUserRank5" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Urban\nInfluencer"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "도시 유명인사"
+          }
+        }
+      }
+    },
+    "FQUserRank5_description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your knowledge is unparalleled within this city."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신의 명성은 이 도시에서 드높습니다."
+          }
+        }
+      }
+    },
+    "FQUserRank6" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Countrywide\nInfluencer"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전국구 유명인사"
+          }
+        }
+      }
+    },
+    "FQUserRank6_description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your extensive knowledge is acknowledged even by the country."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신의 명성은 전국적입니다."
+          }
+        }
+      }
+    },
+    "FQUserRank7" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Continental\nInfluencer"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대륙급 유명인사"
+          }
+        }
+      }
+    },
+    "FQUserRank7_description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your exceptional knowledge is on a continental scale."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신의 명성은 대륙스케일입니다."
+          }
+        }
+      }
+    },
+    "FQUserRank8" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Worldwide\nInfluencer"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전 세계적 유명인사"
+          }
+        }
+      }
+    },
+    "FQUserRank8_description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your exceptional knowledge is renowned worldwide."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신의 명성은 전세계적입니다."
+          }
+        }
+      }
+    },
+    "FQUserRank9" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Earth Guru"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구의 대가"
+          }
+        }
+      }
+    },
+    "FQUserRank9_description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You are a maestro.\nYour exceptional knowledge can represent the Earth."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신은 이 지구를 대표하는 Guru입니다."
+          }
+        }
+      }
     },
     "Hello, World!" : {
 
@@ -287,22 +630,6 @@
         }
       }
     },
-    "logout" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Log out"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "로그아웃"
-          }
-        }
-      }
-    },
     "N. America" : {
       "localizations" : {
         "en" : {
@@ -315,6 +642,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "북아메리카"
+          }
+        }
+      }
+    },
+    "news.country.quiz.stats.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I'm familiar with this country"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내가 제일 잘 알아"
+          }
+        }
+      }
+    },
+    "news.quiz.stats.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct / Total"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정답 / 전체"
+          }
+        }
+      }
+    },
+    "news.today.country.title" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "특집: 오늘의 국가 혹은 지역"
+          }
+        }
+      }
+    },
+    "news.user.rank.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Rank"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내 등급"
           }
         }
       }
@@ -479,6 +864,9 @@
         }
       }
     },
+    "quizStat" : {
+
+    },
     "quizview.question" : {
       "localizations" : {
         "en" : {
@@ -591,6 +979,12 @@
         }
       }
     },
+    "todayCountry" : {
+
+    },
+    "userRank" : {
+
+    },
     "will.open.in.maps.question" : {
       "localizations" : {
         "en" : {
@@ -672,6 +1066,9 @@
           }
         }
       }
+    },
+    "광고" : {
+
     },
     "다시 로드" : {
 

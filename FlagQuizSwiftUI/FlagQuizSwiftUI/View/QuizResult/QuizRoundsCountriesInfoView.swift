@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct QuizRoundsCountriesInfoView: View {
+    
     @EnvironmentObject private var viewModel: QuizViewModel
+    @EnvironmentObject private var navigationModel: NavigationModel
+    
     private let quizRounds: [FQQuizRound]
     
     init(quizRounds: [FQQuizRound]) {
@@ -43,9 +46,9 @@ struct QuizRoundsCountriesInfoView: View {
             LazyHGrid(rows: rows, spacing: 16) {
                 ForEach(quizRounds, id: \.self) { round in
                     Button {
-                        viewModel.send(
-                            .navigate(
-                                to: .countryDetail(round.answerCountryCode)
+                        navigationModel.navigate(
+                            to: QuizDestination.countryDetail(
+                                round.answerCountryCode
                             )
                         )
                     } label: {
@@ -90,4 +93,6 @@ struct QuizRoundsCountriesInfoView: View {
         .init(answerCountryCode: .init("166"), quizOptionsCount: 4),
         .init(answerCountryCode: .init("162"), quizOptionsCount: 4),
     ])
+    .environmentObject(QuizViewModel(container: .init(services: StubService())))
+    .environmentObject(NavigationModel())
 }

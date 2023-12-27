@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuizResultView: View {
     @EnvironmentObject private var viewModel: QuizViewModel
+    @EnvironmentObject private var navigationModel: NavigationModel
     
     private let quizResult: FQQuiz
     private let quizScore: FQQuizScore
@@ -32,7 +33,7 @@ struct QuizResultView: View {
         .navigationBarBackButtonHidden()
         .toolbar {
             Button {
-                viewModel.send(.backToRoot)
+                navigationModel.toRoot()
             } label: {
                 Text("save.and.quit")
             }
@@ -59,5 +60,7 @@ struct QuizResultView: View {
 
 #Preview {
     QuizResultView(quizResult: .init(quizCount: 10, quizOptionsCount: 3))
+        .environmentObject(QuizViewModel(container: .init(services: StubService())))
+        .environmentObject(NavigationModel())
 }
 

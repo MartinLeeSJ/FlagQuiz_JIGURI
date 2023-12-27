@@ -26,7 +26,7 @@ struct FQQuizRound {
         quizOptionsCount: Int,
         answerCountryCode: FQCountryISOCode
     ) -> [FQCountryISOCode] {
-        var options: [FQCountryISOCode] = FQCountryISOCode.chooseRandomly(quizOptionsCount - 1, except: answerCountryCode)
+        var options: [FQCountryISOCode] = FQCountryISOCode.randomCode(of: quizOptionsCount - 1, except: answerCountryCode)
         options.append(answerCountryCode)
         
         return options.shuffled()
