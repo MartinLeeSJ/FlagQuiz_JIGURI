@@ -33,43 +33,34 @@ struct CountryQuizStatView: View {
     }
     
     var body: some View {
-        
-        List($viewModel.stats) { stat in
-            HStack(spacing: 16) {
-                Text(stat.id.flagEmoji ?? "?")
-                    .font(.title2)
-                Text(stat.id.localizedName ?? "?")
-                    .font(.caption)
-                Spacer()
-                Text("\(stat.quizStat.wrappedValue ?? 0)")
-                    .foregroundStyle(
-                        color(of: stat.quizStat.wrappedValue ?? 0)
-                    )
+        List {
+            ForEach($viewModel.stats, id: \.self) { stat in
+                listRow(data: stat.wrappedValue)
             }
         }
         .searchable(text: $query)
         .searchSuggestions{
-            List {
-                ForEach(searchSuggestionsStats, id: \.self) { stat in
-                    HStack(spacing: 16) {
-                        Text(stat.id.flagEmoji ?? "?")
-                            .font(.title2)
-                        Text(stat.id.localizedName ?? "?")
-                            .font(.caption)
-                        Spacer()
-                        Text("\(stat.quizStat ?? 0)")
-                            .foregroundStyle(
-                                color(of: stat.quizStat ?? 0)
-                            )
-                    }
-                }
+            ForEach(searchSuggestionsStats, id: \.self) { stat in
+                listRow(data: stat)
             }
-            .listStyle(.plain)
-            
         }
         .listStyle(.plain)
         .task {
             await viewModel.load()
+        }
+    }
+    
+    private func listRow(data stat: FQCountryQuizStat) -> some View {
+        HStack(spacing: 16) {
+            Text(stat.id.flagEmoji ?? "?")
+                .font(.title2)
+            Text(stat.id.localizedName ?? "?")
+                .font(.caption)
+            Spacer()
+            Text("\(stat.quizStat ?? 0)")
+                .foregroundStyle(
+                    color(of: stat.quizStat ?? 0)
+                )
         }
     }
     

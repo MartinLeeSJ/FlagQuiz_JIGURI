@@ -20,7 +20,7 @@ struct UserRankCell: View {
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity)
-                .frame(minHeight: 30, maxHeight: 45)
+                .frame(minHeight: 30, maxHeight: 40)
                 .overlay(alignment: .bottom) {
                     Text(rank?.localizedRankName ?? "-")
                         .lineLimit(1)
