@@ -74,7 +74,10 @@ final class StubCountryQuizStatService: CountryQuizStatServiceType {
     func getCountryQuizStats(
         of userId: String
     ) async throws -> [FQCountryQuizStat] {
-        []
+        let count: Int = 10
+        return FQCountryISOCode.randomCode(of: count, except: nil).enumerated().map {
+            FQCountryQuizStat(id: $1, quizStat: $0)
+        }
     }
     
     func updateCountryQuizStats(

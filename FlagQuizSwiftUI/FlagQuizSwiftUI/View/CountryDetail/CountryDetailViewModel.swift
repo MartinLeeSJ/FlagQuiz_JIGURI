@@ -14,7 +14,7 @@ import MapKit
 
 @MainActor
 final class CountryDetailViewModel: ObservableObject {
-    @Published var countryDetail: FQCountryDetail? 
+    @Published var countryDetail: FQCountryDetail?
     @Published var region: MKCoordinateRegion = .init(.world)
     
     
@@ -49,11 +49,9 @@ final class CountryDetailViewModel: ObservableObject {
             .subscribe(on: DispatchQueue.global())
             .receive(on: DispatchQueue.main)
             .compactMap { $0.first }
-            .sink { [weak self] completion in
+            .sink { completion in
                 if case .failure(let error) = completion {
-                    //TODO: Error Handling
                     print(error.localizedDescription)
-                    self?.countryDetail = FQCountryDetail.mock
                 }
             } receiveValue: { [weak self] detail in
                 self?.countryDetail = detail

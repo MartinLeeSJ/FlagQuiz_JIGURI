@@ -42,6 +42,13 @@
 		5B19C1662B3C0CE1001A74CE /* NavigationDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1652B3C0CE1001A74CE /* NavigationDestination.swift */; };
 		5B19C1682B3C0D2F001A74CE /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1672B3C0D2F001A74CE /* NavigationModel.swift */; };
 		5B19C16A2B3C10D8001A74CE /* QuizDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1692B3C10D8001A74CE /* QuizDestination.swift */; };
+		5B19C16D2B3C1B0C001A74CE /* NewsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C16C2B3C1B0C001A74CE /* NewsGrid.swift */; };
+		5B19C16F2B3C2D1D001A74CE /* UserRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C16E2B3C2D1D001A74CE /* UserRankCell.swift */; };
+		5B19C1712B3C2D8E001A74CE /* CountryQuizStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1702B3C2D8E001A74CE /* CountryQuizStatCell.swift */; };
+		5B19C1732B3C2DD8001A74CE /* QuizStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1722B3C2DD8001A74CE /* QuizStatCell.swift */; };
+		5B19C1752B3C2E16001A74CE /* TodayCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1742B3C2E16001A74CE /* TodayCountryCell.swift */; };
+		5B19C1782B3C2E9D001A74CE /* CountryQuizStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1772B3C2E9D001A74CE /* CountryQuizStatView.swift */; };
+		5B19C17A2B3C2F69001A74CE /* CountryQuizStatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1792B3C2F69001A74CE /* CountryQuizStatViewModel.swift */; };
 		5B34484C2B35527F002E2222 /* QuizStatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484B2B35527F002E2222 /* QuizStatService.swift */; };
 		5B34484E2B3553FC002E2222 /* FQUserQuizStatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484D2B3553FC002E2222 /* FQUserQuizStatRepository.swift */; };
 		5B3448502B355433002E2222 /* FQUserQuizStatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */; };
@@ -156,6 +163,13 @@
 		5B19C1652B3C0CE1001A74CE /* NavigationDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDestination.swift; sourceTree = "<group>"; };
 		5B19C1672B3C0D2F001A74CE /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
 		5B19C1692B3C10D8001A74CE /* QuizDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDestination.swift; sourceTree = "<group>"; };
+		5B19C16C2B3C1B0C001A74CE /* NewsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGrid.swift; sourceTree = "<group>"; };
+		5B19C16E2B3C2D1D001A74CE /* UserRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankCell.swift; sourceTree = "<group>"; };
+		5B19C1702B3C2D8E001A74CE /* CountryQuizStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryQuizStatCell.swift; sourceTree = "<group>"; };
+		5B19C1722B3C2DD8001A74CE /* QuizStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStatCell.swift; sourceTree = "<group>"; };
+		5B19C1742B3C2E16001A74CE /* TodayCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCountryCell.swift; sourceTree = "<group>"; };
+		5B19C1772B3C2E9D001A74CE /* CountryQuizStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryQuizStatView.swift; sourceTree = "<group>"; };
+		5B19C1792B3C2F69001A74CE /* CountryQuizStatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryQuizStatViewModel.swift; sourceTree = "<group>"; };
 		5B34484B2B35527F002E2222 /* QuizStatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStatService.swift; sourceTree = "<group>"; };
 		5B34484D2B3553FC002E2222 /* FQUserQuizStatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStatRepository.swift; sourceTree = "<group>"; };
 		5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStatObject.swift; sourceTree = "<group>"; };
@@ -271,14 +285,15 @@
 		5B16F94A2B2845070011ACF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5B19C1642B3C0CD3001A74CE /* Navigation */,
-				5B16F9412B2830570011ACF7 /* OnBoardingView.swift */,
 				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
-				5B16F9802B2890920011ACF7 /* Login */,
+				5B16F9412B2830570011ACF7 /* OnBoardingView.swift */,
+				5B19C1642B3C0CD3001A74CE /* Navigation */,
 				5B16F9582B28471D0011ACF7 /* Auth */,
+				5B16F9802B2890920011ACF7 /* Login */,
 				5BD3B7672B31EC7900B930E0 /* Quiz */,
 				5B9ECB712B33EAF500098BF3 /* QuizResult */,
 				5B559F0A2B28B86500B131BE /* News */,
+				5B19C1762B3C2E89001A74CE /* CountryQuizStat */,
 				5B6742002B36A23C007335A6 /* CountryDetail */,
 			);
 			path = View;
@@ -385,6 +400,28 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		5B19C16B2B3C1AFE001A74CE /* NewsGrid */ = {
+			isa = PBXGroup;
+			children = (
+				5B19C16C2B3C1B0C001A74CE /* NewsGrid.swift */,
+				5B19C1602B3BCA09001A74CE /* NewsGridCell.swift */,
+				5B19C16E2B3C2D1D001A74CE /* UserRankCell.swift */,
+				5B19C1702B3C2D8E001A74CE /* CountryQuizStatCell.swift */,
+				5B19C1722B3C2DD8001A74CE /* QuizStatCell.swift */,
+				5B19C1742B3C2E16001A74CE /* TodayCountryCell.swift */,
+			);
+			path = NewsGrid;
+			sourceTree = "<group>";
+		};
+		5B19C1762B3C2E89001A74CE /* CountryQuizStat */ = {
+			isa = PBXGroup;
+			children = (
+				5B19C1772B3C2E9D001A74CE /* CountryQuizStatView.swift */,
+				5B19C1792B3C2F69001A74CE /* CountryQuizStatViewModel.swift */,
+			);
+			path = CountryQuizStat;
+			sourceTree = "<group>";
+		};
 		5B3448562B35D3E7002E2222 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,8 +434,8 @@
 			isa = PBXGroup;
 			children = (
 				5B559F072B28B85400B131BE /* NewsView.swift */,
-				5B19C1602B3BCA09001A74CE /* NewsGridCell.swift */,
 				5B9A81AE2B3AC3470087142A /* NewsViewModel.swift */,
+				5B19C16B2B3C1AFE001A74CE /* NewsGrid */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -797,6 +834,7 @@
 				5B9ECB732B33EB1700098BF3 /* QuizResultView.swift in Sources */,
 				5B7BCAF82B32DCC000E50C5F /* QuizSubmitButton.swift in Sources */,
 				5BE086542B317F6500D38C01 /* CountriesSampleJSON.swift in Sources */,
+				5B19C16F2B3C2D1D001A74CE /* UserRankCell.swift in Sources */,
 				5BE086652B31D59C00D38C01 /* QuizFilledButtonStyle.swift in Sources */,
 				5BD3B7662B31EC7400B930E0 /* QuizView.swift in Sources */,
 				5B9ECB752B340DFD00098BF3 /* FQQuizScore.swift in Sources */,
@@ -826,11 +864,13 @@
 				5B16F9742B287A4C0011ACF7 /* FQUserRepository.swift in Sources */,
 				5B16F9572B28470E0011ACF7 /* AuthenticationRouterView.swift in Sources */,
 				5B9A81B92B3AE3FE0087142A /* FQCountryQuizStatObject.swift in Sources */,
+				5B19C1732B3C2DD8001A74CE /* QuizStatCell.swift in Sources */,
 				5B697EAF2B386D39003089F8 /* ImageCacheService.swift in Sources */,
 				5B697EB12B386E0E003089F8 /* ImageMemoryStorage.swift in Sources */,
 				5B7BCAFC2B3336B300E50C5F /* FQQuizRecordObject.swift in Sources */,
 				5BD3B7692B31ED8000B930E0 /* FQQuiz.swift in Sources */,
 				5B16F97F2B2890780011ACF7 /* MainTabView.swift in Sources */,
+				5B19C17A2B3C2F69001A74CE /* CountryQuizStatViewModel.swift in Sources */,
 				5B3448522B357600002E2222 /* FQQuizRecordRepository.swift in Sources */,
 				5B16F9682B2850000011ACF7 /* FQUser.swift in Sources */,
 				5BE086612B3190F300D38C01 /* FQContinent.swift in Sources */,
@@ -840,6 +880,7 @@
 				5BE0865F2B3190DA00D38C01 /* FQMapsLinks.swift in Sources */,
 				5B34484C2B35527F002E2222 /* QuizStatService.swift in Sources */,
 				5BE086582B31907C00D38C01 /* FQCountryDetail.swift in Sources */,
+				5B19C1752B3C2E16001A74CE /* TodayCountryCell.swift in Sources */,
 				5BE0865B2B3190AC00D38C01 /* FQCountryName.swift in Sources */,
 				5B9ECB772B34255100098BF3 /* QuizRoundsResultScroll.swift in Sources */,
 				5B3448582B35D3F1002E2222 /* HapticsManager.swift in Sources */,
@@ -850,6 +891,8 @@
 				5BD3B76B2B31EDA000B930E0 /* FQQuizRound.swift in Sources */,
 				5B697EB82B387563003089F8 /* URLImageView.swift in Sources */,
 				5BE3E4D02B3985C30048C10E /* CountryDiskStorage.swift in Sources */,
+				5B19C1782B3C2E9D001A74CE /* CountryQuizStatView.swift in Sources */,
+				5B19C1712B3C2D8E001A74CE /* CountryQuizStatCell.swift in Sources */,
 				5B9A81B32B3AC6AF0087142A /* FQCountryQuizStatRepository.swift in Sources */,
 				5B7BCAFE2B3336D900E50C5F /* FQQuizRoundRecordObject.swift in Sources */,
 				5B16F9712B286C7D0011ACF7 /* SHA256.swift in Sources */,
@@ -857,6 +900,7 @@
 				5B697EB32B386E1E003089F8 /* ImageDiskStorage.swift in Sources */,
 				5B9A81B12B3AC4F00087142A /* FQCountryQuizStat.swift in Sources */,
 				5B16F9532B2845DF0011ACF7 /* AuthService.swift in Sources */,
+				5B19C16D2B3C1B0C001A74CE /* NewsGrid.swift in Sources */,
 				5B16F95D2B2847610011ACF7 /* LoginView.swift in Sources */,
 				5B16F95A2B28472F0011ACF7 /* AuthenticationViewModel.swift in Sources */,
 				5BE0865D2B3190C500D38C01 /* FQFlagLinks.swift in Sources */,

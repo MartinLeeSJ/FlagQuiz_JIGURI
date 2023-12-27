@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct FQCountryQuizStat {
+struct FQCountryQuizStat: Identifiable, Hashable {
     let id: FQCountryISOCode
     var quizStat: Int?
     var capitalQuizStat: Int?

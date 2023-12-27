@@ -54,7 +54,7 @@ final class FQCountryQuizStatRepository: FQCountryQuizStatRepositoryType {
         var snapshots: QuerySnapshot
         
         do {
-            snapshots = try await collectionRef.getDocuments()
+            snapshots = try await collectionRef.order(by: "quizStat", descending: true).getDocuments()
         } catch {
             throw DBError.fetchingError
         }
@@ -82,11 +82,20 @@ final class FQCountryQuizStatRepository: FQCountryQuizStatRepositoryType {
             .collection(CollectionKey.CountryQuizStats)
         
         adding.forEach {
-            collectionRef.document($0).setData(["quizStat":  FieldValue.increment(Int64(1))])
+            batch.setData(
+                ["quizStat":  FieldValue.increment(Int64(1))],
+                forDocument: collectionRef.document($0),
+                merge: true
+            )
+            
         }
         
         substracting.forEach {
-            collectionRef.document($0).setData(["quizStat":  FieldValue.increment(Int64(-1))])
+            batch.setData(
+                ["quizStat":  FieldValue.increment(Int64(-1))],
+                forDocument: collectionRef.document($0),
+                merge: true
+            )
         }
         
         try await batch.commit()

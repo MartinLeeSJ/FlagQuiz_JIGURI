@@ -28,7 +28,9 @@ struct FQCountryISOCode: Codable {
     
 }
 
-
+extension FQCountryISOCode: Identifiable {
+    var id: String { numericCode}
+}
 extension FQCountryISOCode: Equatable { }
 
 extension FQCountryISOCode: Hashable {
