@@ -39,7 +39,7 @@ struct NewsGrid: View {
             }
             .frame(maxHeight: 110)
         }
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         .padding()
     }
 }

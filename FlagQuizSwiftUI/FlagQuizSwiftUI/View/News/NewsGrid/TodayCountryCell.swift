@@ -11,13 +11,15 @@ struct TodayCountryCell: View {
     @EnvironmentObject private var viewModel: NewsViewModel
     @EnvironmentObject private var navigationModel: NavigationModel
     
+    private let todaysCode: FQCountryISOCode? = FQCountryISOCode.todaysCode()
+    
     var body: some View {
         NewsGridCell(
             alignment: .leading,
             title: "news.today.country.title"
         ) {
             HStack(spacing: 32) {
-                let todaysCode: FQCountryISOCode? = FQCountryISOCode.todaysCode()
+                
                 Text(todaysCode?.flagEmoji ?? "?")
                     .font(.largeTitle)
                 
@@ -32,7 +34,8 @@ struct TodayCountryCell: View {
         .gridCellColumns(4)
         .gridCellUnsizedAxes(.horizontal)
         .onTapGesture {
-            navigationModel.navigate(to: NewsDestination.todayCountry)
+            guard let todaysCode else { return }
+            navigationModel.navigate(to: NewsDestination.countryDetail(todaysCode))
         }
     }
 }

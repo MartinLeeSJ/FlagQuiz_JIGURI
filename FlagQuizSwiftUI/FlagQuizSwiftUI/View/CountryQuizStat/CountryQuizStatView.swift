@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CountryQuizStatView: View {
-    @Environment(\.isSearching) var isSearching
+    @EnvironmentObject private var navigationModel: NavigationModel
     @StateObject private var viewModel: CountryQuizStatViewModel
+    
     @State private var query: String = ""
     
     var searchSuggestionsStats: [FQCountryQuizStat] {
@@ -61,7 +62,14 @@ struct CountryQuizStatView: View {
                 .foregroundStyle(
                     color(of: stat.quizStat ?? 0)
                 )
+            Image(systemName: "chevron.right")
+                .imageScale(.small)
+                .foregroundStyle(Color(uiColor: .tertiaryLabel))
         }
+        .onTapGesture {
+            navigationModel.navigate(to: NewsDestination.countryDetail(stat.id))
+        }
+        
     }
     
     
@@ -76,5 +84,6 @@ struct CountryQuizStatView: View {
                 )
             )
         )
+        .environmentObject(NavigationModel())
     }
 }

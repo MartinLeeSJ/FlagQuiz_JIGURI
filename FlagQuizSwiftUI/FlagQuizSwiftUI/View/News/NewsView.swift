@@ -42,9 +42,17 @@ struct NewsView: View {
                 Text("userRank")
             case .quizStat:
                 Text("quizStat")
-            case .todayCountry:
-                Text("todayCountry")
+            case .countryDetail(let countryCode):
+                CountryDetailView(
+                    viewModel: .init(
+                        container: container,
+                        countryCode: countryCode
+                    )
+                )
+        
             }
+      
+            
         }
         .environmentObject(viewModel)
         
