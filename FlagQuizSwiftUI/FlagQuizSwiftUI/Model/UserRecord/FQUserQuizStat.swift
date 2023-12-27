@@ -14,4 +14,11 @@ struct FQUserQuizStat: Codable {
     
     var correctCaptialQuizCount: Int
     var captialQuizCount: Int
+    
+    var rank: FQUserRank {
+        .evaluateOnesRank(
+            correctQuizCount: correctCountryQuizCount,
+            totalQuizCount: countryQuizCount
+        )
+    }
 }

@@ -13,6 +13,7 @@ protocol ServiceType {
     var quizRecordService: QuizRecordServiceType { get set }
     var quizStatService: QuizStatServiceType { get set }
     var countryService: CountryServiceType { get set }
+    var countryQuizStatService: CountryQuizStatServiceType { get set }
     var imageCacheService: ImageCacheServiceType { get set }
 }
 
@@ -23,6 +24,7 @@ class Services: ServiceType {
     var quizRecordService: QuizRecordServiceType
     var quizStatService: QuizStatServiceType
     var countryService: CountryServiceType
+    var countryQuizStatService: CountryQuizStatServiceType
     var imageCacheService: ImageCacheServiceType
 
     init() {
@@ -46,6 +48,8 @@ class Services: ServiceType {
             )
         )
         
+        self.countryQuizStatService = CountryQuizStatService(repository: FQCountryQuizStatRepository())
+        
         self.imageCacheService = ImageCacheService(
             imageMemoryStorage: ImageMemoryStorage(),
             imageDiskStorage: ImageDiskStorage()
@@ -60,6 +64,7 @@ class StubService: ServiceType {
     var quizRecordService: QuizRecordServiceType
     var quizStatService: QuizStatServiceType
     var countryService: CountryServiceType
+    var countryQuizStatService: CountryQuizStatServiceType
     var imageCacheService: ImageCacheServiceType
   
     
@@ -69,6 +74,7 @@ class StubService: ServiceType {
         self.quizRecordService = StubQuizRecordService()
         self.quizStatService = StubQuizStatService()
         self.countryService = StubCountryService()
+        self.countryQuizStatService = StubCountryQuizStatService()
         self.imageCacheService = StubImageCacheService()
     }
 }

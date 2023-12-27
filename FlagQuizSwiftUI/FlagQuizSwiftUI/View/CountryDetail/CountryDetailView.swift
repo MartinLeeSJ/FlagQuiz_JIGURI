@@ -142,5 +142,5 @@ struct CountryDetailView: View {
 
 #Preview {
     CountryDetailView(viewModel: .init(container: .init(services: StubService()),
-                                       countryCode: FQCountryISOCode.chooseRandomly(1, except: nil).first!))
+                                       countryCode: FQCountryISOCode.randomCode(of: 1, except: nil).first!))
 }

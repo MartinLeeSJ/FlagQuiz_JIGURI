@@ -8,26 +8,19 @@
 import SwiftUI
 import Combine
 
-enum QuizDestination: Hashable {
-    case quiz
-    case quizResult(FQQuiz)
-    case countryDetail(FQCountryISOCode)
-}
+
 
 final class QuizViewModel: ObservableObject {
     @Published var quiz: FQQuiz = .init(quizCount: 10, quizOptionsCount: 4)
     @Published var isSubmitted: Bool = false
     @Published var countries: [FQCountry] = []
     
-    @Published var destinations: NavigationPath = .init()
     
     private let container: DIContainer
     private var cancellables = Set<AnyCancellable>()
     
     enum Action {
         case setNewQuiz(count: Int, optionCount: Int)
-        case navigate(to: QuizDestination)
-        case backToRoot
         case loadCountryInfo
         case selectQuizOption(_ code: FQCountryISOCode)
         case submit
@@ -46,14 +39,6 @@ final class QuizViewModel: ObservableObject {
         case .setNewQuiz(let count, let optionCount):
             quiz = FQQuiz(quizCount: count, quizOptionsCount: optionCount)
             isSubmitted = false
-            
-        case .navigate(to: let destination):
-            destinations.append(destination)
-            
-        case .backToRoot:
-            while !destinations.isEmpty {
-                destinations.removeLast()
-            }
             
         case .loadCountryInfo:
             loadCountryInfo()
@@ -100,10 +85,11 @@ final class QuizViewModel: ObservableObject {
         }
         
         await addUserQuizStat(userId: userId)
+        await addCountryQuizStat(userId: userId)
         addQuizRecord(userId: userId)
     }
     
-    @MainActor
+    
     private func addUserQuizStat(userId: String) async {
         do {
             try await container.services.quizStatService.addQuizStat(
@@ -122,6 +108,19 @@ final class QuizViewModel: ObservableObject {
             try container.services.quizRecordService.addQuizRecord(ofUser: userId, from: quiz)
         } catch {
             //TODO: Error 처리
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func addCountryQuizStat(userId: String) async {
+        do {
+            let result = quiz.getQuizRoundResult()
+            try await  container.services.countryQuizStatService.updateCountryQuizStats(
+                userId: userId,
+                addingCodes: result.correct,
+                substractingCodes: result.wrong
+            )
+        } catch {
             print(error.localizedDescription)
         }
     }

@@ -10,6 +10,7 @@ import SwiftUI
 struct QuizSubmitButton: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var hapticsManager: HapticsManager
+    @EnvironmentObject private var navigationModel: NavigationModel
     @ObservedObject private var viewModel: QuizViewModel
 
     init(
@@ -37,7 +38,7 @@ struct QuizSubmitButton: View {
                 if isLastQuiz {
                     withAnimation(.smooth) {
                         viewModel.send(.finishQuiz)
-                        viewModel.send(.navigate(to: .quizResult(quiz)))
+                        navigationModel.navigate(to: QuizDestination.quizResult(quiz))
                     }
                 } else {   
                     viewModel.send(.nextQuiz)

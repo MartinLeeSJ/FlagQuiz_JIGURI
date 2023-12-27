@@ -28,7 +28,9 @@ struct FQCountryISOCode: Codable {
     
 }
 
-
+extension FQCountryISOCode: Identifiable {
+    var id: String { numericCode}
+}
 extension FQCountryISOCode: Equatable { }
 
 extension FQCountryISOCode: Hashable {
@@ -38,7 +40,22 @@ extension FQCountryISOCode: Hashable {
 }
 
 extension FQCountryISOCode {
-    static func chooseRandomly(_ count: Int, except: FQCountryISOCode?) -> [FQCountryISOCode] {
+    
+    static func todaysCode() -> FQCountryISOCode? {
+        let calendar = Calendar.current
+        let today = Date.now
+        guard let startOfYear = calendar.dateInterval(of: .year, for: today)?.start,
+              let daySinceStartOfYear: Int = calendar.dateComponents([.day], from: startOfYear, to: today).day else {
+            return nil
+        }
+        
+        let allCountryCount = FQCountryISOCode.safeAllCodesCount
+        let todayIndex = daySinceStartOfYear % allCountryCount
+        return FQCountryISOCode.safeAllCodes[todayIndex]
+        
+    }
+    
+    static func randomCode(of count: Int, except: FQCountryISOCode?) -> [FQCountryISOCode] {
         Array(Self.safeAllCodes.filter {
             if let except {
                 return ($0 != except)

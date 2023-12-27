@@ -28,19 +28,20 @@ enum Tabs: Int, Hashable, CaseIterable {
 
 struct MainTabView: View {
     @EnvironmentObject private var container: DIContainer
-    @EnvironmentObject private var authViewModel: AuthenticationViewModel
+    @EnvironmentObject private var navigationModel: NavigationModel
     @State private var tabSelection: Tabs = .quizSetting
     
     var body: some View {
-        VStack {
+        NavigationStack(path: $navigationModel.destinations) {
             TabView(selection: $tabSelection)  {
                 ForEach(Tabs.allCases, id: \.self) { tab in
                     Group {
                         switch tab {
                         case .quizSetting:
                             QuizSettingView(viewModel: .init(container: container))
-                                
-                        case .news: NewsView()
+                            
+                        case .news:
+                            NewsView(viewModel: .init(container: container))
                         }
                     }
                     .tabItem {
@@ -52,6 +53,7 @@ struct MainTabView: View {
                     
                 }
             }
+            
         }
     }
 }
@@ -59,4 +61,5 @@ struct MainTabView: View {
 #Preview {
     MainTabView()
         .environmentObject(DIContainer(services: StubService()))
+        .environmentObject(NavigationModel())
 }
