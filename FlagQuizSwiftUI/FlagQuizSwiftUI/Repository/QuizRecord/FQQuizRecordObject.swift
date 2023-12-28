@@ -15,3 +15,8 @@ struct FQQuizRecordObject: Codable {
     let quizRounds: [FQQuizRoundRecordObject]
     let createdAt: Timestamp
 }
+
+
+extension FQQuizRecordObject {
+   
+}

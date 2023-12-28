@@ -11,6 +11,8 @@ struct FQQuizRoundRecordObject: Codable {
     let answerCounrtyCode: String
     let submittedCountryCode: String?
     let optionsCountryCodes: [String]
+    let quizType: String?
 }
+
 
 

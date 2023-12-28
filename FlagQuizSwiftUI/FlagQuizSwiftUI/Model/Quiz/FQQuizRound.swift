@@ -11,6 +11,7 @@ struct FQQuizRound {
     let answerCountryCode: FQCountryISOCode
     var submittedCountryCode: FQCountryISOCode?
     let optionsCountryCodes: [FQCountryISOCode]
+    let quizType: FQQuizType?
     
     private let quizOptionsCount: Int
     
@@ -19,6 +20,7 @@ struct FQQuizRound {
         self.quizOptionsCount = quizOptionsCount
         self.optionsCountryCodes = Self.optionsCountryCodes(quizOptionsCount: quizOptionsCount,
                                                            answerCountryCode: answerCountryCode)
+        self.quizType = Self.randomQuizType()
     }
     
     
@@ -31,17 +33,22 @@ struct FQQuizRound {
         
         return options.shuffled()
     }
+    
+    static private func randomQuizType() -> FQQuizType? {
+        FQQuizType.allCases.randomElement()
+    }
 }
 
 extension FQQuizRound: Equatable { }
 extension FQQuizRound: Hashable { }
 
 extension FQQuizRound {
-    func toObject() -> FQQuizRoundRecordObject {
+    func toRecordObject() -> FQQuizRoundRecordObject {
         .init(
             answerCounrtyCode: answerCountryCode.numericCode,
             submittedCountryCode: submittedCountryCode?.numericCode,
-            optionsCountryCodes: optionsCountryCodes.map { $0.numericCode }
+            optionsCountryCodes: optionsCountryCodes.map { $0.numericCode },
+            quizType: quizType?.rawValue
         )
     }
 }

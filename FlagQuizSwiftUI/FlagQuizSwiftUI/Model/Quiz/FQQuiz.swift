@@ -16,6 +16,12 @@ struct FQQuiz {
     private(set) var currentQuizIndex: Int = 0
     
     
+    init(quizCount: Int, quizOptionsCount: Int) {
+        self.quizCount = quizCount
+        self.quizOptionsCount = quizOptionsCount
+        self.quizRounds = Self.createQuizRounds(quizCount: quizCount, quizOptionsCount: quizOptionsCount)
+    }
+    
     var currentQuizRound: FQQuizRound {
         quizRounds[currentQuizIndex]
     }
@@ -61,11 +67,7 @@ struct FQQuiz {
         currentQuizIndex += 1
     }
     
-    init(quizCount: Int, quizOptionsCount: Int) {
-        self.quizCount = quizCount
-        self.quizOptionsCount = quizOptionsCount
-        self.quizRounds = Self.createQuizRounds(quizCount: quizCount, quizOptionsCount: quizOptionsCount)
-    }
+    
 
     static private func createQuizRounds(quizCount: Int, quizOptionsCount: Int) -> [FQQuizRound] {
         FQCountryISOCode.randomCode(of: quizCount, except: nil).map {
@@ -76,14 +78,27 @@ struct FQQuiz {
 
 
 extension FQQuiz {
+    init(
+        quizCount: Int,
+        quizOptionsCount: Int,
+        quizRounds: [FQQuizRound]
+    ) {
+        self.quizCount = quizCount
+        self.quizOptionsCount = quizOptionsCount
+        self.quizRounds = quizRounds
+    }
+    
+    
     func toRecordObject() -> FQQuizRecordObject {
         .init(
             quizCount: quizCount,
             quizOptionsCount: quizOptionsCount,
-            quizRounds: quizRounds.map { $0.toObject() },
+            quizRounds: quizRounds.map { $0.toRecordObject() },
             createdAt: .init(date: .now)
         )
     }
+    
+    
 }
 
 extension FQQuiz: Hashable { }
