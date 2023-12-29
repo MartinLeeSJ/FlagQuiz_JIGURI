@@ -15,3 +15,15 @@ struct FQQuizRecordObject: Codable {
     let quizRounds: [FQQuizRoundRecordObject]
     let createdAt: Timestamp
 }
+
+
+extension FQQuizRecordObject {
+    func toModel() -> FQQuizRecord {
+        .init(
+            quizCount: quizCount,
+            quizOptionsCount: quizOptionsCount,
+            quizRounds: quizRounds.map { $0.toModel() },
+            createdAt: createdAt.dateValue()
+        )
+    }
+}

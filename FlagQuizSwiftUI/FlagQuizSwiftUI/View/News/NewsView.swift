@@ -40,8 +40,10 @@ struct NewsView: View {
                 CountryQuizStatView(viewModel: .init(container: container))
             case .userRank:
                 Text("userRank")
-            case .quizStat:
-                Text("quizStat")
+            case .quizRecord:
+                QuizRecordView(viewModel: .init(container: container))
+            case .quizRecordDetail(let record):
+                Text("navigate to here")
             case .countryDetail(let countryCode):
                 CountryDetailView(
                     viewModel: .init(

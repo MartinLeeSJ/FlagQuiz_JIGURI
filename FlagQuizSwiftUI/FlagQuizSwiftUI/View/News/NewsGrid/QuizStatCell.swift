@@ -29,7 +29,7 @@ struct QuizStatCell: View {
         }
         .gridCellColumns(1)
         .onTapGesture {
-            navigationModel.navigate(to: NewsDestination.quizStat)
+            navigationModel.navigate(to: NewsDestination.quizRecord)
         }
     }
 }

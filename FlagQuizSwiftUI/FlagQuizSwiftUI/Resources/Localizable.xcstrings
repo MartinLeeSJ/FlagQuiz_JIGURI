@@ -643,6 +643,9 @@
         }
       }
     },
+    "navigate to here" : {
+
+    },
     "news.country.quiz.stats.title" : {
       "localizations" : {
         "en" : {
@@ -781,6 +784,55 @@
         }
       }
     },
+    "quiz.record.list.header.badge" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Class"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "등급"
+          }
+        }
+      }
+    },
+    "quiz.record.list.header.date.and.time" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz date"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 푼 시각"
+          }
+        }
+      }
+    },
+    "quiz.record.list.header.score" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Score & Class"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "점수 및 등급"
+          }
+        }
+      }
+    },
     "quiz.result.countries.info.title" : {
       "localizations" : {
         "en" : {
@@ -860,9 +912,6 @@
           }
         }
       }
-    },
-    "quizStat" : {
-
     },
     "quizview.question" : {
       "localizations" : {

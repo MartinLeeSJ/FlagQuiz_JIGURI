@@ -10,6 +10,7 @@ import Foundation
 enum NewsDestination: NavigationDestination {
     case countryQuizStat
     case userRank
-    case quizStat
+    case quizRecord
+    case quizRecordDetail(FQQuizRecord)
     case countryDetail(FQCountryISOCode)
 }
