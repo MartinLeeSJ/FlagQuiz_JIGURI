@@ -38,9 +38,10 @@ final class FQQuizRecordRepository: FQQuizRecordRepositoryType {
                        .document(userId)
                        .collection(CollectionKey.QuizRecord)
                        .order(by: "createdAt", descending: true)
+                       .limit(to: limit)
 
         if let lastDocument {
-            return try await query.start(atDocument: lastDocument)
+            return try await query.start(afterDocument: lastDocument)
                                   .getDocumentsWithSnapshot(as: FQQuizRecordObject.self)
         } else {
             return try await query.getDocumentsWithSnapshot(as: FQQuizRecordObject.self)

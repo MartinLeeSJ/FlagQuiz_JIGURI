@@ -15,6 +15,11 @@ struct FQCountryISOCode: Codable {
         self.numericCode = numericCode
     }
     
+    init?(_ numericCode: String?) {
+        guard let numericCode else { return nil }
+        self.numericCode = numericCode
+    }
+    
     var localizedName: String? {
         if let alpha2 = IsoCountryCodes.find(key: numericCode)?.alpha2 {
             return Locale.current.localizedString(forRegionCode: alpha2)

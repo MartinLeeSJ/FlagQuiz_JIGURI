@@ -11,6 +11,6 @@ enum NewsDestination: NavigationDestination {
     case countryQuizStat
     case userRank
     case quizRecord
-//    case quizRecordDetail(FQQuiz)
+    case quizRecordDetail(FQQuizRecord)
     case countryDetail(FQCountryISOCode)
 }

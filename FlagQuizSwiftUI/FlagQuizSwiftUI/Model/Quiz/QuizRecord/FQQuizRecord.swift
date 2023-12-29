@@ -7,22 +7,28 @@
 
 import Foundation
 
-struct FQQuizRecord: Identifiable {
+struct FQQuizRecord: Identifiable, Hashable {
     let id: String = UUID().uuidString
     let quizCount: Int
     let quizOptionsCount: Int
     let quizRounds: [FQQuizRoundRecord]
     let createdAt: Date
+}
+
+extension FQQuizRecord {
+    var correctQuizCount: Int {
+        quizRounds.reduce(0) { partialResult, record in
+            guard let submittedCountryCode = record.submittedCountryCode else {
+                return partialResult
+            }
+            
+            return record.answerCountryCode == submittedCountryCode ? (partialResult + 1) : partialResult
+        }
+    }
     
-    init(
-        quizCount: Int,
-        quizOptionsCount: Int,
-        quizRounds: [FQQuizRoundRecord],
-        createdAt: Date
-    ) {
-        self.quizCount = quizCount
-        self.quizOptionsCount = quizOptionsCount
-        self.quizRounds = quizRounds
-        self.createdAt = createdAt
+    var score: FQQuizScore {
+        .init(correctQuizCount: correctQuizCount, totalQuizCount: quizCount)
     }
 }
+
+

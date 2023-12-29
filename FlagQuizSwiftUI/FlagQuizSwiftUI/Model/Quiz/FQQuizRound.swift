@@ -15,13 +15,39 @@ struct FQQuizRound {
     
     private let quizOptionsCount: Int
     
-    init(answerCountryCode: FQCountryISOCode, quizOptionsCount: Int) {
+    /// QuizType이 Random인 Initializer
+    /// - Parameters:
+    ///   - answerCountryCode: 정답이 되는 국가의 코드
+    ///   - quizOptionsCount: 퀴즈 선택지 개수
+    init(
+        answerCountryCode: FQCountryISOCode,
+        quizOptionsCount: Int
+    ) {
         self.answerCountryCode = answerCountryCode
         self.quizOptionsCount = quizOptionsCount
         self.optionsCountryCodes = Self.optionsCountryCodes(quizOptionsCount: quizOptionsCount,
                                                            answerCountryCode: answerCountryCode)
         self.quizType = Self.randomQuizType()
     }
+    
+    
+    /// QuizType을 특정해서 Initializer
+    /// - Parameters:
+    ///   - answerCountryCode: 정답이 되는 국가의 코드
+    ///   - quizOptionsCount: 퀴즈 선택지 개수
+    ///   - quizType: 특정 FQQuizType
+    init(
+        answerCountryCode: FQCountryISOCode,
+        quizOptionsCount: Int,
+        quizType: FQQuizType
+    ) {
+        self.answerCountryCode = answerCountryCode
+        self.quizOptionsCount = quizOptionsCount
+        self.optionsCountryCodes = Self.optionsCountryCodes(quizOptionsCount: quizOptionsCount,
+                                                           answerCountryCode: answerCountryCode)
+        self.quizType = quizType
+    }
+    
     
     
     static private func optionsCountryCodes(

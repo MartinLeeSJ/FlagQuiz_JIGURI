@@ -7,18 +7,10 @@
 
 import Foundation
 
-struct FQQuizRoundRecord {
+struct FQQuizRoundRecord: Identifiable, Hashable {
+    let id: String = UUID().uuidString
     let answerCountryCode: FQCountryISOCode
-    let submittedCountryCode: FQCountryISOCode
+    let submittedCountryCode: FQCountryISOCode?
     let optionsCountryCodes: [FQCountryISOCode]
-    
-    init(
-        answerCountryCode: FQCountryISOCode,
-        submittedCountryCode: FQCountryISOCode,
-        optionsCountryCodes: [FQCountryISOCode]
-    ) {
-        self.answerCountryCode = answerCountryCode
-        self.submittedCountryCode = submittedCountryCode
-        self.optionsCountryCodes = optionsCountryCodes
-    }
+    let quizType: FQQuizType?
 }
