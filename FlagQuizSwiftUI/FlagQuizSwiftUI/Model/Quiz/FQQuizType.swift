@@ -13,6 +13,21 @@ enum FQQuizType: String, Hashable, CaseIterable {
     case chooseNameFromFlag
     /// 나라 이름을 보고 국기를 맞추기
     case chooseFlagFromName
-    /// 나라 이름을 보고 수도를 맞추기
-    case chooseCaptialFromName
+    /// 국기를 보고 수도를 맞추기
+    case chooseCaptialFromFlag
+    
+    case random
+    
+    var localizedTitle: String {
+        switch self {
+        case .chooseNameFromFlag:
+            String(localized: "quizType.choose.name.from.flag.title")
+        case .chooseFlagFromName:
+            String(localized: "quizType.choose.flag.from.name.title")
+        case .chooseCaptialFromFlag:
+            String(localized: "quizType.choose.capital.from.flag.title")
+        case .random:
+            String(localized: "quizType.random.title")
+        }
+    }
 }

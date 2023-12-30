@@ -1,19 +1,16 @@
 //
-//  QuizOptionsGrid.swift
+//  QuizOptions.swift
 //  FlagQuizSwiftUI
 //
 //  Created by Martin on 12/20/23.
 //
 
 import SwiftUI
-import IsoCountryCodes
+import Combine
 
-struct QuizOptionsGrid: View {
-    @ObservedObject private var viewModel: QuizViewModel
-    
-    init(viewModel: QuizViewModel) {
-        self.viewModel = viewModel
-    }
+struct QuizOptions: View {
+    @EnvironmentObject private var container: DIContainer
+    @EnvironmentObject private var viewModel: QuizViewModel
     
     private var quiz: FQQuiz {
         viewModel.quiz
@@ -33,11 +30,6 @@ struct QuizOptionsGrid: View {
         )
     }
     
-    private func countryName(of code: FQCountryISOCode) -> String {
-        let alpha2: String = IsoCountryCodes.find(key: code.numericCode)?.alpha2 ?? ""
-        return Locale.current.localizedString(forRegionCode: alpha2) ?? ""
-    }
-    
     var body: some View {
         LazyVGrid(columns: columns, spacing: 8) {
             ForEach(
@@ -48,19 +40,24 @@ struct QuizOptionsGrid: View {
                     optionsResultButton(of: code)
                 } else {
                     optionsButton(of: code)
-                        .animation(.smooth, value: currentQuizRound.submittedCountryCode)
                 }
+            }
+        }
+        .onReceive(Just(currentQuizRound)){ quizRound in
+            guard let quizType = currentQuizRound.quizType else { return }
+            if quizType == .chooseCaptialFromFlag {
+                viewModel.send(.loadOptionsCountryInfo(quizRound.optionsCountryCodes))
             }
         }
         .frame(minHeight: 208)
         .padding(.horizontal)
     }
-    
+
     private func optionsButton(of code: FQCountryISOCode) -> some View {
         Button {
             viewModel.send(.selectQuizOption(code))
         } label: {
-            Text(countryName(of: code))
+            optionButtonLabel(of: code)
         }
         .buttonStyle(
             QuizOptionButtonStyle(isSelected: currentQuizRound.submittedCountryCode == code)
@@ -80,12 +77,41 @@ struct QuizOptionsGrid: View {
         return Button {
             
         } label: {
-            Text(countryName(of: code))
+            optionButtonLabel(of: code)
         }
         .buttonStyle(
             QuizOptionResultButtonStyle(submission: submission)
         )
         .id(UUID())
+    }
+    
+    private func optionButtonLabel(of code: FQCountryISOCode) -> some View {
+        let quizType = currentQuizRound.quizType ?? .chooseNameFromFlag
+        
+        return Group {
+            switch quizType {
+            case .chooseNameFromFlag:
+                Text(code.localizedName ?? "-")
+            case .chooseFlagFromName:
+                Text(code.flagEmoji ?? "-")
+                    .font(.title)
+            case .chooseCaptialFromFlag:
+                capitalOptionButtonLabel(of: code)
+            case .random:
+                EmptyView()
+            }
+        }
+    }
+    
+    private func capitalOptionButtonLabel(of code: FQCountryISOCode) -> some View {
+        return Group {
+            if let country = viewModel.optionsCountries.first(where: { $0.id == code }),
+               let capitals = country.capitals  {
+                Text(capitals.joined(separator: ", "))
+            } else {
+                ProgressView()
+            }
+        }
     }
 }
 

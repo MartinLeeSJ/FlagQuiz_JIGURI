@@ -36,7 +36,8 @@ extension CountryObject {
             id: .init(ccn3),
             name: .init(common: name.common, official: name.official),
             flagLinks: .init(png: flags["png"], svg: flags["svg"], alt: flags["alt"]),
-            continents: continents.compactMap { .init(rawValue: $0) }
+            continents: continents.compactMap { .init(rawValue: $0) },
+            capitals: capital
         )
     }
     

@@ -23,6 +23,16 @@
     "advertisement" : {
 
     },
+    "Cancel" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "취소"
+          }
+        }
+      }
+    },
     "correct.quiz.count %lld" : {
       "localizations" : {
         "en" : {
@@ -680,6 +690,12 @@
     },
     "news.today.country.title" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today's Country Or State"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -784,23 +800,6 @@
         }
       }
     },
-    "quiz.record.list.header.badge" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Class"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "등급"
-          }
-        }
-      }
-    },
     "quiz.record.list.header.date.and.time" : {
       "localizations" : {
         "en" : {
@@ -897,6 +896,22 @@
         }
       }
     },
+    "quizIntro.quizTypeMenu.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Type"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 타입"
+          }
+        }
+      }
+    },
     "quizSetting.intro" : {
       "localizations" : {
         "en" : {
@@ -913,7 +928,103 @@
         }
       }
     },
-    "quizview.question" : {
+    "quizType.choose.capital.from.flag.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guess Capital From Flags"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "국기보고 수도 맞추기"
+          }
+        }
+      }
+    },
+    "quizType.choose.flag.from.name.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guess Flag From Names"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이름보고 국기 맞추기"
+          }
+        }
+      }
+    },
+    "quizType.choose.name.from.flag.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guess Name From Flags"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "국기보고 이름 맞추기"
+          }
+        }
+      }
+    },
+    "quizType.random.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "랜덤"
+          }
+        }
+      }
+    },
+    "quizview.question.chooseCaptialFromFlag" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is the capital of this country or state?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "국가 혹은 지역의 수도는 어디일까요?"
+          }
+        }
+      }
+    },
+    "quizview.question.chooseFlagFromName" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is the flag of this country or state?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 국가 혹은 지역의 깃발은 무엇일까요?"
+          }
+        }
+      }
+    },
+    "quizview.question.chooseNameFromFlag" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -924,7 +1035,17 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이 깃발이 나타내는 국기 혹은 지역은 다음 중 어느 곳일까요?"
+            "value" : "이 깃발이 나타내는 국가 혹은 지역은 다음 중 어느 곳일까요?"
+          }
+        }
+      }
+    },
+    "really.quit.quiz" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈를 종료 하시겠습니까?"
           }
         }
       }

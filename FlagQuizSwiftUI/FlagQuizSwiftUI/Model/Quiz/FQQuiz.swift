@@ -12,14 +12,24 @@ struct FQQuiz {
     let quizCount: Int
     let quizOptionsCount: Int
     
+    
     var quizRounds: [FQQuizRound]
     private(set) var currentQuizIndex: Int = 0
     
     
-    init(quizCount: Int, quizOptionsCount: Int) {
+    init(
+        quizCount: Int,
+        quizOptionsCount: Int,
+        quizType: FQQuizType
+    ) {
         self.quizCount = quizCount
         self.quizOptionsCount = quizOptionsCount
-        self.quizRounds = Self.createQuizRounds(quizCount: quizCount, quizOptionsCount: quizOptionsCount)
+        self.quizRounds = Self.createQuizRounds(
+            quizCount: quizCount,
+            quizOptionsCount: quizOptionsCount,
+            quizType: quizType
+        )
+        
     }
     
     var currentQuizRound: FQQuizRound {
@@ -69,9 +79,9 @@ struct FQQuiz {
     
     
 
-    static private func createQuizRounds(quizCount: Int, quizOptionsCount: Int) -> [FQQuizRound] {
+    static private func createQuizRounds(quizCount: Int, quizOptionsCount: Int, quizType: FQQuizType) -> [FQQuizRound] {
         FQCountryISOCode.randomCode(of: quizCount, except: nil).map {
-            FQQuizRound(answerCountryCode: $0, quizOptionsCount: quizOptionsCount)
+            FQQuizRound(answerCountryCode: $0, quizOptionsCount: quizOptionsCount, quizType: quizType)
         }
     }
 }

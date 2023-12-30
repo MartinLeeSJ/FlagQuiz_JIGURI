@@ -11,13 +11,8 @@ struct QuizSubmitButton: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var hapticsManager: HapticsManager
     @EnvironmentObject private var navigationModel: NavigationModel
-    @ObservedObject private var viewModel: QuizViewModel
+    @EnvironmentObject private var viewModel: QuizViewModel
 
-    init(
-        viewModel: QuizViewModel
-    ) {
-        self.viewModel = viewModel
-    }
     
     private var quiz: FQQuiz {
         viewModel.quiz

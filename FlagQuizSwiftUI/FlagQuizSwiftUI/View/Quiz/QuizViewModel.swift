@@ -11,17 +11,18 @@ import Combine
 
 
 final class QuizViewModel: ObservableObject {
-    @Published var quiz: FQQuiz = .init(quizCount: 10, quizOptionsCount: 4)
+    @Published var quiz: FQQuiz = .init(quizCount: 10, quizOptionsCount: 4, quizType: .chooseNameFromFlag)
     @Published var isSubmitted: Bool = false
     @Published var countries: [FQCountry] = []
-    
+    @Published var optionsCountries: [FQCountry] = []
     
     private let container: DIContainer
     private var cancellables = Set<AnyCancellable>()
     
     enum Action {
-        case setNewQuiz(count: Int, optionCount: Int)
+        case setNewQuiz(count: Int, optionCount: Int, quizType: FQQuizType)
         case loadCountryInfo
+        case loadOptionsCountryInfo([FQCountryISOCode])
         case selectQuizOption(_ code: FQCountryISOCode)
         case submit
         case nextQuiz
@@ -36,12 +37,15 @@ final class QuizViewModel: ObservableObject {
     
     func send(_ action: Action) {
         switch action {
-        case .setNewQuiz(let count, let optionCount):
-            quiz = FQQuiz(quizCount: count, quizOptionsCount: optionCount)
+        case .setNewQuiz(let count, let optionCount, let quizType):
+            quiz = FQQuiz(quizCount: count, quizOptionsCount: optionCount, quizType: quizType)
             isSubmitted = false
-            
+                        
         case .loadCountryInfo:
-            loadCountryInfo()
+            loadCountryInfo(codes: quiz.quizRounds.map { $0.answerCountryCode })
+            
+        case .loadOptionsCountryInfo(let codes):
+            loadOptionsCountryInfo(of: codes)
             
         case .selectQuizOption(let code):
            selectQuizOption(of: code)
@@ -60,8 +64,8 @@ final class QuizViewModel: ObservableObject {
         }
     }
     
-    private func loadCountryInfo() {
-        container.services.countryService.getCountries(ofCodes: quiz.quizRounds.map { $0.answerCountryCode })
+    private func loadCountryInfo(codes: [FQCountryISOCode]) {
+        container.services.countryService.getCountries(ofCodes: codes)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 if case .failure(let error) = completion {
@@ -69,6 +73,24 @@ final class QuizViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] countries in
                 self?.countries = countries
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func loadOptionsCountryInfo(of codes: [FQCountryISOCode]) {
+        guard optionsCountries.map({ $0.id }) != codes else {
+            print("Already Fetched")
+            return
+        }
+        
+        container.services.countryService.getCountries(ofCodes: codes)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] countries in
+                self?.optionsCountries = countries
             }
             .store(in: &cancellables)
     }

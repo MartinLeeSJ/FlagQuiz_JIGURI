@@ -59,7 +59,7 @@ struct QuizResultView: View {
 }
 
 #Preview {
-    QuizResultView(quizResult: .init(quizCount: 10, quizOptionsCount: 3))
+    QuizResultView(quizResult: .init(quizCount: 10, quizOptionsCount: 3, quizType: .random))
         .environmentObject(QuizViewModel(container: .init(services: StubService())))
         .environmentObject(NavigationModel())
 }

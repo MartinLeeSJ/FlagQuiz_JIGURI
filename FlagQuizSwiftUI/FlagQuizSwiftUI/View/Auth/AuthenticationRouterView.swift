@@ -10,6 +10,7 @@ import SwiftUI
 struct AuthenticationRouterView: View {
     @StateObject private var authViewModel: AuthenticationViewModel
     @EnvironmentObject private var hapticsManager: HapticsManager
+    
     init(authViewModel: AuthenticationViewModel) {
         self._authViewModel = StateObject(wrappedValue: authViewModel)
     }

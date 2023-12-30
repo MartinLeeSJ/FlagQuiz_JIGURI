@@ -26,6 +26,7 @@ struct QuizSettingView: View {
     
     @State private var quizCount: QuizCount = .ten
     @State private var quizItemCount: QuizItemCount = .four
+    @State private var quizType: FQQuizType = .chooseNameFromFlag
     
     init(viewModel: QuizViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -47,14 +48,21 @@ struct QuizSettingView: View {
                 Spacer()
                 
                 Divider()
+                
+                quizTypeMenu
             
                 quizCountPicker
                 
                 quizItemCountPicker
                 
                 Button {
-                    viewModel.send(.setNewQuiz(count: quizCount.rawValue,
-                                               optionCount: quizItemCount.rawValue))
+                    viewModel.send(
+                        .setNewQuiz(
+                            count: quizCount.rawValue,
+                            optionCount: quizItemCount.rawValue,
+                            quizType: quizType
+                        )
+                    )
                     navigationModel.navigate(to: QuizDestination.quiz)
                 } label: {
                     Text("start.quiz")
@@ -120,6 +128,30 @@ struct QuizSettingView: View {
         }
         .padding(.horizontal)
     }
+    
+    private var quizTypeMenu: some View {
+        HStack {
+            Text("quizIntro.quizTypeMenu.title")
+            
+            Spacer()
+            
+            Menu(quizType.localizedTitle) {
+                ForEach(FQQuizType.allCases, id: \.self) { quizType in
+                    Button {
+                        self.quizType = quizType
+                    } label: {
+                        Text(quizType.localizedTitle)
+                    }
+                }
+            }
+            .menuStyle(.button)
+            
+            
+        }
+        .padding(.horizontal)
+    }
+    
+    
 }
 
 
