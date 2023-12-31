@@ -36,18 +36,17 @@ struct QuizAnswer: View {
     var body: some View {
         ZStack {
             switch quizType {
-            case .chooseNameFromFlag, .chooseCaptialFromFlag:
-                URLImageView(flagImageUrl?.absoluteString) {
-                    Text(answerCountryFlagEmoji)
-                        .font(.system(size: 96))
+            case .chooseNameFromFlag:
+              flagImage
+                
+            case .chooseCaptialFromFlag:
+                VStack {
+                    flagImage
+                    countryNameText
                 }
-                .scaledToFit()
-                .frame(maxHeight: 100)
                 
             case .chooseFlagFromName:
-                Text(currentQuizRound.answerCountryCode.localizedName ?? "Error has been occured")
-                    .font(.title3)
-                    .fontWeight(.medium)
+                countryNameText
             
             case .random:
                 EmptyView()
@@ -58,6 +57,21 @@ struct QuizAnswer: View {
         .frame(maxWidth: .infinity)
         .background(.thinMaterial, in: Rectangle())
         .padding(.bottom, 16)
+    }
+    
+    private var flagImage: some View {
+        URLImageView(flagImageUrl?.absoluteString) {
+            Text(answerCountryFlagEmoji)
+                .font(.system(size: 96))
+        }
+        .scaledToFit()
+        .frame(maxHeight: 100)
+    }
+    
+    private var countryNameText: some View {
+        Text(currentQuizRound.answerCountryCode.localizedName ?? "Error has been occured")
+            .font(.title3)
+            .fontWeight(.medium)
     }
 }
 

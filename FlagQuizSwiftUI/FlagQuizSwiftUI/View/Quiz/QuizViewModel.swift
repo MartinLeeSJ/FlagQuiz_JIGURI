@@ -79,7 +79,6 @@ final class QuizViewModel: ObservableObject {
     
     private func loadOptionsCountryInfo(of codes: [FQCountryISOCode]) {
         guard optionsCountries.map({ $0.id }) != codes else {
-            print("Already Fetched")
             return
         }
         

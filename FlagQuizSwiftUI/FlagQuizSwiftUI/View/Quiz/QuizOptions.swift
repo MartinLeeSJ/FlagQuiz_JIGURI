@@ -109,7 +109,8 @@ struct QuizOptions: View {
                let capitals = country.capitals  {
                 Text(capitals.joined(separator: ", "))
             } else {
-                ProgressView()
+                Text("placeholder")
+                    .redacted(reason: .placeholder)
             }
         }
     }
