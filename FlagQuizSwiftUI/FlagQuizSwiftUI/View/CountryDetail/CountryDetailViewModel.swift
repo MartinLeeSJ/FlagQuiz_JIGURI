@@ -63,7 +63,7 @@ final class CountryDetailViewModel: ObservableObject {
     }
     
     private func openInMaps() {
-        guard let localizedName = countryDetail?.id.localizedName else { return }
+//        guard let localizedName = countryDetail?.id.localizedName else { return }
         let mapsURL: URL? = URL(
             string: "maps://?ll=\(region.center.latitude),\(region.center.longitude)&spn=\(region.span)"
         )

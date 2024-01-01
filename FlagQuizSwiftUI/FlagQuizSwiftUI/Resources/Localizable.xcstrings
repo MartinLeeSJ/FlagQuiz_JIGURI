@@ -4,6 +4,16 @@
     "%lld" : {
 
     },
+    "%lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
     "%lld.out.of.%lld.problems" : {
       "localizations" : {
         "en" : {
@@ -29,6 +39,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "취소"
+          }
+        }
+      }
+    },
+    "correct.%lld.total.%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct: %1$lld Total: %2$lld"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정답 %1$lld문제 / 총 %2$lld문제"
           }
         }
       }
@@ -653,9 +679,6 @@
         }
       }
     },
-    "navigate to here" : {
-
-    },
     "news.country.quiz.stats.title" : {
       "localizations" : {
         "en" : {
@@ -732,6 +755,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "다음 퀴즈"
+          }
+        }
+      }
+    },
+    "no.data" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Data"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-"
           }
         }
       }
@@ -835,6 +874,38 @@
         }
       }
     },
+    "quiz.records.summary.quiz.result.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Score"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 점수"
+          }
+        }
+      }
+    },
+    "quiz.records.summary.submission.time.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Time"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈를 푼 시간"
+          }
+        }
+      }
+    },
     "quiz.result.countries.info.title" : {
       "localizations" : {
         "en" : {
@@ -863,6 +934,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퀴즈 기록"
+          }
+        }
+      }
+    },
+    "quiz.round.records.answer.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Answer"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정답"
+          }
+        }
+      }
+    },
+    "quiz.round.records.quiz.options.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Options"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 선택지"
+          }
+        }
+      }
+    },
+    "quiz.round.records.submission.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submission"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제출"
           }
         }
       }
@@ -931,6 +1050,22 @@
         }
       }
     },
+    "quizType.choose.capital.from.flag.shortened.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capital"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "수도"
+          }
+        }
+      }
+    },
     "quizType.choose.capital.from.flag.title" : {
       "localizations" : {
         "en" : {
@@ -943,6 +1078,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "국기보고 수도 맞추기"
+          }
+        }
+      }
+    },
+    "quizType.choose.flag.from.name.shortened.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name → Flag"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이름 → 국기"
           }
         }
       }
@@ -963,6 +1114,22 @@
         }
       }
     },
+    "quizType.choose.name.from.flag.shortened.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flag → Name"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "국기 → 이름"
+          }
+        }
+      }
+    },
     "quizType.choose.name.from.flag.title" : {
       "localizations" : {
         "en" : {
@@ -975,6 +1142,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "국기보고 이름 맞추기"
+          }
+        }
+      }
+    },
+    "quizType.random.shortened.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "랜덤"
           }
         }
       }
@@ -1045,9 +1228,15 @@
     },
     "really.quit.quiz" : {
       "localizations" : {
-        "ko" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Do you really quit?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "퀴즈를 종료 하시겠습니까?"
           }
         }
@@ -1148,9 +1337,6 @@
           }
         }
       }
-    },
-    "userRank" : {
-
     },
     "will.open.in.maps.question" : {
       "localizations" : {

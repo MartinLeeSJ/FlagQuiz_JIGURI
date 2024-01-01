@@ -30,4 +30,17 @@ enum FQQuizType: String, Hashable, CaseIterable {
             String(localized: "quizType.random.title")
         }
     }
+    
+    var localizedShortenedTitle: String {
+        switch self {
+        case .chooseNameFromFlag:
+            String(localized: "quizType.choose.name.from.flag.shortened.title")
+        case .chooseFlagFromName:
+            String(localized: "quizType.choose.flag.from.name.shortened.title")
+        case .chooseCaptialFromFlag:
+            String(localized: "quizType.choose.capital.from.flag.shortened.title")
+        case .random:
+            String(localized: "quizType.random.shortened.title")
+        }
+    }
 }
