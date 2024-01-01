@@ -29,7 +29,7 @@ struct CountryDetailView: View {
                 ProgressView()
             }
         }
-        .onAppear {
+        .task {
             viewModel.send(.load)
         }
         

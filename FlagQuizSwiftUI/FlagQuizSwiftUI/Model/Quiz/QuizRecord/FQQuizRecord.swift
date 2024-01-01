@@ -16,7 +16,7 @@ struct FQQuizRecord: Identifiable, Hashable {
 }
 
 extension FQQuizRecord {
-    var correctQuizCount: Int {
+    private func correctQuizCount(of quizRounds: [FQQuizRoundRecord]) -> Int {
         quizRounds.reduce(0) { partialResult, record in
             guard let submittedCountryCode = record.submittedCountryCode else {
                 return partialResult
@@ -26,8 +26,24 @@ extension FQQuizRecord {
         }
     }
     
+    private func quizRoundsByType(_ expecting: FQQuizType) -> [FQQuizRoundRecord] {
+        quizRounds.filter {
+            guard let quizType = $0.quizType else { return false }
+            return quizType == expecting
+        }
+    }
+    
+    public func quizResultByType(_ expecting: FQQuizType) -> String {
+        let rounds: [FQQuizRoundRecord] = quizRoundsByType(expecting)
+        guard !rounds.isEmpty else { return String(localized: "no.data") }
+        
+        let correctQuizCount: Int = correctQuizCount(of: rounds)
+        
+        return String(localized: "\(correctQuizCount) / \(rounds.count)")
+    }
+    
     var score: FQQuizScore {
-        .init(correctQuizCount: correctQuizCount, totalQuizCount: quizCount)
+        .init(correctQuizCount: correctQuizCount(of: quizRounds), totalQuizCount: quizCount)
     }
 }
 

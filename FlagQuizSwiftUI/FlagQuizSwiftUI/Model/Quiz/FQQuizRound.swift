@@ -15,41 +15,29 @@ struct FQQuizRound {
     
     private let quizOptionsCount: Int
     
-    /// QuizType이 Random인 Initializer
-    /// - Parameters:
-    ///   - answerCountryCode: 정답이 되는 국가의 코드
-    ///   - quizOptionsCount: 퀴즈 선택지 개수
-    init(
-        answerCountryCode: FQCountryISOCode,
-        quizOptionsCount: Int
-    ) {
-        self.answerCountryCode = answerCountryCode
-        self.quizOptionsCount = quizOptionsCount
-        self.optionsCountryCodes = Self.optionsCountryCodes(quizOptionsCount: quizOptionsCount,
-                                                           answerCountryCode: answerCountryCode)
-        self.quizType = Self.randomQuizType()
-    }
-    
     
     /// QuizType을 특정해서 Initializer
     /// - Parameters:
     ///   - answerCountryCode: 정답이 되는 국가의 코드
     ///   - quizOptionsCount: 퀴즈 선택지 개수
-    ///   - quizType: 특정 FQQuizType
+    ///   - quizType: 특정 FQQuizType:  가본값은 .chooseNameFromFlag
     init(
         answerCountryCode: FQCountryISOCode,
         quizOptionsCount: Int,
-        quizType: FQQuizType
+        quizType: FQQuizType? = .chooseNameFromFlag
     ) {
         self.answerCountryCode = answerCountryCode
         self.quizOptionsCount = quizOptionsCount
         self.optionsCountryCodes = Self.optionsCountryCodes(quizOptionsCount: quizOptionsCount,
                                                            answerCountryCode: answerCountryCode)
-        self.quizType = quizType
+        if quizType == nil {
+            self.quizType = .chooseNameFromFlag
+        } else {
+            self.quizType = quizType == .random ? Self.randomQuizType() : quizType
+        }
+        
     }
-    
-    
-    
+
     static private func optionsCountryCodes(
         quizOptionsCount: Int,
         answerCountryCode: FQCountryISOCode
@@ -61,7 +49,7 @@ struct FQQuizRound {
     }
     
     static private func randomQuizType() -> FQQuizType? {
-        FQQuizType.allCases.randomElement()
+        FQQuizType.allCases.filter { $0 != .random }.randomElement()
     }
 }
 

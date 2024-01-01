@@ -9,51 +9,37 @@ import SwiftUI
 import IsoCountryCodes
 
 struct QuizView: View {
+    @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var viewModel: QuizViewModel
+    
+    @State private var isReallyQuitAlertOn: Bool = false
 
     private var currentQuizRound: FQQuizRound {
         viewModel.quiz.currentQuizRound
     }
     
-    private var answerCountryFlagEmoji: String {
-        let code = currentQuizRound.answerCountryCode.numericCode
-        return IsoCountryCodes.find(key: code)?.flag ?? "정보없음"
-    }
-    
-    private var flagImageUrl: URL? {
-        if let country = viewModel.countries.first(where: {
-            $0.id == currentQuizRound.answerCountryCode
-        }) {
-            return country.flagLinks.pngURL
-        }
-        return nil
-    }
-    
-    
     var body: some View {
-        
         VStack(spacing: 0) {
-            flagImage
+            Spacer()
             
-            quizQuestion
+            QuizAnswer()
             
-            QuizOptionsGrid(viewModel: viewModel)
+            QuizQuestion()
             
-            QuizSubmitButton(viewModel: viewModel)
+            QuizOptions()
+            
+            QuizSubmitButton()
                 .animation(.smooth, value: viewModel.isSubmitted)
                 .padding()
         }
-        .onChange(of: currentQuizRound) { value in
-            
-        }
-        .onAppear {
+        .task {
             viewModel.send(.loadCountryInfo)
         }
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    
+                    isReallyQuitAlertOn = true
                 } label: {
                     Text("Quit")
                 }
@@ -66,53 +52,25 @@ struct QuizView: View {
             }
             
         }
-        
-    }
-    
-    @ViewBuilder
-    private var flagImage: some View {
-        Spacer()
-        
-        ZStack {
-            URLImageView(flagImageUrl?.absoluteString) {
-                Text(answerCountryFlagEmoji)
-                    .font(.system(size: 96))
+        .alert("really.quit.quiz", isPresented: $isReallyQuitAlertOn) {
+            Button {
+                navigationModel.toRoot()
+            } label: {
+                Text("Quit")
+                    .foregroundStyle(Color.red)
             }
-            .scaledToFit()
-            .frame(maxHeight: 100)
+            
+            Button {
+                isReallyQuitAlertOn = false
+            } label: {
+                Text("Cancel")
+            }
         }
-        .frame(minHeight: 180, idealHeight: 180, maxHeight: 200)
-        .frame(maxWidth: .infinity)
-        .background(.thinMaterial, in: Rectangle())
-        .padding(.bottom, 16)
+        
     }
     
-    private var quizQuestion: some View {
-        HStack {
-            Text("Q\(viewModel.quiz.currentQuizIndex + 1)")
-                .padding()
-                .background(.ultraThinMaterial,
-                            in: RoundedRectangle(cornerRadius: 8))
-                .padding(.trailing)
-            
-            Text("quizview.question")
-                .frame(maxWidth: .infinity)
-                .multilineTextAlignment(.leading)
-        }
-        .font(.subheadline)
-        .padding()
-        .background(.thickMaterial,
-                    in: Rectangle())
-        .overlay(alignment: .bottom) {
-            let current = Float(viewModel.quiz.currentQuizIndex)
-            let total = Float(viewModel.quiz.quizCount)
-            
-            ProgressView(value: .init(current/total))
-                .animation(.easeIn(duration: 1.5), value: viewModel.quiz.currentQuizIndex)
-                .progressViewStyle(.linear)
-        }
-        .padding(.vertical)
-    }
+ 
+    
     
     private var scoreView: some View {
          VStack(alignment: .leading) {
@@ -151,12 +109,15 @@ struct QuizView: View {
 
 
 #Preview {
-    @StateObject var viewModel: QuizViewModel = .init(container: .init(services: StubService()))
+    @StateObject var viewModel: QuizViewModel = .init(
+        container: .init(services: StubService())
+    )
     
-    viewModel.send(.setNewQuiz(count: 10, optionCount: 3))
+    viewModel.send(.setNewQuiz(count: 10, optionCount: 3, quizType: .random))
     
     return NavigationStack {
         QuizView()
             .environmentObject(viewModel)
+            .environmentObject(NavigationModel())
     }
 }

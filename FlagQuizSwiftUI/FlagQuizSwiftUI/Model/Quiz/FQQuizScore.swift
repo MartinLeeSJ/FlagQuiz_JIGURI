@@ -27,6 +27,10 @@ struct FQQuizScore: Codable {
         return "\(correctQuizCount) / \(totalQuizCount)"
     }
     
+    var scoreDescription: String {
+        return String(localized: "correct.\(correctQuizCount).total.\(totalQuizCount)")
+    }
+    
     init(correctQuizCount: Int, totalQuizCount: Int) {
         self.correctQuizCount = correctQuizCount
         self.totalQuizCount = totalQuizCount
