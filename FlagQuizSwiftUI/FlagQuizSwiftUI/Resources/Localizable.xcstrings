@@ -1236,7 +1236,7 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "퀴즈를 종료 하시겠습니까?"
           }
         }
