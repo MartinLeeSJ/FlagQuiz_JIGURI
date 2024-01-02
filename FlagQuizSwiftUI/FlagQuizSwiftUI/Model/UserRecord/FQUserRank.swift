@@ -14,19 +14,19 @@ enum FQUserRank: Int, CaseIterable {
     case bronze = 1
     /// totalQuizCount >= 75, Accuracy Rate >= 70%
     case silver = 2
-    /// totalQuizCount >= 150, Accuracy Rate >= 75%
+    /// totalQuizCount >= 500, Accuracy Rate >= 75%
     case gold = 3
-    /// totalQuizCount >= 300, Accuracy Rate >= 80%
+    /// totalQuizCount >= 1000, Accuracy Rate >= 80%
     case neighborhoodInfluencer = 4
-    /// totalQuizCount >= 450, Accuracy Rate >= 85%
+    /// totalQuizCount >= 2000, Accuracy Rate >= 85%
     case urbanInfluencer = 5
-    /// totalQuizCount >= 600, Accuracy Rate >= 90%
+    /// totalQuizCount >= 4000, Accuracy Rate >= 90%
     case countrywideInfluencer = 6
-    /// totalQuizCount >= 900, Accuracy Rate >= 95%
+    /// totalQuizCount >= 4000, Accuracy Rate >= 95%
     case continentalInfluencer = 7
-    /// totalQuizCount >= 900, Accuracy Rate >= 99%
+    /// totalQuizCount >= 4000, Accuracy Rate >= 99%
     case worldwideInfluencer = 8
-    /// totalQuizCount >= 900, Accuracy Rate >= 99.5%
+    /// totalQuizCount >= 4000, Accuracy Rate >= 99.5%
     case earthGuru = 9
     
     static func evaluateOnesRank(correctQuizCount: Int, totalQuizCount: Int) -> FQUserRank {
@@ -36,19 +36,19 @@ enum FQUserRank: Int, CaseIterable {
         let accuracyRate: Double = Double(floor(100 * accuracyNumber) / 100)
         
         switch (totalQuizCount, accuracyRate) {
-        case (900..., 0.995...1.00) :
+        case (4000..., 0.995...1.00) :
             return .earthGuru
-        case (900..., 0.99...0.995) :
+        case (4000..., 0.99...0.995) :
             return .worldwideInfluencer
-        case (900..., 0.95...0.99) :
+        case (4000..., 0.95...0.99) :
             return .continentalInfluencer
-        case (600..., 0.9...):
+        case (4000..., 0.9...):
             return .countrywideInfluencer
-        case (450..., 0.85...):
+        case (2000..., 0.85...):
             return .urbanInfluencer
-        case (300..., 0.8...):
+        case (1000..., 0.8...):
             return .neighborhoodInfluencer
-        case (150..., 0.75...):
+        case (500..., 0.75...):
             return .gold
         case (75..., 0.7...):
             return .silver
