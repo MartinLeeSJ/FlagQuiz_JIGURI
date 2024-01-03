@@ -39,12 +39,12 @@ struct AllRankInfoView: View {
                     Text("Lv. \(rank.rawValue)")
                         .fontWeight(.bold)
                     Text(rank.localizedRankName)
+                        .redacted(
+                            reason: userQuizStat.rank.rawValue >= rank.rawValue ? .privacy : .placeholder
+                        )
                 }
                 .font(.subheadline)
-                .redacted(
-                    reason: userQuizStat.rank.rawValue >= rank.rawValue ? .privacy : .placeholder
-                )
-   
+                
                 Image(rank.medalImageName)
                     .resizable()
                     .scaledToFit()

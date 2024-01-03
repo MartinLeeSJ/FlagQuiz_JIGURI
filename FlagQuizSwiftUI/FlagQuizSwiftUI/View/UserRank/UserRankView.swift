@@ -62,7 +62,7 @@ struct UserRankView: View {
      
             VStack(alignment: .leading) {
                 Text("user.rank.view.quiz.count.progress.title")
-                    .font(.subheadline)
+                    .font(.caption)
                 UserRankProgressView(
                     min: Double(rank.rankUpQuizCountCriteria.min),
                     minValueText: "\(rank.rankUpQuizCountCriteria.min)",
@@ -75,7 +75,7 @@ struct UserRankView: View {
             
             VStack(alignment: .leading) {
                 Text("user.rank.view.quiz.accuracy.progress.title")
-                    .font(.subheadline)
+                    .font(.caption)
                 UserRankProgressView(
                     min: rank.rankUpAccuracyCriteria.min,
                     minValueText: String(format: "%.1f", rank.rankUpAccuracyCriteria.min * 100) + "%",
