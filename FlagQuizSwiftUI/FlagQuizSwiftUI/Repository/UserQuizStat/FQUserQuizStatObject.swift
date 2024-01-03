@@ -13,22 +13,37 @@ struct FQUserQuizStatObject: Codable {
     var correctCountryQuizCount: Int
     var countryQuizCount: Int
     
-    var correctCaptialQuizCount: Int
-    var captialQuizCount: Int
+    var correctCapitalQuizCount: Int?
+    var capitalQuizCount: Int?
+    
+    var correctFlagToNameQuizCount: Int?
+    var flagToNameQuizCount: Int?
+    
+    var correctNameToFlagQuizCount: Int?
+    var nameToFlagQuizCount: Int?
     
     var lastUpdated: Timestamp
+    
     
     init(
         correctCountryQuizCount: Int = 0,
         countryQuizCount: Int = 0,
-        correctCaptialQuizCount: Int = 0,
-        captialQuizCount: Int = 0,
+        correctCaptialQuizCount: Int? = nil,
+        captialQuizCount: Int? = nil,
+        correctFlagToNameQuizCount: Int? = nil,
+        flagToNameQuizCount: Int? = nil,
+        correctNameToFlagQuizCount: Int? = nil,
+        nameToFlagQuizCount: Int? = nil,
         lastUpdated: Timestamp = .init(date: Date.now)
     ) {
         self.correctCountryQuizCount = correctCountryQuizCount
         self.countryQuizCount = countryQuizCount
-        self.correctCaptialQuizCount = correctCaptialQuizCount
-        self.captialQuizCount = captialQuizCount
+        self.correctCapitalQuizCount = correctCaptialQuizCount
+        self.capitalQuizCount = captialQuizCount
+        self.correctFlagToNameQuizCount = correctFlagToNameQuizCount
+        self.flagToNameQuizCount = flagToNameQuizCount
+        self.correctNameToFlagQuizCount = correctNameToFlagQuizCount
+        self.nameToFlagQuizCount = nameToFlagQuizCount
         self.lastUpdated = lastUpdated
     }
     
@@ -41,8 +56,12 @@ extension FQUserQuizStatObject {
             userId: userId,
             correctCountryQuizCount: correctCountryQuizCount,
             countryQuizCount: countryQuizCount,
-            correctCaptialQuizCount: correctCaptialQuizCount,
-            captialQuizCount: captialQuizCount
+            correctCapitalQuizCount: correctCapitalQuizCount,
+            capitalQuizCount: capitalQuizCount,
+            correctFlagToNameQuizCount: correctFlagToNameQuizCount,
+            flagToNameQuizCount: flagToNameQuizCount,
+            correctNameToFlagQuizCount: correctNameToFlagQuizCount,
+            nameToFlagQuizCount: nameToFlagQuizCount
         )
     }
 }

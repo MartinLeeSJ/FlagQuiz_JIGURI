@@ -113,11 +113,7 @@ final class QuizViewModel: ObservableObject {
     
     private func addUserQuizStat(userId: String) async {
         do {
-            try await container.services.quizStatService.addQuizStat(
-                ofUser: userId,
-                addingQuizCount: quiz.quizCount,
-                addingCorrectQuizCount: quiz.correctQuizRoundsCountBeforeCurrentRound
-            )
+            try await container.services.quizStatService.addQuizStat(ofUser: userId, quiz: quiz)
         } catch {
             //TODO: Error 처리
             print(error.localizedDescription)
@@ -135,7 +131,7 @@ final class QuizViewModel: ObservableObject {
     
     private func addCountryQuizStat(userId: String) async {
         do {
-            let result = quiz.getQuizRoundResult()
+            let result = quiz.getQuizRoundResult(by: nil)
             try await  container.services.countryQuizStatService.updateCountryQuizStats(
                 userId: userId,
                 addingCodes: result.correct,

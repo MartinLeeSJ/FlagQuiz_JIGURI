@@ -11,8 +11,7 @@ import FirebaseFirestore
 struct FQQuiz {
     let quizCount: Int
     let quizOptionsCount: Int
-    
-    
+
     var quizRounds: [FQQuizRound]
     private(set) var currentQuizIndex: Int = 0
     
@@ -60,16 +59,28 @@ struct FQQuiz {
         quizRounds[0..<currentQuizIndex].count - correctQuizRoundsCountBeforeCurrentRound
     }
     
-    public func getQuizRoundResult() -> (correct: [FQCountryISOCode], wrong: [FQCountryISOCode]) {
-        quizRounds.reduce(([FQCountryISOCode](), [FQCountryISOCode]())) { partial, currentRound in
-            guard let submittedCountryCode = currentRound.submittedCountryCode else { return partial }
-            
-            if currentRound.answerCountryCode == submittedCountryCode {
-                return (partial.0 + [currentRound.answerCountryCode], partial.1)
+    public func getQuizRoundResult(by type: FQQuizType? = nil) -> (correct: [FQCountryISOCode], wrong: [FQCountryISOCode]) {
+        quizRounds
+            .filter {
+                guard let expectingType = type else { return true }
+                let quizType: FQQuizType = $0.quizType ?? .chooseNameFromFlag
+                return quizType == expectingType
             }
-            
-            return (partial.0, partial.1 + [currentRound.answerCountryCode])
-        }
+            .reduce(([FQCountryISOCode](), [FQCountryISOCode]())) { partial, currentRound in
+                
+                guard let submittedCountryCode = currentRound.submittedCountryCode else { return partial }
+                
+                if currentRound.answerCountryCode == submittedCountryCode {
+                    return (partial.0 + [currentRound.answerCountryCode], partial.1)
+                }
+                
+                return (partial.0, partial.1 + [currentRound.answerCountryCode])
+            }
+    }
+    
+    public func getQuizRoundResultCount(by type: FQQuizType) -> (correct: Int, total: Int) {
+        let result = getQuizRoundResult(by: type)
+        return (result.correct.count , result.correct.count + result.wrong.count)
     }
     
     mutating func toNextIndex() {
@@ -78,7 +89,7 @@ struct FQQuiz {
     }
     
     
-
+    
     static private func createQuizRounds(quizCount: Int, quizOptionsCount: Int, quizType: FQQuizType) -> [FQQuizRound] {
         FQCountryISOCode.randomCode(of: quizCount, except: nil).map {
             FQQuizRound(answerCountryCode: $0, quizOptionsCount: quizOptionsCount, quizType: quizType)
@@ -86,6 +97,7 @@ struct FQQuiz {
     }
 }
 
+extension FQQuiz: Hashable { }
 
 extension FQQuiz {
     init(
@@ -107,8 +119,6 @@ extension FQQuiz {
             createdAt: .init(date: .now)
         )
     }
-    
-    
 }
 
-extension FQQuiz: Hashable { }
+

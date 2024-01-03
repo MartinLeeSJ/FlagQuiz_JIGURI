@@ -39,7 +39,7 @@ struct NewsView: View {
             case .countryQuizStat: 
                 CountryQuizStatView(viewModel: .init(container: container))
             case .userRank:
-                UserRankView()
+                UserRankView(viewModel: .init(container: container))
             case .quizRecord:
                 QuizRecordView(viewModel: .init(container: container))
             case .quizRecordDetail(let record):
