@@ -194,7 +194,7 @@ extension AuthService {
 
 final class StubAuthService: AuthServiceType {
     func checkAuthenticationState() -> String? {
-        return nil
+        return "1"
     }
     
     func signInWithGoogle() -> AnyPublisher<FQUser, AuthenticationServiceError> {

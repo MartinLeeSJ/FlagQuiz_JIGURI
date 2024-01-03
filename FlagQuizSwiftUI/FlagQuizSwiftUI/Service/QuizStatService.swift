@@ -41,8 +41,8 @@ final class QuizStatService: QuizStatServiceType {
                 userId: userId,
                 correctCountryQuizCount: quiz.correctQuizRoundsCount,
                 countryQuizCount: quiz.quizCount,
-                correctCaptialQuizCount: capitalQuizResult.correct,
-                captialQuizCount: capitalQuizResult.total,
+                correctCapitalQuizCount: capitalQuizResult.correct,
+                capitalQuizCount: capitalQuizResult.total,
                 correctFlagToNameQuizCount: flagToNameQuizResult.correct,
                 flagToNameQuizCount: flagToNameQuizResult.total,
                 correctNameToFlagQuizCount: nameToFlagQuizResult.correct,
@@ -54,12 +54,7 @@ final class QuizStatService: QuizStatServiceType {
 
 final class StubQuizStatService: QuizStatServiceType {
     func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStat {
-        .init(userId: "1",
-              correctCountryQuizCount: 100,
-              countryQuizCount: 120,
-              correctCaptialQuizCount: 80,
-              captialQuizCount: 100
-        )
+        .mock
     }
     
     func addQuizStat(ofUser userId: String, quiz: FQQuiz) async throws {

@@ -13,8 +13,8 @@ struct FQUserQuizStatObject: Codable {
     var correctCountryQuizCount: Int
     var countryQuizCount: Int
     
-    var correctCaptialQuizCount: Int?
-    var captialQuizCount: Int?
+    var correctCapitalQuizCount: Int?
+    var capitalQuizCount: Int?
     
     var correctFlagToNameQuizCount: Int?
     var flagToNameQuizCount: Int?
@@ -38,8 +38,8 @@ struct FQUserQuizStatObject: Codable {
     ) {
         self.correctCountryQuizCount = correctCountryQuizCount
         self.countryQuizCount = countryQuizCount
-        self.correctCaptialQuizCount = correctCaptialQuizCount
-        self.captialQuizCount = captialQuizCount
+        self.correctCapitalQuizCount = correctCaptialQuizCount
+        self.capitalQuizCount = captialQuizCount
         self.correctFlagToNameQuizCount = correctFlagToNameQuizCount
         self.flagToNameQuizCount = flagToNameQuizCount
         self.correctNameToFlagQuizCount = correctNameToFlagQuizCount
@@ -56,8 +56,8 @@ extension FQUserQuizStatObject {
             userId: userId,
             correctCountryQuizCount: correctCountryQuizCount,
             countryQuizCount: countryQuizCount,
-            correctCaptialQuizCount: correctCaptialQuizCount,
-            captialQuizCount: captialQuizCount,
+            correctCapitalQuizCount: correctCapitalQuizCount,
+            capitalQuizCount: capitalQuizCount,
             correctFlagToNameQuizCount: correctFlagToNameQuizCount,
             flagToNameQuizCount: flagToNameQuizCount,
             correctNameToFlagQuizCount: correctNameToFlagQuizCount,

@@ -37,8 +37,8 @@ final class FQUserQuizStatRepository: FQUserQuizStatRepositoryType {
             object.countryQuizCount += model.countryQuizCount
             object.correctCountryQuizCount += model.correctCountryQuizCount
             
-            object.captialQuizCount = (object.captialQuizCount ?? 0) + (model.captialQuizCount ?? 0)
-            object.correctCaptialQuizCount = (object.correctCaptialQuizCount ?? 0) + (model.correctCaptialQuizCount ?? 0)
+            object.capitalQuizCount = (object.capitalQuizCount ?? 0) + (model.capitalQuizCount ?? 0)
+            object.correctCapitalQuizCount = (object.correctCapitalQuizCount ?? 0) + (model.correctCapitalQuizCount ?? 0)
             
             object.flagToNameQuizCount = (object.flagToNameQuizCount ?? 0) + (model.flagToNameQuizCount ?? 0)
             object.correctFlagToNameQuizCount = (object.correctFlagToNameQuizCount ?? 0) + (model.correctFlagToNameQuizCount ?? 0)
@@ -55,8 +55,8 @@ final class FQUserQuizStatRepository: FQUserQuizStatRepositoryType {
             from: FQUserQuizStatObject(
                 correctCountryQuizCount: model.countryQuizCount,
                 countryQuizCount: model.countryQuizCount,
-                correctCaptialQuizCount: model.correctCaptialQuizCount,
-                captialQuizCount: model.correctCaptialQuizCount,
+                correctCaptialQuizCount: model.correctCapitalQuizCount,
+                captialQuizCount: model.correctCapitalQuizCount,
                 correctFlagToNameQuizCount: model.correctFlagToNameQuizCount,
                 flagToNameQuizCount: model.flagToNameQuizCount,
                 correctNameToFlagQuizCount: model.correctNameToFlagQuizCount,

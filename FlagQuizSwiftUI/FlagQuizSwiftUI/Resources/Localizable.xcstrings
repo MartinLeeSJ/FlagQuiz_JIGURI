@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "?" : {
+
+    },
     "%lld" : {
 
     },
@@ -29,6 +32,15 @@
           }
         }
       }
+    },
+    "0" : {
+
+    },
+    "100" : {
+
+    },
+    "Accuracy" : {
+
     },
     "advertisement" : {
 
@@ -663,6 +675,9 @@
         }
       }
     },
+    "Lv. %lld" : {
+
+    },
     "N. America" : {
       "localizations" : {
         "en" : {
@@ -1226,6 +1241,38 @@
         }
       }
     },
+    "rank.info.card.quiz.accuracy.description.%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Accuracy:\nOver %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 정확도:\n%@ 이상"
+          }
+        }
+      }
+    },
+    "rank.info.card.quiz.count.description.%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz count:\nOver %@ quizzes"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 횟수:\n%@ 이상"
+          }
+        }
+      }
+    },
     "really.quit.quiz" : {
       "localizations" : {
         "en" : {
@@ -1334,6 +1381,134 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퀴즈"
+          }
+        }
+      }
+    },
+    "total.quiz.rank.progress.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Achievement"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 성과"
+          }
+        }
+      }
+    },
+    "user.rank.all.rank.info.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Ranks"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 등급"
+          }
+        }
+      }
+    },
+    "user.rank.capital.quiz.accuracy.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capital"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "수도"
+          }
+        }
+      }
+    },
+    "user.rank.flag.to.name.quiz.accuracy.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flag → Name"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "국기 → 이름"
+          }
+        }
+      }
+    },
+    "user.rank.name.to.flag.quiz.accuracy.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name → Flag"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이름 → 국기"
+          }
+        }
+      }
+    },
+    "user.rank.quiz.accuracy.gauges.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Accuracy By Type"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 종류별 정확도"
+          }
+        }
+      }
+    },
+    "user.rank.view.quiz.accuracy.progress.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Accuracy"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 정확도"
+          }
+        }
+      }
+    },
+    "user.rank.view.quiz.count.progress.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Count"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 횟수"
           }
         }
       }

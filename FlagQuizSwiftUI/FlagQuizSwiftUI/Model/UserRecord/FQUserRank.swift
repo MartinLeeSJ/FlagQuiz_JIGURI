@@ -8,11 +8,11 @@
 import SwiftUI
 
 enum FQUserRank: Int, CaseIterable {
-    /// totalQuizCount  < 45
+    /// totalQuizCount  < 100
     case newbie = 0
-    /// totalQuizCount >= 45
+    /// totalQuizCount >= 100
     case bronze = 1
-    /// totalQuizCount >= 75, Accuracy Rate >= 70%
+    /// totalQuizCount >= 300, Accuracy Rate >= 70%
     case silver = 2
     /// totalQuizCount >= 500, Accuracy Rate >= 75%
     case gold = 3
@@ -50,11 +50,11 @@ enum FQUserRank: Int, CaseIterable {
             return .neighborhoodInfluencer
         case (500..., 0.75...):
             return .gold
-        case (75..., 0.7...):
+        case (300..., 0.7...):
             return .silver
-        case (45..., _):
+        case (100..., _):
             return .bronze
-        case (...44, _):
+        case (..<100, _):
             return .newbie
         default:
             return .newbie
@@ -169,42 +169,35 @@ enum FQUserRank: Int, CaseIterable {
     
     var rankUpQuizCountCriteria: (min: Int, max: Int) {
         switch self {
-        case .newbie: (0, 45)
-        case .bronze: (45, 75)
-        case .silver: (75, 150)
-        case .gold: (150, 300)
-        case .neighborhoodInfluencer: (300, 450)
-        case .urbanInfluencer: (450, 600)
-        case .countrywideInfluencer: (600, 900)
-        case .continentalInfluencer,
+        case .newbie: (0, 100)
+        case .bronze: (100, 300)
+        case .silver: (300, 500)
+        case .gold: (500, 1000)
+        case .neighborhoodInfluencer: (1000, 2000)
+        case .urbanInfluencer: (2000, 4000)
+        case .countrywideInfluencer,
+                .continentalInfluencer,
                 .worldwideInfluencer,
-                .earthGuru: (900, 900)
+                .earthGuru: (4000, 4000)
         }
     }
     
-    var rankUpAccuracyCriteria: Double {
+    var rankUpAccuracyCriteria: (min: Double, max: Double) {
         switch self {
-        case .newbie: 0
-        case .bronze: 0
-        case .silver: 70
-        case .gold: 75
-        case .neighborhoodInfluencer: 80
-        case .urbanInfluencer: 85
-        case .countrywideInfluencer: 90
-        case .continentalInfluencer: 95
-        case .worldwideInfluencer: 99
-        case .earthGuru: 99.5
+        case .newbie: (0, 0.7)
+        case .bronze: (0, 0.7)
+        case .silver: (0.7, 0.75)
+        case .gold: (0.75, 0.8)
+        case .neighborhoodInfluencer: (0.8, 0.85)
+        case .urbanInfluencer: (0.85, 0.9)
+        case .countrywideInfluencer: (0.9, 0.95)
+        case .continentalInfluencer: (0.95, 0.99)
+        case .worldwideInfluencer: (0.99, 0.995)
+        case .earthGuru: (0.995, 1.0)
         }
     }
     
     var rankUpCriteriaDescription: (quizCount: String, accuracy: String) {
-        switch self {
-        case .newbie:
-            ("~\(self.rankUpQuizCountCriteria.max)", "_")
-        case .bronze:
-            ("\(self.rankUpQuizCountCriteria.min)+", "_")
-        default:
-            ("\(self.rankUpQuizCountCriteria.min)+", "\(self.rankUpAccuracyCriteria)%↑")
-        }
+        ("\(self.rankUpQuizCountCriteria.min)", "\(self.rankUpAccuracyCriteria.min * 100)%")
     }
 }
