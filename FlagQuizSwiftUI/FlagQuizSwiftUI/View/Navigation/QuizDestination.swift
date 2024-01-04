@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum QuizDestination: NavigationDestination {
+enum QuizDestination: Hashable {
     case quiz
     case quizResult(FQQuiz)
     case countryDetail(FQCountryISOCode)

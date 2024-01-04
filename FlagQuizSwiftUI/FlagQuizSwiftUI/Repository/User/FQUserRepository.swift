@@ -11,17 +11,32 @@ import Combine
 import FirebaseFirestore
 
 protocol FQUserRepositoryType {
+    func getUser(ofId userId: String) -> AnyPublisher<FQUserObject?, DBError>
     func addUser(_ user: FQUser) -> AnyPublisher<FQUserObject, DBError>
     func deleteUser(of userId: String) -> AnyPublisher<Void, DBError>
 }
 
 final class FQUserRepository: FQUserRepositoryType {
-    private var db = Firestore.firestore()
+    private let db = Firestore.firestore()
+    private var usersCollection: CollectionReference {
+        db.collection(CollectionKey.Users)
+    }
+    
+    func getUser(ofId userId: String) -> AnyPublisher<FQUserObject?, DBError> {
+        Future { [weak self] promise in
+            self?.usersCollection.document(userId).getDocument(as: FQUserObject?.self) { result in
+                promise(result)
+            }
+        }
+        .mapError { DBError.custom($0) }
+        .eraseToAnyPublisher()
+    }
+    
     
     func addUser(_ user: FQUser) -> AnyPublisher<FQUserObject, DBError> {
         Future { [weak self] promise in
             do {
-                try self?.db.collection(CollectionKey.Users).document(user.id).setData(from: user.toObject()){ error in
+                try self?.usersCollection.document(user.id).setData(from: user.toObject()){ error in
                     if let error {
                         promise(.failure(.custom(error)))
                     }

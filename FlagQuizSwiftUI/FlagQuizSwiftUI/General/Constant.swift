@@ -11,6 +11,7 @@ enum Constant {}
 
 typealias CollectionKey = Constant.CollectionKey
 typealias LocalizableTable = Constant.LocalizableTable
+typealias ServiceLangCode = Constant.ServiceLangCode
 
 extension Constant {
     struct CollectionKey {
@@ -19,10 +20,16 @@ extension Constant {
         static let CountryQuizStats: String = "CountryQuizStats"
         static let QuizRecord: String = "QuizRecord"
         static let Frogs: String = "Frogs"
+        static let Items: String = "Items"
     }
     
     struct LocalizableTable {
         static let button: String = "ButtonLocalizable"
         static let general: String = "General"
+    }
+    
+    enum ServiceLangCode: String, Codable {
+        case EN = "en"
+        case KO = "ko"
     }
 }

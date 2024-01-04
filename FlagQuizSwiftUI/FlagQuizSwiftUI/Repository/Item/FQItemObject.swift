@@ -10,7 +10,8 @@ import Foundation
 struct FQItemObject: Codable {
     var id: String
     var type: String
-    var name: String
+    var code: String
+    var names: [FQItemNameObject]
     var isOnMarket: Bool
 }
 
@@ -18,12 +19,13 @@ extension FQItemObject {
     func toModel() -> FQItem? {
         guard let type = FQItemType(rawValue: type) else {
             return nil
-        }
+        } 
         
         return .init(
             id: id,
             type: type,
-            name: name,
+            code: code,
+            names: names.map { $0.toModel() },
             isOnMarket: isOnMarket
         )
     }

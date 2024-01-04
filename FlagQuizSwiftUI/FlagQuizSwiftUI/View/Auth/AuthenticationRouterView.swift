@@ -16,28 +16,25 @@ struct AuthenticationRouterView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                switch authViewModel.authState {
-                case .unauthenticated:
-                    LoginView()
-                case .authenticating:
-                    ProgressView()
-                case .authenticated:
-                    MainTabView()
-                case .failed:
-                    ErrorView {
-                        authViewModel.send(.retry)
-                    }
+        VStack {
+            switch authViewModel.authState {
+            case .unauthenticated:
+                LoginView()
+            case .authenticating:
+                ProgressView()
+            case .authenticated:
+                MainTabView()  
+            case .failed:
+                ErrorView {
+                    authViewModel.send(.retry)
                 }
             }
-            .onAppear {
-                authViewModel.send(.checkAuthenticationState)
-                hapticsManager.send(.prepare)
-            }
-            .environmentObject(authViewModel)
         }
-        
+        .environmentObject(authViewModel)
+        .onAppear {
+            authViewModel.send(.checkAuthenticationState)
+            hapticsManager.send(.prepare)
+        }
     }
 }
 

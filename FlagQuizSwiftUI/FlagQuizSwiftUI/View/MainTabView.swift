@@ -32,25 +32,29 @@ struct MainTabView: View {
     @State private var tabSelection: Tabs = .quizSetting
     
     var body: some View {
-        NavigationStack(path: $navigationModel.destinations) {
-            TabView(selection: $tabSelection)  {
-                ForEach(Tabs.allCases, id: \.self) { tab in
-                    Group {
-                        switch tab {
-                        case .quizSetting:
-                            QuizSettingView(viewModel: .init(container: container))
-                            
-                        case .news:
-                            NewsView(viewModel: .init(container: container))
-                        }
-                    }
-                    .tabItem {
-                        VStack {
-                            Text(tab.title)
-                            Image(systemName: tab.imageName)
-                        }
-                    }
+//        NavigationStack(path: $navigationModel.destinations) {
+            TabView(selection: $tabSelection) {
+                content
+            }
+//        }
+    }
+    
+    @ViewBuilder
+    var content: some View {
+        ForEach(Tabs.allCases, id: \.self) { tab in
+            Group {
+                switch tab {
+                case .quizSetting:
+                    QuizSettingView(viewModel: .init(container: container))
                     
+                case .news:
+                    NewsView(viewModel: .init(container: container))
+                }
+            }
+            .tabItem {
+                VStack {
+                    Text(tab.title)
+                    Image(systemName: tab.imageName)
                 }
             }
             

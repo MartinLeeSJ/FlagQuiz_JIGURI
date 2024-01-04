@@ -19,7 +19,7 @@ enum AuthenticationState {
 final class AuthenticationViewModel: ObservableObject {
     enum Action {
         case checkAuthenticationState
-        case signInWithGoogle
+//        case signInWithGoogle
         case requestSignInWithApple(ASAuthorizationAppleIDRequest)
         case completeSignInWithApple(ASAuthorization)
         case retry
@@ -45,9 +45,9 @@ final class AuthenticationViewModel: ObservableObject {
                 self.userId = userId
                 self.authState = .authenticated
             }
-        case .signInWithGoogle:
-            let publisher = container.services.authService.signInWithGoogle()
-            completeAuthentication(from: publisher)
+//        case .signInWithGoogle:
+//            let publisher = container.services.authService.signInWithGoogle()
+//            completeAuthentication(from: publisher)
             
         case .requestSignInWithApple(let request):
             let nonce = container.services.authService.requestSignInWithApple(request)
@@ -80,7 +80,7 @@ final class AuthenticationViewModel: ObservableObject {
                 guard let self else {
                     return Fail(outputType: FQUser.self, failure: ServiceError.nilSelf).eraseToAnyPublisher()
                 }
-                return self.container.services.userService.addUser(user)
+                return self.createUserIfNotExist(user)
             }
             .sink { [weak self] completion in
                 if case .failure(let error) = completion {
@@ -92,5 +92,21 @@ final class AuthenticationViewModel: ObservableObject {
             }
             .store(in: &subscription)
     }
+    
+    private func createUserIfNotExist(_ user: FQUser) -> AnyPublisher<FQUser, ServiceError> {
+        container.services.userService.addUserIfNotExist(user)
+            .flatMap { [weak self] user in
+                guard let self else {
+                    return Fail(outputType: FQUser.self, failure: ServiceError.nilSelf).eraseToAnyPublisher()
+                }
+                
+                return container.services.frogService.addFrogIfNotExist(ofUser: user.id)
+                    .map { user }
+                    .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    
     
 }

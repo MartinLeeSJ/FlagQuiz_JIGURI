@@ -26,4 +26,13 @@ extension FQUserObject {
             userName: userName
         )
     }
+    
+    func toModel(withId userId: String) -> FQUser {
+        .init(
+            id: userId,
+            createdAt: createdAt.dateValue(),
+            email: email,
+            userName: userName
+        )
+    }
 }

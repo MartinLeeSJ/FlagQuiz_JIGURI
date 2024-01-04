@@ -31,8 +31,9 @@ struct QuizSettingView: View {
     init(viewModel: QuizViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
+        NavigationStack(path: $navigationModel.destinations) {
             VStack(alignment: .leading, spacing: 16) {
                 Spacer()
                     .frame(height: 64)
@@ -50,7 +51,7 @@ struct QuizSettingView: View {
                 Divider()
                 
                 quizTypeMenu
-            
+                
                 quizCountPicker
                 
                 quizItemCountPicker
@@ -75,7 +76,7 @@ struct QuizSettingView: View {
                 switch destination {
                 case .quiz:
                     QuizView()
-                    .environmentObject(viewModel)
+                        .environmentObject(viewModel)
                 case .quizResult(let quiz):
                     QuizResultView(quizResult: quiz)
                         .environmentObject(viewModel)
@@ -84,9 +85,7 @@ struct QuizSettingView: View {
                                                        countryCode: countryCode))
                 }
             }
-            
-        
-        
+        }
     }
     
     private var quizCountPicker: some View {
@@ -94,7 +93,7 @@ struct QuizSettingView: View {
             Text("quizIntro.quizCountPicker.title")
             
             Spacer()
-
+            
             Picker("quizIntro.quizCountPicker.title",
                    selection: $quizCount
             ) {
@@ -134,7 +133,7 @@ struct QuizSettingView: View {
             Text("quizIntro.quizTypeMenu.title")
             
             Spacer()
-
+            
             Menu {
                 ForEach(FQQuizType.allCases, id: \.self) { quizType in
                     Button {
@@ -154,9 +153,6 @@ struct QuizSettingView: View {
                     .fontWeight(.medium)
             }
             .menuStyle(.button)
-
-            
-            
         }
         .padding(.horizontal)
     }

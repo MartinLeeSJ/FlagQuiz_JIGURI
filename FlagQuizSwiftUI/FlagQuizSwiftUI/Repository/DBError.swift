@@ -13,4 +13,5 @@ enum DBError: Error {
     case fetchingError
     case decodingError
     case invalidObject
+    case invalidSelf
 }

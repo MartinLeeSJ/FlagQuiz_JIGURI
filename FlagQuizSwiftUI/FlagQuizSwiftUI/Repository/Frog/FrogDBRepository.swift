@@ -10,7 +10,7 @@ import Combine
 import FirebaseFirestore
 
 protocol FrogDBRepositoryType {
-    func getFrog(ofUser userId: String) -> AnyPublisher<FQFrogObject, DBError>
+    func getFrog(ofUser userId: String) -> AnyPublisher<FQFrogObject?, DBError>
     func getFrog(ofUser userId: String) async throws -> FQFrogObject
     
     func addFrog(ofUser userId: String) -> AnyPublisher<Void, DBError>
@@ -24,15 +24,10 @@ final class FrogDBRepository: FrogDBRepositoryType {
         db.collection(CollectionKey.Frogs)
     }
     
-    func getFrog(ofUser userId: String) -> AnyPublisher<FQFrogObject, DBError> {
+    func getFrog(ofUser userId: String) -> AnyPublisher<FQFrogObject?, DBError> {
         Future { [weak self] promise in
-            self?.collectionRef.document(userId).getDocument(as: FQFrogObject.self) { result in
-                switch result {
-                case .success(let object):
-                    promise(.success(object))
-                case .failure(let error):
-                    promise(.failure(error))
-                }
+            self?.collectionRef.document(userId).getDocument(as: FQFrogObject?.self) { result in
+                promise(result)
             }
         }
         .mapError { DBError.custom($0) }
@@ -50,7 +45,7 @@ final class FrogDBRepository: FrogDBRepositoryType {
         let object: FQFrogObject = .init(
             status: 0,
             lastUpdated: .init(date: .now),
-            item: []
+            items: []
         )
         
         return Future { promise in

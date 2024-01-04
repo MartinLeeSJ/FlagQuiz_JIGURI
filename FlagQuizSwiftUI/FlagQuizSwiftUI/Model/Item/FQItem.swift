@@ -7,32 +7,26 @@
 
 import Foundation
 
-struct FQItem {
+struct FQItem: Codable {
     var id: String
     var type: FQItemType
-    var name: String
+    var code: String
+    var names: [FQItemName]
     var isOnMarket: Bool
 }
+
+
 
 extension FQItem {
     func toObject() -> FQItemObject {
         .init(
             id: id,
             type: type.rawValue,
-            name: name,
+            code: code,
+            names: names.map { $0.toObject() },
             isOnMarket: isOnMarket
         )
     }
 }
 
-enum FQItemType: String, Hashable {
-    case hat
-    case hair
-    case top
-    case bottom
-    case shoes
-    case rightHandAccesory
-    case leftHandAccesory
-    case background
-    case skin
-}
+

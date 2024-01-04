@@ -152,6 +152,7 @@ extension AuthService {
                 let name = [appleIDCredential.fullName?.givenName, appleIDCredential.fullName?.familyName]
                     .compactMap { $0 }
                     .joined(separator: " ")
+                user.email = appleIDCredential.email
                 user.userName = name
                 completion(.success(user))
             case .failure(let error):

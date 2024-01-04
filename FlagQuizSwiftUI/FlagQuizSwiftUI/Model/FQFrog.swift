@@ -47,4 +47,9 @@ enum FrogState: Int {
         
         return FrogState(rawValue: value)!
     }
+    
+    mutating func upgrade()  {
+        self = Self.safeValue(rawValue: self.rawValue + 1)
+    }
+    
 }

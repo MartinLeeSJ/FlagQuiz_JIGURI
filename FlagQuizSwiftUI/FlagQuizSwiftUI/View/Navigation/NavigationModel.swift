@@ -10,12 +10,12 @@ import SwiftUI
 final class NavigationModel: ObservableObject {
     @Published var destinations: NavigationPath = .init()
     
-    public func navigate(to destination: any NavigationDestination) {
+    public func navigate(to destination: any Hashable) {
         destinations.append(destination)
     }
     
     public func pop() {
-        destinations.removeLast()
+       destinations.removeLast()
     }
     
     public func toRoot() {
