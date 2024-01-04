@@ -47,27 +47,29 @@ struct NewsView: View {
                 await viewModel.load()
             }
             .navigationDestination(for: NewsDestination.self) { destination in
-                
-                switch destination {
-                case .countryQuizStat:
-                    CountryQuizStatView(viewModel: .init(container: container))
-                case .userRank:
-                    UserRankView(viewModel: .init(container: container))
-                case .myPage:
-                    MyPageView()
-                        .environmentObject(authViewModel)
-                case .quizRecord:
-                    QuizRecordView(viewModel: .init(container: container))
-                case .quizRecordDetail(let record):
-                    QuizRecordDetailView(record: record)
-                case .countryDetail(let countryCode):
-                    CountryDetailView(
-                        viewModel: .init(
-                            container: container,
-                            countryCode: countryCode
+                Group {
+                    switch destination {
+                    case .countryQuizStat:
+                        CountryQuizStatView(viewModel: .init(container: container))
+                    case .userRank:
+                        UserRankView(viewModel: .init(container: container))
+                    case .myPage:
+                        MyPageView()
+                            .environmentObject(authViewModel)
+                    case .quizRecord:
+                        QuizRecordView(viewModel: .init(container: container))
+                    case .quizRecordDetail(let record):
+                        QuizRecordDetailView(record: record)
+                    case .countryDetail(let countryCode):
+                        CountryDetailView(
+                            viewModel: .init(
+                                container: container,
+                                countryCode: countryCode
+                            )
                         )
-                    )
+                    }
                 }
+                .toolbar(.hidden, for: .tabBar)
                 
             }
             .environmentObject(viewModel)

@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct MyPageView: View {
+    @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     var body: some View {
         Button {
+            navigationModel.toRoot()
             authViewModel.send(.signOut)
         } label: {
             Text("LogOut")
@@ -21,6 +23,7 @@ struct MyPageView: View {
 
 #Preview {
     MyPageView()
+        .environmentObject(NavigationModel())
         .environmentObject(
             AuthenticationViewModel(
                 container: .init(
@@ -28,4 +31,5 @@ struct MyPageView: View {
                 )
             )
         )
+    
 }

@@ -73,17 +73,20 @@ struct QuizSettingView: View {
                 
             }
             .navigationDestination(for: QuizDestination.self) { destination in
-                switch destination {
-                case .quiz:
-                    QuizView()
-                        .environmentObject(viewModel)
-                case .quizResult(let quiz):
-                    QuizResultView(quizResult: quiz)
-                        .environmentObject(viewModel)
-                case .countryDetail(let countryCode):
-                    CountryDetailView(viewModel: .init(container: container,
-                                                       countryCode: countryCode))
+                Group {
+                    switch destination {
+                    case .quiz:
+                        QuizView()
+                            .environmentObject(viewModel)
+                    case .quizResult(let quiz):
+                        QuizResultView(quizResult: quiz)
+                            .environmentObject(viewModel)
+                    case .countryDetail(let countryCode):
+                        CountryDetailView(viewModel: .init(container: container,
+                                                           countryCode: countryCode))
+                    }
                 }
+                .toolbar(.hidden, for: .tabBar)
             }
         }
     }
