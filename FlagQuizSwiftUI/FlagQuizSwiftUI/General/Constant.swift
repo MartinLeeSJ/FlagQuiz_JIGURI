@@ -18,6 +18,7 @@ extension Constant {
         static let UserQuizStats: String = "UserQuizStats"
         static let CountryQuizStats: String = "CountryQuizStats"
         static let QuizRecord: String = "QuizRecord"
+        static let Frogs: String = "Frogs"
     }
     
     struct LocalizableTable {

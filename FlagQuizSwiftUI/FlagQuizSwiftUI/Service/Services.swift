@@ -15,6 +15,7 @@ protocol ServiceType {
     var countryService: CountryServiceType { get set }
     var countryQuizStatService: CountryQuizStatServiceType { get set }
     var imageCacheService: ImageCacheServiceType { get set }
+    var frogService: FrogServiceType { get set }
 }
 
 class Services: ServiceType {
@@ -26,6 +27,7 @@ class Services: ServiceType {
     var countryService: CountryServiceType
     var countryQuizStatService: CountryQuizStatServiceType
     var imageCacheService: ImageCacheServiceType
+    var frogService: FrogServiceType
 
     init() {
         self.authService = AuthService()
@@ -54,6 +56,8 @@ class Services: ServiceType {
             imageMemoryStorage: ImageMemoryStorage(),
             imageDiskStorage: ImageDiskStorage()
         )
+        
+        self.frogService = FrogService(repository: FrogDBRepository())
   
     }
 }
@@ -66,6 +70,7 @@ class StubService: ServiceType {
     var countryService: CountryServiceType
     var countryQuizStatService: CountryQuizStatServiceType
     var imageCacheService: ImageCacheServiceType
+    var frogService: FrogServiceType
   
     
     init() {
@@ -76,5 +81,6 @@ class StubService: ServiceType {
         self.countryService = StubCountryService()
         self.countryQuizStatService = StubCountryQuizStatService()
         self.imageCacheService = StubImageCacheService()
+        self.frogService = StubFrogService()
     }
 }

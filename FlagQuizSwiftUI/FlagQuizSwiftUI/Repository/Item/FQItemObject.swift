@@ -11,6 +11,7 @@ struct FQItemObject: Codable {
     var id: String
     var type: String
     var name: String
+    var isOnMarket: Bool
 }
 
 extension FQItemObject {
@@ -19,6 +20,11 @@ extension FQItemObject {
             return nil
         }
         
-        return .init(id: id, type: type, name: name)
+        return .init(
+            id: id,
+            type: type,
+            name: name,
+            isOnMarket: isOnMarket
+        )
     }
 }

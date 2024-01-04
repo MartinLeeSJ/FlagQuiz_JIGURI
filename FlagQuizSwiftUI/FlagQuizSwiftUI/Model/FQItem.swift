@@ -11,6 +11,18 @@ struct FQItem {
     var id: String
     var type: FQItemType
     var name: String
+    var isOnMarket: Bool
+}
+
+extension FQItem {
+    func toObject() -> FQItemObject {
+        .init(
+            id: id,
+            type: type.rawValue,
+            name: name,
+            isOnMarket: isOnMarket
+        )
+    }
 }
 
 enum FQItemType: String, Hashable {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct FQFrog: Identifiable {
     var id: String {
@@ -15,6 +16,17 @@ struct FQFrog: Identifiable {
     var status: FrogState
     var lastUpdated: Date
     var item: [FQItem]
+}
+
+extension FQFrog {
+    func toObject() -> FQFrogObject {
+        .init(
+            id: userId,
+            status: status.rawValue,
+            lastUpdated: .init(date: lastUpdated),
+            item: item.map { $0.toObject() }
+        )
+    }
 }
 
 
