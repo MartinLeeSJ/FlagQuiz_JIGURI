@@ -132,6 +132,10 @@
 		5BE7D2A22B29A7F20044C3D4 /* FQCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D2A12B29A7F20044C3D4 /* FQCountry.swift */; };
 		5BE7D2A62B29A97F0044C3D4 /* CountryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D2A52B29A97F0044C3D4 /* CountryObject.swift */; };
 		5BE7D2A82B29B2220044C3D4 /* CountryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D2A72B29B2220044C3D4 /* CountryAPIClient.swift */; };
+		5BFF43792B466D9900C3DBCB /* FQFrog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF43782B466D9800C3DBCB /* FQFrog.swift */; };
+		5BFF437B2B466E3A00C3DBCB /* FQItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF437A2B466E3A00C3DBCB /* FQItem.swift */; };
+		5BFF437E2B46764C00C3DBCB /* FQFrogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF437D2B46764C00C3DBCB /* FQFrogObject.swift */; };
+		5BFF43812B4679AC00C3DBCB /* FQItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF43802B4679AC00C3DBCB /* FQItemObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,6 +278,10 @@
 		5BE7D2A12B29A7F20044C3D4 /* FQCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQCountry.swift; sourceTree = "<group>"; };
 		5BE7D2A52B29A97F0044C3D4 /* CountryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryObject.swift; sourceTree = "<group>"; };
 		5BE7D2A72B29B2220044C3D4 /* CountryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAPIClient.swift; sourceTree = "<group>"; };
+		5BFF43782B466D9800C3DBCB /* FQFrog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQFrog.swift; sourceTree = "<group>"; };
+		5BFF437A2B466E3A00C3DBCB /* FQItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQItem.swift; sourceTree = "<group>"; };
+		5BFF437D2B46764C00C3DBCB /* FQFrogObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQFrogObject.swift; sourceTree = "<group>"; };
+		5BFF43802B4679AC00C3DBCB /* FQItemObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQItemObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +390,8 @@
 			isa = PBXGroup;
 			children = (
 				5BE7D29F2B29A63A0044C3D4 /* FQCountryISOCode.swift */,
+				5BFF43782B466D9800C3DBCB /* FQFrog.swift */,
+				5BFF437A2B466E3A00C3DBCB /* FQItem.swift */,
 				5B16F9672B2850000011ACF7 /* FQUser.swift */,
 				5B9A81BE2B3B00630087142A /* UserRecord */,
 				5BE086592B31909800D38C01 /* Country */,
@@ -406,6 +416,8 @@
 				5B9A81B52B3AC7DD0087142A /* UserQuizStat */,
 				5B9A81B62B3AC7E80087142A /* CountryQuizStat */,
 				5B9A81B72B3AC7F30087142A /* QuizRecord */,
+				5BFF437C2B46763500C3DBCB /* Frog */,
+				5BFF437F2B46799F00C3DBCB /* Item */,
 				5B16F9782B287B700011ACF7 /* DBError.swift */,
 			);
 			path = Repository;
@@ -757,6 +769,22 @@
 			path = CountryCache;
 			sourceTree = "<group>";
 		};
+		5BFF437C2B46763500C3DBCB /* Frog */ = {
+			isa = PBXGroup;
+			children = (
+				5BFF437D2B46764C00C3DBCB /* FQFrogObject.swift */,
+			);
+			path = Frog;
+			sourceTree = "<group>";
+		};
+		5BFF437F2B46799F00C3DBCB /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				5BFF43802B4679AC00C3DBCB /* FQItemObject.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -955,14 +983,17 @@
 				5BE3E4CE2B3985A70048C10E /* CountryMemoryStorage.swift in Sources */,
 				5B19C1682B3C0D2F001A74CE /* NavigationModel.swift in Sources */,
 				5BE7D29B2B29A4950044C3D4 /* QuizRecordService.swift in Sources */,
+				5BFF437E2B46764C00C3DBCB /* FQFrogObject.swift in Sources */,
 				5B19C1612B3BCA09001A74CE /* NewsGridCell.swift in Sources */,
 				5B19C16A2B3C10D8001A74CE /* QuizDestination.swift in Sources */,
 				5B16F9742B287A4C0011ACF7 /* FQUserRepository.swift in Sources */,
 				5B16F9572B28470E0011ACF7 /* AuthenticationRouterView.swift in Sources */,
+				5BFF43792B466D9900C3DBCB /* FQFrog.swift in Sources */,
 				5B9A81B92B3AE3FE0087142A /* FQCountryQuizStatObject.swift in Sources */,
 				5B19C1732B3C2DD8001A74CE /* QuizStatCell.swift in Sources */,
 				5B697EAF2B386D39003089F8 /* ImageCacheService.swift in Sources */,
 				5B795CB72B3D2996004AF9EE /* QuizRecordDetailView.swift in Sources */,
+				5BFF43812B4679AC00C3DBCB /* FQItemObject.swift in Sources */,
 				5B697EB12B386E0E003089F8 /* ImageMemoryStorage.swift in Sources */,
 				5B7BCAFC2B3336B300E50C5F /* FQQuizRecordObject.swift in Sources */,
 				5BD3B7692B31ED8000B930E0 /* FQQuiz.swift in Sources */,
@@ -1013,6 +1044,7 @@
 				5BE0865D2B3190C500D38C01 /* FQFlagLinks.swift in Sources */,
 				5B8A87222B3EC26D00247DB9 /* NetworkMonitorManager.swift in Sources */,
 				5B9A81AD2B3AAC660087142A /* CountryDetailInfo.swift in Sources */,
+				5BFF437B2B466E3A00C3DBCB /* FQItem.swift in Sources */,
 				5B16F9832B2890CD0011ACF7 /* ErrorView.swift in Sources */,
 				5BE086512B29D6A500D38C01 /* APIError.swift in Sources */,
 			);

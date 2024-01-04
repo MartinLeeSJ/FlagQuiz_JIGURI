@@ -134,17 +134,27 @@ struct QuizSettingView: View {
             Text("quizIntro.quizTypeMenu.title")
             
             Spacer()
-            
-            Menu(quizType.localizedTitle) {
+
+            Menu {
                 ForEach(FQQuizType.allCases, id: \.self) { quizType in
                     Button {
                         self.quizType = quizType
                     } label: {
-                        Text(quizType.localizedTitle)
+                        HStack {
+                            Text(quizType.localizedShortenedTitle)
+                            Spacer()
+                            if self.quizType == quizType {
+                                Image(systemName: "checkmark")
+                            }
+                        }
                     }
                 }
+            } label: {
+                Label(quizType.localizedTitle, systemImage: "chevron.down.square.fill")
+                    .fontWeight(.medium)
             }
             .menuStyle(.button)
+
             
             
         }

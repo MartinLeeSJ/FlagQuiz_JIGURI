@@ -752,7 +752,7 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "내 등급"
           }
         }
@@ -1086,13 +1086,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guess Capital From Flags"
+            "value" : "Guess Capital "
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "국기보고 수도 맞추기"
+            "value" : "수도 맞추기"
           }
         }
       }
@@ -1118,13 +1118,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guess Flag From Names"
+            "value" : "Guess Flag"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이름보고 국기 맞추기"
+            "value" : "국기 맞추기"
           }
         }
       }
@@ -1150,13 +1150,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guess Name From Flags"
+            "value" : "Guess Name"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "국기보고 이름 맞추기"
+            "value" : "이름 맞추기"
           }
         }
       }
