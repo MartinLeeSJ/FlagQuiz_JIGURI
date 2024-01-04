@@ -7,10 +7,11 @@
 
 import Foundation
 
-enum NewsDestination: NavigationDestination {
+enum NewsDestination: Hashable {
     case countryQuizStat
     case userRank
     case quizRecord
+    case myPage
     case quizRecordDetail(FQQuizRecord)
     case countryDetail(FQCountryISOCode)
 }

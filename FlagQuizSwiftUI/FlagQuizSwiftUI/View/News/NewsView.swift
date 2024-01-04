@@ -10,6 +10,7 @@ import SwiftUI
 struct NewsView: View {
     @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var navigationModel: NavigationModel
+    @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @StateObject private var viewModel: NewsViewModel
     
     init(viewModel: NewsViewModel) {
@@ -17,47 +18,62 @@ struct NewsView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                Spacer()
-                    .frame(height: 100)
-                ZStack {
-                    Image("Frog")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: 200)
+        NavigationStack(path: $navigationModel.destinations) {
+            ScrollView {
+                VStack {
+                    Spacer()
+                        .frame(height: 50)
+                    ZStack {
+                        Image("Frog")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 200)
+                    }
+                    
+                    NewsGrid()
                 }
+            }
+            .toolbar {
+                Button {
+                    navigationModel.navigate(to: NewsDestination.myPage)
+                } label: {
+                    Circle()
+                        .foregroundStyle(.green)
+                        .frame(width: 30, height: 30)
+                    
+                }
+            }
+            .task {
+                await viewModel.load()
+            }
+            .navigationDestination(for: NewsDestination.self) { destination in
+                Group {
+                    switch destination {
+                    case .countryQuizStat:
+                        CountryQuizStatView(viewModel: .init(container: container))
+                    case .userRank:
+                        UserRankView(viewModel: .init(container: container))
+                    case .myPage:
+                        MyPageView()
+                            .environmentObject(authViewModel)
+                    case .quizRecord:
+                        QuizRecordView(viewModel: .init(container: container))
+                    case .quizRecordDetail(let record):
+                        QuizRecordDetailView(record: record)
+                    case .countryDetail(let countryCode):
+                        CountryDetailView(
+                            viewModel: .init(
+                                container: container,
+                                countryCode: countryCode
+                            )
+                        )
+                    }
+                }
+                .toolbar(.hidden, for: .tabBar)
                 
-                NewsGrid()
             }
+            .environmentObject(viewModel)
         }
-        .task {
-            await viewModel.load()
-        }
-        .navigationDestination(for: NewsDestination.self) { destination in
-            switch destination {
-            case .countryQuizStat: 
-                CountryQuizStatView(viewModel: .init(container: container))
-            case .userRank:
-                UserRankView(viewModel: .init(container: container))
-            case .quizRecord:
-                QuizRecordView(viewModel: .init(container: container))
-            case .quizRecordDetail(let record):
-                QuizRecordDetailView(record: record)
-            case .countryDetail(let countryCode):
-                CountryDetailView(
-                    viewModel: .init(
-                        container: container,
-                        countryCode: countryCode
-                    )
-                )
-        
-            }
-      
-            
-        }
-        .environmentObject(viewModel)
-        
     }
 
 }
@@ -65,7 +81,9 @@ struct NewsView: View {
 
 
 #Preview {
-    NewsView(viewModel: NewsViewModel(container: .init(services: StubService())))
-        .environmentObject(DIContainer(services: StubService()))
-        .environmentObject(NavigationModel())
+    NavigationStack {
+        NewsView(viewModel: NewsViewModel(container: .init(services: StubService())))
+            .environmentObject(DIContainer(services: StubService()))
+            .environmentObject(NavigationModel())
+    }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct QuizOptions: View {
+    @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var viewModel: QuizViewModel
     
@@ -94,7 +95,12 @@ struct QuizOptions: View {
                 Text(code.localizedName ?? "-")
             case .chooseFlagFromName:
                 Text(code.flagEmoji ?? "-")
-                    .font(.title)
+                    .font(.system(size: 40))
+                    .shadow(
+                        color: scheme == .dark ? .white.opacity(0.6) : .clear,
+                        radius: 20
+                    )
+                    
             case .chooseCaptialFromFlag:
                 capitalOptionButtonLabel(of: code)
             case .random:

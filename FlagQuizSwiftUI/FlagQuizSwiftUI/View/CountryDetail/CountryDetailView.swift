@@ -82,6 +82,7 @@ struct CountryDetailView: View {
                 Text(viewModel.countryDetail?.id.flagEmoji ?? "")
                     .font(.largeTitle)
             }
+            .scaledToFit()
             .frame(maxWidth: 160)
             .frame(height: 90)
             .padding(8)

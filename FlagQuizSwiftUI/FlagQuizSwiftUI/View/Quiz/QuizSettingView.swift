@@ -31,8 +31,9 @@ struct QuizSettingView: View {
     init(viewModel: QuizViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
+        NavigationStack(path: $navigationModel.destinations) {
             VStack(alignment: .leading, spacing: 16) {
                 Spacer()
                     .frame(height: 64)
@@ -50,7 +51,7 @@ struct QuizSettingView: View {
                 Divider()
                 
                 quizTypeMenu
-            
+                
                 quizCountPicker
                 
                 quizItemCountPicker
@@ -72,21 +73,22 @@ struct QuizSettingView: View {
                 
             }
             .navigationDestination(for: QuizDestination.self) { destination in
-                switch destination {
-                case .quiz:
-                    QuizView()
-                    .environmentObject(viewModel)
-                case .quizResult(let quiz):
-                    QuizResultView(quizResult: quiz)
-                        .environmentObject(viewModel)
-                case .countryDetail(let countryCode):
-                    CountryDetailView(viewModel: .init(container: container,
-                                                       countryCode: countryCode))
+                Group {
+                    switch destination {
+                    case .quiz:
+                        QuizView()
+                            .environmentObject(viewModel)
+                    case .quizResult(let quiz):
+                        QuizResultView(quizResult: quiz)
+                            .environmentObject(viewModel)
+                    case .countryDetail(let countryCode):
+                        CountryDetailView(viewModel: .init(container: container,
+                                                           countryCode: countryCode))
+                    }
                 }
+                .toolbar(.hidden, for: .tabBar)
             }
-            
-        
-        
+        }
     }
     
     private var quizCountPicker: some View {
@@ -94,7 +96,7 @@ struct QuizSettingView: View {
             Text("quizIntro.quizCountPicker.title")
             
             Spacer()
-
+            
             Picker("quizIntro.quizCountPicker.title",
                    selection: $quizCount
             ) {
@@ -135,18 +137,25 @@ struct QuizSettingView: View {
             
             Spacer()
             
-            Menu(quizType.localizedTitle) {
+            Menu {
                 ForEach(FQQuizType.allCases, id: \.self) { quizType in
                     Button {
                         self.quizType = quizType
                     } label: {
-                        Text(quizType.localizedTitle)
+                        HStack {
+                            Text(quizType.localizedShortenedTitle)
+                            Spacer()
+                            if self.quizType == quizType {
+                                Image(systemName: "checkmark")
+                            }
+                        }
                     }
                 }
+            } label: {
+                Label(quizType.localizedTitle, systemImage: "chevron.down.square.fill")
+                    .fontWeight(.medium)
             }
             .menuStyle(.button)
-            
-            
         }
         .padding(.horizontal)
     }
