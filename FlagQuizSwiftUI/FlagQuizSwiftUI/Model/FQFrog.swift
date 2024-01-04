@@ -14,8 +14,12 @@ struct FQFrog: Identifiable {
     }
     var userId: String
     var status: FrogState
+    
+    /// 상태가 마지막으로 업데이트 된 시점
     var lastUpdated: Date
-    var item: [FQItem]
+    
+    /// 장착하고있는 item Id
+    var items: [String]
 }
 
 extension FQFrog {
@@ -24,7 +28,7 @@ extension FQFrog {
             id: userId,
             status: status.rawValue,
             lastUpdated: .init(date: lastUpdated),
-            item: item.map { $0.toObject() }
+            items: items
         )
     }
 }

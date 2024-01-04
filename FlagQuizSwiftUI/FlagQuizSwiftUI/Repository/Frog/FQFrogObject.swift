@@ -12,7 +12,7 @@ struct FQFrogObject: Codable {
     @DocumentID var id: String?
     var status: Int
     var lastUpdated: Timestamp
-    var item: [FQItemObject]
+    var items: [String]
 }
 
 extension FQFrogObject {
@@ -22,7 +22,7 @@ extension FQFrogObject {
             userId: id,
             status: .safeValue(rawValue: status),
             lastUpdated: lastUpdated.dateValue(),
-            item: item.compactMap { $0.toModel() }
+            items: items
         )
     }
 }
