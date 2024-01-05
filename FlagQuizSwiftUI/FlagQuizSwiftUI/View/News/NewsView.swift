@@ -34,14 +34,27 @@ struct NewsView: View {
                 }
             }
             .toolbar {
-                Button {
-                    navigationModel.navigate(to: NewsDestination.myPage)
-                } label: {
-                    Circle()
-                        .foregroundStyle(.green)
-                        .frame(width: 30, height: 30)
+                ToolbarItem(placement: .topBarLeading) {
+                    EarthCandyView(viewModel: .init(container: container))
+                }
+                
+//                ToolbarItem(placement: .topBarLeading) {
+//                    Rectangle()
+//                        .frame(maxWidth: .infinity)
+//                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        navigationModel.navigate(to: NewsDestination.myPage)
+                    } label: {
+                        Circle()
+                            .foregroundStyle(.green)
+                            .frame(width: 30, height: 30)
+                        
+                    }
                     
                 }
+                
             }
             .task {
                 await viewModel.load()
