@@ -61,7 +61,7 @@ class Services: ServiceType {
         
         self.frogService = FrogService(repository: FrogDBRepository())
         
-        self.earthCandyService = EarthCandyService()
+        self.earthCandyService = EarthCandyService(repository: FQEarthCandyDBRepository())
   
     }
 }

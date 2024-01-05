@@ -11,6 +11,7 @@ import FirebaseFirestore
 struct FQQuiz {
     let quizCount: Int
     let quizOptionsCount: Int
+    let quizType: FQQuizType
 
     var quizRounds: [FQQuizRound]
     private(set) var currentQuizIndex: Int = 0
@@ -23,6 +24,7 @@ struct FQQuiz {
     ) {
         self.quizCount = quizCount
         self.quizOptionsCount = quizOptionsCount
+        self.quizType = quizType
         self.quizRounds = Self.createQuizRounds(
             quizCount: quizCount,
             quizOptionsCount: quizOptionsCount,
@@ -103,10 +105,12 @@ extension FQQuiz {
     init(
         quizCount: Int,
         quizOptionsCount: Int,
+        quizType: FQQuizType,
         quizRounds: [FQQuizRound]
     ) {
         self.quizCount = quizCount
         self.quizOptionsCount = quizOptionsCount
+        self.quizType = quizType
         self.quizRounds = quizRounds
     }
     

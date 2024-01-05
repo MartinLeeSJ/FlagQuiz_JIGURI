@@ -108,6 +108,7 @@ final class QuizViewModel: ObservableObject {
         await addUserQuizStat(userId: userId)
         await addCountryQuizStat(userId: userId)
         addQuizRecord(userId: userId)
+        updateEarthCandy(userId: userId)
     }
     
     
@@ -140,5 +141,18 @@ final class QuizViewModel: ObservableObject {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    private func updateEarthCandy(userId: String) {
+        let earthCandy = FQEarthCandy.calculatePoint(from: quiz, ofUser: userId)
+        container.services.earthCandyService.updateCandy(earthCandy, ofUser: userId)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { _ in
+                
+            }
+            .store(in: &cancellables)
     }
 }

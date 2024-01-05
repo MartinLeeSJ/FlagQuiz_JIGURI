@@ -104,6 +104,7 @@
 		5B9FC5FE2B47CDD300B694C7 /* FQEarthCandyDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9FC5FD2B47CDD300B694C7 /* FQEarthCandyDBRepository.swift */; };
 		5B9FC6002B47CDEF00B694C7 /* FQEarthCandy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9FC5FF2B47CDEF00B694C7 /* FQEarthCandy.swift */; };
 		5B9FC6022B47D90300B694C7 /* EarthCandyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9FC6012B47D90300B694C7 /* EarthCandyService.swift */; };
+		5B9FC6042B47F3BD00B694C7 /* FQQuiz+DEBUG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9FC6032B47F3BD00B694C7 /* FQQuiz+DEBUG.swift */; };
 		5BC998372B43E16900A5EA12 /* UserRankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */; };
 		5BC998392B44074700A5EA12 /* UserRankProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC998382B44074700A5EA12 /* UserRankProgressView.swift */; };
 		5BCFAC822B42E23600803C5C /* QuizRecordsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFAC812B42E23600803C5C /* QuizRecordsSummary.swift */; };
@@ -261,6 +262,7 @@
 		5B9FC5FD2B47CDD300B694C7 /* FQEarthCandyDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQEarthCandyDBRepository.swift; sourceTree = "<group>"; };
 		5B9FC5FF2B47CDEF00B694C7 /* FQEarthCandy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQEarthCandy.swift; sourceTree = "<group>"; };
 		5B9FC6012B47D90300B694C7 /* EarthCandyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthCandyService.swift; sourceTree = "<group>"; };
+		5B9FC6032B47F3BD00B694C7 /* FQQuiz+DEBUG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FQQuiz+DEBUG.swift"; sourceTree = "<group>"; };
 		5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankViewModel.swift; sourceTree = "<group>"; };
 		5BC998382B44074700A5EA12 /* UserRankProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankProgressView.swift; sourceTree = "<group>"; };
 		5BCFAC812B42E23600803C5C /* QuizRecordsSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRecordsSummary.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 			children = (
 				5B795CBC2B3D38D9004AF9EE /* QuizRecord */,
 				5BD3B7682B31ED8000B930E0 /* FQQuiz.swift */,
+				5B9FC6032B47F3BD00B694C7 /* FQQuiz+DEBUG.swift */,
 				5B795CC22B3D5B8C004AF9EE /* FQQuizType.swift */,
 				5BD3B76A2B31EDA000B930E0 /* FQQuizRound.swift */,
 				5B9ECB742B340DFD00098BF3 /* FQQuizScore.swift */,
@@ -1013,6 +1016,7 @@
 				5BCFAC862B42E2A500803C5C /* QuizRoundRecordsList.swift in Sources */,
 				5B8A87242B3EC8F100247DB9 /* QuizAnswer.swift in Sources */,
 				5B19C16F2B3C2D1D001A74CE /* UserRankCell.swift in Sources */,
+				5B9FC6042B47F3BD00B694C7 /* FQQuiz+DEBUG.swift in Sources */,
 				5BE086652B31D59C00D38C01 /* QuizFilledButtonStyle.swift in Sources */,
 				5BD3B7662B31EC7400B930E0 /* QuizView.swift in Sources */,
 				5B9ECB752B340DFD00098BF3 /* FQQuizScore.swift in Sources */,

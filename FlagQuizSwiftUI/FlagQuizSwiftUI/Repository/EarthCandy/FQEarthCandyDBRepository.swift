@@ -59,12 +59,15 @@ final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
         let documentRef = candyCollection.document(userId)
         
         return Future {  promise in
-            do {
-                try documentRef.setData(from: object)
-                promise(.success(()))
-            } catch {
-                promise(.failure(DBError.custom(error)))
+            documentRef.setData([
+                "point": FieldValue.increment(object.point)
+            ]) { error in
+                if let error {
+                    promise(.failure(DBError.custom(error)))
+                    return
+                }
                 
+                promise(.success(()))
             }
         }
         .eraseToAnyPublisher()
