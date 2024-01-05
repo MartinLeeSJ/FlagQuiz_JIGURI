@@ -16,7 +16,8 @@ struct FlowingText: View {
     
     init(_ text: String) {
         let string: String = Array(repeating: text + "   ", count: 3).joined(separator: "")
-        self.originalText = text + "   "
+//        self.originalText = text + "   "
+        self.originalText = text
         self.text = string
     }
 
@@ -29,10 +30,9 @@ struct FlowingText: View {
                     .overlay {
                         textOverlay(outerGeo)
                     }
+                    .frame(maxHeight: .infinity)
             }
             .scrollDisabled(true)
-            
-            
         }
     }
     

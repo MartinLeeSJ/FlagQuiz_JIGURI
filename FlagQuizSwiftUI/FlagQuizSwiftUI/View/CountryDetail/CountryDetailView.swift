@@ -75,6 +75,7 @@ struct CountryDetailView: View {
 
     }
     
+    //TODO: 뷰 분리, En Localization일 때 정보 중복 문제 해결
     @ViewBuilder
     private var flagAndName: some View {
         HStack(alignment: .top, spacing: 16) {
@@ -143,5 +144,5 @@ struct CountryDetailView: View {
 
 #Preview {
     CountryDetailView(viewModel: .init(container: .init(services: StubService()),
-                                       countryCode: FQCountryISOCode.randomCode(of: 1, except: nil).first!))
+                                       countryCode: .init("170")))
 }

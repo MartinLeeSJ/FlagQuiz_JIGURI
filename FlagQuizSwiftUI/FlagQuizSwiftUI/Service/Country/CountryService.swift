@@ -50,6 +50,6 @@ final class StubCountryService: CountryServiceType {
     }
     
     public func getCountryDetails(ofCodes codes:[FQCountryISOCode]) -> AnyPublisher<[FQCountryDetail], ServiceError> {
-        Empty().eraseToAnyPublisher()
+        Just([FQCountryDetail.mock]).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
     }
 }

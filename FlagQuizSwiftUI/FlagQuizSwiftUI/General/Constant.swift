@@ -21,6 +21,7 @@ extension Constant {
         static let QuizRecord: String = "QuizRecord"
         static let Frogs: String = "Frogs"
         static let Items: String = "Items"
+        static let EarthCandy: String = "EarthCandy"
     }
     
     struct LocalizableTable {

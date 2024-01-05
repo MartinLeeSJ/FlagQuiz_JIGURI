@@ -43,4 +43,13 @@ enum FQQuizType: String, Hashable, CaseIterable {
             String(localized: "quizType.random.shortened.title")
         }
     }
+    
+    var advantagePoint: Double {
+        switch self {
+        case .chooseNameFromFlag: 1.0
+        case .chooseFlagFromName: 0.0
+        case .chooseCaptialFromFlag: 2.0
+        case .random: 3.0
+        }
+    }
 }

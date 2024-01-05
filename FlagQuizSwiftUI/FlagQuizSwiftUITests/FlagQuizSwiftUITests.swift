@@ -18,7 +18,7 @@ class MockCountryService: CountryServiceType {
     }
     
     func getCountries(ofCodes codes: [FlagQuizSwiftUI.FQCountryISOCode]) -> AnyPublisher<[FlagQuizSwiftUI.FQCountry], FlagQuizSwiftUI.ServiceError> {
-        apiClient.getCountries(.init(countryCodes: codes))
+        apiClient.getCountries(of: .init(codes))
             .encode(encoder: JSONEncoder())
             .decode(type: [FQCountry].self, decoder: JSONDecoder())
             .mapError { ServiceError.custom($0) }
@@ -26,7 +26,7 @@ class MockCountryService: CountryServiceType {
     }
     
     func getCountryDetails(ofCodes codes: [FlagQuizSwiftUI.FQCountryISOCode]) -> AnyPublisher<[FlagQuizSwiftUI.FQCountryDetail], FlagQuizSwiftUI.ServiceError> {
-        apiClient.getCountries(.init(countryCodes: codes))
+        apiClient.getCountries(of: .init(codes))
             .encode(encoder: JSONEncoder())
             .decode(type: [FQCountryDetail].self, decoder: JSONDecoder())
             .mapError { ServiceError.custom($0) }
@@ -35,6 +35,10 @@ class MockCountryService: CountryServiceType {
 }
 
 final class MockCountryAPIClient: CountryAPIClientType {
+    func getCountries(of codes: [FlagQuizSwiftUI.FQCountryISOCode]) -> AnyPublisher<[FlagQuizSwiftUI.CountryObject], FlagQuizSwiftUI.APIError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
     func getCountries(_ request: FlagQuizSwiftUI.CountryRequest) -> AnyPublisher<[FlagQuizSwiftUI.CountryObject], FlagQuizSwiftUI.APIError> {
         Future { promise in
             do {
@@ -65,7 +69,7 @@ final class FlagQuizSwiftUITests: XCTestCase {
     func testDecodeCountryObject() {
         countryAPIClient = MockCountryAPIClient()
         
-        countryAPIClient?.getCountries(.init(countryCodes: [.init("170")]))
+        countryAPIClient?.getCountries(of: .init([.init("170")]))
             .sink{ completion in
                 if case .failure(let error) = completion {
                     XCTFail(error.localizedDescription)
@@ -119,6 +123,21 @@ final class FlagQuizSwiftUITests: XCTestCase {
                 XCTAssertEqual(country.id, .init("170"))
             }
             .store(in: &subscriptions)
+    }
+    
+    
+    func test어스캔디포인트4point5가잘계산되는지() {
+        let quizResult = FQQuiz.mock4point5
+        let earthCandy = FQEarthCandy.calculatePoint(from: quizResult, ofUser: "1")
+        
+        XCTAssertEqual(earthCandy.point, 4.5)
+    }
+    
+    func test어스캔디포인트1point5가잘계산되는지() {
+        let quizResult = FQQuiz.mock1point5
+        let earthCandy = FQEarthCandy.calculatePoint(from: quizResult, ofUser: "1")
+        
+        XCTAssertEqual(earthCandy.point, 1.5)
     }
 
 }

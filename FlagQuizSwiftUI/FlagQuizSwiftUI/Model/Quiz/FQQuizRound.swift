@@ -35,8 +35,24 @@ struct FQQuizRound {
         } else {
             self.quizType = quizType == .random ? Self.randomQuizType() : quizType
         }
-        
     }
+    
+#if DEBUG
+    /// 테스트용도 이니셜라이저
+    init(
+        answerCountryCode: FQCountryISOCode,
+        submittedCountryCode: FQCountryISOCode,
+        quizOptionsCount: Int,
+        quizType: FQQuizType? = .chooseNameFromFlag
+    ) {
+        self.answerCountryCode = answerCountryCode
+        self.submittedCountryCode = submittedCountryCode
+        self.quizOptionsCount = quizOptionsCount
+        self.optionsCountryCodes = []
+        self.quizType = quizType
+    }
+    
+#endif
 
     static private func optionsCountryCodes(
         quizOptionsCount: Int,

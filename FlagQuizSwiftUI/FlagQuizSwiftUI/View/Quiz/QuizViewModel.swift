@@ -27,6 +27,7 @@ final class QuizViewModel: ObservableObject {
         case submit
         case nextQuiz
         case finishQuiz
+        case error(QuizError)
     }
     
     init(
@@ -61,15 +62,22 @@ final class QuizViewModel: ObservableObject {
             Task {
                 await finishQuiz()
             }
+            
+        case .error:
+            //TODO: - errorHandling
+            break
         }
+        
+    
     }
     
     private func loadCountryInfo(codes: [FQCountryISOCode]) {
         container.services.countryService.getCountries(ofCodes: codes)
             .receive(on: DispatchQueue.main)
-            .sink { completion in
+            .sink { [weak self] completion in
                 if case .failure(let error) = completion {
-                    print(error.localizedDescription)
+                    debugPrint(error.localizedDescription)
+                    self?.error(.failedToLoadCountryInfo)
                 }
             } receiveValue: { [weak self] countries in
                 self?.countries = countries
@@ -84,10 +92,13 @@ final class QuizViewModel: ObservableObject {
         
         container.services.countryService.getCountries(ofCodes: codes)
             .receive(on: DispatchQueue.main)
-            .sink { completion in
+            .sink { [weak self] completion in
+                
                 if case .failure(let error) = completion {
-                    print(error.localizedDescription)
+                    debugPrint(error.localizedDescription)
+                    self?.error(.failedToLoadOptionsCountryInfo)
                 }
+                
             } receiveValue: { [weak self] countries in
                 self?.optionsCountries = countries
             }
@@ -108,6 +119,7 @@ final class QuizViewModel: ObservableObject {
         await addUserQuizStat(userId: userId)
         await addCountryQuizStat(userId: userId)
         addQuizRecord(userId: userId)
+        updateEarthCandy(userId: userId)
     }
     
     
@@ -116,7 +128,8 @@ final class QuizViewModel: ObservableObject {
             try await container.services.quizStatService.addQuizStat(ofUser: userId, quiz: quiz)
         } catch {
             //TODO: Error 처리
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
+            self.error(.failedToUpdateUserQuizStat)
         }
     }
     
@@ -124,8 +137,8 @@ final class QuizViewModel: ObservableObject {
         do {
             try container.services.quizRecordService.addQuizRecord(ofUser: userId, from: quiz)
         } catch {
-            //TODO: Error 처리
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
+            self.error(.failedToUpdateQuizRecord)
         }
     }
     
@@ -138,7 +151,26 @@ final class QuizViewModel: ObservableObject {
                 substractingCodes: result.wrong
             )
         } catch {
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
+            self.error(.failedToUpdateCountryQuizStat)
         }
+    }
+    
+    private func updateEarthCandy(userId: String) {
+        let earthCandy = FQEarthCandy.calculatePoint(from: quiz, ofUser: userId)
+        container.services.earthCandyService.updateCandy(earthCandy, ofUser: userId)
+            .sink { [weak self] completion in
+                if case .failure(let error) = completion {
+                    debugPrint(error.localizedDescription)
+                    self?.error(.failedToUpdateEarthCandy)
+                }
+            } receiveValue: { _ in
+                
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func error(_ quizError: QuizError) {
+        //TODO: Error 핸들링
     }
 }
