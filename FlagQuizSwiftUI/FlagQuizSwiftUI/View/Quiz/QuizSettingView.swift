@@ -24,9 +24,6 @@ struct QuizSettingView: View {
     @EnvironmentObject private var navigationModel: NavigationModel
     @StateObject private var viewModel: QuizViewModel
     
-    @State private var quizCount: QuizCount = .ten
-    @State private var quizItemCount: QuizItemCount = .four
-    @State private var quizType: FQQuizType = .chooseNameFromFlag
     
     init(viewModel: QuizViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -40,9 +37,9 @@ struct QuizSettingView: View {
                 
                 TypeWritingText(
                     originalText: String(localized: "quizSetting.intro"),
-                    animation: .bouncy
+                    animation: .easeInOut
                 )
-                .font(.system(size: 64))
+                .font(.system(size: 50, design: .rounded))
                 .fontWeight(.heavy)
                 .padding(.horizontal)
                 
@@ -50,27 +47,9 @@ struct QuizSettingView: View {
                 
                 Divider()
                 
-                quizTypeMenu
-                
-                quizCountPicker
-                
-                quizItemCountPicker
-                
-                Button {
-                    viewModel.send(
-                        .setNewQuiz(
-                            count: quizCount.rawValue,
-                            optionCount: quizItemCount.rawValue,
-                            quizType: quizType
-                        )
-                    )
-                    navigationModel.navigate(to: QuizDestination.quiz)
-                } label: {
-                    Text("start.quiz")
-                }
-                .buttonStyle(QuizFilledButtonStyle(disabled: false))
-                .padding()
-                
+                QuizSettingControls()
+                    .environmentObject(viewModel)
+
             }
             .navigationDestination(for: QuizDestination.self) { destination in
                 Group {
@@ -90,77 +69,7 @@ struct QuizSettingView: View {
             }
         }
     }
-    
-    private var quizCountPicker: some View {
-        HStack {
-            Text("quizIntro.quizCountPicker.title")
-            
-            Spacer()
-            
-            Picker("quizIntro.quizCountPicker.title",
-                   selection: $quizCount
-            ) {
-                ForEach(QuizCount.allCases, id: \.self) { quizCount in
-                    Text("\(quizCount.rawValue)")
-                        .tag(quizCount)
-                }
-            }
-            .pickerStyle(.segmented)
-            .frame(maxWidth: 200)
-        }
-        .padding(.horizontal)
-    }
-    
-    private var quizItemCountPicker: some View {
-        HStack {
-            Text("quizIntro.quizItemCountPicker.title")
-            
-            Spacer()
-            
-            Picker("quizIntro.quizItemCountPicker.title",
-                   selection: $quizItemCount
-            ) {
-                ForEach(QuizItemCount.allCases, id: \.self) { quizItemCount in
-                    Text("\(quizItemCount.rawValue)")
-                        .tag(quizItemCount)
-                }
-            }
-            .pickerStyle(.segmented)
-            .frame(maxWidth: 200)
-        }
-        .padding(.horizontal)
-    }
-    
-    private var quizTypeMenu: some View {
-        HStack {
-            Text("quizIntro.quizTypeMenu.title")
-            
-            Spacer()
-            
-            Menu {
-                ForEach(FQQuizType.allCases, id: \.self) { quizType in
-                    Button {
-                        self.quizType = quizType
-                    } label: {
-                        HStack {
-                            Text(quizType.localizedShortenedTitle)
-                            Spacer()
-                            if self.quizType == quizType {
-                                Image(systemName: "checkmark")
-                            }
-                        }
-                    }
-                }
-            } label: {
-                Label(quizType.localizedTitle, systemImage: "chevron.down.square.fill")
-                    .fontWeight(.medium)
-            }
-            .menuStyle(.button)
-        }
-        .padding(.horizontal)
-    }
-    
-    
+
 }
 
 
