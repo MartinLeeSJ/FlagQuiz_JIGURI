@@ -45,7 +45,7 @@ final class EarthCandyService: EarthCandyServiceType {
         _ model: FQEarthCandy,
         ofUser userId: String
     ) -> AnyPublisher<Void, ServiceError> {
-        repository.setEarthCandy(model.toObject(), ofUser: userId)
+        repository.updateEarthCandy(model.toObject(), ofUser: userId)
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()
     }

@@ -36,6 +36,9 @@
     "0" : {
 
     },
+    "0.%lld" : {
+
+    },
     "100" : {
 
     },
@@ -67,6 +70,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "정답 %1$lld문제 / 총 %2$lld문제"
+          }
+        }
+      }
+    },
+    "correct.quiz.count" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct Quiz Count"
           }
         }
       }
@@ -263,7 +276,16 @@
         }
       }
     },
+    "dismiss" : {
+
+    },
+    "Earth Candy" : {
+
+    },
     "ErrorView" : {
+
+    },
+    "Estimated" : {
 
     },
     "finish.quiz" : {
@@ -679,7 +701,20 @@
 
     },
     "Lv. %lld" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lv. %lld"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "레벨 %lld"
+          }
+        }
+      }
     },
     "N. America" : {
       "localizations" : {
@@ -860,6 +895,28 @@
         }
       }
     },
+    "Quiz Count" : {
+
+    },
+    "Quiz Options / 10" : {
+
+    },
+    "quiz.option.divide.ten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Options Count / 10"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 선택지수 / 10"
+          }
+        }
+      }
+    },
     "quiz.record.list.header.date.and.time" : {
       "localizations" : {
         "en" : {
@@ -1004,6 +1061,22 @@
         }
       }
     },
+    "quiz.type.advantage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Type Advantage"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 종류 어드밴티지"
+          }
+        }
+      }
+    },
     "quizIntro.quizCountPicker.title" : {
       "localizations" : {
         "en" : {
@@ -1057,7 +1130,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guess\na country\nof this flag"
+            "value" : "Guess\na country\nfrom this flag."
           }
         },
         "ko" : {
@@ -1324,6 +1397,22 @@
         }
       }
     },
+    "show.result.button.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Detailed Result"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "결과보기"
+          }
+        }
+      }
+    },
     "start.quiz" : {
       "localizations" : {
         "en" : {
@@ -1403,6 +1492,9 @@
           }
         }
       }
+    },
+    "Type advantage" : {
+
     },
     "user.rank.all.rank.info.title" : {
       "localizations" : {
@@ -1594,6 +1686,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "지구의 다른 이웃에 대한 상식이 풍부 하시네요!"
+          }
+        }
+      }
+    },
+    "you.have.got" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've got"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "얻은 지구알사탕"
           }
         }
       }

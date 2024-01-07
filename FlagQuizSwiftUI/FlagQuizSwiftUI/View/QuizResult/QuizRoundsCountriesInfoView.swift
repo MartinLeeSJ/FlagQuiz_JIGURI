@@ -28,7 +28,7 @@ struct QuizRoundsCountriesInfoView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("quiz.result.countries.info.title")
-                .font(.title3.bold())
+                .font(.headline)
                 .padding(.horizontal)
                 .padding(.top, 16)
             

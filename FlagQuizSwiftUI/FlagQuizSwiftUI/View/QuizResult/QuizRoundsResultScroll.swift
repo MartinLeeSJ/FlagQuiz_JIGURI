@@ -34,7 +34,7 @@ struct QuizRoundsResultScroll: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("quiz.result.rounds.record.title")
-                .font(.title3.bold())
+                .font(.headline)
                 .padding(.horizontal)
             
             if #available(iOS 17.0, *) {
