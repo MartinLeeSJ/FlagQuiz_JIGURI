@@ -19,6 +19,12 @@ extension FQEarthCandy {
 }
 
 extension FQEarthCandy {
+    static func earthCandyForFeedingFrog(ofUser userId: String) -> FQEarthCandy {
+        .init(userId: userId, point: -10.5)
+    }
+}
+
+extension FQEarthCandy {
     static func calculatePoint(
         from quizResult: FQQuiz,
         ofUser userId: String

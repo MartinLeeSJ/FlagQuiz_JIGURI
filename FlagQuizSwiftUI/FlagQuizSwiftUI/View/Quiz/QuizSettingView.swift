@@ -39,7 +39,7 @@ struct QuizSettingView: View {
                     originalText: String(localized: "quizSetting.intro"),
                     animation: .easeInOut
                 )
-                .font(.system(size: 50, design: .rounded))
+                .font(.system(size: 50))
                 .fontWeight(.heavy)
                 .padding(.horizontal)
                 

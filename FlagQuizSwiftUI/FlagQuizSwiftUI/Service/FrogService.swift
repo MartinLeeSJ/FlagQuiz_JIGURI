@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 protocol FrogServiceType {
     func getFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError>
-    func feedFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError>
+    func feedFrog(_ model: FQFrog) -> AnyPublisher<FQFrog, ServiceError>
     func addFrogIfNotExist(ofUser userId: String) -> AnyPublisher<Void, ServiceError>
     func updateFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError>
 }
@@ -61,15 +61,16 @@ final class FrogService: FrogServiceType {
             .eraseToAnyPublisher()
     }
     
-    func feedFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError> {
+    func feedFrog(_ model: FQFrog) -> AnyPublisher<FQFrog, ServiceError> {
         guard model.status != .great else {
-            return Fail<Void, ServiceError>(error: .invalid).eraseToAnyPublisher()
+            return Fail<FQFrog, ServiceError>(error: .invalid).eraseToAnyPublisher()
         }
         var updatedModel: FQFrog = model
         updatedModel.status.upgrade()
         updatedModel.lastUpdated = .now
         
         return repository.updateFrog(updatedModel.toObject())
+            .map { updatedModel }
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()
     }
@@ -102,11 +103,20 @@ final class FrogService: FrogServiceType {
 
 final class StubFrogService: FrogServiceType {
     func getFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError> {
-        Empty().eraseToAnyPublisher()
+        Just(FQFrog(userId: "1", status: .good, lastUpdated: .now, items: []))
+            .setFailureType(to: ServiceError.self)
+            .eraseToAnyPublisher()
+        
     }
     
-    func feedFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError> {
-        Empty().eraseToAnyPublisher()
+    func feedFrog(_ model: FQFrog) -> AnyPublisher<FQFrog, ServiceError> {
+        var updatedModel = model
+        updatedModel.status.upgrade()
+        updatedModel.lastUpdated = .now
+        
+        return Just(updatedModel)
+            .setFailureType(to: ServiceError.self)
+            .eraseToAnyPublisher()
     }
     
     func addFrogIfNotExist(ofUser userId: String) -> AnyPublisher<Void, ServiceError> {

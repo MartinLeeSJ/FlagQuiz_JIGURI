@@ -52,4 +52,16 @@ enum FrogState: Int {
         self = Self.safeValue(rawValue: self.rawValue + 1)
     }
     
+    var frogImageName: String {
+        switch self {
+        case .bad:
+            "frogBad"
+        case .soso:
+            "frogSoSo"
+        case .good:
+            "frogGood"
+        case .great:
+            "frogGreat"
+        }
+    }
 }

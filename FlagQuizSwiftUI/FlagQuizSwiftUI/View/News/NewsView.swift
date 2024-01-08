@@ -22,13 +22,13 @@ struct NewsView: View {
             ScrollView {
                 VStack {
                     Spacer()
-                        .frame(height: 50)
-                    ZStack {
-                        Image("Frog")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 200)
-                    }
+                        .frame(height: 30)
+
+                    FrogView(
+                        viewModel: .init(
+                            container: container
+                        )
+                    )
                     
                     NewsGrid()
                 }
@@ -37,11 +37,6 @@ struct NewsView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     EarthCandyView(viewModel: .init(container: container))
                 }
-                
-//                ToolbarItem(placement: .topBarLeading) {
-//                    Rectangle()
-//                        .frame(maxWidth: .infinity)
-//                }
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -52,9 +47,7 @@ struct NewsView: View {
                             .frame(width: 30, height: 30)
                         
                     }
-                    
                 }
-                
             }
             .task {
                 await viewModel.load()

@@ -11,6 +11,7 @@ import Combine
 protocol EarthCandyServiceType {
     func getCandyOrCreateIfNotExist(ofUser userId: String) -> AnyPublisher<FQEarthCandy?, ServiceError>
     func updateCandy(_ model: FQEarthCandy, ofUser userId: String) -> AnyPublisher<Void, ServiceError>
+    func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Void, ServiceError>
 }
 
 final class EarthCandyService: EarthCandyServiceType {
@@ -50,6 +51,13 @@ final class EarthCandyService: EarthCandyServiceType {
             .eraseToAnyPublisher()
     }
     
+    func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Void, ServiceError> {
+        let candy = FQEarthCandy.earthCandyForFeedingFrog(ofUser: userId)
+        return repository.updateEarthCandy(candy.toObject(), ofUser: userId)
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
+        
+    }
     
 }
 
@@ -65,6 +73,10 @@ final class StubEarthCandyService: EarthCandyServiceType {
         _ model: FQEarthCandy,
         ofUser userId: String
     ) -> AnyPublisher<Void, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Void, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 

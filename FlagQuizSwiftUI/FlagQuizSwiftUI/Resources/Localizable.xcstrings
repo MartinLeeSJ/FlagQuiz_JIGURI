@@ -39,6 +39,9 @@
     "0.%lld" : {
 
     },
+    "10.5" : {
+
+    },
     "100" : {
 
     },
@@ -47,6 +50,22 @@
     },
     "advertisement" : {
 
+    },
+    "already.full.button.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frog is very happy"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리는 매우 행복합니다."
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
@@ -287,6 +306,38 @@
     },
     "Estimated" : {
 
+    },
+    "feed.frog.button.placeholder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로딩..."
+          }
+        }
+      }
+    },
+    "feed.frog.button.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feed the Frog"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구알사탕으로 회복"
+          }
+        }
+      }
     },
     "finish.quiz" : {
       "localizations" : {

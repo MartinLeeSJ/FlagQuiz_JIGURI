@@ -57,6 +57,8 @@
 		5B3448502B355433002E2222 /* FQUserQuizStatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */; };
 		5B3448522B357600002E2222 /* FQQuizRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3448512B357600002E2222 /* FQQuizRecordRepository.swift */; };
 		5B3448582B35D3F1002E2222 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3448572B35D3F1002E2222 /* HapticsManager.swift */; };
+		5B50562F2B4BBEDF00FCA5A7 /* FrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */; };
+		5B5056312B4BC3C900FCA5A7 /* FrogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5056302B4BC3C900FCA5A7 /* FrogViewModel.swift */; };
 		5B559F062B28B84A00B131BE /* QuizSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F052B28B84A00B131BE /* QuizSettingView.swift */; };
 		5B559F082B28B85400B131BE /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F072B28B85400B131BE /* NewsView.swift */; };
 		5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */; };
@@ -220,6 +222,8 @@
 		5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStatObject.swift; sourceTree = "<group>"; };
 		5B3448512B357600002E2222 /* FQQuizRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQQuizRecordRepository.swift; sourceTree = "<group>"; };
 		5B3448572B35D3F1002E2222 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogView.swift; sourceTree = "<group>"; };
+		5B5056302B4BC3C900FCA5A7 /* FrogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogViewModel.swift; sourceTree = "<group>"; };
 		5B559F052B28B84A00B131BE /* QuizSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingView.swift; sourceTree = "<group>"; };
 		5B559F072B28B85400B131BE /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		5B5C2AC92B280A32009A382B /* FlagQuizSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlagQuizSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -390,6 +394,7 @@
 				5B19C1642B3C0CD3001A74CE /* Navigation */,
 				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
 				5B16F9412B2830570011ACF7 /* OnBoardingView.swift */,
+				5B50562D2B4BBECA00FCA5A7 /* Frog */,
 				5B9FC6092B48273400B694C7 /* EarthCandy */,
 				5BFF438F2B46CF9800C3DBCB /* MyPage */,
 				5B16F9582B28471D0011ACF7 /* Auth */,
@@ -544,6 +549,15 @@
 				5B8A87212B3EC26D00247DB9 /* NetworkMonitorManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		5B50562D2B4BBECA00FCA5A7 /* Frog */ = {
+			isa = PBXGroup;
+			children = (
+				5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */,
+				5B5056302B4BC3C900FCA5A7 /* FrogViewModel.swift */,
+			);
+			path = Frog;
 			sourceTree = "<group>";
 		};
 		5B559F0A2B28B86500B131BE /* News */ = {
@@ -1126,6 +1140,7 @@
 				5B7BCAF62B32DBED00E50C5F /* QuizOptions.swift in Sources */,
 				5BFF43932B46CFD100C3DBCB /* MyPageView.swift in Sources */,
 				5B9FC6002B47CDEF00B694C7 /* FQEarthCandy.swift in Sources */,
+				5B5056312B4BC3C900FCA5A7 /* FrogViewModel.swift in Sources */,
 				5BCFA2912B4987FE0074C998 /* QuizSettingControls.swift in Sources */,
 				5BE0865F2B3190DA00D38C01 /* FQMapsLinks.swift in Sources */,
 				5B795CB52B3D298B004AF9EE /* QuizRecordView.swift in Sources */,
@@ -1166,6 +1181,7 @@
 				5B0F311B2B4AA36D00121561 /* QuizResultScoreSection.swift in Sources */,
 				5BE0865D2B3190C500D38C01 /* FQFlagLinks.swift in Sources */,
 				5B8A87222B3EC26D00247DB9 /* NetworkMonitorManager.swift in Sources */,
+				5B50562F2B4BBEDF00FCA5A7 /* FrogView.swift in Sources */,
 				5B9A81AD2B3AAC660087142A /* CountryDetailInfo.swift in Sources */,
 				5BFF438C2B469DF000C3DBCB /* FQItemName.swift in Sources */,
 				5BFF437B2B466E3A00C3DBCB /* FQItem.swift in Sources */,

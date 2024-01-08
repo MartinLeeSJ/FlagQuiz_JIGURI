@@ -76,13 +76,18 @@ final class FrogDBRepository: FrogDBRepositoryType {
         }
         
         let documentRef: DocumentReference = collectionRef.document(id)
-        
+
         return Future { promise in
-            do {
-                try documentRef.setData(from: object)
+            documentRef.updateData([
+                "status": object.status,
+                "lastUpdated": FieldValue.serverTimestamp(),
+                "items": object.items
+            ]) { error in
+                if let error {
+                    promise(.failure(error))
+                    return
+                }
                 promise(.success(()))
-            } catch {
-                promise(.failure(error))
             }
         }
         .mapError { DBError.custom($0) }
