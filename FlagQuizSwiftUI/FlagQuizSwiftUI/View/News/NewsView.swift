@@ -21,9 +21,6 @@ struct NewsView: View {
         NavigationStack(path: $navigationModel.destinations) {
             ScrollView {
                 VStack {
-                    Spacer()
-                        .frame(height: 30)
-
                     FrogView(
                         viewModel: .init(
                             container: container

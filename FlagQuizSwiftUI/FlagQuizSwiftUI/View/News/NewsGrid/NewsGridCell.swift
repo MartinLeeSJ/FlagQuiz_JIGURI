@@ -27,6 +27,7 @@ struct NewsGridCell<Content>: View where Content: View {
         VStack(alignment: alignment, spacing: 0) {
             Text(title)
                 .font(.caption)
+                .fontWeight(.medium)
                 .foregroundStyle(Color(uiColor: .label))
             
             Divider()
@@ -47,8 +48,7 @@ struct NewsGridCell<Content>: View where Content: View {
             Spacer()
             
         }
-        .padding(.vertical, 12)
-        .padding(.horizontal, 12)
+        .padding(12)
         .background(.thinMaterial, in: Rectangle())
         
         
