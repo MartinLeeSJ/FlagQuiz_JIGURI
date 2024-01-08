@@ -30,10 +30,10 @@ struct EarthCandyView: View {
             
             Group {
                 if let point = viewModel.earthCandy?.point {
-                    FlowingText("\(point)")
+                    Text(point, format: .number)
                 } else {
                     Text("0")
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
                 }
             }
             .font(.system(.subheadline, design: .monospaced))
@@ -48,14 +48,9 @@ struct EarthCandyView: View {
             viewModel.load()
         }
         .frame(
-            idealWidth: 120,
-            maxWidth: 160
+            maxWidth: .infinity,
+            alignment: .leading
         )
-        .background {
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .foregroundStyle(Material.thick)
-        }
-        .padding(.vertical, 4)
         .onTapGesture {
             showDetail = true
         }

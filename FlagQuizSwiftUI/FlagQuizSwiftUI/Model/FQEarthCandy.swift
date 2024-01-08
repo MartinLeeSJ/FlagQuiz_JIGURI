@@ -23,13 +23,16 @@ extension FQEarthCandy {
         from quizResult: FQQuiz,
         ofUser userId: String
     ) -> FQEarthCandy {
-        let pointPerRound: Double = Double(quizResult.quizOptionsCount) * 0.1
-        let correctCount: Double = Double(quizResult.correctQuizRoundsCount)
-        let advantagePoint: Double = quizResult.quizType.advantagePoint
+        let pointPerRound: Decimal = Decimal(quizResult.quizOptionsCount) / 10
+        let correctCount: Decimal = Decimal(quizResult.correctQuizRoundsCount)
+        let advantagePoint: Decimal = Decimal(quizResult.quizType.advantagePoint)
+        let total = NSDecimalNumber(decimal: pointPerRound * correctCount + advantagePoint).doubleValue
+       
         
         return .init(
             userId: userId,
-            point: pointPerRound * correctCount + advantagePoint
+            point: total
         )
     }
+
 }
