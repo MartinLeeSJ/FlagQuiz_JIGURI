@@ -11,7 +11,9 @@ import FirebaseFirestore
 
 protocol FrogServiceType {
     func getFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError>
-    func feedFrog(_ model: FQFrog) -> AnyPublisher<FQFrog, ServiceError>
+    func observeFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError>
+    
+    func feedFrog(_ model: FQFrog) -> AnyPublisher<Bool, ServiceError>
     func addFrogIfNotExist(ofUser userId: String) -> AnyPublisher<Void, ServiceError>
     func updateFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError>
 }
@@ -35,15 +37,32 @@ final class FrogService: FrogServiceType {
                     return Just(nil).setFailureType(to: DBError.self).eraseToAnyPublisher()
                 }
                 
-                return checkFrogStatus(object: object)
+                return checkFrogStatus(object: object, ofUser: userId)
             }
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()
     }
     
-    private func checkFrogStatus(object: FQFrogObject) -> AnyPublisher<FQFrog?, DBError> {
-       
-        var updatedObject: FQFrogObject = object
+    func observeFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError> {
+        repository.observeFrog(ofUser: userId)
+            .flatMap { [weak self] object in
+                guard let self else {
+                    return Fail<FQFrog?, DBError>(error: .invalidSelf).eraseToAnyPublisher()
+                }
+                
+                return self.checkFrogStatus(object: object, ofUser: userId)
+                    .eraseToAnyPublisher()
+            }
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
+        
+    }
+    
+    private func checkFrogStatus(object: FQFrogObject?, ofUser userId: String) -> AnyPublisher<FQFrog?, DBError> {
+        guard var object: FQFrogObject = object else {
+            return Just(nil).setFailureType(to: DBError.self).eraseToAnyPublisher()
+        }
+        
         let lastUpdated: Date = object.lastUpdated.dateValue()
         let calendar: Calendar = Calendar.current
         let components = calendar.dateComponents([.hour], from: lastUpdated, to: .now)
@@ -52,25 +71,25 @@ final class FrogService: FrogServiceType {
             return Just(object.toModel()).setFailureType(to: DBError.self).eraseToAnyPublisher()
         }
         
-        let newStatus: Int = updatedObject.status - Int(abs(hours) / 2)
-        updatedObject.status = FrogState.safeValue(rawValue: newStatus).rawValue
-        updatedObject.lastUpdated = .init(date: .now)
+        let newStatus: Int = object.status - Int(abs(hours) / 2)
+        object.status = FrogState.safeValue(rawValue: newStatus).rawValue
+        object.lastUpdated = .init(date: .now)
         
-        return self.repository.updateFrog(updatedObject)
-            .map { updatedObject.toModel() }
+        return self.repository.updateFrog(object, ofUser: userId)
+            .map { object.toModel() }
             .eraseToAnyPublisher()
     }
     
-    func feedFrog(_ model: FQFrog) -> AnyPublisher<FQFrog, ServiceError> {
+    func feedFrog(_ model: FQFrog) -> AnyPublisher<Bool, ServiceError> {
         guard model.state != .great else {
-            return Fail<FQFrog, ServiceError>(error: .invalid).eraseToAnyPublisher()
+            return Just(false).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
         }
         var updatedModel: FQFrog = model
         updatedModel.state.upgrade()
         updatedModel.lastUpdated = .now
         
-        return repository.updateFrog(updatedModel.toObject())
-            .map { updatedModel }
+        return repository.updateFrog(updatedModel.toObject(), ofUser: model.userId)
+            .map { true }
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()
     }
@@ -94,7 +113,7 @@ final class FrogService: FrogServiceType {
     }
     
     func updateFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError> {
-        repository.updateFrog(model.toObject())
+        repository.updateFrog(model.toObject(), ofUser: model.userId)
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()
     }
@@ -109,12 +128,12 @@ final class StubFrogService: FrogServiceType {
         
     }
     
-    func feedFrog(_ model: FQFrog) -> AnyPublisher<FQFrog, ServiceError> {
-        var updatedModel = model
-        updatedModel.state.upgrade()
-        updatedModel.lastUpdated = .now
-        
-        return Just(updatedModel)
+    func observeFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func feedFrog(_ model: FQFrog) -> AnyPublisher<Bool, ServiceError> {
+        return Just(true)
             .setFailureType(to: ServiceError.self)
             .eraseToAnyPublisher()
     }

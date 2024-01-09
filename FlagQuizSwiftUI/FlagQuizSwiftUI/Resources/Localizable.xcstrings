@@ -761,6 +761,24 @@
         }
       }
     },
+    "frog.state.notification.body.frogStateBad" : {
+
+    },
+    "frog.state.notification.body.frogStateGood" : {
+
+    },
+    "frog.state.notification.body.frogStateSoSo" : {
+
+    },
+    "frog.state.notification.title.frogStateBad" : {
+
+    },
+    "frog.state.notification.title.frogStateGood" : {
+
+    },
+    "frog.state.notification.title.frogStateSoSo" : {
+
+    },
     "Hello, World!" : {
 
     },

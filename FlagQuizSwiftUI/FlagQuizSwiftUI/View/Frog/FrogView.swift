@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FrogView: View {
     @Environment(\.colorScheme) var scheme
+    @EnvironmentObject private var notificationManager: NotificationManager
     @StateObject private var viewModel: FrogViewModel
     
     init(viewModel: FrogViewModel) {
@@ -23,7 +24,7 @@ struct FrogView: View {
             } else {
                 placeholder
                     .onAppear {
-                        viewModel.load()
+                        viewModel.observe()
                     }
             }
             Spacer()
@@ -108,6 +109,7 @@ struct FrogView: View {
             guard frog.state != .great else { return }
             
             viewModel.send(.feedFrog)
+            addNotification(when: frog.state)
         } label: {
             HStack {
                 Text(frog.state.feedFrogButtonTitle)
@@ -133,6 +135,16 @@ struct FrogView: View {
         
     }
     
+    private func addNotification(when state: FrogState) {
+        guard state != .great else { return }
+        
+        var newState: FrogState = state
+        
+        newState.upgrade()
+        
+        notificationManager.addFrogStateNotification(when: newState)
+    }
+    
    
 }
 
@@ -146,4 +158,5 @@ struct FrogView: View {
             )
         )
     )
+    .environmentObject(NotificationManager())
 }

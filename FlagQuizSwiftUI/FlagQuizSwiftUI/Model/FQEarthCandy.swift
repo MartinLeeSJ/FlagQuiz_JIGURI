@@ -14,7 +14,7 @@ struct FQEarthCandy: Codable {
 
 extension FQEarthCandy {
     func toObject() -> FQEarthCandyObject {
-        .init(userId: userId, point: point)
+        .init(userId: nil, point: point)
     }
 }
 

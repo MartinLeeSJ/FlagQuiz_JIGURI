@@ -22,6 +22,21 @@ final class FrogViewModel: ObservableObject {
         self.container = container
     }
     
+    public func observe() {
+        guard let userId = container.services.authService.checkAuthenticationState() else {
+            return
+        }
+        
+        container.services.frogService.observeFrogWhileCheckingStatus(ofUser: userId)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    
+                }
+            } receiveValue: { [weak self] frog in
+                self?.frog = frog
+            }
+            .store(in: &cancellables)
+    }
     
     public func load() {
         guard let userId = container.services.authService.checkAuthenticationState() else {
@@ -53,20 +68,45 @@ final class FrogViewModel: ObservableObject {
             return
         }
         
-        container.services.earthCandyService.useCandyForFeedingFrog(ofUser: userId)
-            .flatMap { [weak self] _ in
+        container.services.frogService.feedFrog(frog)
+            .flatMap { [weak self] fed in
                 guard let self else {
-                    return Fail<FQFrog, ServiceError>(error: .nilSelf).eraseToAnyPublisher()
+                    return Fail<Bool, ServiceError>(error: .nilSelf).eraseToAnyPublisher()
                 }
-                return self.container.services.frogService.feedFrog(frog)
+                
+                guard fed else {
+                    return Just(false).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
+                }
+                
+                return self.container.services.earthCandyService.useCandyForFeedingFrog(ofUser: userId)
                     .eraseToAnyPublisher()
             }
             .sink { _ in
                 //TODO: Error Handling
-            } receiveValue: { [weak self] frog in
-                self?.frog = frog
+            } receiveValue: { _ in
+                
             }
             .store(in: &cancellables)
+        
+//        container.services.earthCandyService.useCandyForFeedingFrog(ofUser: userId)
+//            .flatMap { [weak self] updated in
+//                guard let self else {
+//                    return Fail<Bool, ServiceError>(error: .nilSelf).eraseToAnyPublisher()
+//                }
+//                
+//                guard updated else {
+//                    return Just(false).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
+//                }
+//                
+//                return self.container.services.frogService.feedFrog(frog)
+//                    .eraseToAnyPublisher()
+//            }
+//            .sink { _ in
+//                //TODO: Error Handling
+//            } receiveValue: { _ in
+//                
+//            }
+//            .store(in: &cancellables)
     }
     
 }

@@ -12,9 +12,10 @@ import FirebaseFirestore
 protocol FrogDBRepositoryType {
     func getFrog(ofUser userId: String) -> AnyPublisher<FQFrogObject?, DBError>
     func getFrog(ofUser userId: String) async throws -> FQFrogObject
+    func observeFrog(ofUser userId: String) -> AnyPublisher<FQFrogObject?, DBError>
     
     func addFrog(ofUser userId: String) -> AnyPublisher<Void, DBError>
-    func updateFrog(_ object: FQFrogObject) -> AnyPublisher<Void, DBError>
+    func updateFrog(_ object: FQFrogObject, ofUser userId: String) -> AnyPublisher<Void, DBError>
     
 }
 
@@ -38,6 +39,13 @@ final class FrogDBRepository: FrogDBRepositoryType {
         try await collectionRef
             .document(userId)
             .getDocument(as: FQFrogObject.self)
+    }
+    
+    func observeFrog(ofUser userId: String) -> AnyPublisher<FQFrogObject?, DBError> {
+        collectionRef.document(userId)
+            .listenerPublisher(FQFrogObject?.self)
+            .mapError { DBError.custom($0) }
+            .eraseToAnyPublisher()
     }
     
     func addFrog(ofUser userId: String) -> AnyPublisher<Void, DBError> {
@@ -67,15 +75,9 @@ final class FrogDBRepository: FrogDBRepositoryType {
         .eraseToAnyPublisher()
     }
     
-    func updateFrog(_ object: FQFrogObject) -> AnyPublisher<Void, DBError> {
-        guard let id = object.id else {
-            return Fail(
-                outputType: Void.self,
-                failure: DBError.invalidObject
-            ).eraseToAnyPublisher()
-        }
-        
-        let documentRef: DocumentReference = collectionRef.document(id)
+    func updateFrog(_ object: FQFrogObject, ofUser userId: String) -> AnyPublisher<Void, DBError> {
+     
+        let documentRef: DocumentReference = collectionRef.document(userId)
 
         return Future { promise in
             documentRef.updateData([

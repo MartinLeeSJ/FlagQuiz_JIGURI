@@ -25,7 +25,7 @@ struct FQFrog: Identifiable {
 extension FQFrog {
     func toObject() -> FQFrogObject {
         .init(
-            id: userId,
+            id: nil,
             status: state.rawValue,
             lastUpdated: .init(date: lastUpdated),
             items: items
