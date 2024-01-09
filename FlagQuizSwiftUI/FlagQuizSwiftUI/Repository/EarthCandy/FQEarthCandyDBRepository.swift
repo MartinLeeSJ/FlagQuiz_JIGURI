@@ -13,7 +13,7 @@ import FirebaseFirestore
 protocol FQEarthCandyDBRepositoryType {
     func createEarthCandy(ofUser userId: String) -> AnyPublisher<Void, DBError>
     func getEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandyObject?, DBError>
-    func setEarthCandy(_ object: FQEarthCandyObject, ofUser userId: String) -> AnyPublisher<Void, DBError>
+    func observeEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandyObject?, DBError>
     func updateEarthCandy(_ object: FQEarthCandyObject, ofUser userId: String) -> AnyPublisher<Void, DBError>
 }
 
@@ -24,7 +24,7 @@ final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
     }
     
     func createEarthCandy(ofUser userId: String) -> AnyPublisher<Void, DBError> {
-        var newObject: FQEarthCandyObject = .init(point: 0)
+        let newObject: FQEarthCandyObject = .init(point: 0)
         return Future { [weak self] promise in
             guard let self else {
                 promise(.failure(DBError.invalidSelf))
@@ -53,26 +53,16 @@ final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
         
     }
     
-    func setEarthCandy(
-        _ object: FQEarthCandyObject,
+    func observeEarthCandy(
         ofUser userId: String
-    ) -> AnyPublisher<Void, DBError> {
+    ) -> AnyPublisher<FQEarthCandyObject?, DBError> {
         let documentRef = candyCollection.document(userId)
         
-        return Future {  promise in
-            documentRef.setData([
-                "point": FieldValue.increment(object.point)
-            ]) { error in
-                if let error {
-                    promise(.failure(DBError.custom(error)))
-                    return
-                }
-                
-                promise(.success(()))
-            }
-        }
-        .eraseToAnyPublisher()
+        return documentRef.listenerPublisher(FQEarthCandyObject?.self)
+            .mapError { DBError.custom($0) }
+            .eraseToAnyPublisher()
     }
+    
     
     func updateEarthCandy(
         _ object: FQEarthCandyObject,

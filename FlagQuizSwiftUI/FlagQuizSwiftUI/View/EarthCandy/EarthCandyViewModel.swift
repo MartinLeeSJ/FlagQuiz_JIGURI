@@ -34,4 +34,20 @@ class EarthCandyViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    public func observe() {
+        guard let userId = container.services.authService.checkAuthenticationState() else {
+            return
+        }
+        
+        container.services.earthCandyService.observeEarthCandy(ofUser: userId)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: { [weak self] earthCandy in
+                self?.earthCandy = earthCandy
+            }
+            .store(in: &cancellables)
+        
+    }
+    
 }

@@ -45,7 +45,7 @@ struct EarthCandyView: View {
                 .padding(.trailing, 8)
         }
         .task {
-            viewModel.load()
+            viewModel.observe()
         }
         .frame(
             maxWidth: .infinity,

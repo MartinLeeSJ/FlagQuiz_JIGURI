@@ -103,7 +103,7 @@ final class FrogService: FrogServiceType {
 
 final class StubFrogService: FrogServiceType {
     func getFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError> {
-        Just(FQFrog(userId: "1", status: .good, lastUpdated: .now, items: []))
+        Just(FQFrog(userId: "1", status: .bad, lastUpdated: .now, items: []))
             .setFailureType(to: ServiceError.self)
             .eraseToAnyPublisher()
         
