@@ -69,7 +69,7 @@ struct FrogView: View {
         VStack {
             HStack {
                 ForEach(1...3, id: \.self) { index in
-                    if index <= frog.status.rawValue {
+                    if index <= frog.state.rawValue {
                         heart
                     } else {
                         greyHeart
@@ -78,17 +78,14 @@ struct FrogView: View {
             }
             
             ZStack {
-                Image(frog.status.frogImageName)
+                Image(frog.state.frogImageName)
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 200)
             }
-
-            if frog.status == .great {
-                alreadyFullButton
-            } else {
-                feedFrogButton(frog)
-            }
+         
+            feedFrogButton(frog)
+            
         }
     }
     
@@ -108,20 +105,23 @@ struct FrogView: View {
     
     private func feedFrogButton(_ frog: FQFrog) -> some View {
         Button {
+            guard frog.state != .great else { return }
+            
             viewModel.send(.feedFrog)
         } label: {
             HStack {
-                Text("feed.frog.button.title")
+                Text(frog.state.feedFrogButtonTitle)
                 
-                Label {
-                    Text("10.5")
-                } icon: {
-                    Image("EarthCandy")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 15)
+                if frog.state != .great {
+                    Label {
+                        Text("10.5")
+                    } icon: {
+                        Image("EarthCandy")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 15)
+                    }
                 }
-                
             }
             .foregroundStyle(.white)
             .font(.caption)
@@ -130,22 +130,10 @@ struct FrogView: View {
         .buttonStyle(.borderedProminent)
         .buttonBorderShape(.capsule)
         .tint(.fqHeart)
-        .disabled(frog.status == .great)
+        
     }
     
-    private var alreadyFullButton: some View {
-        Button {
-            
-        } label: {
-            Text("already.full.button.title")
-            .foregroundStyle(.white)
-            .font(.caption)
-            .fontWeight(.semibold)
-        }
-        .buttonStyle(.borderedProminent)
-        .buttonBorderShape(.capsule)
-        .tint(.fqHeart)
-    }
+   
 }
 
 

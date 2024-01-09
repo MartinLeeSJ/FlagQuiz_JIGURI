@@ -52,6 +52,7 @@
 
     },
     "already.full.button.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -324,6 +325,7 @@
       }
     },
     "feed.frog.button.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -335,6 +337,70 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "지구알사탕으로 회복"
+          }
+        }
+      }
+    },
+    "feed.frog.button.title.state.bad" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save the hungry frog"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구알사탕으로 회복하기."
+          }
+        }
+      }
+    },
+    "feed.frog.button.title.state.good" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More candy will be great"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구알사탕으로 행복하게 만드세요."
+          }
+        }
+      }
+    },
+    "feed.frog.button.title.state.great" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frog is very happy"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리는 매우 행복합니다."
+          }
+        }
+      }
+    },
+    "feed.frog.button.title.state.soso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More candy will be good"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "조금만 더 주세요."
           }
         }
       }

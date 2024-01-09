@@ -48,7 +48,7 @@ final class FrogViewModel: ObservableObject {
     
     private func feedFrog() {
         guard let frog else { return }
-        guard frog.status.rawValue < FrogState.great.rawValue else { return }
+        guard frog.state.rawValue < FrogState.great.rawValue else { return }
         guard let userId = container.services.authService.checkAuthenticationState() else {
             return
         }

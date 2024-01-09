@@ -62,11 +62,11 @@ final class FrogService: FrogServiceType {
     }
     
     func feedFrog(_ model: FQFrog) -> AnyPublisher<FQFrog, ServiceError> {
-        guard model.status != .great else {
+        guard model.state != .great else {
             return Fail<FQFrog, ServiceError>(error: .invalid).eraseToAnyPublisher()
         }
         var updatedModel: FQFrog = model
-        updatedModel.status.upgrade()
+        updatedModel.state.upgrade()
         updatedModel.lastUpdated = .now
         
         return repository.updateFrog(updatedModel.toObject())
@@ -103,7 +103,7 @@ final class FrogService: FrogServiceType {
 
 final class StubFrogService: FrogServiceType {
     func getFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError> {
-        Just(FQFrog(userId: "1", status: .bad, lastUpdated: .now, items: []))
+        Just(FQFrog(userId: "1", state: .bad, lastUpdated: .now, items: []))
             .setFailureType(to: ServiceError.self)
             .eraseToAnyPublisher()
         
@@ -111,7 +111,7 @@ final class StubFrogService: FrogServiceType {
     
     func feedFrog(_ model: FQFrog) -> AnyPublisher<FQFrog, ServiceError> {
         var updatedModel = model
-        updatedModel.status.upgrade()
+        updatedModel.state.upgrade()
         updatedModel.lastUpdated = .now
         
         return Just(updatedModel)
