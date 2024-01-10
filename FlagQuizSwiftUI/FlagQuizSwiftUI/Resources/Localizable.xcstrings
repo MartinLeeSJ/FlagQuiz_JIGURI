@@ -1325,13 +1325,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guess\na country\nfrom this flag."
+            "value" : "FlagFrog\nConquer the world\nwith the Flag Quiz."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "국기 보고\n나라 맞추기\n퀴즈"
+            "value" : "지구리\n국기 퀴즈로\n지구를 정복하다."
           }
         }
       }

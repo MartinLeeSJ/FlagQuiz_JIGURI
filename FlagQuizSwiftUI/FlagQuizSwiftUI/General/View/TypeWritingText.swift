@@ -14,6 +14,8 @@ struct TypeWritingText: View {
     private let animation: Animation?
     private let latency: Double
     private let isInfinite: Bool
+    
+    private var completion: () -> Void
    
     
     init(
@@ -21,13 +23,15 @@ struct TypeWritingText: View {
         animation: Animation? = nil,
         latency: Double = 0.3,
         isInfinite: Bool = false,
-        gap: Int = 3
+        gap: Int = 3,
+        completion: @escaping () -> Void = {}
     ) {
         let spacing: String = Array(repeating: " ", count: gap).reduce("", +)
         self.originalCharacters = (originalText + spacing).split(separator: "").map { String($0) }
         self.animation = animation
         self.latency = latency
         self.isInfinite = isInfinite
+        self.completion = completion
     }
     
     private func typeWrite(at position: Int) {
@@ -37,6 +41,7 @@ struct TypeWritingText: View {
                 text = ""
                 typeWrite(at: 0)
             }
+            completion()
             return
         }
         text.append(originalCharacters[position])

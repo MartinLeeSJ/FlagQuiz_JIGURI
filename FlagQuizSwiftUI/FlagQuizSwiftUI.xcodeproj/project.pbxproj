@@ -117,6 +117,8 @@
 		5BB40D372B4D281400E907F0 /* DocumentReference+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB40D362B4D281400E907F0 /* DocumentReference+Extension.swift */; };
 		5BB40D392B4D56AA00E907F0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB40D382B4D56AA00E907F0 /* NotificationManager.swift */; };
 		5BB40D3C2B4E6C8100E907F0 /* FrogViewButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB40D3B2B4E6C8100E907F0 /* FrogViewButtonStyle.swift */; };
+		5BB40D3F2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BB40D3E2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf */; };
+		5BB40D422B4ED4CD00E907F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BB40D442B4ED4CD00E907F0 /* InfoPlist.strings */; };
 		5BC998372B43E16900A5EA12 /* UserRankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */; };
 		5BC998392B44074700A5EA12 /* UserRankProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC998382B44074700A5EA12 /* UserRankProgressView.swift */; };
 		5BCFA2912B4987FE0074C998 /* QuizSettingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFA2902B4987FE0074C998 /* QuizSettingControls.swift */; };
@@ -288,6 +290,9 @@
 		5BB40D362B4D281400E907F0 /* DocumentReference+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentReference+Extension.swift"; sourceTree = "<group>"; };
 		5BB40D382B4D56AA00E907F0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5BB40D3B2B4E6C8100E907F0 /* FrogViewButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogViewButtonStyle.swift; sourceTree = "<group>"; };
+		5BB40D3E2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoDunggeunmoPro-Regular.ttf"; sourceTree = "<group>"; };
+		5BB40D432B4ED4CD00E907F0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5BB40D452B4ED4D000E907F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankViewModel.swift; sourceTree = "<group>"; };
 		5BC998382B44074700A5EA12 /* UserRankProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankProgressView.swift; sourceTree = "<group>"; };
 		5BCFA2902B4987FE0074C998 /* QuizSettingControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingControls.swift; sourceTree = "<group>"; };
@@ -386,10 +391,12 @@
 		5B16F9432B2830640011ACF7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BB40D3D2B4EC97000E907F0 /* Fonts */,
 				5B5C2AD02B280A34009A382B /* Assets.xcassets */,
 				5B16F9462B2831300011ACF7 /* Colors.xcassets */,
 				5B16F9442B2830A60011ACF7 /* LaunchScreen.storyboard */,
 				5BD3B7632B31E5AF00B930E0 /* Localizable.xcstrings */,
+				5BB40D442B4ED4CD00E907F0 /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -812,6 +819,14 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		5BB40D3D2B4EC97000E907F0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5BB40D3E2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5BCFAC802B42E21A00803C5C /* QuizRecordDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1042,6 +1057,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B16F9472B2831300011ACF7 /* Colors.xcassets in Resources */,
+				5BB40D422B4ED4CD00E907F0 /* InfoPlist.strings in Resources */,
+				5BB40D3F2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf in Resources */,
 				5B5C2AD42B280A34009A382B /* Preview Assets.xcassets in Resources */,
 				5BD3B7642B31E5AF00B930E0 /* Localizable.xcstrings in Resources */,
 				5B16F9452B2830A60011ACF7 /* LaunchScreen.storyboard in Resources */,
@@ -1242,6 +1259,18 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		5BB40D442B4ED4CD00E907F0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BB40D432B4ED4CD00E907F0 /* ko */,
+				5BB40D452B4ED4D000E907F0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		5B5C2AEB2B280A34009A382B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1379,9 +1408,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlagQuizSwiftUI/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -1414,9 +1444,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlagQuizSwiftUI/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;

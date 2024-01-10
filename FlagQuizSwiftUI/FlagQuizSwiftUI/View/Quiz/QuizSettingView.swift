@@ -38,9 +38,10 @@ struct QuizSettingView: View {
                 TypeWritingText(
                     originalText: String(localized: "quizSetting.intro"),
                     animation: .easeInOut
-                )
-                .font(.system(size: 50))
-                .fontWeight(.heavy)
+                ) {
+                    //TODO: 추가적인 애니메이션 실행
+                }
+                .font(.custom(FontName.pixel, size: 40))
                 .padding(.horizontal)
                 
                 Spacer()
