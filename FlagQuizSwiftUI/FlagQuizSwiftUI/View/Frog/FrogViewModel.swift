@@ -107,14 +107,14 @@ final class FrogViewModel: ObservableObject {
                     return Fail<Bool, FrogError>(error: .failedToFeed).eraseToAnyPublisher()
                 }
                 
-                return self.useCandyForFeedingFrog(frog, userId: userId)
+                return self.useCandyForFeeding(frog: frog, ofUser: userId)
             }
             .eraseToAnyPublisher()
     }
     
-    private func useCandyForFeedingFrog(
-        _ frog: FQFrog,
-        userId: String
+    private func useCandyForFeeding(
+        frog: FQFrog,
+        ofUser userId: String
     ) -> AnyPublisher<Bool, FrogError> {
       container.services.earthCandyService.useCandyForFeedingFrog(ofUser: userId)
             .flatMap { isUpdated  in

@@ -145,7 +145,17 @@ struct FrogView: View {
         Button {
             
         } label: {
-            Text("frogView.notEnoughCandyButton.title")
+            HStack {
+                Text("frogView.notEnoughCandyButton.title")
+                Label {
+                    Text("10.5")
+                } icon: {
+                    Image("EarthCandy")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 15)
+                }
+            }
         }
         .disabled(true)
         .buttonStyle(FrogViewDisabledButtonStyle())

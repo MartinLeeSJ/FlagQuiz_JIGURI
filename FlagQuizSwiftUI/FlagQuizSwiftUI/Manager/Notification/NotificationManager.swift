@@ -45,9 +45,7 @@ enum FrogStateNotificationType: Int {
     
     var baseTimeInterval: TimeInterval {
         //기본단위 4시간
-//        .init(4 * 60 * 60)
-        // TEST
-        .init(10)
+        .init(4 * 60 * 60)
     }
     
   
