@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewsView: View {
     @EnvironmentObject private var container: DIContainer
+    @EnvironmentObject private var notificationManager: NotificationManager
     @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @StateObject private var viewModel: NewsViewModel
@@ -23,7 +24,8 @@ struct NewsView: View {
                 VStack {
                     FrogView(
                         viewModel: .init(
-                            container: container
+                            container: container,
+                            notificationManager: notificationManager
                         )
                     )
                     
@@ -32,7 +34,7 @@ struct NewsView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    EarthCandyView(viewModel: .init(container: container))
+                    EarthCandyView()
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
@@ -42,7 +44,6 @@ struct NewsView: View {
                         Circle()
                             .foregroundStyle(.green)
                             .frame(width: 30, height: 30)
-                        
                     }
                 }
             }

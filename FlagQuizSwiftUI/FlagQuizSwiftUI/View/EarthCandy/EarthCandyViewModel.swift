@@ -17,23 +17,7 @@ class EarthCandyViewModel: ObservableObject {
     init(container: DIContainer) {
         self.container = container
     }
-    
-    @MainActor
-    public func load() {
-        guard let userId = container.services.authService.checkAuthenticationState() else {
-            return
-        }
-        
-        container.services.earthCandyService.getCandyOrCreateIfNotExist(ofUser: userId)
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: { [weak self] earthCandy in
-                self?.earthCandy = earthCandy
-            }
-            .store(in: &cancellables)
-    }
-    
+
     public func observe() {
         guard let userId = container.services.authService.checkAuthenticationState() else {
             return
@@ -47,7 +31,8 @@ class EarthCandyViewModel: ObservableObject {
                 self?.earthCandy = earthCandy
             }
             .store(in: &cancellables)
-        
     }
+    
+    
     
 }

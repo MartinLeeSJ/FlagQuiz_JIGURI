@@ -19,9 +19,18 @@ extension FQEarthCandy {
 }
 
 extension FQEarthCandy {
-    static func earthCandyForFeedingFrog(ofUser userId: String) -> FQEarthCandy {
-        .init(userId: userId, point: -10.5)
+    static var earthCandyPointForFeedingFrog: Double {
+        10.5
     }
+    
+    static func earthCandyForFeedingFrog(ofUser userId: String) -> FQEarthCandy {
+        .init(userId: userId, point: -Self.earthCandyPointForFeedingFrog)
+    }
+    
+    var hasEnoughCandyForFeedFrog: Bool {
+        return point >= FQEarthCandy.earthCandyPointForFeedingFrog
+    }
+    
 }
 
 extension FQEarthCandy {

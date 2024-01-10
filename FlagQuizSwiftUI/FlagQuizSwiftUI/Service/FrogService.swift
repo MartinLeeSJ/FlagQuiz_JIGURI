@@ -14,6 +14,12 @@ protocol FrogServiceType {
     func observeFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError>
     
     func feedFrog(_ model: FQFrog) -> AnyPublisher<Bool, ServiceError>
+    
+    /// EarthCandy 사용이 실패했을 때 원래의 model로 다시 바꾸는 메서드
+    /// - Parameter model: original FQFrog model
+    /// - Returns: AnyPublisher<Void, ServiceError>
+    func cancelFeedFrog(original model: FQFrog) -> AnyPublisher<Void, ServiceError>
+    
     func addFrogIfNotExist(ofUser userId: String) -> AnyPublisher<Void, ServiceError>
     func updateFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError>
 }
@@ -94,6 +100,17 @@ final class FrogService: FrogServiceType {
             .eraseToAnyPublisher()
     }
     
+    
+    func cancelFeedFrog(original model: FQFrog) -> AnyPublisher<Void, ServiceError> {
+        guard model.state != .great else {
+            return Just(()).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
+        }
+        
+        return repository.updateFrog(model.toObject(), ofUser: model.userId)
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
+    }
+    
     func addFrogIfNotExist(ofUser userId: String) -> AnyPublisher<Void, ServiceError> {
         repository.getFrog(ofUser: userId)
             .flatMap { [weak self] object in
@@ -129,13 +146,19 @@ final class StubFrogService: FrogServiceType {
     }
     
     func observeFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError> {
-        Empty().eraseToAnyPublisher()
+        Just(FQFrog(userId: "1", state: .bad, lastUpdated: .now, items: []))
+            .setFailureType(to: ServiceError.self)
+            .eraseToAnyPublisher()
     }
     
     func feedFrog(_ model: FQFrog) -> AnyPublisher<Bool, ServiceError> {
         return Just(true)
             .setFailureType(to: ServiceError.self)
             .eraseToAnyPublisher()
+    }
+    
+    func cancelFeedFrog(original model: FQFrog) -> AnyPublisher<Void, ServiceError> {
+        Empty().eraseToAnyPublisher()
     }
     
     func addFrogIfNotExist(ofUser userId: String) -> AnyPublisher<Void, ServiceError> {

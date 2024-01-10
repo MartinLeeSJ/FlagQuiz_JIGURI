@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FrogView: View {
     @Environment(\.colorScheme) var scheme
-    @EnvironmentObject private var notificationManager: NotificationManager
+    @EnvironmentObject private var earthCandyViewModel: EarthCandyViewModel
     @StateObject private var viewModel: FrogViewModel
     
     init(viewModel: FrogViewModel) {
@@ -23,13 +23,13 @@ struct FrogView: View {
                 content(frog)
             } else {
                 placeholder
-                    .onAppear {
-                        viewModel.observe()
-                    }
             }
             Spacer()
         }
         .padding()
+        .task {
+            viewModel.observe()
+        }
         .background {
             if scheme == .dark {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
@@ -56,12 +56,8 @@ struct FrogView: View {
                 
             } label: {
                 Text("feed.frog.button.placeholder")
-                .foregroundStyle(.white)
-                .font(.caption)
-                .fontWeight(.semibold)
             }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.capsule)
+            .buttonStyle(FrogViewDisabledButtonStyle())
             .disabled(true)
         }
     }
@@ -84,9 +80,8 @@ struct FrogView: View {
                     .scaledToFit()
                     .frame(maxWidth: 200)
             }
-         
-            feedFrogButton(frog)
             
+            frogStateButton(frog)
         }
     }
     
@@ -104,17 +99,34 @@ struct FrogView: View {
             .frame(height: 30)
     }
     
+    
+    
+    @ViewBuilder
+    private func frogStateButton(_ frog: FQFrog) -> some View {
+        if frog.state == .great {
+             Button {} label: {
+                Text(FrogState.great.feedFrogButtonTitle)
+            }
+            .buttonStyle(FrogViewButtonStyle())
+        } else {
+             feedFrogButton(frog)
+        }
+    }
+    
+    @ViewBuilder
     private func feedFrogButton(_ frog: FQFrog) -> some View {
-        Button {
-            guard frog.state != .great else { return }
-            
-            viewModel.send(.feedFrog)
-            addNotification(when: frog.state)
-        } label: {
-            HStack {
-                Text(frog.state.feedFrogButtonTitle)
+        if let earthCandy = earthCandyViewModel.earthCandy,
+           !earthCandy.hasEnoughCandyForFeedFrog {
+             notEnoughCandyButton
+        } else {
+             Button {
+                guard frog.state != .great else { return }
                 
-                if frog.state != .great {
+                viewModel.send(.feedFrog)
+            } label: {
+                HStack {
+                    Text(frog.state.feedFrogButtonTitle)
+                    
                     Label {
                         Text("10.5")
                     } icon: {
@@ -125,27 +137,19 @@ struct FrogView: View {
                     }
                 }
             }
-            .foregroundStyle(.white)
-            .font(.caption)
-            .fontWeight(.semibold)
+            .buttonStyle(FrogViewButtonStyle())
         }
-        .buttonStyle(.borderedProminent)
-        .buttonBorderShape(.capsule)
-        .tint(.fqHeart)
-        
     }
     
-    private func addNotification(when state: FrogState) {
-        guard state != .great else { return }
-        
-        var newState: FrogState = state
-        
-        newState.upgrade()
-        
-        notificationManager.addFrogStateNotification(when: newState)
+    private var notEnoughCandyButton: some View {
+        Button {
+            
+        } label: {
+            Text("frogView.notEnoughCandyButton.title")
+        }
+        .disabled(true)
+        .buttonStyle(FrogViewDisabledButtonStyle())
     }
-    
-   
 }
 
 
@@ -155,8 +159,15 @@ struct FrogView: View {
         viewModel: .init(
             container: .init(
                 services: StubService()
-            )
+            ), notificationManager: NotificationManager()
         )
     )
     .environmentObject(NotificationManager())
+    .environmentObject(
+        EarthCandyViewModel(
+            container: .init(
+                services: StubService()
+            )
+        )
+    )
 }

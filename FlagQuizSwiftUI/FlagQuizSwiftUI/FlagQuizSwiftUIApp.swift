@@ -18,7 +18,10 @@ struct FlagQuizSwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AuthenticationRouterView(authViewModel: .init(container: container))
+            AuthenticationRouterView(
+                authViewModel: .init(container: container),
+                earthCandyViewModel: .init(container: container)
+            )
                 .environmentObject(container)
                 .environmentObject(hapticsManager)
                 .environmentObject(notificationManager)

@@ -779,6 +779,22 @@
     "frog.state.notification.title.frogStateSoSo" : {
 
     },
+    "frogView.notEnoughCandyButton.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More EarthCandy Needed"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구알사탕이 부족합니다."
+          }
+        }
+      }
+    },
     "Hello, World!" : {
 
     },

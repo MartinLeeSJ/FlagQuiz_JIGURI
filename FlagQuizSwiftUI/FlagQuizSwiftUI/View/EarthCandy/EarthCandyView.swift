@@ -9,13 +9,9 @@ import SwiftUI
 
 struct EarthCandyView: View {
     @Environment(\.colorScheme) private var scheme
+    @EnvironmentObject private var viewModel: EarthCandyViewModel
     
-    @StateObject private var viewModel: EarthCandyViewModel
     @State private var showDetail: Bool = false
-    
-    init(viewModel: EarthCandyViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
-    }
     
     var body: some View {
         HStack(spacing: 8) {
@@ -72,11 +68,12 @@ struct EarthCandyDetailView: View {
 }
 
 #Preview {
-    EarthCandyView(
-        viewModel: .init(
-            container: .init(
-                services: StubService()
+    EarthCandyView()
+        .environmentObject(
+            EarthCandyViewModel(
+                container: .init(
+                    services: StubService()
+                )
             )
         )
-    )
 }
