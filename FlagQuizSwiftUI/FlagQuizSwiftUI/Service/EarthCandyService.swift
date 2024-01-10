@@ -9,8 +9,12 @@ import Foundation
 import Combine
 
 protocol EarthCandyServiceType {
+    
+    func checkEarthCandyIsEnough(_ userId: String) -> AnyPublisher<Bool, ServiceError>
     func getCandyOrCreateIfNotExist(ofUser userId: String) -> AnyPublisher<FQEarthCandy?, ServiceError>
+    func observeEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandy?, ServiceError>
     func updateCandy(_ model: FQEarthCandy, ofUser userId: String) -> AnyPublisher<Void, ServiceError>
+    func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Bool, ServiceError>
 }
 
 final class EarthCandyService: EarthCandyServiceType {
@@ -18,6 +22,21 @@ final class EarthCandyService: EarthCandyServiceType {
     
     init(repository: FQEarthCandyDBRepositoryType) {
         self.repository = repository
+    }
+    
+    func checkEarthCandyIsEnough(_ userId: String) -> AnyPublisher<Bool, ServiceError> {
+        repository.getEarthCandy(ofUser: userId)
+            .mapError {  ServiceError.custom($0) }
+            .flatMap { object in
+                guard let object else {
+                    return Fail<Bool, ServiceError>(error: .invalid).eraseToAnyPublisher()
+                }
+                
+                let isEnough: Bool = object.point >= FQEarthCandy.earthCandyPointForFeedingFrog
+                
+                return Just(isEnough).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
     
     func getCandyOrCreateIfNotExist(
@@ -41,19 +60,39 @@ final class EarthCandyService: EarthCandyServiceType {
             .eraseToAnyPublisher()
     }
     
+    func observeEarthCandy(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandy?, ServiceError> {
+        repository.observeEarthCandy(ofUser: userId)
+            .map { $0?.toModel() }
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
+    }
+    
     func updateCandy(
         _ model: FQEarthCandy,
         ofUser userId: String
     ) -> AnyPublisher<Void, ServiceError> {
         repository.updateEarthCandy(model.toObject(), ofUser: userId)
+            .map { _ in }
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()
     }
     
+   
+    func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Bool, ServiceError> {
+        let candy = FQEarthCandy.earthCandyForFeedingFrog(ofUser: userId)
+        return repository.updateEarthCandy(candy.toObject(), ofUser: userId)
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
+    }
     
 }
 
 final class StubEarthCandyService: EarthCandyServiceType {
+    func checkEarthCandyIsEnough(_ userId: String) -> AnyPublisher<Bool, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
     
     func getCandyOrCreateIfNotExist(
         ofUser userId: String
@@ -61,10 +100,22 @@ final class StubEarthCandyService: EarthCandyServiceType {
         Empty().eraseToAnyPublisher()
     }
     
+    func observeEarthCandy(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandy?, ServiceError> {
+        Just(FQEarthCandy(userId: "1", point: 10))
+            .setFailureType(to: ServiceError.self)
+            .eraseToAnyPublisher()
+    }
+    
     func updateCandy(
         _ model: FQEarthCandy,
         ofUser userId: String
     ) -> AnyPublisher<Void, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Bool, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 

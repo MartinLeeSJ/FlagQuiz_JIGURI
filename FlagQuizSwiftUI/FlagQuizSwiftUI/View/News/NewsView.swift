@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewsView: View {
     @EnvironmentObject private var container: DIContainer
+    @EnvironmentObject private var notificationManager: NotificationManager
     @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @StateObject private var viewModel: NewsViewModel
@@ -21,27 +22,20 @@ struct NewsView: View {
         NavigationStack(path: $navigationModel.destinations) {
             ScrollView {
                 VStack {
-                    Spacer()
-                        .frame(height: 50)
-                    ZStack {
-                        Image("Frog")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 200)
-                    }
+                    FrogView(
+                        viewModel: .init(
+                            container: container,
+                            notificationManager: notificationManager
+                        )
+                    )
                     
                     NewsGrid()
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    EarthCandyView(viewModel: .init(container: container))
+                    EarthCandyView()
                 }
-                
-//                ToolbarItem(placement: .topBarLeading) {
-//                    Rectangle()
-//                        .frame(maxWidth: .infinity)
-//                }
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -50,11 +44,8 @@ struct NewsView: View {
                         Circle()
                             .foregroundStyle(.green)
                             .frame(width: 30, height: 30)
-                        
                     }
-                    
                 }
-                
             }
             .task {
                 await viewModel.load()

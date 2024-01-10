@@ -9,10 +9,15 @@ import SwiftUI
 
 struct AuthenticationRouterView: View {
     @StateObject private var authViewModel: AuthenticationViewModel
+    @StateObject private var earthCandyViewModel: EarthCandyViewModel
     @EnvironmentObject private var hapticsManager: HapticsManager
     
-    init(authViewModel: AuthenticationViewModel) {
+    init(
+        authViewModel: AuthenticationViewModel,
+        earthCandyViewModel: EarthCandyViewModel
+    ) {
         self._authViewModel = StateObject(wrappedValue: authViewModel)
+        self._earthCandyViewModel = StateObject(wrappedValue: earthCandyViewModel)
     }
     
     var body: some View {
@@ -31,6 +36,7 @@ struct AuthenticationRouterView: View {
             }
         }
         .environmentObject(authViewModel)
+        .environmentObject(earthCandyViewModel)
         .onAppear {
             authViewModel.send(.checkAuthenticationState)
             hapticsManager.send(.prepare)
@@ -42,7 +48,8 @@ struct AuthenticationRouterView: View {
     AuthenticationRouterView(
         authViewModel: AuthenticationViewModel(
             container: .init(services: StubService())
-        )
+        ),
+        earthCandyViewModel: .init(container: .init(services: StubService()))
     )
     .environmentObject(HapticsManager())
 }

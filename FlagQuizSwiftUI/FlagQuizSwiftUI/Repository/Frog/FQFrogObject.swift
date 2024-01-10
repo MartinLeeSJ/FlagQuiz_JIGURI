@@ -20,7 +20,7 @@ extension FQFrogObject {
         guard let id else { return nil }
         return .init(
             userId: id,
-            status: .safeValue(rawValue: status),
+            state: .safeValue(rawValue: status),
             lastUpdated: lastUpdated.dateValue(),
             items: items
         )

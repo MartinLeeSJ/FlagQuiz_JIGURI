@@ -57,6 +57,8 @@
 		5B3448502B355433002E2222 /* FQUserQuizStatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */; };
 		5B3448522B357600002E2222 /* FQQuizRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3448512B357600002E2222 /* FQQuizRecordRepository.swift */; };
 		5B3448582B35D3F1002E2222 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3448572B35D3F1002E2222 /* HapticsManager.swift */; };
+		5B50562F2B4BBEDF00FCA5A7 /* FrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */; };
+		5B5056312B4BC3C900FCA5A7 /* FrogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5056302B4BC3C900FCA5A7 /* FrogViewModel.swift */; };
 		5B559F062B28B84A00B131BE /* QuizSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F052B28B84A00B131BE /* QuizSettingView.swift */; };
 		5B559F082B28B85400B131BE /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F072B28B85400B131BE /* NewsView.swift */; };
 		5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */; };
@@ -112,6 +114,11 @@
 		5B9FC6062B47FAAA00B694C7 /* QuizError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9FC6052B47FAA900B694C7 /* QuizError.swift */; };
 		5B9FC6082B48272D00B694C7 /* EarthCandyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9FC6072B48272D00B694C7 /* EarthCandyView.swift */; };
 		5B9FC60B2B483BF700B694C7 /* EarthCandyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9FC60A2B483BF700B694C7 /* EarthCandyViewModel.swift */; };
+		5BB40D372B4D281400E907F0 /* DocumentReference+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB40D362B4D281400E907F0 /* DocumentReference+Extension.swift */; };
+		5BB40D392B4D56AA00E907F0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB40D382B4D56AA00E907F0 /* NotificationManager.swift */; };
+		5BB40D3C2B4E6C8100E907F0 /* FrogViewButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB40D3B2B4E6C8100E907F0 /* FrogViewButtonStyle.swift */; };
+		5BB40D3F2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BB40D3E2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf */; };
+		5BB40D422B4ED4CD00E907F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BB40D442B4ED4CD00E907F0 /* InfoPlist.strings */; };
 		5BC998372B43E16900A5EA12 /* UserRankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */; };
 		5BC998392B44074700A5EA12 /* UserRankProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC998382B44074700A5EA12 /* UserRankProgressView.swift */; };
 		5BCFA2912B4987FE0074C998 /* QuizSettingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFA2902B4987FE0074C998 /* QuizSettingControls.swift */; };
@@ -220,6 +227,8 @@
 		5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStatObject.swift; sourceTree = "<group>"; };
 		5B3448512B357600002E2222 /* FQQuizRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQQuizRecordRepository.swift; sourceTree = "<group>"; };
 		5B3448572B35D3F1002E2222 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogView.swift; sourceTree = "<group>"; };
+		5B5056302B4BC3C900FCA5A7 /* FrogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogViewModel.swift; sourceTree = "<group>"; };
 		5B559F052B28B84A00B131BE /* QuizSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingView.swift; sourceTree = "<group>"; };
 		5B559F072B28B85400B131BE /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		5B5C2AC92B280A32009A382B /* FlagQuizSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlagQuizSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +287,12 @@
 		5B9FC6052B47FAA900B694C7 /* QuizError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizError.swift; sourceTree = "<group>"; };
 		5B9FC6072B48272D00B694C7 /* EarthCandyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthCandyView.swift; sourceTree = "<group>"; };
 		5B9FC60A2B483BF700B694C7 /* EarthCandyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthCandyViewModel.swift; sourceTree = "<group>"; };
+		5BB40D362B4D281400E907F0 /* DocumentReference+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentReference+Extension.swift"; sourceTree = "<group>"; };
+		5BB40D382B4D56AA00E907F0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		5BB40D3B2B4E6C8100E907F0 /* FrogViewButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogViewButtonStyle.swift; sourceTree = "<group>"; };
+		5BB40D3E2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoDunggeunmoPro-Regular.ttf"; sourceTree = "<group>"; };
+		5BB40D432B4ED4CD00E907F0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5BB40D452B4ED4D000E907F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankViewModel.swift; sourceTree = "<group>"; };
 		5BC998382B44074700A5EA12 /* UserRankProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankProgressView.swift; sourceTree = "<group>"; };
 		5BCFA2902B4987FE0074C998 /* QuizSettingControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingControls.swift; sourceTree = "<group>"; };
@@ -376,10 +391,12 @@
 		5B16F9432B2830640011ACF7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BB40D3D2B4EC97000E907F0 /* Fonts */,
 				5B5C2AD02B280A34009A382B /* Assets.xcassets */,
 				5B16F9462B2831300011ACF7 /* Colors.xcassets */,
 				5B16F9442B2830A60011ACF7 /* LaunchScreen.storyboard */,
 				5BD3B7632B31E5AF00B930E0 /* Localizable.xcstrings */,
+				5BB40D442B4ED4CD00E907F0 /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -390,6 +407,7 @@
 				5B19C1642B3C0CD3001A74CE /* Navigation */,
 				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
 				5B16F9412B2830570011ACF7 /* OnBoardingView.swift */,
+				5B50562D2B4BBECA00FCA5A7 /* Frog */,
 				5B9FC6092B48273400B694C7 /* EarthCandy */,
 				5BFF438F2B46CF9800C3DBCB /* MyPage */,
 				5B16F9582B28471D0011ACF7 /* Auth */,
@@ -467,6 +485,7 @@
 			children = (
 				5B16F96E2B286C670011ACF7 /* randomNonceString.swift */,
 				5B16F9702B286C7D0011ACF7 /* SHA256.swift */,
+				5BB40D362B4D281400E907F0 /* DocumentReference+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -541,9 +560,20 @@
 			isa = PBXGroup;
 			children = (
 				5B3448572B35D3F1002E2222 /* HapticsManager.swift */,
+				5BB40D3A2B4D574F00E907F0 /* Notification */,
 				5B8A87212B3EC26D00247DB9 /* NetworkMonitorManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		5B50562D2B4BBECA00FCA5A7 /* Frog */ = {
+			isa = PBXGroup;
+			children = (
+				5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */,
+				5BB40D3B2B4E6C8100E907F0 /* FrogViewButtonStyle.swift */,
+				5B5056302B4BC3C900FCA5A7 /* FrogViewModel.swift */,
+			);
+			path = Frog;
 			sourceTree = "<group>";
 		};
 		5B559F0A2B28B86500B131BE /* News */ = {
@@ -781,6 +811,22 @@
 			path = EarthCandy;
 			sourceTree = "<group>";
 		};
+		5BB40D3A2B4D574F00E907F0 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5BB40D382B4D56AA00E907F0 /* NotificationManager.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		5BB40D3D2B4EC97000E907F0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5BB40D3E2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5BCFAC802B42E21A00803C5C /* QuizRecordDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1011,6 +1057,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B16F9472B2831300011ACF7 /* Colors.xcassets in Resources */,
+				5BB40D422B4ED4CD00E907F0 /* InfoPlist.strings in Resources */,
+				5BB40D3F2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf in Resources */,
 				5B5C2AD42B280A34009A382B /* Preview Assets.xcassets in Resources */,
 				5BD3B7642B31E5AF00B930E0 /* Localizable.xcstrings in Resources */,
 				5B16F9452B2830A60011ACF7 /* LaunchScreen.storyboard in Resources */,
@@ -1052,6 +1100,7 @@
 				5BE086632B31C25B00D38C01 /* TypeWritingText.swift in Sources */,
 				5B16F9512B28456C0011ACF7 /* Services.swift in Sources */,
 				5B16F9772B287A600011ACF7 /* FQUserObject.swift in Sources */,
+				5BB40D392B4D56AA00E907F0 /* NotificationManager.swift in Sources */,
 				5B9A81BB2B3AE74A0087142A /* CountryQuizStatService.swift in Sources */,
 				5B16F9422B2830570011ACF7 /* OnBoardingView.swift in Sources */,
 				5BE7D2A02B29A63A0044C3D4 /* FQCountryISOCode.swift in Sources */,
@@ -1121,14 +1170,17 @@
 				5B16F9682B2850000011ACF7 /* FQUser.swift in Sources */,
 				5BC998392B44074700A5EA12 /* UserRankProgressView.swift in Sources */,
 				5BE086612B3190F300D38C01 /* FQContinent.swift in Sources */,
+				5BB40D3C2B4E6C8100E907F0 /* FrogViewButtonStyle.swift in Sources */,
 				5B19C1632B3BCAAE001A74CE /* NewsDestination.swift in Sources */,
 				5B16F96C2B2852AD0011ACF7 /* ServiceError.swift in Sources */,
 				5B7BCAF62B32DBED00E50C5F /* QuizOptions.swift in Sources */,
 				5BFF43932B46CFD100C3DBCB /* MyPageView.swift in Sources */,
 				5B9FC6002B47CDEF00B694C7 /* FQEarthCandy.swift in Sources */,
+				5B5056312B4BC3C900FCA5A7 /* FrogViewModel.swift in Sources */,
 				5BCFA2912B4987FE0074C998 /* QuizSettingControls.swift in Sources */,
 				5BE0865F2B3190DA00D38C01 /* FQMapsLinks.swift in Sources */,
 				5B795CB52B3D298B004AF9EE /* QuizRecordView.swift in Sources */,
+				5BB40D372B4D281400E907F0 /* DocumentReference+Extension.swift in Sources */,
 				5B9FC6022B47D90300B694C7 /* EarthCandyService.swift in Sources */,
 				5B795CC02B3D5AD1004AF9EE /* FQQuizRoundRecord.swift in Sources */,
 				5B34484C2B35527F002E2222 /* QuizStatService.swift in Sources */,
@@ -1166,6 +1218,7 @@
 				5B0F311B2B4AA36D00121561 /* QuizResultScoreSection.swift in Sources */,
 				5BE0865D2B3190C500D38C01 /* FQFlagLinks.swift in Sources */,
 				5B8A87222B3EC26D00247DB9 /* NetworkMonitorManager.swift in Sources */,
+				5B50562F2B4BBEDF00FCA5A7 /* FrogView.swift in Sources */,
 				5B9A81AD2B3AAC660087142A /* CountryDetailInfo.swift in Sources */,
 				5BFF438C2B469DF000C3DBCB /* FQItemName.swift in Sources */,
 				5BFF437B2B466E3A00C3DBCB /* FQItem.swift in Sources */,
@@ -1205,6 +1258,18 @@
 			targetProxy = 5B5C2AE42B280A34009A382B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5BB40D442B4ED4CD00E907F0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BB40D432B4ED4CD00E907F0 /* ko */,
+				5BB40D452B4ED4D000E907F0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5B5C2AEB2B280A34009A382B /* Debug */ = {
@@ -1343,9 +1408,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlagQuizSwiftUI/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -1378,9 +1444,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlagQuizSwiftUI/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;

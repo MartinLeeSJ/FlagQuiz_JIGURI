@@ -39,6 +39,9 @@
     "0.%lld" : {
 
     },
+    "10.5" : {
+
+    },
     "100" : {
 
     },
@@ -287,6 +290,86 @@
     },
     "Estimated" : {
 
+    },
+    "feed.frog.button.placeholder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로딩..."
+          }
+        }
+      }
+    },
+    "feed.frog.button.title.state.bad" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save The Hungry Frog"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "지구알사탕으로 회복하기."
+          }
+        }
+      }
+    },
+    "feed.frog.button.title.state.good" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giving more candy would be great."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "지구알사탕으로 행복하게 만드세요."
+          }
+        }
+      }
+    },
+    "feed.frog.button.title.state.great" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Frog is very happy"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "지구리는 매우 행복합니다."
+          }
+        }
+      }
+    },
+    "feed.frog.button.title.state.soso" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giving more candy would be better."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "조금만 더 주세요."
+          }
+        }
+      }
     },
     "finish.quiz" : {
       "localizations" : {
@@ -640,6 +723,118 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "당신은 이 지구를 대표하는 Guru입니다."
+          }
+        }
+      }
+    },
+    "frog.state.notification.body.frogStateBad" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please cheer your Frog up by solving the Flag Quiz"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "국기 퀴즈를 풀고 지구리의 기운을 복돋아 주세요!"
+          }
+        }
+      }
+    },
+    "frog.state.notification.body.frogStateGood" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfect time to solve the Flag Quiz!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "국기 퀴즈를 풀기 딱 좋은 시간이에요"
+          }
+        }
+      }
+    },
+    "frog.state.notification.body.frogStateSoSo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When you solve the Flag Quiz, the Frog will feel better."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "국기 퀴즈를 풀면 기분이 좋아질거에요 :)"
+          }
+        }
+      }
+    },
+    "frog.state.notification.title.frogStateBad" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frog seems down 🥲"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리가 기운이 없어요 🥲"
+          }
+        }
+      }
+    },
+    "frog.state.notification.title.frogStateGood" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frog seems to be in a good mood"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리가 기분이 좋아요 :)"
+          }
+        }
+      }
+    },
+    "frog.state.notification.title.frogStateSoSo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frog is waiting for you"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리가 당신을 기다리고 있어요!"
+          }
+        }
+      }
+    },
+    "frogView.notEnoughCandyButton.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not enough candy."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "지구알사탕이 부족합니다."
           }
         }
       }
@@ -1130,13 +1325,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guess\na country\nfrom this flag."
+            "value" : "FlagFrog\nConquer the world\nwith the Flag Quiz."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "국기 보고\n나라 맞추기\n퀴즈"
+            "value" : "지구리\n국기 퀴즈로\n지구를 정복하다."
           }
         }
       }

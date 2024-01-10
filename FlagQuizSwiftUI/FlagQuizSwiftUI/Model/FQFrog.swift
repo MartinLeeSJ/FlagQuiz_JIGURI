@@ -13,7 +13,7 @@ struct FQFrog: Identifiable {
         userId
     }
     var userId: String
-    var status: FrogState
+    var state: FrogState
     
     /// 상태가 마지막으로 업데이트 된 시점
     var lastUpdated: Date
@@ -25,8 +25,8 @@ struct FQFrog: Identifiable {
 extension FQFrog {
     func toObject() -> FQFrogObject {
         .init(
-            id: userId,
-            status: status.rawValue,
+            id: nil,
+            status: state.rawValue,
             lastUpdated: .init(date: lastUpdated),
             items: items
         )
@@ -52,4 +52,29 @@ enum FrogState: Int {
         self = Self.safeValue(rawValue: self.rawValue + 1)
     }
     
+    var frogImageName: String {
+        switch self {
+        case .bad:
+            "frogBad"
+        case .soso:
+            "frogSoSo"
+        case .good:
+            "frogGood"
+        case .great:
+            "frogGreat"
+        }
+    }
+    
+    var feedFrogButtonTitle: String {
+        switch self {
+        case .bad:
+            String(localized: "feed.frog.button.title.state.bad")
+        case .soso:
+            String(localized: "feed.frog.button.title.state.soso")
+        case .good:
+            String(localized: "feed.frog.button.title.state.good")
+        case .great:
+            String(localized: "feed.frog.button.title.state.great")
+        }
+    }
 }

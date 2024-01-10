@@ -12,6 +12,7 @@ enum Constant {}
 typealias CollectionKey = Constant.CollectionKey
 typealias LocalizableTable = Constant.LocalizableTable
 typealias ServiceLangCode = Constant.ServiceLangCode
+typealias FontName = Constant.FontName
 
 extension Constant {
     struct CollectionKey {
@@ -32,5 +33,9 @@ extension Constant {
     enum ServiceLangCode: String, Codable {
         case EN = "en"
         case KO = "ko"
+    }
+    
+    struct FontName {
+        static let pixel = "NeoDunggeunmoPro-Regular"
     }
 }
