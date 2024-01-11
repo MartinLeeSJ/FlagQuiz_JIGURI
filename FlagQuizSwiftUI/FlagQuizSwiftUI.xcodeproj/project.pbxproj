@@ -151,6 +151,9 @@
 		5BE7D2A22B29A7F20044C3D4 /* FQCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D2A12B29A7F20044C3D4 /* FQCountry.swift */; };
 		5BE7D2A62B29A97F0044C3D4 /* CountryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D2A52B29A97F0044C3D4 /* CountryObject.swift */; };
 		5BE7D2A82B29B2220044C3D4 /* CountryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D2A72B29B2220044C3D4 /* CountryAPIClient.swift */; };
+		5BF5EFD42B4F9536006D5B4B /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5EFD32B4F9536006D5B4B /* SafariWebView.swift */; };
+		5BF5EFD62B4FB67D006D5B4B /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5EFD52B4FB67D006D5B4B /* MyPageViewModel.swift */; };
+		5BF5EFD82B4FE402006D5B4B /* EditUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5EFD72B4FE402006D5B4B /* EditUserNameView.swift */; };
 		5BFF43792B466D9900C3DBCB /* FQFrog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF43782B466D9800C3DBCB /* FQFrog.swift */; };
 		5BFF437B2B466E3A00C3DBCB /* FQItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF437A2B466E3A00C3DBCB /* FQItem.swift */; };
 		5BFF437E2B46764C00C3DBCB /* FQFrogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF437D2B46764C00C3DBCB /* FQFrogObject.swift */; };
@@ -324,6 +327,9 @@
 		5BE7D2A12B29A7F20044C3D4 /* FQCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQCountry.swift; sourceTree = "<group>"; };
 		5BE7D2A52B29A97F0044C3D4 /* CountryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryObject.swift; sourceTree = "<group>"; };
 		5BE7D2A72B29B2220044C3D4 /* CountryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAPIClient.swift; sourceTree = "<group>"; };
+		5BF5EFD32B4F9536006D5B4B /* SafariWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
+		5BF5EFD52B4FB67D006D5B4B /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		5BF5EFD72B4FE402006D5B4B /* EditUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameView.swift; sourceTree = "<group>"; };
 		5BFF43782B466D9800C3DBCB /* FQFrog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQFrog.swift; sourceTree = "<group>"; };
 		5BFF437A2B466E3A00C3DBCB /* FQItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQItem.swift; sourceTree = "<group>"; };
 		5BFF437D2B46764C00C3DBCB /* FQFrogObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQFrogObject.swift; sourceTree = "<group>"; };
@@ -517,6 +523,7 @@
 			isa = PBXGroup;
 			children = (
 				5B16F9822B2890CD0011ACF7 /* ErrorView.swift */,
+				5BF5EFD32B4F9536006D5B4B /* SafariWebView.swift */,
 				5BE086622B31C25B00D38C01 /* TypeWritingText.swift */,
 				5B67423B2B370F28007335A6 /* FlowingText.swift */,
 				5B697EB42B387542003089F8 /* URLImage */,
@@ -932,6 +939,8 @@
 			isa = PBXGroup;
 			children = (
 				5BFF43922B46CFD100C3DBCB /* MyPageView.swift */,
+				5BF5EFD52B4FB67D006D5B4B /* MyPageViewModel.swift */,
+				5BF5EFD72B4FE402006D5B4B /* EditUserNameView.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1095,6 +1104,7 @@
 				5BD3B76D2B31F1A300B930E0 /* QuizViewModel.swift in Sources */,
 				5B34484E2B3553FC002E2222 /* FQUserQuizStatRepository.swift in Sources */,
 				5B9A81AF2B3AC3470087142A /* NewsViewModel.swift in Sources */,
+				5BF5EFD82B4FE402006D5B4B /* EditUserNameView.swift in Sources */,
 				5B89317D2B41B19500FA331E /* CaptialQuizOptions.swift in Sources */,
 				5B3448502B355433002E2222 /* FQUserQuizStatObject.swift in Sources */,
 				5BE086632B31C25B00D38C01 /* TypeWritingText.swift in Sources */,
@@ -1165,7 +1175,9 @@
 				5B19C17A2B3C2F69001A74CE /* CountryQuizStatViewModel.swift in Sources */,
 				5B795CBE2B3D38F2004AF9EE /* FQQuizRecord.swift in Sources */,
 				5B3448522B357600002E2222 /* FQQuizRecordRepository.swift in Sources */,
+				5BF5EFD62B4FB67D006D5B4B /* MyPageViewModel.swift in Sources */,
 				5B9FC60B2B483BF700B694C7 /* EarthCandyViewModel.swift in Sources */,
+				5BF5EFD42B4F9536006D5B4B /* SafariWebView.swift in Sources */,
 				5B9FC6062B47FAAA00B694C7 /* QuizError.swift in Sources */,
 				5B16F9682B2850000011ACF7 /* FQUser.swift in Sources */,
 				5BC998392B44074700A5EA12 /* UserRankProgressView.swift in Sources */,

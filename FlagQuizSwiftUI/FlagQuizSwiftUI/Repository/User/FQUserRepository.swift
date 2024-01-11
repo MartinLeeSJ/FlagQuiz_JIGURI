@@ -12,8 +12,12 @@ import FirebaseFirestore
 
 protocol FQUserRepositoryType {
     func getUser(ofId userId: String) -> AnyPublisher<FQUserObject?, DBError>
+    func getUser(ofId userId: String) async throws -> FQUserObject
+    
     func addUser(_ user: FQUser) -> AnyPublisher<FQUserObject, DBError>
     func deleteUser(of userId: String) -> AnyPublisher<Void, DBError>
+    func setUser(ofUser userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError>
+    func updateUser(of userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError>
 }
 
 final class FQUserRepository: FQUserRepositoryType {
@@ -32,6 +36,9 @@ final class FQUserRepository: FQUserRepositoryType {
         .eraseToAnyPublisher()
     }
     
+    func getUser(ofId userId: String) async throws -> FQUserObject {
+        try await usersCollection.document(userId).getDocument(as: FQUserObject.self)
+    }
     
     func addUser(_ user: FQUser) -> AnyPublisher<FQUserObject, DBError> {
         Future { [weak self] promise in
@@ -62,6 +69,34 @@ final class FQUserRepository: FQUserRepositoryType {
                 promise(.success(()))
             }
         }.eraseToAnyPublisher()
+    }
+    
+    func setUser(ofUser userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError> {
+        Future { [weak self] promise in
+            do {
+                try self?.usersCollection.document(userId).setData(from: object, mergeFields: [])
+                promise(.success(()))
+            } catch {
+                promise(.failure(error))
+            }
+        }
+        .mapError { DBError.custom($0) }
+        .eraseToAnyPublisher()
+    }
+    
+    func updateUser(of userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError> {
+        Future { [weak self] promise in
+            do {
+                try self?.usersCollection.document(userId)
+                    .setData(from: object, mergeFields: ["email", "userName"])
+                promise(.success(()))
+            } catch {
+                promise(.failure(error))
+            }
+        }
+        .mapError { DBError.custom($0) }
+        .eraseToAnyPublisher()
+            
     }
     
 }

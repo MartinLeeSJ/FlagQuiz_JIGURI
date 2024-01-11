@@ -58,7 +58,7 @@ struct NewsView: View {
                     case .userRank:
                         UserRankView(viewModel: .init(container: container))
                     case .myPage:
-                        MyPageView()
+                        MyPageView(viewModel: .init(container: container))
                             .environmentObject(authViewModel)
                     case .quizRecord:
                         QuizRecordView(viewModel: .init(container: container))
