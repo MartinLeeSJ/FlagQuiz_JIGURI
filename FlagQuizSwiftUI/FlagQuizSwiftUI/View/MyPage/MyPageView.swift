@@ -21,6 +21,7 @@ enum MyPageMenuType: String, Identifiable {
 }
 
 struct MyPageView: View {
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @StateObject private var viewModel: MyPageViewModel
@@ -70,7 +71,11 @@ struct MyPageView: View {
                 )!
             ).ignoresSafeArea()
             case .editUserName:
-                EmptyView()
+                EditUserNameView(
+                    viewModel: .init(container: container),
+                    user: viewModel.user
+                )
+                .environmentObject(viewModel)
                 
             case .maker:
                 EmptyView()
@@ -191,6 +196,7 @@ struct MyPageView: View {
 #Preview {
     NavigationStack {
         MyPageView(viewModel: .init(container: .init(services: StubService())))
+            .environmentObject(DIContainer(services: StubService()))
             .environmentObject(NavigationModel())
             .environmentObject(
                 AuthenticationViewModel(

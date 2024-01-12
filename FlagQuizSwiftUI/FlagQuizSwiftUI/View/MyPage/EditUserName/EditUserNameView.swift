@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct EditUserNameView: View {
-    @State private var userName: String = ""
+    @Environment(\.dismiss) private var dismiss
     @FocusState private var isFocused: Bool
+    @EnvironmentObject private var myPageViewModel: MyPageViewModel
+    @StateObject private var viewModel: EditUserNameViewModel
+    
+    private let user: FQUser?
+    
+    init(viewModel: EditUserNameViewModel, user: FQUser?) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.user = user
+    }
     
     var body: some View {
         VStack(spacing: 16) {
-            TextField(text: $userName) {
+            TextField(text: $viewModel.userName) {
                 Text("editUserName.textField.title")
             }
             .padding()
@@ -25,7 +34,7 @@ struct EditUserNameView: View {
              
             HStack {
                 validationSymbol(
-                    condition: isLengthUnderTwentyOverZero(userName)
+                    condition: isLengthUnderTwentyOverZero(viewModel.userName)
                 )
                 Text("editUserName.length.instruction")
             }
@@ -35,9 +44,9 @@ struct EditUserNameView: View {
             
             HStack {
                 validationSymbol(
-                    condition: isEnglishAndNumbersOnly(userName)
+                    condition: isEnglishAndNumbersOnly(viewModel.userName)
                 )
-                Text("editUserName.length.instruction")
+                Text("editUserName.character.instruction")
             }
             .font(.caption)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -45,13 +54,27 @@ struct EditUserNameView: View {
             .padding(.bottom, 16)
                 
             Button{
-                
+                viewModel.updateUserName(user: user) {
+                    dismiss()
+                    Task {
+                        await myPageViewModel.load()
+                    }
+                }
             } label: {
                 Text("editUserName.submitButton.title")
             }
-            .disabled(!isValidUserName(userName))
+            .disabled(!isValidUserName(viewModel.userName))
         }
         .padding()
+        .alert(
+            isPresented: $viewModel.isAlertOn,
+            error: viewModel.editUserNameError) { error in
+                
+            } message: { error in
+                Text(error.failureReason ?? "")
+            }
+
+        
     }
     
     @ViewBuilder
@@ -67,7 +90,6 @@ struct EditUserNameView: View {
     
     
     private func isValidUserName(_ input: String) -> Bool {
-        
          isLengthUnderTwentyOverZero(input) && isEnglishAndNumbersOnly(input)
     }
     
@@ -77,7 +99,7 @@ struct EditUserNameView: View {
     
     private func isEnglishAndNumbersOnly(_ input: String) -> Bool {
         guard !input.isEmpty else { return false }
-        let allowedCharacterSet = CharacterSet.alphanumerics
+        let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
         let inputCharacterSet = CharacterSet(charactersIn: input)
         
         return inputCharacterSet.isSubset(of: allowedCharacterSet)
@@ -87,5 +109,12 @@ struct EditUserNameView: View {
 }
 
 #Preview {
-    EditUserNameView()
+    EditUserNameView(
+        viewModel: .init(
+            container: .init(
+                services: StubService()
+            )
+        ), user: nil
+    )
+    .environmentObject(MyPageViewModel(container: .init(services: StubService())))
 }

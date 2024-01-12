@@ -86,13 +86,17 @@ final class FQUserRepository: FQUserRepositoryType {
     
     func updateUser(of userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError> {
         Future { [weak self] promise in
-            do {
-                try self?.usersCollection.document(userId)
-                    .setData(from: object, mergeFields: ["email", "userName"])
-                promise(.success(()))
-            } catch {
-                promise(.failure(error))
-            }
+            self?.usersCollection.document(userId)
+                .updateData([
+                    "email": object.email ?? "",
+                    "userName": object.userName ?? ""
+                ]) { error in
+                    if let error {
+                        promise(.failure(error))
+                        return
+                    }
+                    promise(.success(()))
+                }
         }
         .mapError { DBError.custom($0) }
         .eraseToAnyPublisher()

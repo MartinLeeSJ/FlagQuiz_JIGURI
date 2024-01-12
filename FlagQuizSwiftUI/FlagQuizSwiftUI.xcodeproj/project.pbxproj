@@ -119,6 +119,9 @@
 		5BB40D3C2B4E6C8100E907F0 /* FrogViewButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB40D3B2B4E6C8100E907F0 /* FrogViewButtonStyle.swift */; };
 		5BB40D3F2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BB40D3E2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf */; };
 		5BB40D422B4ED4CD00E907F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BB40D442B4ED4CD00E907F0 /* InfoPlist.strings */; };
+		5BC016302B510E2D00A79C45 /* UserNameUpdateRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0162F2B510E2D00A79C45 /* UserNameUpdateRecord.swift */; };
+		5BC016322B51105B00A79C45 /* EditUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC016312B51105B00A79C45 /* EditUserNameViewModel.swift */; };
+		5BC016352B51179C00A79C45 /* EditUserNameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC016342B51179C00A79C45 /* EditUserNameError.swift */; };
 		5BC998372B43E16900A5EA12 /* UserRankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */; };
 		5BC998392B44074700A5EA12 /* UserRankProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC998382B44074700A5EA12 /* UserRankProgressView.swift */; };
 		5BCFA2912B4987FE0074C998 /* QuizSettingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFA2902B4987FE0074C998 /* QuizSettingControls.swift */; };
@@ -296,6 +299,9 @@
 		5BB40D3E2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoDunggeunmoPro-Regular.ttf"; sourceTree = "<group>"; };
 		5BB40D432B4ED4CD00E907F0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5BB40D452B4ED4D000E907F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5BC0162F2B510E2D00A79C45 /* UserNameUpdateRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameUpdateRecord.swift; sourceTree = "<group>"; };
+		5BC016312B51105B00A79C45 /* EditUserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameViewModel.swift; sourceTree = "<group>"; };
+		5BC016342B51179C00A79C45 /* EditUserNameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameError.swift; sourceTree = "<group>"; };
 		5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankViewModel.swift; sourceTree = "<group>"; };
 		5BC998382B44074700A5EA12 /* UserRankProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankProgressView.swift; sourceTree = "<group>"; };
 		5BCFA2902B4987FE0074C998 /* QuizSettingControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingControls.swift; sourceTree = "<group>"; };
@@ -834,6 +840,17 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		5BC016332B51106000A79C45 /* EditUserName */ = {
+			isa = PBXGroup;
+			children = (
+				5BC0162F2B510E2D00A79C45 /* UserNameUpdateRecord.swift */,
+				5BF5EFD72B4FE402006D5B4B /* EditUserNameView.swift */,
+				5BC016312B51105B00A79C45 /* EditUserNameViewModel.swift */,
+				5BC016342B51179C00A79C45 /* EditUserNameError.swift */,
+			);
+			path = EditUserName;
+			sourceTree = "<group>";
+		};
 		5BCFAC802B42E21A00803C5C /* QuizRecordDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -940,7 +957,7 @@
 			children = (
 				5BFF43922B46CFD100C3DBCB /* MyPageView.swift */,
 				5BF5EFD52B4FB67D006D5B4B /* MyPageViewModel.swift */,
-				5BF5EFD72B4FE402006D5B4B /* EditUserNameView.swift */,
+				5BC016332B51106000A79C45 /* EditUserName */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1118,6 +1135,7 @@
 				5B9ECB732B33EB1700098BF3 /* QuizResultView.swift in Sources */,
 				5B0F31382B4AE35100121561 /* FloatingCard.swift in Sources */,
 				5B7BCAF82B32DCC000E50C5F /* QuizSubmitButton.swift in Sources */,
+				5BC016322B51105B00A79C45 /* EditUserNameViewModel.swift in Sources */,
 				5B795CBB2B3D31FD004AF9EE /* Firestore+Extension.swift in Sources */,
 				5BE086542B317F6500D38C01 /* CountriesSampleJSON.swift in Sources */,
 				5BFF438E2B469F4400C3DBCB /* FQItemNameObject.swift in Sources */,
@@ -1134,6 +1152,7 @@
 				5B7BCAF42B32C89600E50C5F /* QuizOptionButtonStyle.swift in Sources */,
 				5B6742042B36A26B007335A6 /* CountryDetailViewModel.swift in Sources */,
 				5B795CB92B3D29A0004AF9EE /* QuizRecordViewModel.swift in Sources */,
+				5BC016352B51179C00A79C45 /* EditUserNameError.swift in Sources */,
 				5B9ECB7A2B342A5B00098BF3 /* QuizRoundsCountriesInfoView.swift in Sources */,
 				5B16F96F2B286C670011ACF7 /* randomNonceString.swift in Sources */,
 				5B7BCAFA2B32DD4700E50C5F /* QuizStrokeButtonStyle.swift in Sources */,
@@ -1224,6 +1243,7 @@
 				5B697EB32B386E1E003089F8 /* ImageDiskStorage.swift in Sources */,
 				5B9A81B12B3AC4F00087142A /* FQCountryQuizStat.swift in Sources */,
 				5B16F9532B2845DF0011ACF7 /* AuthService.swift in Sources */,
+				5BC016302B510E2D00A79C45 /* UserNameUpdateRecord.swift in Sources */,
 				5B19C16D2B3C1B0C001A74CE /* NewsGrid.swift in Sources */,
 				5B16F95D2B2847610011ACF7 /* LoginView.swift in Sources */,
 				5B16F95A2B28472F0011ACF7 /* AuthenticationViewModel.swift in Sources */,

@@ -28,7 +28,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%2$lld문제 중 %1$lld문제 맞추셨어요"
+            "value" : "%2$lld문제 중 %1$lld문제 맞히셨어요"
           }
         }
       }
@@ -83,6 +83,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Correct Quiz Count"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "맞힌 퀴즈 수"
           }
         }
       }
@@ -284,6 +290,166 @@
     },
     "Earth Candy" : {
 
+    },
+    "editUserName.character.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can only use alphabets (a-z, A-Z) and numbers in your username."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "영어 대소문자(a-z, A-Z), 숫자(0-9)만 사용할 수 있습니다"
+          }
+        }
+      }
+    },
+    "editUserName.length.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usernames must be 20 characters or fewer."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "20자 이하로 작성해야합니다."
+          }
+        }
+      }
+    },
+    "editUserName.submitButton.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submit New UserName"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "변경 제출하기"
+          }
+        }
+      }
+    },
+    "editUserName.textField.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change UserName"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자 별명 변경"
+          }
+        }
+      }
+    },
+    "editUserNameError.endOfTrial.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Username Change Limit Reached"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "별명 변경 제한 도달"
+          }
+        }
+      }
+    },
+    "editUserNameError.endOfTrial.failureReason" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have exhausted your daily limit for changing your username. Please try again tomorrow."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "하루에 세 번의 별명 변경 기회를 모두 사용하셨습니다. 내일 다시 시도해주세요."
+          }
+        }
+      }
+    },
+    "editUserNameError.failedToUpdate.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Update Failed"
+          }
+        }
+      }
+    },
+    "editUserNameError.failedToUpdate.failureReason" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Please check your internet connection and try again"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트를 실패했습니다. 인터넷 연결을 확인하고 다시 시도해주세요."
+          }
+        }
+      }
+    },
+    "editUserNameError.invalidRequest.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Unauthorized Access Attempt"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잘못된 접근"
+          }
+        }
+      }
+    },
+    "editUserNameError.invalidRequest.failureReason" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "For security reasons, your request has been denied"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잘못된 접근입니다. 다시 로그인해주세요."
+          }
+        }
+      }
     },
     "ErrorView" : {
 
@@ -893,7 +1059,14 @@
       }
     },
     "loginView.title" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그인"
+          }
+        }
+      }
     },
     "Lv. %lld" : {
       "localizations" : {
@@ -1539,7 +1712,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "수도 맞추기"
+            "value" : "수도 맞히기"
           }
         }
       }
@@ -1571,7 +1744,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "국기 맞추기"
+            "value" : "국기 맞히기"
           }
         }
       }
@@ -1603,7 +1776,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이름 맞추기"
+            "value" : "이름 맞히기"
           }
         }
       }
