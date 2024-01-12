@@ -26,6 +26,7 @@ struct MyPageView: View {
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @StateObject private var viewModel: MyPageViewModel
     @State private var presentingMenu: MyPageMenuType?
+    @State private var presentReallyDelete: Bool = false
     
     init(viewModel: MyPageViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -47,13 +48,26 @@ struct MyPageView: View {
                 
                 
                 Button {
-                    //TODO: - 회원탈퇴
+                    presentReallyDelete = true
                 } label: {
                     Text("mypage.accountDeletion.title")
                         .font(.footnote)
                         .foregroundStyle(Color(.secondaryLabel))
                 }
                 .padding(.horizontal)
+                .alert("mypage.reallyDelete.title", isPresented: $presentReallyDelete) {
+                    Button("mypage.reallyDelete.cancel", role: .cancel) {
+                        presentReallyDelete = false
+                    }
+                    
+                    Button("mypage.reallyDelete.delete", role: .destructive ) {
+                        presentReallyDelete = false
+                        Task {
+                            await viewModel.deleteAccount()
+                        }
+                    }
+                }
+                
                 
             }
             .padding(.vertical)
@@ -65,11 +79,12 @@ struct MyPageView: View {
         }
         .sheet(item: $presentingMenu) { linkType in
             switch linkType {
-            case .privacyPolicy: SafariWebView(
-                url: URL(
-                    string: "https://tulip-pancreas-c37.notion.site/c8a859249c9a4bc78d32de298f726824"
-                )!
-            ).ignoresSafeArea()
+            case .privacyPolicy: 
+                SafariWebView(
+                    url: URL(
+                        string: "https://tulip-pancreas-c37.notion.site/c8a859249c9a4bc78d32de298f726824"
+                    )!
+                ).ignoresSafeArea()
             case .editUserName:
                 EditUserNameView(
                     viewModel: .init(container: container),
@@ -78,11 +93,19 @@ struct MyPageView: View {
                 .environmentObject(viewModel)
                 
             case .maker:
-                EmptyView()
+                MakerView()
             case .termsOfUse:
-                EmptyView()
+                SafariWebView(
+                    url: URL(
+                        string: "https://tulip-pancreas-c37.notion.site/845bf34e3bc946c6946ea7550dcb4579?pvs=4"
+                    )!
+                ).ignoresSafeArea()
             case .openSourceLicense:
-                EmptyView()
+                SafariWebView(
+                    url: URL(
+                        string: "https://tulip-pancreas-c37.notion.site/2c6e88dc62054d95b2571024857ce9af?pvs=4"
+                    )!
+                ).ignoresSafeArea()
             }
         }
         .task {
@@ -161,7 +184,7 @@ struct MyPageView: View {
     var generalSettings: some View {
         VStack(alignment: .trailing, spacing: 24) {
             Button {
-                //TODO: 만든이
+                presentingMenu = .maker
             } label: {
                 Text("mypage.maker.title")
                     .foregroundStyle(.foreground)
@@ -176,14 +199,14 @@ struct MyPageView: View {
             
             
             Button {
-                //TODO: 서비스 이용약관
+                presentingMenu = .termsOfUse
             } label: {
                 Text("mypage.servicePolicy.title")
                     .foregroundStyle(.foreground)
             }
             
             Button {
-                //TODO: 오픈소스 라이선스
+                presentingMenu = .openSourceLicense
             } label: {
                 Text("mypage.openSourceLicense.title")
                     .foregroundStyle(.foreground)

@@ -22,6 +22,7 @@ protocol FrogServiceType {
     
     func addFrogIfNotExist(ofUser userId: String) -> AnyPublisher<Void, ServiceError>
     func updateFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError>
+    func deleteFrog(ofUser userId: String) async throws
 }
 
 final class FrogService: FrogServiceType {
@@ -135,6 +136,10 @@ final class FrogService: FrogServiceType {
             .eraseToAnyPublisher()
     }
     
+    func deleteFrog(ofUser userId: String) async throws {
+        try await repository.deleteFrog(ofUser: userId)
+    }
+    
 }
 
 final class StubFrogService: FrogServiceType {
@@ -167,5 +172,9 @@ final class StubFrogService: FrogServiceType {
     
     func updateFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError> {
         Empty().eraseToAnyPublisher()
+    }
+    
+    func deleteFrog(ofUser userId: String) async throws {
+        
     }
 }

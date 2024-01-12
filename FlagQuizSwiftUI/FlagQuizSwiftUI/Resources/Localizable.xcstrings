@@ -51,6 +51,9 @@
     "advertisement" : {
 
     },
+    "Buy Me A Coffee ☕️" : {
+
+    },
     "Cancel" : {
       "localizations" : {
         "ko" : {
@@ -1005,6 +1008,9 @@
         }
       }
     },
+    "Git Hub" : {
+
+    },
     "Hello, World!" : {
 
     },
@@ -1192,6 +1198,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "개인정보 처리방침"
+          }
+        }
+      }
+    },
+    "mypage.reallyDelete.cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No I won't"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아니오."
+          }
+        }
+      }
+    },
+    "mypage.reallyDelete.delete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes I will delete"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네 계정을 삭제합니다."
+          }
+        }
+      }
+    },
+    "mypage.reallyDelete.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All of your information will be deleted. Still, do you want to delete your account?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 정보가 삭제됩니다. 그래도 계정을 삭제하시겠습니까?"
           }
         }
       }
@@ -1940,6 +1994,9 @@
           }
         }
       }
+    },
+    "Seok Jun Lee" : {
+
     },
     "show.result.button.title" : {
       "localizations" : {

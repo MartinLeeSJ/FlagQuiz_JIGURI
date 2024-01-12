@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0F29262B517AA800788FE7 /* MakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F29252B517AA800788FE7 /* MakerView.swift */; };
 		5B0F31162B4A8F4F00121561 /* QuizResultScoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F31152B4A8F4F00121561 /* QuizResultScoreCard.swift */; };
 		5B0F31182B4A9BEC00121561 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F31172B4A9BEC00121561 /* Line.swift */; };
 		5B0F311B2B4AA36D00121561 /* QuizResultScoreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F311A2B4AA36D00121561 /* QuizResultScoreSection.swift */; };
@@ -188,6 +189,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B0F29252B517AA800788FE7 /* MakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerView.swift; sourceTree = "<group>"; };
 		5B0F31152B4A8F4F00121561 /* QuizResultScoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultScoreCard.swift; sourceTree = "<group>"; };
 		5B0F31172B4A9BEC00121561 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		5B0F311A2B4AA36D00121561 /* QuizResultScoreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultScoreSection.swift; sourceTree = "<group>"; };
@@ -957,6 +959,7 @@
 			children = (
 				5BFF43922B46CFD100C3DBCB /* MyPageView.swift */,
 				5BF5EFD52B4FB67D006D5B4B /* MyPageViewModel.swift */,
+				5B0F29252B517AA800788FE7 /* MakerView.swift */,
 				5BC016332B51106000A79C45 /* EditUserName */,
 			);
 			path = MyPage;
@@ -999,6 +1002,7 @@
 				5B5C2AD52B280A34009A382B /* Sources */,
 				5B5C2AD62B280A34009A382B /* Frameworks */,
 				5B5C2AD72B280A34009A382B /* Resources */,
+				5B5C8D082B51747E009A382B /* Copy Acknowledgements */,
 			);
 			buildRules = (
 			);
@@ -1017,6 +1021,7 @@
 				5B5C2ADF2B280A34009A382B /* Sources */,
 				5B5C2AE02B280A34009A382B /* Frameworks */,
 				5B5C2AE12B280A34009A382B /* Resources */,
+				5B5CC99F2B51747E009A382B /* Copy Acknowledgements */,
 			);
 			buildRules = (
 			);
@@ -1108,6 +1113,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B5C8D082B51747E009A382B /* Copy Acknowledgements */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Acknowledgements";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Will copy acknowledgements\"\n\nACKNOWLEDGEMENTS_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/com.mono0926.LicensePlist.Output\nDESTINATION_PATH=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/\n\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/* \"${DESTINATION_PATH}\"\nrm -rf \"${ACKNOWLEDGEMENTS_DIR}\"";
+		};
+		5B5CC99F2B51747E009A382B /* Copy Acknowledgements */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Acknowledgements";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Will copy acknowledgements\"\n\nACKNOWLEDGEMENTS_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/com.mono0926.LicensePlist.Output\nDESTINATION_PATH=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/\n\ncp -r \"${ACKNOWLEDGEMENTS_DIR}\"/* \"${DESTINATION_PATH}\"\nrm -rf \"${ACKNOWLEDGEMENTS_DIR}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5B5C2AC52B280A32009A382B /* Sources */ = {
@@ -1224,6 +1260,7 @@
 				5B67423C2B370F28007335A6 /* FlowingText.swift in Sources */,
 				5B6EAAD42B454A2D006DA3BE /* AllRankInfoView.swift in Sources */,
 				5B16F9792B287B700011ACF7 /* DBError.swift in Sources */,
+				5B0F29262B517AA800788FE7 /* MakerView.swift in Sources */,
 				5B16F97B2B287E750011ACF7 /* UserService.swift in Sources */,
 				5B5C2ACD2B280A32009A382B /* FlagQuizSwiftUIApp.swift in Sources */,
 				5BD3B76B2B31EDA000B930E0 /* FQQuizRound.swift in Sources */,

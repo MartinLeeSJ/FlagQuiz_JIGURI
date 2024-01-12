@@ -16,6 +16,7 @@ protocol FrogDBRepositoryType {
     
     func addFrog(ofUser userId: String) -> AnyPublisher<Void, DBError>
     func updateFrog(_ object: FQFrogObject, ofUser userId: String) -> AnyPublisher<Void, DBError>
+    func deleteFrog(ofUser userId: String) async throws
     
 }
 
@@ -94,5 +95,10 @@ final class FrogDBRepository: FrogDBRepositoryType {
         }
         .mapError { DBError.custom($0) }
         .eraseToAnyPublisher()
+    }
+    
+    func deleteFrog(ofUser userId: String) async throws {
+        let documentRef: DocumentReference = collectionRef.document(userId)
+        try await documentRef.delete()
     }
 }

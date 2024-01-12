@@ -15,7 +15,7 @@ protocol FQUserRepositoryType {
     func getUser(ofId userId: String) async throws -> FQUserObject
     
     func addUser(_ user: FQUser) -> AnyPublisher<FQUserObject, DBError>
-    func deleteUser(of userId: String) -> AnyPublisher<Void, DBError>
+    func deleteUser(of userId: String) async throws
     func setUser(ofUser userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError>
     func updateUser(of userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError>
 }
@@ -57,18 +57,9 @@ final class FQUserRepository: FQUserRepositoryType {
         
     }
     
-    func deleteUser(of userId: String) -> AnyPublisher<Void, DBError> {
+    func deleteUser(of userId: String) async throws {
         let userDocRef = db.collection(CollectionKey.Users).document(userId)
-        
-        return Future { promise in
-            userDocRef.delete { error in
-                if let error {
-                    promise(.failure(DBError.custom(error)))
-                    return
-                }
-                promise(.success(()))
-            }
-        }.eraseToAnyPublisher()
+        try await userDocRef.delete()
     }
     
     func setUser(ofUser userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError> {

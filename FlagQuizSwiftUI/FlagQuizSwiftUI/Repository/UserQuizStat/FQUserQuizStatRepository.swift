@@ -12,7 +12,7 @@ import FirebaseFirestore
 protocol FQUserQuizStatRepositoryType {
     func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStatObject
     func addQuizStat(quizStat model: FQUserQuizStat) async throws
-    
+    func deleteQuizStat(ofUser userId: String) async throws
 }
 
 final class FQUserQuizStatRepository: FQUserQuizStatRepositoryType {
@@ -66,5 +66,9 @@ final class FQUserQuizStatRepository: FQUserQuizStatRepositoryType {
         )
     }
     
+    func deleteQuizStat(ofUser userId: String) async throws {
+        let docRef = db.collection(CollectionKey.UserQuizStats).document(userId)
+        try await docRef.delete()
+    }
    
 }

@@ -13,7 +13,7 @@ protocol UserServiceType {
     func getUser(ofId userId: String) async throws -> FQUser
     
     func addUserIfNotExist(_ user: FQUser) -> AnyPublisher<FQUser, ServiceError>
-    func deleteUser(of userId: String) -> AnyPublisher<Void, ServiceError>
+    func deleteUser(of userId: String) async throws
     func updateUser(of userId: String, model: FQUser) -> AnyPublisher<Void, ServiceError>
 }
 
@@ -43,10 +43,8 @@ class UserService: UserServiceType {
             .eraseToAnyPublisher()
     }
     
-    func deleteUser(of userId: String) -> AnyPublisher<Void, ServiceError> {
-        repository.deleteUser(of: userId)
-            .mapError { ServiceError.custom($0) }
-            .eraseToAnyPublisher()
+    func deleteUser(of userId: String) async throws {
+        try await repository.deleteUser(of: userId)
     }
     
     func updateUser(of userId: String, model: FQUser) -> AnyPublisher<Void, ServiceError> {
@@ -73,8 +71,8 @@ class StubUserService: UserServiceType {
         Empty().eraseToAnyPublisher()
     }
     
-    func deleteUser(of userId: String) -> AnyPublisher<Void, ServiceError> {
-        Empty().eraseToAnyPublisher()
+    func deleteUser(of userId: String) async throws {
+        
     }
     
     func updateUser(of userId: String, model: FQUser) -> AnyPublisher<Void, ServiceError> {
