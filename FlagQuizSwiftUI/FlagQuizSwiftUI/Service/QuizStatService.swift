@@ -10,8 +10,8 @@ import Combine
 
 protocol QuizStatServiceType {
     func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStat
-    
     func addQuizStat(ofUser userId: String, quiz: FQQuiz) async throws
+    func deleteQuizStat(ofUser userId: String) async throws
 }
 
 final class QuizStatService: QuizStatServiceType {
@@ -50,6 +50,10 @@ final class QuizStatService: QuizStatServiceType {
             )
         )
     }
+    
+    func deleteQuizStat(ofUser userId: String) async throws {
+        try await repository.deleteQuizStat(ofUser: userId)
+    }
 }
 
 final class StubQuizStatService: QuizStatServiceType {
@@ -58,6 +62,10 @@ final class StubQuizStatService: QuizStatServiceType {
     }
     
     func addQuizStat(ofUser userId: String, quiz: FQQuiz) async throws {
+        
+    }
+    
+    func deleteQuizStat(ofUser userId: String) async throws {
         
     }
 }

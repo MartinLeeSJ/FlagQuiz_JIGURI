@@ -28,7 +28,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%2$lld문제 중 %1$lld문제 맞추셨어요"
+            "value" : "%2$lld문제 중 %1$lld문제 맞히셨어요"
           }
         }
       }
@@ -49,6 +49,9 @@
 
     },
     "advertisement" : {
+
+    },
+    "Buy Me A Coffee ☕️" : {
 
     },
     "Cancel" : {
@@ -83,6 +86,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Correct Quiz Count"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "맞힌 퀴즈 수"
           }
         }
       }
@@ -285,6 +294,166 @@
     "Earth Candy" : {
 
     },
+    "editUserName.character.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can only use alphabets (a-z, A-Z) and numbers in your username."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "영어 대소문자(a-z, A-Z), 숫자(0-9)만 사용할 수 있습니다"
+          }
+        }
+      }
+    },
+    "editUserName.length.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usernames must be 20 characters or fewer."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "20자 이하로 작성해야합니다."
+          }
+        }
+      }
+    },
+    "editUserName.submitButton.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submit New UserName"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "변경 제출하기"
+          }
+        }
+      }
+    },
+    "editUserName.textField.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change UserName"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자 별명 변경"
+          }
+        }
+      }
+    },
+    "editUserNameError.endOfTrial.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Username Change Limit Reached"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "별명 변경 제한 도달"
+          }
+        }
+      }
+    },
+    "editUserNameError.endOfTrial.failureReason" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have exhausted your daily limit for changing your username. Please try again tomorrow."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "하루에 세 번의 별명 변경 기회를 모두 사용하셨습니다. 내일 다시 시도해주세요."
+          }
+        }
+      }
+    },
+    "editUserNameError.failedToUpdate.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Update Failed"
+          }
+        }
+      }
+    },
+    "editUserNameError.failedToUpdate.failureReason" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Please check your internet connection and try again"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트를 실패했습니다. 인터넷 연결을 확인하고 다시 시도해주세요."
+          }
+        }
+      }
+    },
+    "editUserNameError.invalidRequest.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Unauthorized Access Attempt"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잘못된 접근"
+          }
+        }
+      }
+    },
+    "editUserNameError.invalidRequest.failureReason" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "For security reasons, your request has been denied"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잘못된 접근입니다. 다시 로그인해주세요."
+          }
+        }
+      }
+    },
     "ErrorView" : {
 
     },
@@ -317,7 +486,7 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "지구알사탕으로 회복하기."
           }
         }
@@ -333,7 +502,7 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "지구알사탕으로 행복하게 만드세요."
           }
         }
@@ -349,7 +518,7 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "지구리는 매우 행복합니다."
           }
         }
@@ -365,7 +534,7 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "조금만 더 주세요."
           }
         }
@@ -833,11 +1002,14 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "지구알사탕이 부족합니다."
           }
         }
       }
+    },
+    "Git Hub" : {
+
     },
     "Hello, World!" : {
 
@@ -892,8 +1064,15 @@
         }
       }
     },
-    "LogOut" : {
-
+    "loginView.title" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그인"
+          }
+        }
+      }
     },
     "Lv. %lld" : {
       "localizations" : {
@@ -907,6 +1086,230 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "레벨 %lld"
+          }
+        }
+      }
+    },
+    "mypage.accountDeletion.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete account"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계정 삭제"
+          }
+        }
+      }
+    },
+    "mypage.editUserNameButton.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit UserName"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "별명 수정"
+          }
+        }
+      }
+    },
+    "mypage.logOutButton.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign Out"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그아웃"
+          }
+        }
+      }
+    },
+    "mypage.maker.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Who Made This App?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "만든이"
+          }
+        }
+      }
+    },
+    "mypage.navigationTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My page"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마이페이지"
+          }
+        }
+      }
+    },
+    "mypage.openSourceLicense.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Source Licenses"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오픈소스 라이선스"
+          }
+        }
+      }
+    },
+    "mypage.privacyPolicy.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 처리방침"
+          }
+        }
+      }
+    },
+    "mypage.reallyDelete.cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No I won't"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아니오."
+          }
+        }
+      }
+    },
+    "mypage.reallyDelete.delete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes I will delete"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네 계정을 삭제합니다."
+          }
+        }
+      }
+    },
+    "mypage.reallyDelete.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All of your information will be deleted. Still, do you want to delete your account?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 정보가 삭제됩니다. 그래도 계정을 삭제하시겠습니까?"
+          }
+        }
+      }
+    },
+    "mypage.servicePolicy.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이용약관"
+          }
+        }
+      }
+    },
+    "mypage.userInfo.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Information"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내 정보"
+          }
+        }
+      }
+    },
+    "mypage.userName.placeholder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Data"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정보 없음"
+          }
+        }
+      }
+    },
+    "mypage.version.information.%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전 %@"
           }
         }
       }
@@ -1363,7 +1766,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "수도 맞추기"
+            "value" : "수도 맞히기"
           }
         }
       }
@@ -1395,7 +1798,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "국기 맞추기"
+            "value" : "국기 맞히기"
           }
         }
       }
@@ -1427,7 +1830,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이름 맞추기"
+            "value" : "이름 맞히기"
           }
         }
       }
@@ -1591,6 +1994,9 @@
           }
         }
       }
+    },
+    "Seok Jun Lee" : {
+
     },
     "show.result.button.title" : {
       "localizations" : {

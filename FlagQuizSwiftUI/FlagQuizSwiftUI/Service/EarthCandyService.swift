@@ -15,6 +15,7 @@ protocol EarthCandyServiceType {
     func observeEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandy?, ServiceError>
     func updateCandy(_ model: FQEarthCandy, ofUser userId: String) -> AnyPublisher<Void, ServiceError>
     func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Bool, ServiceError>
+    func deleteEarthCandy(ofUser userId: String) async throws
 }
 
 final class EarthCandyService: EarthCandyServiceType {
@@ -87,6 +88,10 @@ final class EarthCandyService: EarthCandyServiceType {
             .eraseToAnyPublisher()
     }
     
+    func deleteEarthCandy(ofUser userId: String) async throws {
+        try await repository.deleteEarthCandy(ofUser: userId)
+    }
+    
 }
 
 final class StubEarthCandyService: EarthCandyServiceType {
@@ -118,5 +123,7 @@ final class StubEarthCandyService: EarthCandyServiceType {
     func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Bool, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
+    
+    func deleteEarthCandy(ofUser userId: String) async throws {}
 
 }

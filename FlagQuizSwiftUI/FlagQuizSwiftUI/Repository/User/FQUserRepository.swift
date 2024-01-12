@@ -12,8 +12,12 @@ import FirebaseFirestore
 
 protocol FQUserRepositoryType {
     func getUser(ofId userId: String) -> AnyPublisher<FQUserObject?, DBError>
+    func getUser(ofId userId: String) async throws -> FQUserObject
+    
     func addUser(_ user: FQUser) -> AnyPublisher<FQUserObject, DBError>
-    func deleteUser(of userId: String) -> AnyPublisher<Void, DBError>
+    func deleteUser(of userId: String) async throws
+    func setUser(ofUser userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError>
+    func updateUser(of userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError>
 }
 
 final class FQUserRepository: FQUserRepositoryType {
@@ -32,6 +36,9 @@ final class FQUserRepository: FQUserRepositoryType {
         .eraseToAnyPublisher()
     }
     
+    func getUser(ofId userId: String) async throws -> FQUserObject {
+        try await usersCollection.document(userId).getDocument(as: FQUserObject.self)
+    }
     
     func addUser(_ user: FQUser) -> AnyPublisher<FQUserObject, DBError> {
         Future { [weak self] promise in
@@ -50,18 +57,41 @@ final class FQUserRepository: FQUserRepositoryType {
         
     }
     
-    func deleteUser(of userId: String) -> AnyPublisher<Void, DBError> {
+    func deleteUser(of userId: String) async throws {
         let userDocRef = db.collection(CollectionKey.Users).document(userId)
-        
-        return Future { promise in
-            userDocRef.delete { error in
-                if let error {
-                    promise(.failure(DBError.custom(error)))
-                    return
-                }
+        try await userDocRef.delete()
+    }
+    
+    func setUser(ofUser userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError> {
+        Future { [weak self] promise in
+            do {
+                try self?.usersCollection.document(userId).setData(from: object, mergeFields: [])
                 promise(.success(()))
+            } catch {
+                promise(.failure(error))
             }
-        }.eraseToAnyPublisher()
+        }
+        .mapError { DBError.custom($0) }
+        .eraseToAnyPublisher()
+    }
+    
+    func updateUser(of userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError> {
+        Future { [weak self] promise in
+            self?.usersCollection.document(userId)
+                .updateData([
+                    "email": object.email ?? "",
+                    "userName": object.userName ?? ""
+                ]) { error in
+                    if let error {
+                        promise(.failure(error))
+                        return
+                    }
+                    promise(.success(()))
+                }
+        }
+        .mapError { DBError.custom($0) }
+        .eraseToAnyPublisher()
+            
     }
     
 }

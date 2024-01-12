@@ -15,6 +15,7 @@ protocol FQEarthCandyDBRepositoryType {
     func getEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandyObject?, DBError>
     func observeEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandyObject?, DBError>
     func updateEarthCandy(_ object: FQEarthCandyObject, ofUser userId: String) -> AnyPublisher<Bool, DBError>
+    func deleteEarthCandy(ofUser userId: String) async throws
 }
 
 final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
@@ -84,5 +85,10 @@ final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
        
         }
         .eraseToAnyPublisher()
+    }
+    
+    func deleteEarthCandy(ofUser userId: String) async throws {
+        let documentRef = candyCollection.document(userId)
+        try await documentRef.delete()
     }
 }
