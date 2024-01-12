@@ -1,5 +1,0 @@
-options:
-  xcodeprojPath: "*.xcodeproj"
-  prefix: Acknowledgements
-  singlePage: true
-
