@@ -62,6 +62,38 @@
         }
       }
     },
+    "askToView.copy.completed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied to clipboard"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "클립보드에 복사되었습니다."
+          }
+        }
+      }
+    },
+    "askToView.tap.twice.instuction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double-tap to copy to clipboard."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "두번 탭하여 복사하기"
+          }
+        }
+      }
+    },
     "Buy Me A Coffee ☕️" : {
       "localizations" : {
         "ko" : {
@@ -1147,6 +1179,22 @@
         }
       }
     },
+    "mypage.askTo.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문의하기"
+          }
+        }
+      }
+    },
     "mypage.editUserNameButton.title" : {
       "localizations" : {
         "en" : {
@@ -2135,9 +2183,6 @@
           }
         }
       }
-    },
-    "Test" : {
-
     },
     "total.quiz.rank.progress.title" : {
       "localizations" : {

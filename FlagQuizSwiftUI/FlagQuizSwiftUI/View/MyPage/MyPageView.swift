@@ -59,8 +59,7 @@ struct MyPageView: View {
             .sheet(item: $presentingMenu) { linkType in
                 switch linkType {
                 case .askTo:
-                    // TODO:
-                    Text("Test")
+                    AskToView()
                 case .info:
                     InformationView(
                         pinnedInfo: infoViewModel.pinnedInfo,
@@ -201,6 +200,13 @@ struct MyPageView: View {
                     .opacity(infoViewModel.infos.isEmpty ? 0.2 : 1)
             }
             .disabled(infoViewModel.infos.isEmpty)
+            
+            Button {
+                presentingMenu = .askTo
+            } label: {
+                Text("mypage.askTo.title")
+                    .foregroundStyle(.foreground)
+            }
             
             
             Button {
