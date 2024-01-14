@@ -33,8 +33,12 @@ struct UserNameUpdateRecord: Codable {
         try container.encode(countOfTrial, forKey: .countOfTrial)
     }
     
-    private var updatedYesterday: Bool {
-        Calendar.current.isDateInYesterday(lastUpdated)
+    private var updatedYesterdayOrMore: Bool {
+        guard let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: .now) else {
+            return false
+        }
+        
+        return lastUpdated < yesterday
     }
     
     
@@ -42,24 +46,23 @@ struct UserNameUpdateRecord: Codable {
         case once = 1
         case twice
         case third
-        case finished
     }
     
     private mutating func countUp() {
-        guard countOfTrial != .finished else {
+        guard countOfTrial != .third else {
             return
         }
         countOfTrial = Trial(rawValue: countOfTrial.rawValue + 1)!
     }
     
     public mutating func canUpdate() -> Bool {
-        if updatedYesterday {
+        if updatedYesterdayOrMore {
             lastUpdated = .now
             countOfTrial = .once
             return true
         }
         
-        guard countOfTrial != .finished else { return false }
+        guard countOfTrial != .third else { return false }
         
         lastUpdated = .now
         countUp()

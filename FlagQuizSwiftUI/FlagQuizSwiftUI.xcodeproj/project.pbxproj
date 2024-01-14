@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5B0F29262B517AA800788FE7 /* MakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F29252B517AA800788FE7 /* MakerView.swift */; };
+		5B0F29282B52543300788FE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F29272B52543300788FE7 /* InformationView.swift */; };
+		5B0F292B2B52546100788FE7 /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F292A2B52546100788FE7 /* InformationViewModel.swift */; };
+		5B0F292D2B5254D000788FE7 /* FQInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F292C2B5254D000788FE7 /* FQInfo.swift */; };
+		5B0F292F2B5285AC00788FE7 /* InformationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F292E2B5285AC00788FE7 /* InformationRow.swift */; };
 		5B0F31162B4A8F4F00121561 /* QuizResultScoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F31152B4A8F4F00121561 /* QuizResultScoreCard.swift */; };
 		5B0F31182B4A9BEC00121561 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F31172B4A9BEC00121561 /* Line.swift */; };
 		5B0F311B2B4AA36D00121561 /* QuizResultScoreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F311A2B4AA36D00121561 /* QuizResultScoreSection.swift */; };
@@ -190,6 +194,10 @@
 
 /* Begin PBXFileReference section */
 		5B0F29252B517AA800788FE7 /* MakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerView.swift; sourceTree = "<group>"; };
+		5B0F29272B52543300788FE7 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
+		5B0F292A2B52546100788FE7 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
+		5B0F292C2B5254D000788FE7 /* FQInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQInfo.swift; sourceTree = "<group>"; };
+		5B0F292E2B5285AC00788FE7 /* InformationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationRow.swift; sourceTree = "<group>"; };
 		5B0F31152B4A8F4F00121561 /* QuizResultScoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultScoreCard.swift; sourceTree = "<group>"; };
 		5B0F31172B4A9BEC00121561 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		5B0F311A2B4AA36D00121561 /* QuizResultScoreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultScoreSection.swift; sourceTree = "<group>"; };
@@ -384,6 +392,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B0F29292B52544900788FE7 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				5B0F29272B52543300788FE7 /* InformationView.swift */,
+				5B0F292E2B5285AC00788FE7 /* InformationRow.swift */,
+				5B0F292A2B52546100788FE7 /* InformationViewModel.swift */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
 		5B0F31192B4A9C8500121561 /* Shape */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				5BE7D29F2B29A63A0044C3D4 /* FQCountryISOCode.swift */,
+				5B0F292C2B5254D000788FE7 /* FQInfo.swift */,
 				5BFF43782B466D9800C3DBCB /* FQFrog.swift */,
 				5B9FC5FF2B47CDEF00B694C7 /* FQEarthCandy.swift */,
 				5BFF43882B469DC100C3DBCB /* Item */,
@@ -959,6 +978,7 @@
 			children = (
 				5BFF43922B46CFD100C3DBCB /* MyPageView.swift */,
 				5BF5EFD52B4FB67D006D5B4B /* MyPageViewModel.swift */,
+				5B0F29292B52544900788FE7 /* Information */,
 				5B0F29252B517AA800788FE7 /* MakerView.swift */,
 				5BC016332B51106000A79C45 /* EditUserName */,
 			);
@@ -1158,6 +1178,7 @@
 				5B34484E2B3553FC002E2222 /* FQUserQuizStatRepository.swift in Sources */,
 				5B9A81AF2B3AC3470087142A /* NewsViewModel.swift in Sources */,
 				5BF5EFD82B4FE402006D5B4B /* EditUserNameView.swift in Sources */,
+				5B0F292F2B5285AC00788FE7 /* InformationRow.swift in Sources */,
 				5B89317D2B41B19500FA331E /* CaptialQuizOptions.swift in Sources */,
 				5B3448502B355433002E2222 /* FQUserQuizStatObject.swift in Sources */,
 				5BE086632B31C25B00D38C01 /* TypeWritingText.swift in Sources */,
@@ -1201,6 +1222,7 @@
 				5B9A81BD2B3AFF6C0087142A /* FQUserRank.swift in Sources */,
 				5BE7D2A22B29A7F20044C3D4 /* FQCountry.swift in Sources */,
 				5B16F97D2B2883670011ACF7 /* Constant.swift in Sources */,
+				5B0F292D2B5254D000788FE7 /* FQInfo.swift in Sources */,
 				5BE7D2A82B29B2220044C3D4 /* CountryAPIClient.swift in Sources */,
 				5B6742022B36A261007335A6 /* CountryDetailView.swift in Sources */,
 				5B559F082B28B85400B131BE /* NewsView.swift in Sources */,
@@ -1219,6 +1241,7 @@
 				5BFF43792B466D9900C3DBCB /* FQFrog.swift in Sources */,
 				5B9A81B92B3AE3FE0087142A /* FQCountryQuizStatObject.swift in Sources */,
 				5B19C1732B3C2DD8001A74CE /* QuizStatCell.swift in Sources */,
+				5B0F29282B52543300788FE7 /* InformationView.swift in Sources */,
 				5B697EAF2B386D39003089F8 /* ImageCacheService.swift in Sources */,
 				5B795CB72B3D2996004AF9EE /* QuizRecordDetailView.swift in Sources */,
 				5BFF43812B4679AC00C3DBCB /* FQItemObject.swift in Sources */,
@@ -1257,6 +1280,7 @@
 				5B8A87262B3EC9DC00247DB9 /* QuizQuestion.swift in Sources */,
 				5B9ECB772B34255100098BF3 /* QuizRoundsResultScroll.swift in Sources */,
 				5B3448582B35D3F1002E2222 /* HapticsManager.swift in Sources */,
+				5B0F292B2B52546100788FE7 /* InformationViewModel.swift in Sources */,
 				5B67423C2B370F28007335A6 /* FlowingText.swift in Sources */,
 				5B6EAAD42B454A2D006DA3BE /* AllRankInfoView.swift in Sources */,
 				5B16F9792B287B700011ACF7 /* DBError.swift in Sources */,
