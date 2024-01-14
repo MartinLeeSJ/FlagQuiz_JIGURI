@@ -31,7 +31,6 @@ struct QuizSettingControls: View {
             
             quizItemCountPicker
             
-//            estimatedEarthCandyView
             
             Button {
                 viewModel.send(
@@ -50,64 +49,7 @@ struct QuizSettingControls: View {
         }
     }
     
-    private var estimatedEarthCandyView: some View {
-        VStack(alignment: .leading) {
-            HStack(spacing: 4) {
-                Text("Estimated")
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-                Image("EarthCandy")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-            }
-            
-            HStack(spacing: 8) {
-                VStack {
-                    Text("\(quizCount.rawValue)")
-                        .font(.headline)
-                    Text("Quiz Count")
-                        .font(.system(size: 8))
-                        .fontWeight(.medium)
-                }
-                
-                Image(systemName: "multiply")
-                
-                VStack {
-                    Text("0.\(quizItemCount.rawValue)")
-                        .font(.headline)
-                    Text("Quiz Options / 10")
-                        .font(.system(size: 8))
-                        .fontWeight(.medium)
-                }
-                
-                Image(systemName: "plus")
-                
-                VStack {
-                    Text(quizType.advantagePoint, format: .number)
-                        .font(.headline)
-                    Text("Type advantage")
-                        .font(.system(size: 8))
-                        .fontWeight(.medium)
-                }
-                
-                Image(systemName: "equal")
-                
-                VStack {
-                    Text(estimatedEarthCandy, format: .number)
-                        .font(.headline)
-                    Text("Earth Candy")
-                        .font(.system(size: 8))
-                        .fontWeight(.medium)
-                }
-                
-                Spacer()
-                
-            }
-        }
-        .padding(.horizontal)
-        
-    }
+    
     
     private var quizTypeMenu: some View {
         HStack {

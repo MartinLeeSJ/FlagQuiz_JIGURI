@@ -36,9 +36,6 @@
     "0" : {
 
     },
-    "0.%lld" : {
-
-    },
     "10.5" : {
 
     },
@@ -46,13 +43,66 @@
 
     },
     "Accuracy" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정확도"
+          }
+        }
+      }
     },
     "advertisement" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "광고"
+          }
+        }
+      }
+    },
+    "askToView.copy.completed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied to clipboard"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "클립보드에 복사되었습니다."
+          }
+        }
+      }
+    },
+    "askToView.tap.twice.instuction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double-tap to copy to clipboard."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "두번 탭하여 복사하기"
+          }
+        }
+      }
     },
     "Buy Me A Coffee ☕️" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy Me A Coffee ☕️"
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
@@ -291,9 +341,6 @@
     "dismiss" : {
 
     },
-    "Earth Candy" : {
-
-    },
     "editUserName.character.instruction" : {
       "localizations" : {
         "en" : {
@@ -400,6 +447,12 @@
             "state" : "new",
             "value" : "Update Failed"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트 실패"
+          }
         }
       }
     },
@@ -455,9 +508,6 @@
       }
     },
     "ErrorView" : {
-
-    },
-    "Estimated" : {
 
     },
     "feed.frog.button.placeholder" : {
@@ -1009,7 +1059,14 @@
       }
     },
     "Git Hub" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "깃허브"
+          }
+        }
+      }
     },
     "Hello, World!" : {
 
@@ -1090,6 +1147,22 @@
         }
       }
     },
+    "more.button.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "more"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더보기"
+          }
+        }
+      }
+    },
     "mypage.accountDeletion.title" : {
       "localizations" : {
         "en" : {
@@ -1106,6 +1179,22 @@
         }
       }
     },
+    "mypage.askTo.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문의하기"
+          }
+        }
+      }
+    },
     "mypage.editUserNameButton.title" : {
       "localizations" : {
         "en" : {
@@ -1118,6 +1207,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "별명 수정"
+          }
+        }
+      }
+    },
+    "mypage.info.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informations"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공지사항"
           }
         }
       }
@@ -1492,12 +1597,6 @@
           }
         }
       }
-    },
-    "Quiz Count" : {
-
-    },
-    "Quiz Options / 10" : {
-
     },
     "quiz.option.divide.ten" : {
       "localizations" : {
@@ -1996,7 +2095,14 @@
       }
     },
     "Seok Jun Lee" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이석준"
+          }
+        }
+      }
     },
     "show.result.button.title" : {
       "localizations" : {
@@ -2093,9 +2199,6 @@
           }
         }
       }
-    },
-    "Type advantage" : {
-
     },
     "user.rank.all.rank.info.title" : {
       "localizations" : {
