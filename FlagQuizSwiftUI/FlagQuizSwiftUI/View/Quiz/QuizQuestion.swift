@@ -25,12 +25,12 @@ struct QuizQuestion: View {
         .background(.thickMaterial,
                     in: Rectangle())
         .overlay(alignment: .bottom) {
-            let current = Float(viewModel.quiz.currentQuizIndex)
-            let total = Float(viewModel.quiz.quizCount)
-            
-            ProgressView(value: .init(current/total))
-                .animation(.easeIn(duration: 1.5), value: viewModel.quiz.currentQuizIndex)
-                .progressViewStyle(.linear)
+            QuizProgressView(
+                quizRounds: viewModel.quiz.quizRounds,
+                currentQuizIndex: viewModel.quiz.currentQuizIndex,
+                quizCount: viewModel.quiz.quizCount
+            )
+            .frame(height: 5)
         }
         .padding(.vertical)
     }

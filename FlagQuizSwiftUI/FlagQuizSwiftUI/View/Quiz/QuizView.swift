@@ -47,7 +47,7 @@ struct QuizView: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                scoreView
+                currentEarthCandyView
                     .zIndex(1)
             }
             
@@ -68,41 +68,33 @@ struct QuizView: View {
         }
         
     }
-    
- 
-    
-    
-    private var scoreView: some View {
-         VStack(alignment: .leading) {
+
+    private var currentEarthCandyView: some View {
+        HStack {
             let quiz = viewModel.quiz
-             
+            let quizPoint: Decimal = Decimal(quiz.quizOptionsCount) / Decimal(10)
+            Text("quizView.current.earthcandy.description")
             HStack {
-                Text("current.quiz.description")
-                Spacer()
-                Text("current.quiz \(quiz.currentQuizIndex + 1) / \(quiz.quizCount)")
-                    .fontWeight(.bold)
+                Image("EarthCandy")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20)
+          
+                Text(
+                    Decimal(quiz.correctQuizRoundsCountBeforeCurrentRound) * quizPoint,
+                    format: .number
+                )
+                .fontWeight(.bold)
             }
-            HStack {
-                Text("correct.quiz.description")
-                Spacer()
-                Text("correct.quiz.count \(quiz.correctQuizRoundsCountBeforeCurrentRound)")
-                    .fontWeight(.bold)
-            }
-            
-            HStack {
-                Text("wrong.quiz.description")
-                Spacer()
-                Text("wrong.quiz.count \(quiz.wrongQuizRoundsCountBeforeCurrentRound)")
-                    .fontWeight(.bold)
-            }
-            
+            .frame(minWidth: 60, alignment: .leading)
+            .padding(8)
+            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
+            .monospacedDigit()
         }
-        .monospacedDigit()
         .font(.footnote)
-        .frame(minWidth: 80, idealWidth: 100, maxWidth: 240)
-        .padding(8)
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
-        .offset(y: 20)
+        
+       
+        
     }
     
 }

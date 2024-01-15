@@ -58,6 +58,7 @@
 		5B19C1782B3C2E9D001A74CE /* CountryQuizStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1772B3C2E9D001A74CE /* CountryQuizStatView.swift */; };
 		5B19C17A2B3C2F69001A74CE /* CountryQuizStatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1792B3C2F69001A74CE /* CountryQuizStatViewModel.swift */; };
 		5B3210382B5417CD00B2134B /* AskToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3210372B5417CD00B2134B /* AskToView.swift */; };
+		5B32103A2B542C2800B2134B /* QuizProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3210392B542C2800B2134B /* QuizProgressView.swift */; };
 		5B34484C2B35527F002E2222 /* QuizStatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484B2B35527F002E2222 /* QuizStatService.swift */; };
 		5B34484E2B3553FC002E2222 /* FQUserQuizStatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484D2B3553FC002E2222 /* FQUserQuizStatRepository.swift */; };
 		5B3448502B355433002E2222 /* FQUserQuizStatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */; };
@@ -240,6 +241,7 @@
 		5B19C1772B3C2E9D001A74CE /* CountryQuizStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryQuizStatView.swift; sourceTree = "<group>"; };
 		5B19C1792B3C2F69001A74CE /* CountryQuizStatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryQuizStatViewModel.swift; sourceTree = "<group>"; };
 		5B3210372B5417CD00B2134B /* AskToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskToView.swift; sourceTree = "<group>"; };
+		5B3210392B542C2800B2134B /* QuizProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizProgressView.swift; sourceTree = "<group>"; };
 		5B34484B2B35527F002E2222 /* QuizStatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStatService.swift; sourceTree = "<group>"; };
 		5B34484D2B3553FC002E2222 /* FQUserQuizStatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStatRepository.swift; sourceTree = "<group>"; };
 		5B34484F2B355433002E2222 /* FQUserQuizStatObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStatObject.swift; sourceTree = "<group>"; };
@@ -893,6 +895,7 @@
 				5BD3B7652B31EC7400B930E0 /* QuizView.swift */,
 				5B8A87232B3EC8F100247DB9 /* QuizAnswer.swift */,
 				5B8A87252B3EC9DC00247DB9 /* QuizQuestion.swift */,
+				5B3210392B542C2800B2134B /* QuizProgressView.swift */,
 				5B7BCAF52B32DBED00E50C5F /* QuizOptions.swift */,
 				5B89317C2B41B19400FA331E /* CaptialQuizOptions.swift */,
 				5B7BCAF72B32DCC000E50C5F /* QuizSubmitButton.swift */,
@@ -1277,6 +1280,7 @@
 				5B9FC6022B47D90300B694C7 /* EarthCandyService.swift in Sources */,
 				5B795CC02B3D5AD1004AF9EE /* FQQuizRoundRecord.swift in Sources */,
 				5B34484C2B35527F002E2222 /* QuizStatService.swift in Sources */,
+				5B32103A2B542C2800B2134B /* QuizProgressView.swift in Sources */,
 				5BE086582B31907C00D38C01 /* FQCountryDetail.swift in Sources */,
 				5B19C1752B3C2E16001A74CE /* TodayCountryCell.swift in Sources */,
 				5BE0865B2B3190AC00D38C01 /* FQCountryName.swift in Sources */,

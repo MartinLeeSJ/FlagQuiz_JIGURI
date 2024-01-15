@@ -146,38 +146,6 @@
         }
       }
     },
-    "correct.quiz.count %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
-          }
-        }
-      }
-    },
-    "correct.quiz.description" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Correct"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "정답"
-          }
-        }
-      }
-    },
     "county.detail.title.area" : {
       "localizations" : {
         "en" : {
@@ -302,38 +270,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "시간대"
-          }
-        }
-      }
-    },
-    "current.quiz %lld / %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld / %2$lld"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1lld / %2lld"
-          }
-        }
-      }
-    },
-    "current.quiz.description" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Current"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "현재 문제"
           }
         }
       }
@@ -1966,6 +1902,22 @@
         }
       }
     },
+    "quizView.current.earthcandy.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Balance"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 획득 캔디"
+          }
+        }
+      }
+    },
     "quizview.question.chooseCaptialFromFlag" : {
       "localizations" : {
         "en" : {
@@ -2324,38 +2276,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "\"지도\" 앱을 열려고 합니다. 계속 하시겠습니까?"
-          }
-        }
-      }
-    },
-    "wrong.quiz.count %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
-          }
-        }
-      }
-    },
-    "wrong.quiz.description" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wrong"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "오답"
           }
         }
       }
