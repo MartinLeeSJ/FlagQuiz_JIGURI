@@ -30,13 +30,16 @@ struct MainTabView: View {
     @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var navigationModel: NavigationModel
     @State private var tabSelection: Tabs = .quizSetting
+    @AppStorage("onBoarded") private var onBoarded: Bool = false
     
     var body: some View {
-//        NavigationStack(path: $navigationModel.destinations) {
+        if onBoarded {
             TabView(selection: $tabSelection) {
                 content
             }
-//        }
+        } else {
+            OnBoardingView()
+        }
     }
     
     @ViewBuilder
