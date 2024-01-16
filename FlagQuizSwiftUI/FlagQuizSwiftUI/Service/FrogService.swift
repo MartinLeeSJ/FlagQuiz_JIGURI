@@ -20,8 +20,10 @@ protocol FrogServiceType {
     /// - Returns: AnyPublisher<Void, ServiceError>
     func cancelFeedFrog(original model: FQFrog) -> AnyPublisher<Void, ServiceError>
     
+    func addFrog(_ model: FQFrog, ofUser userId: String) -> AnyPublisher<Void, ServiceError>
     func addFrogIfNotExist(ofUser userId: String) -> AnyPublisher<Void, ServiceError>
     func updateFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError>
+    func updateFrogNation(ofUser userId: String, nationCode: FQCountryISOCode) -> AnyPublisher<Void, ServiceError>
     func deleteFrog(ofUser userId: String) async throws
 }
 
@@ -112,6 +114,12 @@ final class FrogService: FrogServiceType {
             .eraseToAnyPublisher()
     }
     
+    func addFrog(_ model: FQFrog, ofUser userId: String) -> AnyPublisher<Void, ServiceError> {
+        repository.addFrog(model.toObject(), ofUser: userId)
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
+    }
+    
     func addFrogIfNotExist(ofUser userId: String) -> AnyPublisher<Void, ServiceError> {
         repository.getFrog(ofUser: userId)
             .flatMap { [weak self] object in
@@ -123,8 +131,17 @@ final class FrogService: FrogServiceType {
                     return Just(()).setFailureType(to: DBError.self).eraseToAnyPublisher()
                 }
                 
-                return self.repository.addFrog(ofUser: userId)
-                    .eraseToAnyPublisher()
+                return self.repository.addFrog(
+                    .init(
+                        id: nil,
+                        status: 2,
+                        lastUpdated: .init(date: .now),
+                        items: [],
+                        nationNumericCode: nil
+                    ),
+                    ofUser: userId
+                )
+                .eraseToAnyPublisher()
             }
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()
@@ -136,6 +153,25 @@ final class FrogService: FrogServiceType {
             .eraseToAnyPublisher()
     }
     
+    func updateFrogNation(ofUser userId: String, nationCode: FQCountryISOCode) -> AnyPublisher<Void, ServiceError> {
+        repository.getFrog(ofUser: userId)
+            .mapError { ServiceError.custom($0) }
+            .flatMap { [weak self] object in
+                guard let self else {
+                    return Fail<Void, ServiceError>(error: .nilSelf).eraseToAnyPublisher()
+                }
+                guard var object else {
+                    return  Fail<Void, ServiceError>(error: .invalid).eraseToAnyPublisher()
+                }
+                object.nationNumericCode = nationCode.numericCode
+                
+                return self.repository.updateFrog(object, ofUser: userId)
+                    .mapError { ServiceError.custom($0) }
+                    .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+    }
+    
     func deleteFrog(ofUser userId: String) async throws {
         try await repository.deleteFrog(ofUser: userId)
     }
@@ -143,6 +179,10 @@ final class FrogService: FrogServiceType {
 }
 
 final class StubFrogService: FrogServiceType {
+    func addFrog(_ model: FQFrog, ofUser userId: String) -> AnyPublisher<Void, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
     func getFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError> {
         Just(FQFrog(userId: "1", state: .bad, lastUpdated: .now, items: []))
             .setFailureType(to: ServiceError.self)
@@ -171,6 +211,10 @@ final class StubFrogService: FrogServiceType {
     }
     
     func updateFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func updateFrogNation(ofUser userId: String, nationCode: FQCountryISOCode) -> AnyPublisher<Void, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     

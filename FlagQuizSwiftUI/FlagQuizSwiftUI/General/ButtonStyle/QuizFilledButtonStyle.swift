@@ -12,20 +12,37 @@ struct QuizFilledButtonStyle: ButtonStyle {
     @Environment(\.colorScheme) private var scheme
     
     private var disabled: Bool
+    private let isLightModeOnly: Bool
     
-    init(disabled: Bool) {
+    init(disabled: Bool, isLightModeOnly: Bool = false) {
         self.disabled = disabled
+        self.isLightModeOnly = isLightModeOnly
+    }
+    
+    private var fontWeight: Font.Weight {
+        guard !isLightModeOnly else { return .medium }
+        return scheme == .light ? .medium : .bold
+    }
+    
+    private var labelColor: Color {
+        guard !isLightModeOnly else { return Color.fqAccent }
+        return scheme == .light ?  Color.fqAccent : Color.black
+    }
+    
+    private var buttonBg: Color {
+        guard !isLightModeOnly else { return .black }
+        return scheme == .light ?  Color.black : Color.fqAccent
     }
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .fontWeight(scheme == .dark ? .bold : .medium)
-            .foregroundStyle(scheme == .dark ? Color.black : Color.fqAccent)
+            .fontWeight(fontWeight)
+            .foregroundStyle(labelColor)
             .padding()
             .frame(maxWidth: .infinity)
             .background {
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundStyle(scheme == .dark ? Color.fqAccent : .black)
+                    .foregroundStyle(buttonBg)
             }
             .opacity(configuration.isPressed ? 0.5 : 1)
             .overlay {

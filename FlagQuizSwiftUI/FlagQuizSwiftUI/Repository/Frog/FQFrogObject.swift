@@ -13,6 +13,7 @@ struct FQFrogObject: Codable {
     var status: Int
     var lastUpdated: Timestamp
     var items: [String]
+    var nationNumericCode: String?
 }
 
 extension FQFrogObject {
@@ -22,7 +23,8 @@ extension FQFrogObject {
             userId: id,
             state: .safeValue(rawValue: status),
             lastUpdated: lastUpdated.dateValue(),
-            items: items
+            items: items,
+            nation: .init(nationNumericCode)
         )
     }
 }

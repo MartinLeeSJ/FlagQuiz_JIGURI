@@ -20,6 +20,7 @@ struct FQFrog: Identifiable {
     
     /// 장착하고있는 item Id
     var items: [String]
+    var nation: FQCountryISOCode?
 }
 
 extension FQFrog {
@@ -28,7 +29,8 @@ extension FQFrog {
             id: nil,
             status: state.rawValue,
             lastUpdated: .init(date: lastUpdated),
-            items: items
+            items: items,
+            nationNumericCode: nation?.numericCode
         )
     }
 }

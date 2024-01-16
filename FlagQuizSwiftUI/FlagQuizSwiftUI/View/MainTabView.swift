@@ -30,13 +30,22 @@ struct MainTabView: View {
     @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var navigationModel: NavigationModel
     @State private var tabSelection: Tabs = .quizSetting
+    @AppStorage(UserDefaultKey.ShowOnboarding) private var showOnBoarding: Bool = true
     
     var body: some View {
-//        NavigationStack(path: $navigationModel.destinations) {
-            TabView(selection: $tabSelection) {
-                content
+        TabView(selection: $tabSelection) {
+            content
+        }
+        .overlay {
+            #if DEBUG
+            Button("Test") {
+                showOnBoarding = true
             }
-//        }
+            #endif
+        }
+        .fullScreenCover(isPresented: $showOnBoarding) {
+            OnBoardingView()
+        }
     }
     
     @ViewBuilder

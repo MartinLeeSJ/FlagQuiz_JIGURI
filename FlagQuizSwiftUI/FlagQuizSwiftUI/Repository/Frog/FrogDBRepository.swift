@@ -14,7 +14,7 @@ protocol FrogDBRepositoryType {
     func getFrog(ofUser userId: String) async throws -> FQFrogObject
     func observeFrog(ofUser userId: String) -> AnyPublisher<FQFrogObject?, DBError>
     
-    func addFrog(ofUser userId: String) -> AnyPublisher<Void, DBError>
+    func addFrog(_ object: FQFrogObject, ofUser userId: String) -> AnyPublisher<Void, DBError>
     func updateFrog(_ object: FQFrogObject, ofUser userId: String) -> AnyPublisher<Void, DBError>
     func deleteFrog(ofUser userId: String) async throws
     
@@ -49,13 +49,8 @@ final class FrogDBRepository: FrogDBRepositoryType {
             .eraseToAnyPublisher()
     }
     
-    func addFrog(ofUser userId: String) -> AnyPublisher<Void, DBError> {
+    func addFrog(_ object: FQFrogObject, ofUser userId: String) -> AnyPublisher<Void, DBError> {
         let document: DocumentReference = collectionRef.document(userId)
-        let object: FQFrogObject = .init(
-            status: 0,
-            lastUpdated: .init(date: .now),
-            items: []
-        )
         
         return Future { promise in
             do {
@@ -84,7 +79,8 @@ final class FrogDBRepository: FrogDBRepositoryType {
             documentRef.updateData([
                 "status": object.status,
                 "lastUpdated": FieldValue.serverTimestamp(),
-                "items": object.items
+                "items": object.items,
+                "nationNumericCode": object.nationNumericCode ?? ""
             ]) { error in
                 if let error {
                     promise(.failure(error))
