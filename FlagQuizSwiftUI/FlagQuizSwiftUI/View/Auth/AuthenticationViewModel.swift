@@ -80,7 +80,8 @@ final class AuthenticationViewModel: ObservableObject {
                 guard let self else {
                     return Fail(outputType: FQUser.self, failure: ServiceError.nilSelf).eraseToAnyPublisher()
                 }
-                return self.createUserIfNotExist(user)
+                return self.container.services.userService.addUserIfNotExist(user)
+                    .eraseToAnyPublisher()
             }
             .sink { [weak self] completion in
                 if case .failure(let error) = completion {
@@ -92,21 +93,4 @@ final class AuthenticationViewModel: ObservableObject {
             }
             .store(in: &subscription)
     }
-    
-    private func createUserIfNotExist(_ user: FQUser) -> AnyPublisher<FQUser, ServiceError> {
-        container.services.userService.addUserIfNotExist(user)
-            .flatMap { [weak self] user in
-                guard let self else {
-                    return Fail(outputType: FQUser.self, failure: ServiceError.nilSelf).eraseToAnyPublisher()
-                }
-                
-                return container.services.frogService.addFrogIfNotExist(ofUser: user.id)
-                    .map { user }
-                    .eraseToAnyPublisher()
-            }
-            .eraseToAnyPublisher()
-    }
-    
-    
-    
 }

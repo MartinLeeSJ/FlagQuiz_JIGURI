@@ -13,6 +13,7 @@ typealias CollectionKey = Constant.CollectionKey
 typealias LocalizableTable = Constant.LocalizableTable
 typealias ServiceLangCode = Constant.ServiceLangCode
 typealias FontName = Constant.FontName
+typealias UserDefaultKey = Constant.UserDefaultKey
 
 extension Constant {
     struct CollectionKey {
@@ -37,5 +38,9 @@ extension Constant {
     
     struct FontName {
         static let pixel = "NeoDunggeunmoPro-Regular"
+    }
+    
+    struct UserDefaultKey {
+        static let ShowOnboarding: String = "ShowOnBoarding"
     }
 }

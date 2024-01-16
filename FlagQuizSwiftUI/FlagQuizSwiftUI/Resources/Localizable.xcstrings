@@ -274,72 +274,120 @@
         }
       }
     },
+    "createFrogView.or" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OR"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "혹은"
+          }
+        }
+      }
+    },
+    "createFrogView.search.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search a Country or State"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "국가 혹은 지역 검색하기"
+          }
+        }
+      }
+    },
+    "createFrogView.select.country.below.list" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a country or state from the list below."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아래 목록에서 국가 혹은 지역을 선택하세요."
+          }
+        }
+      }
+    },
+    "createFrogView.select.country.button.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the Country or Region"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "결정하기"
+          }
+        }
+      }
+    },
+    "createFrogView.shuffle.button.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "무작위로 고르기"
+          }
+        }
+      }
+    },
+    "createFrogView.what.is.frogs.country" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Where is my first settlement?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내 첫번째 정착지는 어디인가요?"
+          }
+        }
+      }
+    },
+    "createUserNameView.how.can.i.call.you" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How Can I Call You?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신을 어떻게 부를까요?"
+          }
+        }
+      }
+    },
     "dismiss" : {
 
-    },
-    "editUserName.character.instruction" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You can only use alphabets (a-z, A-Z) and numbers in your username."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "영어 대소문자(a-z, A-Z), 숫자(0-9)만 사용할 수 있습니다"
-          }
-        }
-      }
-    },
-    "editUserName.length.instruction" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Usernames must be 20 characters or fewer."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "20자 이하로 작성해야합니다."
-          }
-        }
-      }
-    },
-    "editUserName.submitButton.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Submit New UserName"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "변경 제출하기"
-          }
-        }
-      }
-    },
-    "editUserName.textField.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Change UserName"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "사용자 별명 변경"
-          }
-        }
-      }
     },
     "editUserNameError.endOfTrial.description" : {
       "extractionState" : "extracted_with_value",
@@ -1467,6 +1515,86 @@
         }
       }
     },
+    "onboarding.next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음"
+          }
+        }
+      }
+    },
+    "onboarding.skip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip The Story"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이야기 건너뛰기"
+          }
+        }
+      }
+    },
+    "onboarding.story.one" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's an extraterrestrial being\nnamed Jiguri,\nresembling a frog, who, \nfor the past 30,000 years, \nhad harbored ambitions of conquering Earth, \nabandoning their deteriorating home planet."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개구리를 닮은 외계인 지구리\n그들은 3만 년 전부터 망가져 가는\n고향 행성을 떠나\n지구를 정복하겠다는\n야망을 품고 있었다..."
+          }
+        }
+      }
+    },
+    "onboarding.story.three" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eventually, they decide to disguise \nthemselves as human pets.\nWhile maintaining their ambition\nto conquer Earth someday,\nthey start studying each of Earth's \ncountries one by one."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "결국 그들은 인간의 애완동물로 \n위장하기로 결심한다.\n언젠가는 지구를 정복하겠다는\n야망을 유지하면서,\n하나씩 지구의 각 나라를\n공부하기 시작한다."
+          }
+        }
+      }
+    },
+    "onboarding.story.two" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "However, upon their arrival,\nEarth turned out to be far from a paradise.\nIt was not only massive\ncompared to their size,\nbut it also harbored ruthless and brutal\nintellectual beings known as humans."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "그러나 실제로 도착한 지구는\n낙원이 아니었다.\n그들의 몸집에 비해 거대하며,\n무자비하고 잔인한 지적 생명체\n'인간'도 존재했다."
+          }
+        }
+      }
+    },
     "open" : {
       "localizations" : {
         "en" : {
@@ -2136,6 +2264,9 @@
         }
       }
     },
+    "Test" : {
+
+    },
     "total.quiz.rank.progress.title" : {
       "localizations" : {
         "en" : {
@@ -2260,6 +2391,70 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퀴즈 횟수"
+          }
+        }
+      }
+    },
+    "userNameInput.character.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can only use alphabets (a-z, A-Z) and numbers in your username."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "영어 알파벳 대소문자, 숫자만 사용할 수 있습니다"
+          }
+        }
+      }
+    },
+    "userNameInput.length.instruction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nickname must be 20 characters or fewer."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "20글자 이하로 작성해 주세요."
+          }
+        }
+      }
+    },
+    "userNameInput.submitButton.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submit User Nickname"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "별명 제출하기"
+          }
+        }
+      }
+    },
+    "userNameInput.textField.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User Nickname"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "별명 입력"
           }
         }
       }
