@@ -29,19 +29,12 @@ enum Tabs: Int, Hashable, CaseIterable {
 struct MainTabView: View {
     @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var navigationModel: NavigationModel
-    @State private var tabSelection: Tabs = .quizSetting
     @AppStorage(UserDefaultKey.ShowOnboarding) private var showOnBoarding: Bool = true
+    @State private var tabSelection: Tabs = .quizSetting
     
     var body: some View {
         TabView(selection: $tabSelection) {
             content
-        }
-        .overlay {
-            #if DEBUG
-            Button("Test") {
-                showOnBoarding = true
-            }
-            #endif
         }
         .fullScreenCover(isPresented: $showOnBoarding) {
             OnBoardingView()

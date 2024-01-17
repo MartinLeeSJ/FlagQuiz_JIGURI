@@ -17,8 +17,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     ) -> Bool {
         FirebaseApp.configure()
         
+        let googleMobileAds =  GADMobileAds.sharedInstance()
         // Initialize the Google Mobile Ads SDK.
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        googleMobileAds.start(completionHandler: nil)
+        
+        //TODO: - 출시할 때 지우기
+        #if DEBUG
+        googleMobileAds.requestConfiguration.testDeviceIdentifiers = [ "92c9cb5011fb3415d6601fc50ae0a153" ]
+        #endif
         
         return true
     }

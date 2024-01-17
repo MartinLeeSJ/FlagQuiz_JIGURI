@@ -55,15 +55,20 @@ struct NewsView: View {
                     switch destination {
                     case .countryQuizStat:
                         CountryQuizStatView(viewModel: .init(container: container))
+                        
                     case .userRank:
                         UserRankView(viewModel: .init(container: container))
+                        
                     case .myPage:
                         MyPageView(viewModel: .init(container: container))
                             .environmentObject(authViewModel)
+                        
                     case .quizRecord:
                         QuizRecordView(viewModel: .init(container: container))
+                        
                     case .quizRecordDetail(let record):
                         QuizRecordDetailView(record: record)
+                        
                     case .countryDetail(let countryCode):
                         CountryDetailView(
                             viewModel: .init(
@@ -86,8 +91,11 @@ struct NewsView: View {
 
 #Preview {
     NavigationStack {
-        NewsView(viewModel: NewsViewModel(container: .init(services: StubService())))
-            .environmentObject(DIContainer(services: StubService()))
+        let container = DIContainer(services: StubService())
+        NewsView(viewModel: NewsViewModel(container: container))
+            .environmentObject(container)
             .environmentObject(NavigationModel())
+            .environmentObject(NotificationManager())
+            .environmentObject(AuthenticationViewModel(container: container))
     }
 }
