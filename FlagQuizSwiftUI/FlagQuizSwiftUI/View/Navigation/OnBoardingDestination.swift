@@ -10,4 +10,5 @@ import Foundation
 enum OnBoardingDestination: Hashable {
     case createUserName
     case createFrog
+    case attDescription
 }

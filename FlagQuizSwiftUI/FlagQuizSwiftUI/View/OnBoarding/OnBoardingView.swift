@@ -29,6 +29,9 @@ struct OnBoardingView: View {
                         CreateFrogView(
                             viewModel: .init(container: container)
                         )
+                        
+                    case .attDescription:
+                        ATTDescriptionView()
                     }
                 }
         }

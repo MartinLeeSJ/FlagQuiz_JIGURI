@@ -24,15 +24,12 @@ struct NewsGrid: View {
             .frame(maxHeight: 140)
             
             GridRow {
-                NewsGridCell(
-                    alignment: .leading,
-                    title: "advertisement"
-                ) {
-                    Text("광고")
-                }
-                .gridCellColumns(4)
+                BannerAdContentView()
+                    .padding(6)
+                    .background(.thinMaterial, in: Rectangle())
+                    .gridCellColumns(4)
+                    .frame(minHeight: 62, alignment: .center)
             }
-            .frame(maxHeight: 120)
             
             GridRow {
                 TodayCountryCell()

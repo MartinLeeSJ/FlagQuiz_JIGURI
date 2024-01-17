@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import AppTrackingTransparency
 
 struct CreateFrogView: View {
     @EnvironmentObject private var navigationModel: NavigationModel
@@ -104,10 +105,15 @@ struct CreateFrogView: View {
             )
         )
         .onChange(of: viewModel.didCreateFrog) { didCreate in
-            if didCreate {
+            guard didCreate else { return }
+            
+            if ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
+                navigationModel.navigate(to: OnBoardingDestination.attDescription)
+            } else {
                 navigationModel.toRoot()
                 showOnBoarding = false
             }
+            
         }
     }
     
