@@ -29,7 +29,7 @@ struct QuizResultScoreSection: View {
     }
     
     private var estimatedCandy: Int {
-        return quizScore.correctQuizCount * quizResult.quizOptionsCount.rawValue + quizResult.quizType.advantageCandy
+        return FQEarthCandy.calculatePoint(from: quizResult, ofUser: "").point
     }
     
     var body: some View {

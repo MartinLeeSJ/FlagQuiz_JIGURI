@@ -20,7 +20,15 @@ extension FQEarthCandy {
 
 extension FQEarthCandy {
     static var earthCandyPointForFeedingFrog: Int {
-        90
+        10
+    }
+    
+    static var adRewardCandyPoint: Int {
+        20
+    }
+    
+    static var dailyRewardCandyPoint: Int {
+        10
     }
     
     static func earthCandyForFeedingFrog(ofUser userId: String) -> FQEarthCandy {
@@ -38,10 +46,9 @@ extension FQEarthCandy {
         from quizResult: FQQuiz,
         ofUser userId: String
     ) -> FQEarthCandy {
-        let pointPerRound: Int = quizResult.quizOptionsCount.rawValue
         let correctCount: Int = quizResult.correctQuizRoundsCount
-        let advantagePoint: Int = quizResult.quizType.advantageCandy
-        let total: Int = pointPerRound * correctCount + advantagePoint
+        let quizTypeAdvantageCandy: Int = quizResult.quizType.advantageCandy
+        let total: Int = correctCount + quizTypeAdvantageCandy + quizResult.quizOptionsCount.advantageCandy
         
         return .init(
             userId: userId,

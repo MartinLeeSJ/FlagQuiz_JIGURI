@@ -26,12 +26,10 @@ struct QuizResultScoreCard: View {
         self.scoreAnimation = scoreAnimation
     }
     
-    private var quizOptionPoint: Double {
-        Double(quizResult.quizOptionsCount.rawValue) / 10.0
-    }
+   
     
     private var estimatedCandy: Int {
-        return quizScore.correctQuizCount * quizResult.quizOptionsCount.rawValue + quizResult.quizType.advantageCandy
+        return FQEarthCandy.calculatePoint(from: quizResult, ofUser: "").point
     }
     
     var body: some View {
@@ -130,18 +128,18 @@ struct QuizResultScoreCard: View {
         
         
         HStack {
-            Text("quiz.option.divide.ten")
+            Text("quizResultScoreCard.quizOptionsCount.advantage.point")
                 .font(.caption)
             Spacer()
-            Image(systemName: "multiply")
+            Image(systemName: "plus")
                 .font(.caption)
-            Text(quizOptionPoint, format: .number)
+            Text(quizResult.quizOptionsCount.advantageCandy, format: .number)
                 .font(.callout)
                 .frame(width: 30, alignment: .trailing)
         }
         
         HStack {
-            Text("quiz.type.advantage")
+            Text("quizResultScoreCard.quizType.advantage.point")
                 .font(.caption)
             Spacer()
             Image(systemName: "plus")
@@ -170,7 +168,7 @@ struct QuizResultScoreCard: View {
             Image("EarthCandy")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 15)
+                .frame(width: 15, height: 15)
             Text(estimatedCandy, format: .number)
         }
     }

@@ -128,7 +128,10 @@ struct FrogView: View {
                     Text(frog.state.feedFrogButtonTitle)
                     
                     Label {
-                        Text("10.5")
+                        Text(
+                            FQEarthCandy.earthCandyPointForFeedingFrog,
+                            format: .number
+                        )
                     } icon: {
                         Image("EarthCandy")
                             .resizable()

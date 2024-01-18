@@ -132,7 +132,7 @@ struct QuizSettingControls: View {
             .pickerStyle(.wheel)
             .frame(maxHeight: 100)
           
-            Text("quizSettingControls.quizOptions.extra.candy\(quizType.advantageCandy)")
+            Text("quizSettingControls.quizOptions.extra.candy\(quizOptionsCount.advantageCandy)")
                 .font(.caption)
         }
         
