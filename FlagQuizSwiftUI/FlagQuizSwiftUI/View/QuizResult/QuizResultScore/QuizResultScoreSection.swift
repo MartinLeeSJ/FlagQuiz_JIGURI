@@ -25,11 +25,11 @@ struct QuizResultScoreSection: View {
     }
     
     private var quizOptionPoint: Double {
-        Double(quizResult.quizOptionsCount) / 10.0
+        Double(quizResult.quizOptionsCount.rawValue) / 10.0
     }
     
     private var estimatedCandy: Int {
-        return quizScore.correctQuizCount * quizResult.quizOptionsCount + quizResult.quizType.advantagePoint
+        return quizScore.correctQuizCount * quizResult.quizOptionsCount.rawValue + quizResult.quizType.advantageCandy
     }
     
     var body: some View {
@@ -49,7 +49,7 @@ struct QuizResultScoreSection: View {
                 .padding(.vertical, 16)
             
             
-            Text("\(quizResult.correctQuizRoundsCount).out.of.\(quizResult.quizCount).problems")
+            Text("\(quizResult.correctQuizRoundsCount).out.of.\(quizResult.quizCount.rawValue).problems")
                 .font(.subheadline)
                 .matchedGeometryEffect(
                     id: QuizResultViewAnimationID.description,

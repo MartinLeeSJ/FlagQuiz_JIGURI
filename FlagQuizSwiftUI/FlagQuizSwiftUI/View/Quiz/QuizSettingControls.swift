@@ -11,117 +11,131 @@ struct QuizSettingControls: View {
     @EnvironmentObject private var viewModel: QuizViewModel
     @EnvironmentObject private var navigationModel: NavigationModel
     
-    @State private var quizCount: QuizCount = .ten
-    @State private var quizItemCount: QuizItemCount = .four
+    @State private var quizCount: FQQuizCount = .ten
+    @State private var quizOptionsCount: FQQuizOptionsCount = .four
     @State private var quizType: FQQuizType = .chooseNameFromFlag
     
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 20) {
+            HStack(alignment: .top, spacing: 16) {
+                quizTypeMenu
+                Divider()
+                    .frame(height: 100)
+                quizCountPicker
+                Divider()
+                    .frame(height: 100)
+                quizItemCountPicker
+            }
             
-            quizTypeMenu
             
-            quizCountPicker
-            
-            quizItemCountPicker
+            Text("quizSettingControls.total.maximum.candy.description\(quizType.advantageCandy + quizCount.rawValue +  quizOptionsCount.advantageCandy)")
+                .font(.caption)
+                .fontWeight(.medium)
+                .foregroundStyle(.black)
+                .padding(4)
+                .frame(maxWidth: .infinity)
+                .background(in: Capsule(style: .continuous))
+                .backgroundStyle(.fqAccent)
+                .padding(.horizontal)
             
             Button {
                 viewModel.send(
                     .setNewQuiz(
-                        count: quizCount.rawValue,
-                        optionCount: quizItemCount.rawValue,
+                        count: quizCount,
+                        optionsCount: quizOptionsCount,
                         quizType: quizType
                     )
                 )
                 navigationModel.navigate(to: QuizDestination.quiz)
             } label: {
                 Text("start.quiz")
+                    .font(.custom(FontName.pixel, size: 16))
             }
             .buttonStyle(QuizFilledButtonStyle(disabled: false))
-            .padding()
         }
+        .padding()
     }
     
     
     
     private var quizTypeMenu: some View {
-        HStack {
+        VStack {
             Text("quizIntro.quizTypeMenu.title")
                 .font(.subheadline)
                 .fontWeight(.medium)
-            
-            Spacer()
-            
-            Menu {
+           
+            Picker(
+                "quizIntro.quizTypeMenu.title",
+                selection: $quizType) {
                 ForEach(FQQuizType.allCases, id: \.self) { quizType in
-                    Button {
-                        self.quizType = quizType
-                    } label: {
-                        HStack {
-                            Text(quizType.localizedShortenedTitle)
-                            Spacer()
-                            if self.quizType == quizType {
-                                Image(systemName: "checkmark")
-                            }
-                        }
+                        Text(quizType.localizedShortenedTitle)
+                        .font(.custom(FontName.pixel, size: 15))
+                        .fontWeight(.medium)
+                        
                     }
                 }
-            } label: {
-                Label(quizType.localizedTitle, systemImage: "chevron.down.square.fill")
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-            }
-            .menuStyle(.button)
+                .pickerStyle(.wheel)
+                .frame(maxHeight: 100)
+            
+            Text("quizSettingControls.quizType.extra.candy\(quizType.advantageCandy)")
+                .font(.caption)
+            
         }
-        .padding(.horizontal)
+        
     }
     
     private var quizCountPicker: some View {
-        HStack {
+        VStack(alignment: .center) {
             Text("quizIntro.quizCountPicker.title")
                 .font(.subheadline)
                 .fontWeight(.medium)
-            
-            Spacer()
+               
+
             
             Picker("quizIntro.quizCountPicker.title",
                    selection: $quizCount
             ) {
-                ForEach(QuizCount.allCases, id: \.self) { quizCount in
+                ForEach(FQQuizCount.allCases, id: \.self) { quizCount in
                     Text("\(quizCount.rawValue)")
-                        .font(.subheadline)
+                        .font(.custom(FontName.pixel, size: 30))
                         .fontWeight(.medium)
                         .tag(quizCount)
                 }
             }
-            .pickerStyle(.segmented)
-            .frame(maxWidth: 180)
+            .pickerStyle(.wheel)
+            .frame(maxHeight: 100)
+            
+            Text("quizSettingControls.quizCount.candy\(quizCount.rawValue)")
+                .font(.caption)
+         
         }
-        .padding(.horizontal)
+        
     }
     
     private var quizItemCountPicker: some View {
-        HStack {
+        VStack(alignment: .center) {
             Text("quizIntro.quizItemCountPicker.title")
                 .font(.subheadline)
                 .fontWeight(.medium)
-            
-            Spacer()
-            
+                
             Picker("quizIntro.quizItemCountPicker.title",
-                   selection: $quizItemCount
+                   selection: $quizOptionsCount
             ) {
-                ForEach(QuizItemCount.allCases, id: \.self) { quizItemCount in
+                ForEach(FQQuizOptionsCount.allCases, id: \.self) { quizItemCount in
                     Text("\(quizItemCount.rawValue)")
-                        .font(.subheadline)
+                        .font(.custom(FontName.pixel, size: 30))
                         .fontWeight(.medium)
                         .tag(quizItemCount)
                 }
             }
-            .pickerStyle(.segmented)
-            .frame(maxWidth: 180)
+            .pickerStyle(.wheel)
+            .frame(maxHeight: 100)
+          
+            Text("quizSettingControls.quizOptions.extra.candy\(quizType.advantageCandy)")
+                .font(.caption)
         }
-        .padding(.horizontal)
+        
     }
 }
 
@@ -135,4 +149,5 @@ struct QuizSettingControls: View {
                 )
             )
         )
+    
 }

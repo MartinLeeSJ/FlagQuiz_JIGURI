@@ -52,17 +52,6 @@
         }
       }
     },
-    "advertisement" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "광고"
-          }
-        }
-      }
-    },
     "askToView.copy.completed" : {
       "localizations" : {
         "en" : {
@@ -1899,6 +1888,106 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "지구리\n국기 퀴즈로\n지구를 정복하다."
+          }
+        }
+      }
+    },
+    "quizSettingControls.quizCount.candy%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum %lld points"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최대 %lld개 캔디"
+          }
+        }
+      }
+    },
+    "quizSettingControls.quizOptions.extra.candy%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Extra %lld Point"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Extra %lld Points"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+ 추가 %lld개 캔디"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "quizSettingControls.quizType.extra.candy%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Extra %lld Point"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Extra %lld Points"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+추가 %lld개 캔디"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "quizSettingControls.total.maximum.candy.description%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can get a maximum of %lld points"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최대 %lld개의 캔디를 얻을 수 있습니다."
           }
         }
       }

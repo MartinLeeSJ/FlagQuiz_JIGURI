@@ -11,7 +11,7 @@ import Combine
 
 
 final class QuizViewModel: ObservableObject {
-    @Published var quiz: FQQuiz = .init(quizCount: 10, quizOptionsCount: 4, quizType: .chooseNameFromFlag)
+    @Published var quiz: FQQuiz = .init(quizCount: .ten, quizOptionsCount: .four, quizType: .chooseNameFromFlag)
     @Published var isSubmitted: Bool = false
     @Published var countries: [FQCountry] = []
     @Published var optionsCountries: [FQCountry] = []
@@ -20,7 +20,7 @@ final class QuizViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     enum Action {
-        case setNewQuiz(count: Int, optionCount: Int, quizType: FQQuizType)
+        case setNewQuiz(count: FQQuizCount, optionsCount: FQQuizOptionsCount, quizType: FQQuizType)
         case loadCountryInfo
         case loadOptionsCountryInfo([FQCountryISOCode])
         case selectQuizOption(_ code: FQCountryISOCode)
@@ -38,8 +38,8 @@ final class QuizViewModel: ObservableObject {
     
     func send(_ action: Action) {
         switch action {
-        case .setNewQuiz(let count, let optionCount, let quizType):
-            quiz = FQQuiz(quizCount: count, quizOptionsCount: optionCount, quizType: quizType)
+        case .setNewQuiz(let count, let optionsCount, let quizType):
+            quiz = FQQuiz(quizCount: count, quizOptionsCount: optionsCount, quizType: quizType)
             isSubmitted = false
                         
         case .loadCountryInfo:
@@ -93,12 +93,10 @@ final class QuizViewModel: ObservableObject {
         container.services.countryService.getCountries(ofCodes: codes)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
-                
                 if case .failure(let error) = completion {
                     debugPrint(error.localizedDescription)
                     self?.error(.failedToLoadOptionsCountryInfo)
                 }
-                
             } receiveValue: { [weak self] countries in
                 self?.optionsCountries = countries
             }

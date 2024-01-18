@@ -40,7 +40,7 @@ final class QuizStatService: QuizStatServiceType {
             quizStat: .init(
                 userId: userId,
                 correctCountryQuizCount: quiz.correctQuizRoundsCount,
-                countryQuizCount: quiz.quizCount,
+                countryQuizCount: quiz.quizCount.rawValue,
                 correctCapitalQuizCount: capitalQuizResult.correct,
                 capitalQuizCount: capitalQuizResult.total,
                 correctFlagToNameQuizCount: flagToNameQuizResult.correct,

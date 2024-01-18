@@ -151,6 +151,8 @@
 		5BCFAC822B42E23600803C5C /* QuizRecordsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFAC812B42E23600803C5C /* QuizRecordsSummary.swift */; };
 		5BCFAC842B42E26300803C5C /* QuizRecordsByTypeBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFAC832B42E26300803C5C /* QuizRecordsByTypeBanner.swift */; };
 		5BCFAC862B42E2A500803C5C /* QuizRoundRecordsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFAC852B42E2A500803C5C /* QuizRoundRecordsList.swift */; };
+		5BD29BBF2B58F31A00404D11 /* FQQuizCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD29BBE2B58F31A00404D11 /* FQQuizCount.swift */; };
+		5BD29BC12B58F32C00404D11 /* FQQuizOptionsCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD29BC02B58F32C00404D11 /* FQQuizOptionsCount.swift */; };
 		5BD3B7642B31E5AF00B930E0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5BD3B7632B31E5AF00B930E0 /* Localizable.xcstrings */; };
 		5BD3B7662B31EC7400B930E0 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B7652B31EC7400B930E0 /* QuizView.swift */; };
 		5BD3B7692B31ED8000B930E0 /* FQQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B7682B31ED8000B930E0 /* FQQuiz.swift */; };
@@ -353,6 +355,8 @@
 		5BCFAC812B42E23600803C5C /* QuizRecordsSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRecordsSummary.swift; sourceTree = "<group>"; };
 		5BCFAC832B42E26300803C5C /* QuizRecordsByTypeBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRecordsByTypeBanner.swift; sourceTree = "<group>"; };
 		5BCFAC852B42E2A500803C5C /* QuizRoundRecordsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRoundRecordsList.swift; sourceTree = "<group>"; };
+		5BD29BBE2B58F31A00404D11 /* FQQuizCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQQuizCount.swift; sourceTree = "<group>"; };
+		5BD29BC02B58F32C00404D11 /* FQQuizOptionsCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQQuizOptionsCount.swift; sourceTree = "<group>"; };
 		5BD3B7632B31E5AF00B930E0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5BD3B7652B31EC7400B930E0 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		5BD3B7682B31ED8000B930E0 /* FQQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQQuiz.swift; sourceTree = "<group>"; };
@@ -816,6 +820,8 @@
 				5BD3B7682B31ED8000B930E0 /* FQQuiz.swift */,
 				5B9FC6032B47F3BD00B694C7 /* FQQuiz+DEBUG.swift */,
 				5B795CC22B3D5B8C004AF9EE /* FQQuizType.swift */,
+				5BD29BBE2B58F31A00404D11 /* FQQuizCount.swift */,
+				5BD29BC02B58F32C00404D11 /* FQQuizOptionsCount.swift */,
 				5BD3B76A2B31EDA000B930E0 /* FQQuizRound.swift */,
 				5B9ECB742B340DFD00098BF3 /* FQQuizScore.swift */,
 			);
@@ -1287,6 +1293,7 @@
 				5B9ECB752B340DFD00098BF3 /* FQQuizScore.swift in Sources */,
 				5B16F94E2B2845420011ACF7 /* DIContainer.swift in Sources */,
 				5B16F96A2B2851560011ACF7 /* FQUserQuizStat.swift in Sources */,
+				5BD29BBF2B58F31A00404D11 /* FQQuizCount.swift in Sources */,
 				5B7BCAF42B32C89600E50C5F /* QuizOptionButtonStyle.swift in Sources */,
 				5B6742042B36A26B007335A6 /* CountryDetailViewModel.swift in Sources */,
 				5B795CB92B3D29A0004AF9EE /* QuizRecordViewModel.swift in Sources */,
@@ -1370,6 +1377,7 @@
 				5B61717E2B566553005987A5 /* OnBoardingDestination.swift in Sources */,
 				5B9ECB772B34255100098BF3 /* QuizRoundsResultScroll.swift in Sources */,
 				5B3448582B35D3F1002E2222 /* HapticsManager.swift in Sources */,
+				5BD29BC12B58F32C00404D11 /* FQQuizOptionsCount.swift in Sources */,
 				5B0F292B2B52546100788FE7 /* InformationViewModel.swift in Sources */,
 				5B67423C2B370F28007335A6 /* FlowingText.swift in Sources */,
 				5B6EAAD42B454A2D006DA3BE /* AllRankInfoView.swift in Sources */,

@@ -22,7 +22,7 @@ struct QuizOptions: View {
     }
     
     private var columns: [GridItem] {
-        let isOddCount: Bool = (quiz.quizOptionsCount) % 2 != 0
+        let isOddCount: Bool = (quiz.quizOptionsCount.rawValue) % 2 != 0
         let columnsCount: Int = isOddCount ? 3 : 2
         
         return Array(

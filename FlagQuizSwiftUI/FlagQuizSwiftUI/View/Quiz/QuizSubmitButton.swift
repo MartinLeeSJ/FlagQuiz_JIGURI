@@ -23,7 +23,7 @@ struct QuizSubmitButton: View {
     }
     
     private var isLastQuiz: Bool {
-        quiz.currentQuizIndex == (quiz.quizCount - 1)
+        quiz.currentQuizIndex == (quiz.quizCount.rawValue - 1)
     }
     
 

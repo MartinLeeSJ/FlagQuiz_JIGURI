@@ -43,14 +43,12 @@ struct QuizView: View {
                 } label: {
                     Text("Quit")
                 }
-                
             }
             
             ToolbarItem(placement: .topBarTrailing) {
                 currentEarthCandyView
                     .zIndex(1)
             }
-            
         }
         .alert("really.quit.quiz", isPresented: $isReallyQuitAlertOn) {
             Button {
@@ -72,7 +70,7 @@ struct QuizView: View {
     private var currentEarthCandyView: some View {
         HStack {
             let quiz = viewModel.quiz
-            let quizPoint: Decimal = Decimal(quiz.quizOptionsCount) / Decimal(10)
+         
             Text("quizView.current.earthcandy.description")
             HStack {
                 Image("EarthCandy")
@@ -81,7 +79,7 @@ struct QuizView: View {
                     .frame(width: 20)
           
                 Text(
-                    Decimal(quiz.correctQuizRoundsCountBeforeCurrentRound) * quizPoint,
+                    quiz.correctQuizRoundsCountBeforeCurrentRound,
                     format: .number
                 )
                 .fontWeight(.bold)
@@ -105,7 +103,13 @@ struct QuizView: View {
         container: .init(services: StubService())
     )
     
-    viewModel.send(.setNewQuiz(count: 10, optionCount: 3, quizType: .random))
+    viewModel.send(
+        .setNewQuiz(
+            count: .ten,
+            optionsCount: .three,
+            quizType: .random
+        )
+    )
     
     return NavigationStack {
         QuizView()

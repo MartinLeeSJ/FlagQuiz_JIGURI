@@ -11,8 +11,8 @@ import Foundation
 extension FQQuiz {
     // 예상되는 점수 4.5점
     static let mock4point5: FQQuiz = .init(
-        quizCount: 5,
-        quizOptionsCount: 5,
+        quizCount: .five,
+        quizOptionsCount: .five,
         quizType: .random,
         quizRounds: [
             .init(
@@ -49,8 +49,8 @@ extension FQQuiz {
     )
     
     static let mock1point5: FQQuiz = .init(
-        quizCount: 5,
-        quizOptionsCount: 5,
+        quizCount: .five,
+        quizOptionsCount: .five,
         quizType: .chooseFlagFromName,
         quizRounds: [
             .init(

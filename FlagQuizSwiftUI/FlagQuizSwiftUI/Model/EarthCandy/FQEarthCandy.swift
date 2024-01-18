@@ -38,9 +38,9 @@ extension FQEarthCandy {
         from quizResult: FQQuiz,
         ofUser userId: String
     ) -> FQEarthCandy {
-        let pointPerRound: Int = quizResult.quizOptionsCount
+        let pointPerRound: Int = quizResult.quizOptionsCount.rawValue
         let correctCount: Int = quizResult.correctQuizRoundsCount
-        let advantagePoint: Int = quizResult.quizType.advantagePoint
+        let advantagePoint: Int = quizResult.quizType.advantageCandy
         let total: Int = pointPerRound * correctCount + advantagePoint
         
         return .init(
