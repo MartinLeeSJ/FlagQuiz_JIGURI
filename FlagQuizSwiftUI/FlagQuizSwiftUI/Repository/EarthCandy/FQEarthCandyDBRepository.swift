@@ -14,7 +14,7 @@ protocol FQEarthCandyDBRepositoryType {
     func createEarthCandy(ofUser userId: String) -> AnyPublisher<Void, DBError>
     func getEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandyObject?, DBError>
     func observeEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandyObject?, DBError>
-    func updateEarthCandy(_ object: FQEarthCandyObject, ofUser userId: String) -> AnyPublisher<Bool, DBError>
+    func updateEarthCandyPoint(_ point: Int, ofUser userId: String) -> AnyPublisher<Bool, DBError>
     func deleteEarthCandy(ofUser userId: String) async throws
 }
 
@@ -65,15 +65,15 @@ final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
     }
     
     
-    func updateEarthCandy(
-        _ object: FQEarthCandyObject,
+    func updateEarthCandyPoint(
+        _ point: Int,
         ofUser userId: String
     ) -> AnyPublisher<Bool, DBError> {
         let documentRef = candyCollection.document(userId)
         
         return Future {  promise in
             documentRef.updateData([
-                "point": FieldValue.increment(object.point)
+                "point": FieldValue.increment(Int64(point))
             ]) { error in
                 if let error {
                     promise(.failure(DBError.custom(error)))

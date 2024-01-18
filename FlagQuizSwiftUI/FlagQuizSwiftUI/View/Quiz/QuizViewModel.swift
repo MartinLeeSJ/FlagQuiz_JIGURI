@@ -158,7 +158,7 @@ final class QuizViewModel: ObservableObject {
     
     private func updateEarthCandy(userId: String) {
         let earthCandy = FQEarthCandy.calculatePoint(from: quiz, ofUser: userId)
-        container.services.earthCandyService.updateCandy(earthCandy, ofUser: userId)
+        container.services.earthCandyService.updateCandy(earthCandy.point, ofUser: userId)
             .sink { [weak self] completion in
                 if case .failure(let error) = completion {
                     debugPrint(error.localizedDescription)

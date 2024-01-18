@@ -15,12 +15,6 @@ struct QuizSettingControls: View {
     @State private var quizItemCount: QuizItemCount = .four
     @State private var quizType: FQQuizType = .chooseNameFromFlag
     
-    var estimatedEarthCandy: Double {
-        let quizCountPoint = Double(quizCount.rawValue)
-        let quizOptionPoint = Double(quizItemCount.rawValue) / 10.0
-        return quizCountPoint * quizOptionPoint + quizType.advantagePoint
-    }
-    
     
     var body: some View {
         VStack(spacing: 16) {
@@ -30,7 +24,6 @@ struct QuizSettingControls: View {
             quizCountPicker
             
             quizItemCountPicker
-            
             
             Button {
                 viewModel.send(

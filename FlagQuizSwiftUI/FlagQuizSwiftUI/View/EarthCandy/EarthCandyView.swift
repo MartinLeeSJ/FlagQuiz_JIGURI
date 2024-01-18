@@ -58,14 +58,7 @@ struct EarthCandyView: View {
     }
 }
 
-struct EarthCandyDetailView: View {
-    @Environment(\.dismiss) private var dismiss
-    var body: some View {
-        Button("dismiss") {
-            dismiss()
-        }
-    }
-}
+
 
 #Preview {
     EarthCandyView()

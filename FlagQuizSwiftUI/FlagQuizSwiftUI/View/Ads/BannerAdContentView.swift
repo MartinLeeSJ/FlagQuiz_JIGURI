@@ -14,7 +14,6 @@ struct BannerAdContentView: View {
     }
 }
 
-
 private struct BannerAdView: UIViewControllerRepresentable {
     @State private var viewWidth: CGFloat = .zero
     private let bannerAdView = GADBannerView()

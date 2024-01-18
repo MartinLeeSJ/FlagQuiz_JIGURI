@@ -29,16 +29,22 @@ struct UserNameUpdateRecord: Codable {
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(lastUpdated, forKey: .lastUpdated)
-        try container.encode(countOfTrial, forKey: .countOfTrial)
+        try container.encode(
+            lastUpdated,
+            forKey: .lastUpdated
+        )
+        try container.encode(
+            countOfTrial,
+            forKey: .countOfTrial
+        )
     }
     
     private var updatedYesterdayOrMore: Bool {
         guard let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: .now) else {
             return false
         }
-        
-        return lastUpdated < yesterday
+
+        return (lastUpdated < yesterday) || Calendar.current.isDateInYesterday(lastUpdated)
     }
     
     

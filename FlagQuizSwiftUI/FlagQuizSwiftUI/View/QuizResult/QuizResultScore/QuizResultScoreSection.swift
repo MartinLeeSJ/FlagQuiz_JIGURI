@@ -27,10 +27,9 @@ struct QuizResultScoreSection: View {
     private var quizOptionPoint: Double {
         Double(quizResult.quizOptionsCount) / 10.0
     }
-    private var estimatedCandy: Double {
-        let quizCount: Double = Double(quizScore.correctQuizCount)
-        
-        return quizCount * quizOptionPoint + quizResult.quizType.advantagePoint
+    
+    private var estimatedCandy: Int {
+        return quizScore.correctQuizCount * quizResult.quizOptionsCount + quizResult.quizType.advantagePoint
     }
     
     var body: some View {

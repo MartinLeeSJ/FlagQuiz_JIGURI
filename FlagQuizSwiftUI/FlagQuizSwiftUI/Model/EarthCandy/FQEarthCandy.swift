@@ -9,7 +9,7 @@ import Foundation
 
 struct FQEarthCandy: Codable {
     let userId: String
-    let point: Double
+    let point: Int
 }
 
 extension FQEarthCandy {
@@ -19,8 +19,8 @@ extension FQEarthCandy {
 }
 
 extension FQEarthCandy {
-    static var earthCandyPointForFeedingFrog: Double {
-        10.5
+    static var earthCandyPointForFeedingFrog: Int {
+        90
     }
     
     static func earthCandyForFeedingFrog(ofUser userId: String) -> FQEarthCandy {
@@ -38,16 +38,14 @@ extension FQEarthCandy {
         from quizResult: FQQuiz,
         ofUser userId: String
     ) -> FQEarthCandy {
-        let pointPerRound: Decimal = Decimal(quizResult.quizOptionsCount) / 10
-        let correctCount: Decimal = Decimal(quizResult.correctQuizRoundsCount)
-        let advantagePoint: Decimal = Decimal(quizResult.quizType.advantagePoint)
-        let total = NSDecimalNumber(decimal: pointPerRound * correctCount + advantagePoint).doubleValue
-       
+        let pointPerRound: Int = quizResult.quizOptionsCount
+        let correctCount: Int = quizResult.correctQuizRoundsCount
+        let advantagePoint: Int = quizResult.quizType.advantagePoint
+        let total: Int = pointPerRound * correctCount + advantagePoint
         
         return .init(
             userId: userId,
             point: total
         )
     }
-
 }

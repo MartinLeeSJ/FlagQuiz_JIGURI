@@ -142,6 +142,9 @@
 		5BC707652B57A576005752A8 /* BannerAdContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC707642B57A576005752A8 /* BannerAdContentView.swift */; };
 		5BC707672B57B802005752A8 /* Ad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC707662B57B802005752A8 /* Ad.plist */; };
 		5BC707692B57BFD2005752A8 /* Bundle+AdId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC707682B57BFD2005752A8 /* Bundle+AdId.swift */; };
+		5BC7076B2B57C79B005752A8 /* RewardedAdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7076A2B57C79B005752A8 /* RewardedAdButton.swift */; };
+		5BC707702B57CCBE005752A8 /* EarthCandyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7076F2B57CCBE005752A8 /* EarthCandyDetailView.swift */; };
+		5BC707722B57D465005752A8 /* FQEarthCandyRewardRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC707712B57D465005752A8 /* FQEarthCandyRewardRecord.swift */; };
 		5BC998372B43E16900A5EA12 /* UserRankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */; };
 		5BC998392B44074700A5EA12 /* UserRankProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC998382B44074700A5EA12 /* UserRankProgressView.swift */; };
 		5BCFA2912B4987FE0074C998 /* QuizSettingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCFA2902B4987FE0074C998 /* QuizSettingControls.swift */; };
@@ -341,6 +344,9 @@
 		5BC707642B57A576005752A8 /* BannerAdContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdContentView.swift; sourceTree = "<group>"; };
 		5BC707662B57B802005752A8 /* Ad.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Ad.plist; sourceTree = "<group>"; };
 		5BC707682B57BFD2005752A8 /* Bundle+AdId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+AdId.swift"; sourceTree = "<group>"; };
+		5BC7076A2B57C79B005752A8 /* RewardedAdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedAdButton.swift; sourceTree = "<group>"; };
+		5BC7076F2B57CCBE005752A8 /* EarthCandyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthCandyDetailView.swift; sourceTree = "<group>"; };
+		5BC707712B57D465005752A8 /* FQEarthCandyRewardRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQEarthCandyRewardRecord.swift; sourceTree = "<group>"; };
 		5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankViewModel.swift; sourceTree = "<group>"; };
 		5BC998382B44074700A5EA12 /* UserRankProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankProgressView.swift; sourceTree = "<group>"; };
 		5BCFA2902B4987FE0074C998 /* QuizSettingControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingControls.swift; sourceTree = "<group>"; };
@@ -467,9 +473,9 @@
 		5B16F94A2B2845070011ACF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
 				5B6171832B574E83005987A5 /* Ads */,
 				5B19C1642B3C0CD3001A74CE /* Navigation */,
-				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
 				5B6171722B553392005987A5 /* OnBoarding */,
 				5B50562D2B4BBECA00FCA5A7 /* Frog */,
 				5B9FC6092B48273400B694C7 /* EarthCandy */,
@@ -536,7 +542,7 @@
 				5BE7D29F2B29A63A0044C3D4 /* FQCountryISOCode.swift */,
 				5B0F292C2B5254D000788FE7 /* FQInfo.swift */,
 				5BFF43782B466D9800C3DBCB /* FQFrog.swift */,
-				5B9FC5FF2B47CDEF00B694C7 /* FQEarthCandy.swift */,
+				5BC707732B57D46E005752A8 /* EarthCandy */,
 				5BFF43882B469DC100C3DBCB /* Item */,
 				5B16F9672B2850000011ACF7 /* FQUser.swift */,
 				5B9A81BE2B3B00630087142A /* UserRecord */,
@@ -740,6 +746,7 @@
 			children = (
 				5BC707622B57A46A005752A8 /* BannerAdViewController.swift */,
 				5BC707642B57A576005752A8 /* BannerAdContentView.swift */,
+				5BC7076A2B57C79B005752A8 /* RewardedAdButton.swift */,
 			);
 			path = Ads;
 			sourceTree = "<group>";
@@ -898,6 +905,7 @@
 			isa = PBXGroup;
 			children = (
 				5B9FC6072B48272D00B694C7 /* EarthCandyView.swift */,
+				5BC7076F2B57CCBE005752A8 /* EarthCandyDetailView.swift */,
 				5B9FC60A2B483BF700B694C7 /* EarthCandyViewModel.swift */,
 			);
 			path = EarthCandy;
@@ -928,6 +936,15 @@
 				5BC016342B51179C00A79C45 /* EditUserNameError.swift */,
 			);
 			path = EditUserName;
+			sourceTree = "<group>";
+		};
+		5BC707732B57D46E005752A8 /* EarthCandy */ = {
+			isa = PBXGroup;
+			children = (
+				5B9FC5FF2B47CDEF00B694C7 /* FQEarthCandy.swift */,
+				5BC707712B57D465005752A8 /* FQEarthCandyRewardRecord.swift */,
+			);
+			path = EarthCandy;
 			sourceTree = "<group>";
 		};
 		5BCFAC802B42E21A00803C5C /* QuizRecordDetail */ = {
@@ -1273,6 +1290,7 @@
 				5B7BCAF42B32C89600E50C5F /* QuizOptionButtonStyle.swift in Sources */,
 				5B6742042B36A26B007335A6 /* CountryDetailViewModel.swift in Sources */,
 				5B795CB92B3D29A0004AF9EE /* QuizRecordViewModel.swift in Sources */,
+				5BC707702B57CCBE005752A8 /* EarthCandyDetailView.swift in Sources */,
 				5BC016352B51179C00A79C45 /* EditUserNameError.swift in Sources */,
 				5B9ECB7A2B342A5B00098BF3 /* QuizRoundsCountriesInfoView.swift in Sources */,
 				5B6171802B569813005987A5 /* AdManager.swift in Sources */,
@@ -1283,6 +1301,7 @@
 				5BFF43872B468DE500C3DBCB /* ItemDBRepository.swift in Sources */,
 				5B61717A2B555FDE005987A5 /* CreateFrogView.swift in Sources */,
 				5BE3E4CC2B397E2D0048C10E /* CountryCacheService.swift in Sources */,
+				5BC707722B57D465005752A8 /* FQEarthCandyRewardRecord.swift in Sources */,
 				5BE0864F2B29D25E00D38C01 /* CountryRequest.swift in Sources */,
 				5B9FC5FE2B47CDD300B694C7 /* FQEarthCandyDBRepository.swift in Sources */,
 				5B9A81BD2B3AFF6C0087142A /* FQUserRank.swift in Sources */,
@@ -1390,6 +1409,7 @@
 				5B50562F2B4BBEDF00FCA5A7 /* FrogView.swift in Sources */,
 				5B9A81AD2B3AAC660087142A /* CountryDetailInfo.swift in Sources */,
 				5BFF438C2B469DF000C3DBCB /* FQItemName.swift in Sources */,
+				5BC7076B2B57C79B005752A8 /* RewardedAdButton.swift in Sources */,
 				5BFF437B2B466E3A00C3DBCB /* FQItem.swift in Sources */,
 				5B16F9832B2890CD0011ACF7 /* ErrorView.swift in Sources */,
 				5BE086512B29D6A500D38C01 /* APIError.swift in Sources */,
