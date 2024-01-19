@@ -15,6 +15,16 @@ protocol EarthCandyServiceType {
     func updateCandy(_ point: Int, ofUser userId: String) -> AnyPublisher<Void, ServiceError>
     func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Bool, ServiceError>
     func deleteEarthCandy(ofUser userId: String) async throws
+    
+    
+    func observeEarthCandyRewardRecord(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandyRewardRecord?, ServiceError>
+    
+    func recordEarthCandyRewardRecord(
+        _ model: FQEarthCandyRewardRecord,
+        userId: String
+    ) -> AnyPublisher<Void, ServiceError>
 }
 
 final class EarthCandyService: EarthCandyServiceType {
@@ -91,6 +101,27 @@ final class EarthCandyService: EarthCandyServiceType {
         try await repository.deleteEarthCandy(ofUser: userId)
     }
     
+    func observeEarthCandyRewardRecord(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandyRewardRecord?, ServiceError> {
+        repository.observeEarthCandyRewardRecord(ofUser: userId)
+            .map { $0?.toModel() }
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
+    }
+    
+    func recordEarthCandyRewardRecord(
+        _ model: FQEarthCandyRewardRecord,
+        userId: String
+    ) -> AnyPublisher<Void, ServiceError> {
+        repository.recordEarthCandyRewardRecord(
+            model.toObject(),
+            userId: userId
+        )
+        .mapError { ServiceError.custom($0) }
+        .eraseToAnyPublisher()
+    }
+    
 }
 
 final class StubEarthCandyService: EarthCandyServiceType {
@@ -124,5 +155,18 @@ final class StubEarthCandyService: EarthCandyServiceType {
     }
     
     func deleteEarthCandy(ofUser userId: String) async throws {}
+    
+    func observeEarthCandyRewardRecord(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandyRewardRecord?, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func recordEarthCandyRewardRecord(
+        _ model: FQEarthCandyRewardRecord,
+        userId: String
+    ) -> AnyPublisher<Void, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
 
 }

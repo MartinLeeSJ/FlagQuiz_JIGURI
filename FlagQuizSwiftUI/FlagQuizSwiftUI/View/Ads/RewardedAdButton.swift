@@ -42,7 +42,7 @@ struct RewardedAdButton<L: View>: View {
                 
             } label: {
                 if coordinator.rewardedAd == nil {
-                    Text("광고 로드 중...")
+                    Text("rewardedAdButton.loading.description")
                 } else {
                     buttonLabel()
                 }

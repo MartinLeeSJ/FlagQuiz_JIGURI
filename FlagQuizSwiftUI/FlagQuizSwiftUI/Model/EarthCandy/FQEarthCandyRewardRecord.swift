@@ -9,18 +9,15 @@ import Foundation
 
 struct FQEarthCandyRewardRecord {
     private var dailyRewardRecord: Date
-    private var didGetDailyReward: Bool
     private var adRewardRecord: Date
     private var adRewardTrial: AdRewardTrial
     
     init(
         dailyRewardRecord: Date,
-        didGetDailyReward: Bool,
         adRewardRecord: Date,
         adRewardTrial: AdRewardTrial
     ) {
         self.dailyRewardRecord = dailyRewardRecord
-        self.didGetDailyReward = didGetDailyReward
         self.adRewardRecord = adRewardRecord
         self.adRewardTrial = adRewardTrial
     }
@@ -32,65 +29,86 @@ struct FQEarthCandyRewardRecord {
         case finished
         
         static let maximumTrialCount: Int = 3
+        static func safeValue(from rawValue: Int) -> AdRewardTrial {
+            var value: Int = max(self.first.rawValue, rawValue)
+            value = min(self.finished.rawValue, value)
+            return .init(rawValue: value)!
+        }
     }
     
     
     /// 데일리리워드를 받을 수 있는지 확인하는 메서드
-    /// 어제 데일리리워드를 받은 기록이 있다면 didGetDailyReward를 false로 바꾸고
-    /// true를 리턴한다.
     /// - Returns: 데일리 리워드를 받을 수 있는지 여부의 불리언값
-    mutating public func checkIfCanGetDailyReward() -> Bool {
+    public func checkIfCanGetDailyReward() -> Bool {
         if checkUpdatedYesterdayOrMore(dailyRewardRecord) {
-            didGetDailyReward = false
-            return !didGetDailyReward
+            return true
         }
-        
-        return !didGetDailyReward
+        return false
     }
     
-    /// 데일리리워드를 받은 후 실행하는 기록 메서드
-    mutating public func recordDidGetDailyReward() {
-        self.dailyRewardRecord = .now
-        self.didGetDailyReward = true
-    }
-    
-    /// 보상형 광고 리워드를 받을 수 있는 남은 횟수를 알려주는 메서드
-    /// 어제 받은 기록이 있다면 다시 adRewardTrial을 .first ( RawValue == 0) 로 바꿔주고
-    /// 최대 시도 횟수 3회에서 현재 adRewardTrial의 RawValue의 값을 빼서 리턴한다
-    /// - Returns: 보상형 광고 리워드를 받을 수 있는 남은 횟수
-    mutating public func checkRestAdRewardTrialCount() -> Int {
+    public func restCountOfAdReward() -> Int {
         if checkUpdatedYesterdayOrMore(adRewardRecord) {
-            resetOldAdRewardTrial()
+            return AdRewardTrial.maximumTrialCount
         }
         
         return AdRewardTrial.maximumTrialCount - adRewardTrial.rawValue
     }
     
-    mutating public func getAdReward() {
-        resetOldAdRewardTrial()
+    /// 데일리리워드를 받기 전 실행하는 메서드
+    public func getDailyReward() -> FQEarthCandyRewardRecord? {
+        guard checkUpdatedYesterdayOrMore(dailyRewardRecord) else { return nil }
         
-        guard adRewardTrial != .finished else { return }
+        return .init(
+            dailyRewardRecord: .now,
+            adRewardRecord: adRewardRecord,
+            adRewardTrial: adRewardTrial
+        )
         
-        var newTrialCount = self.adRewardTrial.rawValue + 1
-        newTrialCount = min(AdRewardTrial.maximumTrialCount, newTrialCount)
-        
-        self.adRewardTrial = AdRewardTrial(rawValue: newTrialCount)!
-        
-        adRewardRecord = .now
     }
-    
-    mutating private func resetOldAdRewardTrial() {
-        guard checkUpdatedYesterdayOrMore(adRewardRecord) else { return }
-        self.adRewardTrial = .first
+
+    public func getAdReward() -> FQEarthCandyRewardRecord? {
+        if checkUpdatedYesterdayOrMore(adRewardRecord) {
+            return .init(
+                dailyRewardRecord: dailyRewardRecord,
+                adRewardRecord: .now,
+                adRewardTrial: .second
+            )
+        }
+        
+        guard adRewardTrial != .finished else { return nil }
+        
+        return .init(
+            dailyRewardRecord: dailyRewardRecord,
+            adRewardRecord: .now,
+            adRewardTrial: .safeValue(from: adRewardTrial.rawValue + 1)
+        )
     }
-    
-    static let reward: Int = 100
-    
+   
+
     private func checkUpdatedYesterdayOrMore(_ date: Date) -> Bool {
         guard let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: .now) else {
             return false
         }
         
         return (date < yesterday) || Calendar.current.isDateInYesterday(date)
+    }
+}
+
+extension FQEarthCandyRewardRecord {
+    static var initialModel: FQEarthCandyRewardRecord {
+        let past = Calendar.current.date(byAdding: .day, value: -1, to: .now) ?? .init(timeIntervalSinceReferenceDate: 0)
+        return .init(
+            dailyRewardRecord: past,
+            adRewardRecord: past,
+            adRewardTrial: .first
+        )
+    }
+    
+    func toObject() -> FQEarthCandyRewardRecordObject {
+        .init(
+            dailyRewardRecord: .init(date: dailyRewardRecord),
+            adRewardRecord: .init(date: adRewardRecord),
+            adRewardTrial: adRewardTrial.rawValue
+        )
     }
 }

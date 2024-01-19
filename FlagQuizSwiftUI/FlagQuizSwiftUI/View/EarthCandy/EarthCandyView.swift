@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EarthCandyView: View {
     @Environment(\.colorScheme) private var scheme
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var viewModel: EarthCandyViewModel
     
     @State private var showDetail: Bool = false
@@ -51,7 +52,7 @@ struct EarthCandyView: View {
             showDetail = true
         }
         .fullScreenCover(isPresented: $showDetail) {
-            EarthCandyDetailView()
+            EarthCandyRewardView(viewModel: .init(container: container))
             
         }
         
@@ -61,12 +62,12 @@ struct EarthCandyView: View {
 
 
 #Preview {
-    EarthCandyView()
+    let container = DIContainer(services: StubService())
+    return EarthCandyView()
         .environmentObject(
             EarthCandyViewModel(
-                container: .init(
-                    services: StubService()
-                )
+              container: container
             )
         )
+        .environmentObject(container)
 }

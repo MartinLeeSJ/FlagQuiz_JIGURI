@@ -104,6 +104,16 @@
         }
       }
     },
+    "close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
     "correct.%lld.total.%lld" : {
       "localizations" : {
         "en" : {
@@ -375,9 +385,6 @@
           }
         }
       }
-    },
-    "dismiss" : {
-
     },
     "editUserNameError.endOfTrial.description" : {
       "extractionState" : "extracted_with_value",
@@ -2232,6 +2239,180 @@
         }
       }
     },
+    "rewardedAdButton.loading.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "불러오는 중..."
+          }
+        }
+      }
+    },
+    "rewardView.ad.content.button.description.%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ad reward left today"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ad rewards left today"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "No ad reward views left for today."
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "오늘 남은 횟수 %lld번"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "남은 광고 시청 횟수 없음"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "rewardView.ad.content.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reward for One-time Viewing."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1회 시청 시 받을 수 있는 리워드"
+          }
+        }
+      }
+    },
+    "rewardView.ad.content.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewards for Watching Ads"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "광고 시청 리워드"
+          }
+        }
+      }
+    },
+    "rewardView.daily.content.button.title.preparing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "준비 중..."
+          }
+        }
+      }
+    },
+    "rewardView.daily.content.button.title.receive" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check-in"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "출석하기"
+          }
+        }
+      }
+    },
+    "rewardView.daily.content.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewards Upon Checking In"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "출석체크 시 받을 수 있는 리워드"
+          }
+        }
+      }
+    },
+    "rewardView.daily.content.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Check-in Reward"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일일 출석 리워드"
+          }
+        }
+      }
+    },
+    "rewardView.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today's Reward"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오늘의 무료 지구 알사탕"
+          }
+        }
+      }
+    },
     "S. America" : {
       "localizations" : {
         "en" : {
@@ -2613,12 +2794,6 @@
       }
     },
     "계속하기" : {
-
-    },
-    "광고 로드 중..." : {
-
-    },
-    "광고 테스트" : {
 
     },
     "광고를 통해 고객에게 도달하려는 비즈니스를 지원합니다." : {

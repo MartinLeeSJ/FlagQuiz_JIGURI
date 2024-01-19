@@ -125,8 +125,7 @@ struct QuizResultScoreCard: View {
             Text(quizResult.correctQuizRoundsCount, format: .number)
                 .font(.callout)
         }
-        
-        
+
         HStack {
             Text("quizResultScoreCard.quizOptionsCount.advantage.point")
                 .font(.caption)
