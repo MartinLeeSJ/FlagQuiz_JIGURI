@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 struct FQEarthCandyObject: Codable {
     @DocumentID var userId: String?
-    var point: Double
+    var point: Int
 }
 
 extension FQEarthCandyObject {

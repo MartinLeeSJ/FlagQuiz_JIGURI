@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EarthCandyView: View {
     @Environment(\.colorScheme) private var scheme
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var viewModel: EarthCandyViewModel
     
     @State private var showDetail: Bool = false
@@ -17,7 +18,8 @@ struct EarthCandyView: View {
         HStack(spacing: 8) {
             Image("EarthCandy")
                 .resizable()
-                .scaledToFit()
+                .aspectRatio(1, contentMode: .fit)
+                .frame(width: 20)
                 .padding(8)
                 .shadow(
                     color: scheme == .dark ? .white.opacity(0.5) : .black.opacity(0.5) ,
@@ -43,37 +45,26 @@ struct EarthCandyView: View {
         .task {
             viewModel.observe()
         }
-        .frame(
-            maxWidth: .infinity,
-            alignment: .leading
-        )
         .onTapGesture {
             showDetail = true
         }
         .fullScreenCover(isPresented: $showDetail) {
-            EarthCandyDetailView()
+            EarthCandyRewardView(viewModel: .init(container: container))
             
         }
         
     }
 }
 
-struct EarthCandyDetailView: View {
-    @Environment(\.dismiss) private var dismiss
-    var body: some View {
-        Button("dismiss") {
-            dismiss()
-        }
-    }
-}
+
 
 #Preview {
-    EarthCandyView()
+    let container = DIContainer(services: StubService())
+    return EarthCandyView()
         .environmentObject(
             EarthCandyViewModel(
-                container: .init(
-                    services: StubService()
-                )
+              container: container
             )
         )
+        .environmentObject(container)
 }

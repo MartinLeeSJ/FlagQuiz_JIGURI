@@ -9,8 +9,8 @@ import Foundation
 import FirebaseFirestore
 
 struct FQQuiz {
-    let quizCount: Int
-    let quizOptionsCount: Int
+    let quizCount: FQQuizCount
+    let quizOptionsCount: FQQuizOptionsCount
     let quizType: FQQuizType
 
     var quizRounds: [FQQuizRound]
@@ -18,16 +18,16 @@ struct FQQuiz {
     
     
     init(
-        quizCount: Int,
-        quizOptionsCount: Int,
+        quizCount: FQQuizCount,
+        quizOptionsCount: FQQuizOptionsCount,
         quizType: FQQuizType
     ) {
         self.quizCount = quizCount
         self.quizOptionsCount = quizOptionsCount
         self.quizType = quizType
         self.quizRounds = Self.createQuizRounds(
-            quizCount: quizCount,
-            quizOptionsCount: quizOptionsCount,
+            quizCount: quizCount.rawValue,
+            quizOptionsCount: quizOptionsCount.rawValue,
             quizType: quizType
         )
         
@@ -86,7 +86,7 @@ struct FQQuiz {
     }
     
     mutating func toNextIndex() {
-        guard currentQuizIndex < (quizCount - 1) else { return }
+        guard currentQuizIndex < (quizCount.rawValue - 1) else { return }
         currentQuizIndex += 1
     }
     
@@ -103,8 +103,8 @@ extension FQQuiz: Hashable { }
 
 extension FQQuiz {
     init(
-        quizCount: Int,
-        quizOptionsCount: Int,
+        quizCount: FQQuizCount,
+        quizOptionsCount: FQQuizOptionsCount,
         quizType: FQQuizType,
         quizRounds: [FQQuizRound]
     ) {
@@ -117,8 +117,8 @@ extension FQQuiz {
     
     func toRecordObject() -> FQQuizRecordObject {
         .init(
-            quizCount: quizCount,
-            quizOptionsCount: quizOptionsCount,
+            quizCount: quizCount.rawValue,
+            quizOptionsCount: quizOptionsCount.rawValue,
             quizRounds: quizRounds.map { $0.toRecordObject() },
             createdAt: .init(date: .now)
         )

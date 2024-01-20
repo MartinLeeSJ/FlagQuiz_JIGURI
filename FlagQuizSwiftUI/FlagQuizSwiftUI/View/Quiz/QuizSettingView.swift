@@ -7,17 +7,8 @@
 
 import SwiftUI
 
-enum QuizCount: Int, CaseIterable {
-    case five = 5
-    case ten = 10
-    case fifteen = 15
-}
 
-enum QuizItemCount: Int, CaseIterable {
-    case three = 3
-    case four = 4
-    case five = 5
-}
+
 
 struct QuizSettingView: View {
     @EnvironmentObject private var container: DIContainer
@@ -31,26 +22,13 @@ struct QuizSettingView: View {
     
     var body: some View {
         NavigationStack(path: $navigationModel.destinations) {
-            VStack(alignment: .leading, spacing: 16) {
-                Spacer()
-                    .frame(height: 64)
-                
-                TypeWritingText(
-                    originalText: String(localized: "quizSetting.intro"),
-                    animation: .easeInOut
-                ) {
-                    //TODO: 추가적인 애니메이션 실행
+            GeometryReader { geo in
+                if geo.size.width < geo.size.height {
+                    verticalContent
+                } else {
+                    horizontalContent(geo.size.width)
                 }
-                .font(.custom(FontName.pixel, size: 40))
-                .padding(.horizontal)
                 
-                Spacer()
-                
-                Divider()
-                
-                QuizSettingControls()
-                    .environmentObject(viewModel)
-
             }
             .navigationDestination(for: QuizDestination.self) { destination in
                 Group {
@@ -70,13 +48,65 @@ struct QuizSettingView: View {
             }
         }
     }
+    
+    private var verticalContent: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            introTitle
+            
+            Spacer()
+            
+            Divider()
+                .overlay {
+                    Text("퀴즈 설정하기")
+                        .font(.custom(FontName.pixel, size: 16))
+                        .background(.background)
+                }
+            
+            quizSettingControls
+        }
+    }
+    
+    private func horizontalContent(_ width: CGFloat) -> some View {
+        HStack {
+            introTitle
+                .frame(width: width / 2, alignment: .leading)
+            
+            VStack(alignment: .leading) {
+                Spacer()
+                
+                Text("퀴즈 설정하기")
+                    .font(.custom(FontName.pixel, size: 16))
+                    .background(.background)
+                
+                
+                quizSettingControls
+            }
+            .frame(width: width / 2)
+        }
+    }
+    
+    private var introTitle: some View {
+        VStack(alignment: .leading) {
+            Spacer()
+                .frame(height: 64)
+            
+            TypeWritingText(
+                originalText: String(localized: "quizSetting.intro"),
+                animation: .easeInOut
+            ) {
+                //TODO: 추가적인 애니메이션 실행
+            }
+            .font(.custom(FontName.pixel, size: 40))
+            .padding(.horizontal)
+        }
+    }
+    
+    private var quizSettingControls: some View {
+        QuizSettingControls()
+            .environmentObject(viewModel)
+    }
 
 }
-
-
-
-
-
 
 
 #Preview {

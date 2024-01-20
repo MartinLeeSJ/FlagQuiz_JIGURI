@@ -22,14 +22,14 @@ struct FlagQuizSwiftUIApp: App {
                 authViewModel: .init(container: container),
                 earthCandyViewModel: .init(container: container)
             )
-                .environmentObject(container)
-                .environmentObject(hapticsManager)
-                .environmentObject(notificationManager)
-                .environmentObject(networkMonitor)
-                .environmentObject(navigationModel)
-                .task {
-                    await notificationManager.requestAuthorization()
-                }
+            .environmentObject(container)
+            .environmentObject(hapticsManager)
+            .environmentObject(notificationManager)
+            .environmentObject(networkMonitor)
+            .environmentObject(navigationModel)
+            .task {
+                await notificationManager.requestAuthorization()
+            }
         }
     }
 }

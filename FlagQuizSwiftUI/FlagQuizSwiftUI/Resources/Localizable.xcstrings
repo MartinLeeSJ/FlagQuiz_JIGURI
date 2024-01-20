@@ -52,17 +52,6 @@
         }
       }
     },
-    "advertisement" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "광고"
-          }
-        }
-      }
-    },
     "askToView.copy.completed" : {
       "localizations" : {
         "en" : {
@@ -111,6 +100,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "취소"
+          }
+        }
+      }
+    },
+    "close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "닫기"
           }
         }
       }
@@ -386,9 +391,6 @@
           }
         }
       }
-    },
-    "dismiss" : {
-
     },
     "editUserNameError.endOfTrial.description" : {
       "extractionState" : "extracted_with_value",
@@ -1027,6 +1029,74 @@
         }
       }
     },
+    "frogSettlementIcon.loading.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Not Determined"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정해지지 않음"
+          }
+        }
+      }
+    },
+    "frogSettlementIcon.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Frog Settelment"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리 정착지"
+          }
+        }
+      }
+    },
+    "frogView.closet.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Closet"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "옷 갈아입기"
+          }
+        }
+      }
+    },
+    "frogView.coming.soom" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Coming Soon"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coming Soon"
+          }
+        }
+      }
+    },
     "frogView.notEnoughCandyButton.title" : {
       "localizations" : {
         "en" : {
@@ -1039,6 +1109,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "지구알사탕이 부족합니다."
+          }
+        }
+      }
+    },
+    "frogView.store.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Store"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상점"
           }
         }
       }
@@ -1147,6 +1234,9 @@
           }
         }
       }
+    },
+    "My" : {
+
     },
     "mypage.accountDeletion.title" : {
       "localizations" : {
@@ -1663,22 +1753,6 @@
         }
       }
     },
-    "quiz.option.divide.ten" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quiz Options Count / 10"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "퀴즈 선택지수 / 10"
-          }
-        }
-      }
-    },
     "quiz.record.list.header.date.and.time" : {
       "localizations" : {
         "en" : {
@@ -1823,22 +1897,6 @@
         }
       }
     },
-    "quiz.type.advantage" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quiz Type Advantage"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "퀴즈 종류 어드밴티지"
-          }
-        }
-      }
-    },
     "quizIntro.quizCountPicker.title" : {
       "localizations" : {
         "en" : {
@@ -1887,6 +1945,38 @@
         }
       }
     },
+    "quizResultScoreCard.quizOptionsCount.advantage.point" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Options Count Advantage"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 옵션 수 추가 캔디"
+          }
+        }
+      }
+    },
+    "quizResultScoreCard.quizType.advantage.point" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Type Advantage"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 타입 추가 캔디"
+          }
+        }
+      }
+    },
     "quizSetting.intro" : {
       "localizations" : {
         "en" : {
@@ -1899,6 +1989,106 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "지구리\n국기 퀴즈로\n지구를 정복하다."
+          }
+        }
+      }
+    },
+    "quizSettingControls.quizCount.candy%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum %lld points"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최대 %lld개 캔디"
+          }
+        }
+      }
+    },
+    "quizSettingControls.quizOptions.extra.candy%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Extra %lld Point"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Extra %lld Points"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+ 추가 %lld개 캔디"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "quizSettingControls.quizType.extra.candy%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Extra %lld Point"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Extra %lld Points"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "+추가 %lld개 캔디"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "quizSettingControls.total.maximum.candy.description%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can get a maximum of %lld points"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최대 %lld개의 캔디를 얻을 수 있습니다."
           }
         }
       }
@@ -2139,6 +2329,180 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퀴즈를 종료 하시겠습니까?"
+          }
+        }
+      }
+    },
+    "rewardedAdButton.loading.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "불러오는 중..."
+          }
+        }
+      }
+    },
+    "rewardView.ad.content.button.description.%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ad reward left today"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld ad rewards left today"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "No ad reward views left for today."
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "오늘 남은 횟수 %lld번"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "남은 광고 시청 횟수 없음"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "rewardView.ad.content.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reward for One-time Viewing."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1회 시청 시 받을 수 있는 리워드"
+          }
+        }
+      }
+    },
+    "rewardView.ad.content.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewards for Watching Ads"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "광고 시청 리워드"
+          }
+        }
+      }
+    },
+    "rewardView.daily.content.button.title.preparing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "준비 중..."
+          }
+        }
+      }
+    },
+    "rewardView.daily.content.button.title.receive" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check-in"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "출석하기"
+          }
+        }
+      }
+    },
+    "rewardView.daily.content.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewards Upon Checking In"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "출석체크 시 받을 수 있는 리워드"
+          }
+        }
+      }
+    },
+    "rewardView.daily.content.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Check-in Reward"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일일 출석 리워드"
+          }
+        }
+      }
+    },
+    "rewardView.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today's Reward"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오늘의 무료 지구 알사탕"
           }
         }
       }
@@ -2542,6 +2906,9 @@
 
     },
     "지구리가 서비스 활동정보를 사용하도록 허용하시겠습니까?" : {
+
+    },
+    "퀴즈 설정하기" : {
 
     },
     "허용하시면" : {

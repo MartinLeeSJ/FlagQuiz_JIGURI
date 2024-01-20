@@ -12,10 +12,27 @@ import FirebaseFirestore
 
 protocol FQEarthCandyDBRepositoryType {
     func createEarthCandy(ofUser userId: String) -> AnyPublisher<Void, DBError>
+    
     func getEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandyObject?, DBError>
     func observeEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandyObject?, DBError>
-    func updateEarthCandy(_ object: FQEarthCandyObject, ofUser userId: String) -> AnyPublisher<Bool, DBError>
+    
+    func updateEarthCandyPoint(_ point: Int, ofUser userId: String) -> AnyPublisher<Bool, DBError>
     func deleteEarthCandy(ofUser userId: String) async throws
+    
+    func getEarthCandyRewardRecord(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandyRewardRecordObject?, DBError>
+    
+    func observeEarthCandyRewardRecord(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandyRewardRecordObject?, DBError>
+    
+    func recordEarthCandyRewardRecord(
+        _ object: FQEarthCandyRewardRecordObject,
+        userId: String
+    ) -> AnyPublisher<Void, DBError>
+    
+    
 }
 
 final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
@@ -54,6 +71,21 @@ final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
         
     }
     
+    func getEarthCandyRewardRecord(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandyRewardRecordObject?, DBError> {
+        let documentRef = candyCollection.document(userId)
+        
+        return Future { promise in
+            documentRef.getDocument(
+                as: FQEarthCandyRewardRecordObject?.self,
+                completion: promise
+            )
+        }
+        .mapError { DBError.custom($0) }
+        .eraseToAnyPublisher()
+    }
+    
     func observeEarthCandy(
         ofUser userId: String
     ) -> AnyPublisher<FQEarthCandyObject?, DBError> {
@@ -65,15 +97,15 @@ final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
     }
     
     
-    func updateEarthCandy(
-        _ object: FQEarthCandyObject,
+    func updateEarthCandyPoint(
+        _ point: Int,
         ofUser userId: String
     ) -> AnyPublisher<Bool, DBError> {
         let documentRef = candyCollection.document(userId)
         
         return Future {  promise in
             documentRef.updateData([
-                "point": FieldValue.increment(object.point)
+                "point": FieldValue.increment(Int64(point))
             ]) { error in
                 if let error {
                     promise(.failure(DBError.custom(error)))
@@ -90,5 +122,43 @@ final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
     func deleteEarthCandy(ofUser userId: String) async throws {
         let documentRef = candyCollection.document(userId)
         try await documentRef.delete()
+    }
+    
+    
+    func observeEarthCandyRewardRecord(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandyRewardRecordObject?, DBError> {
+        candyCollection
+            .document(userId)
+            .collection(CollectionKey.EarthCandyRewardRecord)
+            .document(userId)
+            .listenerPublisher(FQEarthCandyRewardRecordObject?.self)
+            .mapError { DBError.custom($0) }
+            .eraseToAnyPublisher()
+    }
+    
+    func recordEarthCandyRewardRecord(
+        _ object: FQEarthCandyRewardRecordObject,
+        userId: String
+    ) -> AnyPublisher<Void, DBError> {
+        Future { [weak self] promise in
+            guard let self else {
+                promise(.failure(DBError.invalidSelf))
+                return
+            }
+            
+            do {
+                try self.candyCollection
+                    .document(userId)
+                    .collection(CollectionKey.EarthCandyRewardRecord)
+                    .document(userId)
+                    .setData(from: object)
+                promise(.success(()))
+            } catch {
+                promise(.failure(error))
+            }
+        }
+        .mapError { DBError.custom($0) }
+        .eraseToAnyPublisher()
     }
 }

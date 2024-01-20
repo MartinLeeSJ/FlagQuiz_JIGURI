@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FQItemType: String, Hashable, Codable {
+enum FQItemType: String, Hashable, Codable, CaseIterable {
     case hat
     case hair
     case top

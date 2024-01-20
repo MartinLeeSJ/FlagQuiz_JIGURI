@@ -28,7 +28,7 @@ struct QuizQuestion: View {
             QuizProgressView(
                 quizRounds: viewModel.quiz.quizRounds,
                 currentQuizIndex: viewModel.quiz.currentQuizIndex,
-                quizCount: viewModel.quiz.quizCount
+                quizCount: viewModel.quiz.quizCount.rawValue
             )
             .frame(height: 5)
         }

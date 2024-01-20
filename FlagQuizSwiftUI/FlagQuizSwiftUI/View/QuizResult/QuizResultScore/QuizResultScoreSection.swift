@@ -25,12 +25,11 @@ struct QuizResultScoreSection: View {
     }
     
     private var quizOptionPoint: Double {
-        Double(quizResult.quizOptionsCount) / 10.0
+        Double(quizResult.quizOptionsCount.rawValue) / 10.0
     }
-    private var estimatedCandy: Double {
-        let quizCount: Double = Double(quizScore.correctQuizCount)
-        
-        return quizCount * quizOptionPoint + quizResult.quizType.advantagePoint
+    
+    private var estimatedCandy: Int {
+        return FQEarthCandy.calculatePoint(from: quizResult, ofUser: "").point
     }
     
     var body: some View {
@@ -50,7 +49,7 @@ struct QuizResultScoreSection: View {
                 .padding(.vertical, 16)
             
             
-            Text("\(quizResult.correctQuizRoundsCount).out.of.\(quizResult.quizCount).problems")
+            Text("\(quizResult.correctQuizRoundsCount).out.of.\(quizResult.quizCount.rawValue).problems")
                 .font(.subheadline)
                 .matchedGeometryEffect(
                     id: QuizResultViewAnimationID.description,

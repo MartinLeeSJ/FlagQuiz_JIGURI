@@ -17,14 +17,18 @@ struct FrogView: View {
     }
     
     var body: some View {
-        HStack {
-            Spacer()
+        VStack(spacing: 16) {
             if let frog = viewModel.frog {
                 content(frog)
             } else {
                 placeholder
             }
-            Spacer()
+            
+            FrogMenuView()
+        }
+        .frame(maxWidth: .infinity)
+        .overlay(alignment: .topTrailing) {
+            FrogSettlementIcon(frog: viewModel.frog)
         }
         .padding()
         .task {
@@ -32,11 +36,11 @@ struct FrogView: View {
         }
         .background {
             if scheme == .dark {
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                Rectangle()
                     .foregroundStyle(.thinMaterial)
             }
         }
-        .padding(.horizontal)
+        
     }
     
     private var placeholder: some View {
@@ -51,7 +55,7 @@ struct FrogView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: 200)
-       
+            
             Button {
                 
             } label: {
@@ -104,12 +108,12 @@ struct FrogView: View {
     @ViewBuilder
     private func frogStateButton(_ frog: FQFrog) -> some View {
         if frog.state == .great {
-             Button {} label: {
+            Button {} label: {
                 Text(FrogState.great.feedFrogButtonTitle)
             }
             .buttonStyle(FrogViewButtonStyle())
         } else {
-             feedFrogButton(frog)
+            feedFrogButton(frog)
         }
     }
     
@@ -117,9 +121,9 @@ struct FrogView: View {
     private func feedFrogButton(_ frog: FQFrog) -> some View {
         if let earthCandy = earthCandyViewModel.earthCandy,
            !earthCandy.hasEnoughCandyForFeedFrog {
-             notEnoughCandyButton
+            notEnoughCandyButton
         } else {
-             Button {
+            Button {
                 guard frog.state != .great else { return }
                 
                 viewModel.send(.feedFrog)
@@ -128,7 +132,10 @@ struct FrogView: View {
                     Text(frog.state.feedFrogButtonTitle)
                     
                     Label {
-                        Text("10.5")
+                        Text(
+                            FQEarthCandy.earthCandyPointForFeedingFrog,
+                            format: .number
+                        )
                     } icon: {
                         Image("EarthCandy")
                             .resizable()
@@ -160,6 +167,8 @@ struct FrogView: View {
         .disabled(true)
         .buttonStyle(FrogViewDisabledButtonStyle())
     }
+    
+   
 }
 
 

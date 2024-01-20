@@ -44,12 +44,12 @@ enum FQQuizType: String, Hashable, CaseIterable {
         }
     }
     
-    var advantagePoint: Double {
+    var advantageCandy: Int {
         switch self {
-        case .chooseNameFromFlag: 1.0
-        case .chooseFlagFromName: 0.0
-        case .chooseCaptialFromFlag: 2.0
-        case .random: 3.0
+        case .chooseNameFromFlag: 1
+        case .chooseFlagFromName: 1
+        case .chooseCaptialFromFlag: 2
+        case .random: 3
         }
     }
 }

@@ -26,13 +26,10 @@ struct QuizResultScoreCard: View {
         self.scoreAnimation = scoreAnimation
     }
     
-    private var quizOptionPoint: Double {
-        Double(quizResult.quizOptionsCount) / 10.0
-    }
-    private var estimatedCandy: Double {
-        let quizCount: Double = Double(quizScore.correctQuizCount)
-        
-        return quizCount * quizOptionPoint + quizResult.quizType.advantagePoint
+   
+    
+    private var estimatedCandy: Int {
+        return FQEarthCandy.calculatePoint(from: quizResult, ofUser: "").point
     }
     
     var body: some View {
@@ -74,7 +71,7 @@ struct QuizResultScoreCard: View {
                 .padding(.vertical, 16)
             
             
-            Text("\(quizResult.correctQuizRoundsCount).out.of.\(quizResult.quizCount).problems")
+            Text("\(quizResult.correctQuizRoundsCount).out.of.\(quizResult.quizCount.rawValue).problems")
                 .font(.subheadline)
                 .matchedGeometryEffect(
                     id: QuizResultViewAnimationID.description,
@@ -128,26 +125,25 @@ struct QuizResultScoreCard: View {
             Text(quizResult.correctQuizRoundsCount, format: .number)
                 .font(.callout)
         }
-        
-        
+
         HStack {
-            Text("quiz.option.divide.ten")
+            Text("quizResultScoreCard.quizOptionsCount.advantage.point")
                 .font(.caption)
             Spacer()
-            Image(systemName: "multiply")
+            Image(systemName: "plus")
                 .font(.caption)
-            Text(quizOptionPoint, format: .number)
+            Text(quizResult.quizOptionsCount.advantageCandy, format: .number)
                 .font(.callout)
                 .frame(width: 30, alignment: .trailing)
         }
         
         HStack {
-            Text("quiz.type.advantage")
+            Text("quizResultScoreCard.quizType.advantage.point")
                 .font(.caption)
             Spacer()
             Image(systemName: "plus")
                 .font(.caption)
-            Text(quizResult.quizType.advantagePoint, format: .number)
+            Text(quizResult.quizType.advantageCandy, format: .number)
                 .font(.callout)
                 .frame(width: 30, alignment: .trailing)
         }
@@ -171,7 +167,7 @@ struct QuizResultScoreCard: View {
             Image("EarthCandy")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 15)
+                .frame(width: 15, height: 15)
             Text(estimatedCandy, format: .number)
         }
     }

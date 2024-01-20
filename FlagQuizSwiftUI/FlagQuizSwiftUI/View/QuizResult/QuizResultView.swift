@@ -26,7 +26,7 @@ struct QuizResultView: View {
     init(quizResult: FQQuiz) {
         self.quizResult = quizResult
         self.quizScore = .init(correctQuizCount: quizResult.correctQuizRoundsCount,
-                               totalQuizCount: quizResult.quizCount)
+                               totalQuizCount: quizResult.quizCount.rawValue)
     }
     
 
@@ -71,11 +71,5 @@ struct QuizResultView: View {
         }
     }
     
-}
-
-#Preview {
-    QuizResultView(quizResult: .init(quizCount: 10, quizOptionsCount: 3, quizType: .random))
-        .environmentObject(QuizViewModel(container: .init(services: StubService())))
-        .environmentObject(NavigationModel())
 }
 
