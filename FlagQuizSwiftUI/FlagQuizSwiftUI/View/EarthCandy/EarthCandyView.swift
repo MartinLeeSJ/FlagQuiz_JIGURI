@@ -30,7 +30,7 @@ struct EarthCandyView: View {
                 if let point = viewModel.earthCandy?.point {
                     Text(point, format: .number)
                 } else {
-                    Text("0")
+                    Text(0, format: .number)
                     
                 }
             }

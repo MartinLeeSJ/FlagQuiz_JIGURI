@@ -155,7 +155,10 @@ struct FrogView: View {
             HStack {
                 Text("frogView.notEnoughCandyButton.title")
                 Label {
-                    Text("10.5")
+                    Text(
+                        FQEarthCandy.earthCandyPointForFeedingFrog,
+                        format: .number
+                    )
                 } icon: {
                     Image("EarthCandy")
                         .resizable()

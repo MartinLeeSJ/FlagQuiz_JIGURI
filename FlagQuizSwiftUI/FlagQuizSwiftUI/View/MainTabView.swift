@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AppTrackingTransparency
 
 enum Tabs: Int, Hashable, CaseIterable {
     case quizSetting = 0
@@ -39,6 +40,11 @@ struct MainTabView: View {
         .fullScreenCover(isPresented: $showOnBoarding) {
             OnBoardingView()
         }
+        .onAppear {
+            if !showOnBoarding {
+                requestTrackingAuthorization()
+            }
+        }
     }
     
     @ViewBuilder
@@ -61,6 +67,10 @@ struct MainTabView: View {
             }
             
         }
+    }
+    
+    private func requestTrackingAuthorization() {
+        ATTrackingManager.requestTrackingAuthorization { _ in }
     }
 }
 

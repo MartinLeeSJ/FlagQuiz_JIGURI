@@ -29,32 +29,14 @@ struct FrogSettlementIcon: View {
                             defaultValue: "Frog Settelment"
                         )
                     )
-                        .font(.caption2)
+                    .font(.caption2)
+                    
                     Text(flagEmoji)
                         .font(.system(size: 30))
+                    
                     Text(localizedName)
                         .font(.caption2)
                         .frame(height: 12)
-                } else {
-                    Text(
-                        String(
-                            localized: "frogSettlementIcon.title",
-                            defaultValue: "Frog Settelment"
-                        )
-                    )
-                    .font(.caption2)
-                    Image(systemName: "questionmark")
-                        .font(.system(size: 20))
-                    
-                    Text(
-                        String(
-                            localized: "frogSettlementIcon.loading.description",
-                            defaultValue: "Not Determined"
-                        )
-                    )
-                    .font(.caption2)
-                    .frame(height: 12)
-                    
                 }
             }
             .padding(.horizontal)

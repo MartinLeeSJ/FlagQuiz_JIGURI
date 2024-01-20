@@ -14,29 +14,59 @@ struct ATTDescriptionView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-    
-            Text("지구리가 서비스 활동정보를 사용하도록 허용하시겠습니까?")
-                .font(.title.bold())
-                .padding(.top, 64)
-                .padding(.bottom, 16)
-        
+            Text(
+                String(
+                    localized: "attDescriptionView.title",
+                    defaultValue: "Would you allow 'FlagFrog' to use service activity information?"
+                )
+                
+            )
+            .font(.title.bold())
+            .padding(.top, 64)
+            .padding(.bottom, 16)
             
-            Text("아래 계속하기 버튼을 누르면 나오게 되는 알람에서")
-                .padding(.bottom, 8)
             
-            Text("허용하시면")
-                .font(.headline)
-                .background(.background)
-                .padding(.leading)
-                .offset(y: 10)
-                .zIndex(1)
+            Text(
+                String(
+                    localized: "attDescriptionView.instruction.there.will.be.alert",
+                    defaultValue: "In the alert that appears when you press the 'Continue' button below"
+                )
+            )
+            .padding(.bottom, 8)
+            
+            Text(
+                String(
+                    localized: "attDescriptionView.instruction.if.you.allow",
+                    defaultValue: "IF YOU ALLOW"
+                )
+            )
+            .font(.headline)
+            .background(.background)
+            .padding(.leading)
+            .offset(y: 10)
+            .zIndex(1)
             
             VStack(alignment: .leading, spacing: 16) {
-                Text("앱 내에서 맞춤화된 광고를 표시합니다.")
+                Text(
+                    String(
+                        localized: "attDescriptionView.instruction.personalized",
+                        defaultValue: "Displays personalized ads within the app."
+                    )
+                )
                 
-                Text("지구리 서비스를 계속해서 무료로 제공하는데 도움이 됩니다.")
+                Text(
+                    String(
+                        localized: "attDescriptionView.instruction.support.developer",
+                        defaultValue: "It helps us continue to offer \"FlagFrog\" services for free."
+                    )
+                )
                 
-                Text("광고를 통해 고객에게 도달하려는 비즈니스를 지원합니다.")
+                Text(
+                    String(
+                        localized: "attDescriptionView.instruction.support.business",
+                        defaultValue: "Support businesses that want to reach customers through advertising"
+                    )
+                )
             }
             .padding(24)
             .font(.callout)
@@ -48,9 +78,14 @@ struct ATTDescriptionView: View {
             Spacer()
             
             Button {
-                requestAuthorization()
+                requestTrackingAuthorization()
             } label: {
-                Text("계속하기")
+                Text(
+                    String(
+                        localized: "attDescriptionView.continue",
+                        defaultValue: "Continue"
+                    )
+                )
             }
             .buttonStyle(QuizFilledButtonStyle(disabled: false))
         }
@@ -59,12 +94,12 @@ struct ATTDescriptionView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func requestAuthorization() {
+    private func requestTrackingAuthorization() {
         ATTrackingManager.requestTrackingAuthorization { _ in
-            DispatchQueue.main.async {
-                navigationModel.toRoot()
-                showOnBoarding = false
-            }
+                DispatchQueue.main.async {
+                    navigationModel.toRoot()
+                    showOnBoarding = false
+                }
         }
     }
 }

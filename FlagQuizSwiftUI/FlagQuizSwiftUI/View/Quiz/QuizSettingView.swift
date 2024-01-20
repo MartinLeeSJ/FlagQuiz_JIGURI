@@ -57,7 +57,12 @@ struct QuizSettingView: View {
             
             Divider()
                 .overlay {
-                    Text("퀴즈 설정하기")
+                Text(
+                    String(
+                        localized:"quizSettingView.quiz.setting.title",
+                        defaultValue:"Setting up a quiz"
+                    )
+                )
                         .font(.custom(FontName.pixel, size: 16))
                         .background(.background)
                 }
@@ -74,7 +79,12 @@ struct QuizSettingView: View {
             VStack(alignment: .leading) {
                 Spacer()
                 
-                Text("퀴즈 설정하기")
+                Text(
+                    String(
+                        localized:"quizSettingView.quiz.setting.title",
+                        defaultValue:"Setting up a quiz"
+                    )
+                )
                     .font(.custom(FontName.pixel, size: 16))
                     .background(.background)
                 
