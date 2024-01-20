@@ -111,6 +111,12 @@
             "state" : "translated",
             "value" : "Close"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "닫기"
+          }
         }
       }
     },
@@ -1023,6 +1029,74 @@
         }
       }
     },
+    "frogSettlementIcon.loading.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Not Determined"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정해지지 않음"
+          }
+        }
+      }
+    },
+    "frogSettlementIcon.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Frog Settelment"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리 정착지"
+          }
+        }
+      }
+    },
+    "frogView.closet.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Closet"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "옷 갈아입기"
+          }
+        }
+      }
+    },
+    "frogView.coming.soom" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Coming Soon"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coming Soon"
+          }
+        }
+      }
+    },
     "frogView.notEnoughCandyButton.title" : {
       "localizations" : {
         "en" : {
@@ -1035,6 +1109,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "지구알사탕이 부족합니다."
+          }
+        }
+      }
+    },
+    "frogView.store.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Store"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상점"
           }
         }
       }
@@ -1143,6 +1234,9 @@
           }
         }
       }
+    },
+    "My" : {
+
     },
     "mypage.accountDeletion.title" : {
       "localizations" : {

@@ -92,6 +92,8 @@
 		5B697EB82B387563003089F8 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B697EB72B387563003089F8 /* URLImageView.swift */; };
 		5B6EAAD22B453BA7006DA3BE /* UserRankAccuracyGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6EAAD12B453BA7006DA3BE /* UserRankAccuracyGauge.swift */; };
 		5B6EAAD42B454A2D006DA3BE /* AllRankInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6EAAD32B454A2D006DA3BE /* AllRankInfoView.swift */; };
+		5B757DD22B5C1145000E611E /* FrogMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B757DD12B5C1145000E611E /* FrogMenuView.swift */; };
+		5B757DD42B5C1238000E611E /* FrogSettlementIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B757DD32B5C1238000E611E /* FrogSettlementIcon.swift */; };
 		5B795CB52B3D298B004AF9EE /* QuizRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B795CB42B3D298B004AF9EE /* QuizRecordView.swift */; };
 		5B795CB72B3D2996004AF9EE /* QuizRecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B795CB62B3D2996004AF9EE /* QuizRecordDetailView.swift */; };
 		5B795CB92B3D29A0004AF9EE /* QuizRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B795CB82B3D29A0004AF9EE /* QuizRecordViewModel.swift */; };
@@ -297,6 +299,8 @@
 		5B697EB72B387563003089F8 /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		5B6EAAD12B453BA7006DA3BE /* UserRankAccuracyGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankAccuracyGauge.swift; sourceTree = "<group>"; };
 		5B6EAAD32B454A2D006DA3BE /* AllRankInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRankInfoView.swift; sourceTree = "<group>"; };
+		5B757DD12B5C1145000E611E /* FrogMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FrogMenuView.swift; path = ../../../../../../Desktop/FrogMenuView.swift; sourceTree = "<group>"; };
+		5B757DD32B5C1238000E611E /* FrogSettlementIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogSettlementIcon.swift; sourceTree = "<group>"; };
 		5B795CB42B3D298B004AF9EE /* QuizRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRecordView.swift; sourceTree = "<group>"; };
 		5B795CB62B3D2996004AF9EE /* QuizRecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRecordDetailView.swift; sourceTree = "<group>"; };
 		5B795CB82B3D29A0004AF9EE /* QuizRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRecordViewModel.swift; sourceTree = "<group>"; };
@@ -654,6 +658,8 @@
 			isa = PBXGroup;
 			children = (
 				5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */,
+				5B757DD12B5C1145000E611E /* FrogMenuView.swift */,
+				5B757DD32B5C1238000E611E /* FrogSettlementIcon.swift */,
 				5BB40D3B2B4E6C8100E907F0 /* FrogViewButtonStyle.swift */,
 				5B5056302B4BC3C900FCA5A7 /* FrogViewModel.swift */,
 			);
@@ -1307,6 +1313,7 @@
 				5BC016352B51179C00A79C45 /* EditUserNameError.swift in Sources */,
 				5B9ECB7A2B342A5B00098BF3 /* QuizRoundsCountriesInfoView.swift in Sources */,
 				5B6171802B569813005987A5 /* AdManager.swift in Sources */,
+				5B757DD42B5C1238000E611E /* FrogSettlementIcon.swift in Sources */,
 				5B16F96F2B286C670011ACF7 /* randomNonceString.swift in Sources */,
 				5B7BCAFA2B32DD4700E50C5F /* QuizStrokeButtonStyle.swift in Sources */,
 				5BE7D29D2B29A54A0044C3D4 /* CountryService.swift in Sources */,
@@ -1329,6 +1336,7 @@
 				5BE3E4D22B3985E40048C10E /* StructWrapper.swift in Sources */,
 				5BE3E4CE2B3985A70048C10E /* CountryMemoryStorage.swift in Sources */,
 				5B0F31162B4A8F4F00121561 /* QuizResultScoreCard.swift in Sources */,
+				5B757DD22B5C1145000E611E /* FrogMenuView.swift in Sources */,
 				5B19C1682B3C0D2F001A74CE /* NavigationModel.swift in Sources */,
 				5BE7D29B2B29A4950044C3D4 /* QuizRecordService.swift in Sources */,
 				5BFF437E2B46764C00C3DBCB /* FQFrogObject.swift in Sources */,

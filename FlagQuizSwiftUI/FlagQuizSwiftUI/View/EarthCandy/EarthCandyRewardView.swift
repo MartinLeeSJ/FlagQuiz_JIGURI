@@ -46,6 +46,7 @@ struct EarthCandyRewardView: View {
     private var dailyRewardContent: some View {
         Text("rewardView.daily.content.title")//일일 출석 리워드
             .font(.headline)
+            .padding(.horizontal, 8)
             .background(.background)
             .offset(y: 24)
             .zIndex(1)
@@ -56,10 +57,10 @@ struct EarthCandyRewardView: View {
                     Image("EarthCandy")
                         .resizable()
                         .aspectRatio(1, contentMode: .fit)
-                        .frame(width: 30)
+                        .frame(width: 20)
                     
                     Text(FQEarthCandy.dailyRewardCandyPoint, format: .number)
-                        .font(.title)
+                        .font(.title3)
                 }
                 Text("rewardView.daily.content.description")//출석체크 시 받을 수 있는 리워드
                     .font(.caption)
@@ -87,6 +88,7 @@ struct EarthCandyRewardView: View {
     private var adRewardContent: some View {
         Text("rewardView.ad.content.title")//광고 시청 리워드
             .font(.headline)
+            .padding(.horizontal, 8)
             .background(.background)
             .offset(y: 24)
             .zIndex(1)
@@ -97,10 +99,10 @@ struct EarthCandyRewardView: View {
                     Image("EarthCandy")
                         .resizable()
                         .aspectRatio(1, contentMode: .fit)
-                        .frame(width: 30)
+                        .frame(width: 20)
                     
                     Text(FQEarthCandy.adRewardCandyPoint, format: .number)
-                        .font(.title)
+                        .font(.title3)
                 }
                 Text("rewardView.ad.content.description")//1회 시청 시 받을 수 있는 리워드
                     .font(.caption)
@@ -142,7 +144,7 @@ struct EarthCandyRewardViewButtonModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .font(.headline)
+            .font(.subheadline)
             .padding(.vertical, 4)
             .padding(.horizontal, 10)
             .background(in: .rect(cornerRadius: 10))

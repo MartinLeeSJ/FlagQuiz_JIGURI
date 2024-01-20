@@ -18,7 +18,8 @@ struct EarthCandyView: View {
         HStack(spacing: 8) {
             Image("EarthCandy")
                 .resizable()
-                .scaledToFit()
+                .aspectRatio(1, contentMode: .fit)
+                .frame(width: 20)
                 .padding(8)
                 .shadow(
                     color: scheme == .dark ? .white.opacity(0.5) : .black.opacity(0.5) ,
@@ -44,10 +45,6 @@ struct EarthCandyView: View {
         .task {
             viewModel.observe()
         }
-        .frame(
-            maxWidth: .infinity,
-            alignment: .leading
-        )
         .onTapGesture {
             showDetail = true
         }

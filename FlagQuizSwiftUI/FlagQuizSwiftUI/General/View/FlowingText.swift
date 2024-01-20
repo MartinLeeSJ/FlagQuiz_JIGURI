@@ -16,7 +16,6 @@ struct FlowingText: View {
     
     init(_ text: String) {
         let string: String = Array(repeating: text + "   ", count: 3).joined(separator: "")
-//        self.originalText = text + "   "
         self.originalText = text
         self.text = string
     }
@@ -31,8 +30,11 @@ struct FlowingText: View {
                         textOverlay(outerGeo)
                     }
                     .frame(maxHeight: .infinity)
+                    .frame(minWidth: outerGeo.size.width, alignment: .center)
+                    
             }
             .scrollDisabled(true)
+            
         }
     }
     
@@ -41,7 +43,7 @@ struct FlowingText: View {
             if outerGeo.size.width > geo.size.width {
                 staticText
             } else {
-                animatingText
+                animatingText(outerGeo)
             }
         }
     }
@@ -51,7 +53,7 @@ struct FlowingText: View {
             .lineLimit(1)
     }
     
-    private var animatingText: some View {
+    private func animatingText(_ outerGeo: GeometryProxy) -> some View {
         ScrollView(.horizontal) {
             Text(text)
                 .opacity(0)
@@ -70,6 +72,17 @@ struct FlowingText: View {
                             }
                     }
                 }
+        }
+        .overlay(alignment: .leading) {
+            LinearGradient(
+                stops: [
+                    .init(color: .clear, location: 0.5),
+                    .init(color: .fqBg, location: 0.9)
+                ],
+                startPoint: .center,
+                endPoint: .trailing
+            )
+            .frame(width: outerGeo.size.width)
         }
         .scrollDisabled(true)
     }
@@ -100,5 +113,5 @@ struct FlowingText: View {
 }
 
 #Preview {
-    FlowingText("Merry Christmas!")
+    FlowingText("Merry Christmas And Have a Happy new year Everything will be good so dont worry keep going")
 }

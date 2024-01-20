@@ -41,11 +41,11 @@ struct NewsView: View {
                     Button {
                         navigationModel.navigate(to: NewsDestination.myPage)
                     } label: {
-                        Circle()
-                            .foregroundStyle(.green)
-                            .frame(width: 30, height: 30)
+                        Text("My")
+                            .font(.custom(FontName.pixel, size: 24))
                     }
                 }
+              
             }
             .task {
                 await viewModel.load()
