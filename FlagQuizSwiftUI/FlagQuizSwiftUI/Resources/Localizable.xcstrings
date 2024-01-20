@@ -2,16 +2,36 @@
   "sourceLanguage" : "en",
   "strings" : {
     "?" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "?"
+          }
+        }
+      }
     },
     "%lld" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "%lld / %lld" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "%1$lld / %2$lld"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "%1$lld / %2$lld"
           }
         }
@@ -32,15 +52,6 @@
           }
         }
       }
-    },
-    "0" : {
-
-    },
-    "10.5" : {
-
-    },
-    "100" : {
-
     },
     "Accuracy" : {
       "localizations" : {
@@ -80,6 +91,125 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "두번 탭하여 복사하기"
+          }
+        }
+      }
+    },
+    "attDescriptionView.continue" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Continue"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속하기"
+          }
+        }
+      }
+    },
+    "attDescriptionView.instruction.if.you.allow" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "IF YOU ALLOW"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "허용하시면"
+          }
+        }
+      }
+    },
+    "attDescriptionView.instruction.personalized" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Displays personalized ads within the app."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 내에서 맞춤화된 광고를 표시합니다."
+          }
+        }
+      }
+    },
+    "attDescriptionView.instruction.support.business" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Support businesses that want to reach customers through advertising"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "광고를 통해 고객에게 도달하려는 비즈니스를 지원합니다."
+          }
+        }
+      }
+    },
+    "attDescriptionView.instruction.support.developer" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "It helps us continue to offer \"FlagFrog\" services for free."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"지구리\" 서비스를 계속해서 무료로 제공하는데 도움이 됩니다."
+          }
+        }
+      }
+    },
+    "attDescriptionView.instruction.there.will.be.alert" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "In the alert that appears when you press the 'Continue' button below"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아래 계속하기 버튼을 누르면 나오게 되는 알람에서"
+          }
+        }
+      }
+    },
+    "attDescriptionView.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Would you allow 'FlagFrog' to use service activity information?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리가 서비스 활동정보를 사용하도록 허용하시겠습니까?"
           }
         }
       }
@@ -494,8 +624,37 @@
         }
       }
     },
-    "ErrorView" : {
-
+    "errorView.reload" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reload"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다시 로드하기"
+          }
+        }
+      }
+    },
+    "errorView.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uh-oh, there is something wrong."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문제가 발생하였습니다."
+          }
+        }
+      }
     },
     "feed.frog.button.placeholder" : {
       "localizations" : {
@@ -1029,23 +1188,6 @@
         }
       }
     },
-    "frogSettlementIcon.loading.description" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Not Determined"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "정해지지 않음"
-          }
-        }
-      }
-    },
     "frogSettlementIcon.title" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1140,9 +1282,6 @@
         }
       }
     },
-    "Hello, World!" : {
-
-    },
     "How about showing a little more interest in Earth's neighbors?" : {
       "comment" : "Quiz result comment for middle, middle-low score",
       "localizations" : {
@@ -1236,7 +1375,14 @@
       }
     },
     "My" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My"
+          }
+        }
+      }
     },
     "mypage.accountDeletion.title" : {
       "localizations" : {
@@ -1719,7 +1865,14 @@
       }
     },
     "placeholder" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "placeholder"
+          }
+        }
+      }
     },
     "Q%lld" : {
       "localizations" : {
@@ -2089,6 +2242,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "최대 %lld개의 캔디를 얻을 수 있습니다."
+          }
+        }
+      }
+    },
+    "quizSettingView.quiz.setting.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Setting up a quiz"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 설정하기"
           }
         }
       }
@@ -2544,7 +2714,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이석준"
+            "value" : "Seok Jun Lee"
           }
         }
       }
@@ -2886,33 +3056,6 @@
           }
         }
       }
-    },
-    "계속하기" : {
-
-    },
-    "광고를 통해 고객에게 도달하려는 비즈니스를 지원합니다." : {
-
-    },
-    "다시 로드" : {
-
-    },
-    "아래 계속하기 버튼을 누르면 나오게 되는 알람에서" : {
-
-    },
-    "앱 내에서 맞춤화된 광고를 표시합니다." : {
-
-    },
-    "지구리 서비스를 계속해서 무료로 제공하는데 도움이 됩니다." : {
-
-    },
-    "지구리가 서비스 활동정보를 사용하도록 허용하시겠습니까?" : {
-
-    },
-    "퀴즈 설정하기" : {
-
-    },
-    "허용하시면" : {
-
     }
   },
   "version" : "1.0"

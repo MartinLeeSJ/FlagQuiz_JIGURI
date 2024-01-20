@@ -16,11 +16,11 @@ struct ErrorView: View {
     
     var body: some View {
         VStack {
-            Text("ErrorView")
+            Text("errorView.title")
             Button {
                 onReloadButtonTapped()
             } label: {
-                Text("다시 로드")
+                Text("errorView.reload")
             }
         }
     }

@@ -56,8 +56,8 @@ struct UserRankAccuracyGauge<Label>: View where Label: View {
                     Text("Accuracy")
                 },
                 currentValueLabel: { Text(String(format:"%.0f", accuracy * 100) + "%") },
-                minimumValueLabel: { Text("0").bold().foregroundStyle(.red) },
-                maximumValueLabel: { Text("100").bold().foregroundStyle(.green) }
+                minimumValueLabel: { Text(0, format: .number).bold().foregroundStyle(.red) },
+                maximumValueLabel: { Text(100, format: .number).bold().foregroundStyle(.green) }
             )
         } else {
             Gauge(
@@ -67,8 +67,8 @@ struct UserRankAccuracyGauge<Label>: View where Label: View {
                     Text("?")
                 },
                 currentValueLabel: { Text("?") },
-                minimumValueLabel: { Text("0").bold().foregroundStyle(.red) },
-                maximumValueLabel: { Text("100").bold().foregroundStyle(.green) }
+                minimumValueLabel: { Text(0, format: .number).bold().foregroundStyle(.red) },
+                maximumValueLabel: { Text(100, format: .number).bold().foregroundStyle(.green) }
             )
         }
 
