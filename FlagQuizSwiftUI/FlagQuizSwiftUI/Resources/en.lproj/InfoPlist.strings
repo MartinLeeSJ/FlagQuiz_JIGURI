@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  FlagQuizSwiftUI
+
+  Created by Martin on 1/10/24.
+  
+*/
+"CFBundleDisplayName" = "FlagFrog";
+"NSUserTrackingUsageDescription" = "To enhance ad effectiveness in the app, we utilize an advertising identifier. Opt in for optimized personalized ads, or continue to access basic functionality without consent. You can withdraw your consent anytime in the app settings.";
