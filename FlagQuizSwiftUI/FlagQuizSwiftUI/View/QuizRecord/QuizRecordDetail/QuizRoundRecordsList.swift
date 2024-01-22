@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct QuizRoundRecordsList: View {
+    @EnvironmentObject private var container: DIContainer
+    @State private var presentedCountry: FQCountryISOCode?
     private let rounds: [FQQuizRoundRecord]
     
     init(rounds: [FQQuizRoundRecord]) {
@@ -89,18 +91,27 @@ struct QuizRoundRecordsList: View {
     }
     
     private func flagLabel(of countryCode: FQCountryISOCode) -> some View {
-        HStack {
-            Text(countryCode.flagEmoji ?? "-")
-            Text(countryCode.localizedName ?? "-")
-                .font(.caption)
-            Image(systemName: "chevron.right")
-                .font(.caption)
-                .foregroundStyle(.tertiary)
+        Button {
+            presentedCountry = countryCode
+        } label: {
+            HStack {
+                Text(countryCode.flagEmoji ?? "-")
+                Text(countryCode.localizedName ?? "-")
+                    .font(.caption)
+                    .foregroundStyle(.foreground)
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(.gray)
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 4)
+            .background(in: RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .backgroundStyle(.thinMaterial)
+            
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 4)
-        .background(in: RoundedRectangle(cornerRadius: 8, style: .continuous))
-        .backgroundStyle(.thinMaterial)
+        .sheet(item: $presentedCountry) { countryCode in
+            CountryDetailView(viewModel: .init(container: container, countryCode: countryCode))
+        }
         
     }
 }
