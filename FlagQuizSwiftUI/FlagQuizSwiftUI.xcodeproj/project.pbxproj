@@ -94,6 +94,9 @@
 		5B6EAAD42B454A2D006DA3BE /* AllRankInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6EAAD32B454A2D006DA3BE /* AllRankInfoView.swift */; };
 		5B757DD22B5C1145000E611E /* FrogMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B757DD12B5C1145000E611E /* FrogMenuView.swift */; };
 		5B757DD42B5C1238000E611E /* FrogSettlementIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B757DD32B5C1238000E611E /* FrogSettlementIcon.swift */; };
+		5B757DDA2B5CB17C000E611E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B757DD92B5CB17C000E611E /* GoogleService-Info.plist */; };
+		5B757DDC2B5CB3EF000E611E /* ToastAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B757DDB2B5CB3EF000E611E /* ToastAlert.swift */; };
+		5B757DDE2B5D68B5000E611E /* Ad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B757DDD2B5D68B5000E611E /* Ad.plist */; };
 		5B795CB52B3D298B004AF9EE /* QuizRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B795CB42B3D298B004AF9EE /* QuizRecordView.swift */; };
 		5B795CB72B3D2996004AF9EE /* QuizRecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B795CB62B3D2996004AF9EE /* QuizRecordDetailView.swift */; };
 		5B795CB92B3D29A0004AF9EE /* QuizRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B795CB82B3D29A0004AF9EE /* QuizRecordViewModel.swift */; };
@@ -140,10 +143,8 @@
 		5BC016302B510E2D00A79C45 /* UserNameUpdateRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0162F2B510E2D00A79C45 /* UserNameUpdateRecord.swift */; };
 		5BC016322B51105B00A79C45 /* EditUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC016312B51105B00A79C45 /* EditUserNameViewModel.swift */; };
 		5BC016352B51179C00A79C45 /* EditUserNameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC016342B51179C00A79C45 /* EditUserNameError.swift */; };
-		5BC707612B577F27005752A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC707602B577F27005752A8 /* GoogleService-Info.plist */; };
 		5BC707632B57A46A005752A8 /* BannerAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC707622B57A46A005752A8 /* BannerAdViewController.swift */; };
 		5BC707652B57A576005752A8 /* BannerAdContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC707642B57A576005752A8 /* BannerAdContentView.swift */; };
-		5BC707672B57B802005752A8 /* Ad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC707662B57B802005752A8 /* Ad.plist */; };
 		5BC707692B57BFD2005752A8 /* Bundle+AdId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC707682B57BFD2005752A8 /* Bundle+AdId.swift */; };
 		5BC7076B2B57C79B005752A8 /* RewardedAdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7076A2B57C79B005752A8 /* RewardedAdButton.swift */; };
 		5BC707702B57CCBE005752A8 /* EarthCandyRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC7076F2B57CCBE005752A8 /* EarthCandyRewardView.swift */; };
@@ -236,7 +237,6 @@
 		5B16F9592B28472F0011ACF7 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		5B16F95C2B2847610011ACF7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5B16F95E2B28487B0011ACF7 /* FlagQuizSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlagQuizSwiftUI.entitlements; sourceTree = "<group>"; };
-		5B16F9642B284AAA0011ACF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5B16F9672B2850000011ACF7 /* FQUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUser.swift; sourceTree = "<group>"; };
 		5B16F9692B2851560011ACF7 /* FQUserQuizStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserQuizStat.swift; sourceTree = "<group>"; };
 		5B16F96B2B2852AD0011ACF7 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -300,6 +300,10 @@
 		5B6EAAD32B454A2D006DA3BE /* AllRankInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRankInfoView.swift; sourceTree = "<group>"; };
 		5B757DD12B5C1145000E611E /* FrogMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FrogMenuView.swift; path = ../../../../../../Desktop/FrogMenuView.swift; sourceTree = "<group>"; };
 		5B757DD32B5C1238000E611E /* FrogSettlementIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogSettlementIcon.swift; sourceTree = "<group>"; };
+		5B757DD52B5CB167000E611E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B757DD92B5CB17C000E611E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5B757DDB2B5CB3EF000E611E /* ToastAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastAlert.swift; sourceTree = "<group>"; };
+		5B757DDD2B5D68B5000E611E /* Ad.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Ad.plist; sourceTree = "<group>"; };
 		5B795CB42B3D298B004AF9EE /* QuizRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRecordView.swift; sourceTree = "<group>"; };
 		5B795CB62B3D2996004AF9EE /* QuizRecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRecordDetailView.swift; sourceTree = "<group>"; };
 		5B795CB82B3D29A0004AF9EE /* QuizRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRecordViewModel.swift; sourceTree = "<group>"; };
@@ -347,10 +351,8 @@
 		5BC0162F2B510E2D00A79C45 /* UserNameUpdateRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameUpdateRecord.swift; sourceTree = "<group>"; };
 		5BC016312B51105B00A79C45 /* EditUserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameViewModel.swift; sourceTree = "<group>"; };
 		5BC016342B51179C00A79C45 /* EditUserNameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameError.swift; sourceTree = "<group>"; };
-		5BC707602B577F27005752A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5BC707622B57A46A005752A8 /* BannerAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdViewController.swift; sourceTree = "<group>"; };
 		5BC707642B57A576005752A8 /* BannerAdContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdContentView.swift; sourceTree = "<group>"; };
-		5BC707662B57B802005752A8 /* Ad.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Ad.plist; sourceTree = "<group>"; };
 		5BC707682B57BFD2005752A8 /* Bundle+AdId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+AdId.swift"; sourceTree = "<group>"; };
 		5BC7076A2B57C79B005752A8 /* RewardedAdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedAdButton.swift; sourceTree = "<group>"; };
 		5BC7076F2B57CCBE005752A8 /* EarthCandyRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthCandyRewardView.swift; sourceTree = "<group>"; };
@@ -474,8 +476,8 @@
 				5B16F9462B2831300011ACF7 /* Colors.xcassets */,
 				5B16F9442B2830A60011ACF7 /* LaunchScreen.storyboard */,
 				5BD3B7632B31E5AF00B930E0 /* Localizable.xcstrings */,
+				5B757DDD2B5D68B5000E611E /* Ad.plist */,
 				5BB40D442B4ED4CD00E907F0 /* InfoPlist.strings */,
-				5BC707662B57B802005752A8 /* Ad.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -604,6 +606,7 @@
 				5BE086622B31C25B00D38C01 /* TypeWritingText.swift */,
 				5B67423B2B370F28007335A6 /* FlowingText.swift */,
 				5B6171752B55350B005987A5 /* UserNameInputView.swift */,
+				5B757DDB2B5CB3EF000E611E /* ToastAlert.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -697,9 +700,9 @@
 		5B5C2ACB2B280A32009A382B /* FlagQuizSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				5B16F9642B284AAA0011ACF7 /* Info.plist */,
+				5B757DD52B5CB167000E611E /* Info.plist */,
+				5B757DD92B5CB17C000E611E /* GoogleService-Info.plist */,
 				5B16F95E2B28487B0011ACF7 /* FlagQuizSwiftUI.entitlements */,
-				5BC707602B577F27005752A8 /* GoogleService-Info.plist */,
 				5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */,
 				5B16F9482B2833390011ACF7 /* AppDelegate.swift */,
 				5B3448562B35D3E7002E2222 /* Manager */,
@@ -1202,12 +1205,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B16F9472B2831300011ACF7 /* Colors.xcassets in Resources */,
-				5BC707612B577F27005752A8 /* GoogleService-Info.plist in Resources */,
 				5BB40D422B4ED4CD00E907F0 /* InfoPlist.strings in Resources */,
 				5BB40D3F2B4EC98300E907F0 /* NeoDunggeunmoPro-Regular.ttf in Resources */,
-				5BC707672B57B802005752A8 /* Ad.plist in Resources */,
 				5B5C2AD42B280A34009A382B /* Preview Assets.xcassets in Resources */,
+				5B757DDE2B5D68B5000E611E /* Ad.plist in Resources */,
 				5BD3B7642B31E5AF00B930E0 /* Localizable.xcstrings in Resources */,
+				5B757DDA2B5CB17C000E611E /* GoogleService-Info.plist in Resources */,
 				5B16F9452B2830A60011ACF7 /* LaunchScreen.storyboard in Resources */,
 				5B5C2AD12B280A34009A382B /* Assets.xcassets in Resources */,
 			);
@@ -1380,6 +1383,7 @@
 				5BB40D372B4D281400E907F0 /* DocumentReference+Extension.swift in Sources */,
 				5B9FC6022B47D90300B694C7 /* EarthCandyService.swift in Sources */,
 				5B795CC02B3D5AD1004AF9EE /* FQQuizRoundRecord.swift in Sources */,
+				5B757DDC2B5CB3EF000E611E /* ToastAlert.swift in Sources */,
 				5B34484C2B35527F002E2222 /* QuizStatService.swift in Sources */,
 				5B32103A2B542C2800B2134B /* QuizProgressView.swift in Sources */,
 				5BE086582B31907C00D38C01 /* FQCountryDetail.swift in Sources */,

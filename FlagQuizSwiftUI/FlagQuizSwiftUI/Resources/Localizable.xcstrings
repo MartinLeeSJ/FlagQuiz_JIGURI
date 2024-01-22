@@ -2799,6 +2799,70 @@
         }
       }
     },
+    "toastAlert.failed.to.get.ad.reward" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to get a ad viewing reward"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "광고시청 보상을 받는데 실패했습니다"
+          }
+        }
+      }
+    },
+    "toastAlert.failed.to.get.daily.reward" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to get a daily attendance reward"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일일 출석 보상을 받는데 실패했습니다"
+          }
+        }
+      }
+    },
+    "toastAlert.get.ad.reward.%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Received %lld points as a ad viewing reward"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "광고시청 보상으로 %lld개의 지구알사탕을 받았습니다"
+          }
+        }
+      }
+    },
+    "toastAlert.get.daily.reward.%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Received %lld points as a daily attendance reward"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일일 출석 보상으로 %lld개의 지구알사탕을 받았습니다"
+          }
+        }
+      }
+    },
     "total.quiz.rank.progress.title" : {
       "localizations" : {
         "en" : {
