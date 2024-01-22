@@ -34,9 +34,7 @@ final class FQUserQuizStatRepository: FQUserQuizStatRepositoryType {
         let docRef = db.collection(CollectionKey.UserQuizStats).document(model.userId)
         
         if var object = try? await docRef.getDocument(as: FQUserQuizStatObject.self) {
-            object.countryQuizCount += model.countryQuizCount
-            object.correctCountryQuizCount += model.correctCountryQuizCount
-            
+
             object.capitalQuizCount = (object.capitalQuizCount ?? 0) + (model.capitalQuizCount ?? 0)
             object.correctCapitalQuizCount = (object.correctCapitalQuizCount ?? 0) + (model.correctCapitalQuizCount ?? 0)
             
@@ -52,9 +50,8 @@ final class FQUserQuizStatRepository: FQUserQuizStatRepositoryType {
         }
         
         try docRef.setData(
-            from: FQUserQuizStatObject(
-                correctCountryQuizCount: model.countryQuizCount,
-                countryQuizCount: model.countryQuizCount,
+            from: 
+                FQUserQuizStatObject(
                 correctCaptialQuizCount: model.correctCapitalQuizCount,
                 captialQuizCount: model.correctCapitalQuizCount,
                 correctFlagToNameQuizCount: model.correctFlagToNameQuizCount,

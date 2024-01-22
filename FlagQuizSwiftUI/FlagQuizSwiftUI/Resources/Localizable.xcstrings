@@ -1366,10 +1366,16 @@
     },
     "loginView.title" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FlagFrog: Flag Quizzes"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "로그인"
+            "value" : "지구리: 국기퀴즈"
           }
         }
       }

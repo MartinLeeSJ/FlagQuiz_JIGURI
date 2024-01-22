@@ -9,10 +9,14 @@ import Foundation
 
 struct FQUserQuizStat: Codable {
     var userId: String
-    var correctCountryQuizCount: Int
-    var countryQuizCount: Int
+    var totalCorrectQuizCount: Int {
+        (correctCapitalQuizCount ?? 0) + (correctFlagToNameQuizCount ?? 0) + (correctNameToFlagQuizCount ?? 0)
+    }
+    var totalQuizCount: Int {
+        (capitalQuizCount ?? 0) + (flagToNameQuizCount ?? 0) + (nameToFlagQuizCount ?? 0)
+    }
     var totalAccuracy: Double {
-        Double(correctCountryQuizCount) / Double(countryQuizCount)
+        Double(totalCorrectQuizCount) / Double(totalQuizCount)
     }
     
     var correctCapitalQuizCount: Int?
@@ -44,8 +48,8 @@ struct FQUserQuizStat: Codable {
     
     var rank: FQUserRank {
         .evaluateOnesRank(
-            correctQuizCount: correctCountryQuizCount,
-            totalQuizCount: countryQuizCount
+            correctQuizCount: totalCorrectQuizCount,
+            totalQuizCount: totalQuizCount
         )
     }
 }
@@ -54,8 +58,6 @@ extension FQUserQuizStat {
     static var mock: FQUserQuizStat {
         .init(
             userId: "1",
-            correctCountryQuizCount: 180,
-            countryQuizCount: 200,
             correctCapitalQuizCount: 30,
             capitalQuizCount: 40,
             correctFlagToNameQuizCount: 50,

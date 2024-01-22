@@ -71,8 +71,8 @@ struct UserRankView: View {
                     minValueText: "\(rank.rankUpQuizCountCriteria.min)",
                     max: Double(rank.rankUpQuizCountCriteria.max),
                     maxValueText: "\(rank.rankUpQuizCountCriteria.max)",
-                    currentValue: Double(userQuizStat.countryQuizCount),
-                    currentValueText: "\(userQuizStat.countryQuizCount)"
+                    currentValue: Double(userQuizStat.totalQuizCount),
+                    currentValueText: "\(userQuizStat.totalQuizCount)"
                 )
             }
             

@@ -10,9 +10,7 @@ import FirebaseFirestore
 
 struct FQUserQuizStatObject: Codable {
     @DocumentID var userId: String?
-    var correctCountryQuizCount: Int
-    var countryQuizCount: Int
-    
+
     var correctCapitalQuizCount: Int?
     var capitalQuizCount: Int?
     
@@ -26,8 +24,6 @@ struct FQUserQuizStatObject: Codable {
     
     
     init(
-        correctCountryQuizCount: Int = 0,
-        countryQuizCount: Int = 0,
         correctCaptialQuizCount: Int? = nil,
         captialQuizCount: Int? = nil,
         correctFlagToNameQuizCount: Int? = nil,
@@ -36,8 +32,6 @@ struct FQUserQuizStatObject: Codable {
         nameToFlagQuizCount: Int? = nil,
         lastUpdated: Timestamp = .init(date: Date.now)
     ) {
-        self.correctCountryQuizCount = correctCountryQuizCount
-        self.countryQuizCount = countryQuizCount
         self.correctCapitalQuizCount = correctCaptialQuizCount
         self.capitalQuizCount = captialQuizCount
         self.correctFlagToNameQuizCount = correctFlagToNameQuizCount
@@ -54,8 +48,6 @@ extension FQUserQuizStatObject {
         guard let userId else { return nil }
         return .init(
             userId: userId,
-            correctCountryQuizCount: correctCountryQuizCount,
-            countryQuizCount: countryQuizCount,
             correctCapitalQuizCount: correctCapitalQuizCount,
             capitalQuizCount: capitalQuizCount,
             correctFlagToNameQuizCount: correctFlagToNameQuizCount,

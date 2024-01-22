@@ -36,8 +36,6 @@ final class QuizStatService: QuizStatServiceType {
         try await repository.addQuizStat(
             quizStat: .init(
                 userId: userId,
-                correctCountryQuizCount: quiz.correctQuizRoundsCount,
-                countryQuizCount: quiz.quizCount.rawValue,
                 correctCapitalQuizCount: capitalQuizResult.correct,
                 capitalQuizCount: capitalQuizResult.total,
                 correctFlagToNameQuizCount: flagToNameQuizResult.correct,

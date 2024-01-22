@@ -16,13 +16,13 @@ struct QuizStatCell: View {
             title: "news.quiz.stats.title"
         ) {
             VStack(spacing: 4) {
-                Text("\(viewModel.quizStat?.correctCountryQuizCount ?? 0)")
+                Text("\(viewModel.quizStat?.totalCorrectQuizCount ?? 0)")
                     .font(.subheadline)
                 
                 Divider()
                     .frame(width: 50)
                 
-                Text("\(viewModel.quizStat?.countryQuizCount ?? 0)")
+                Text("\(viewModel.quizStat?.totalQuizCount ?? 0)")
                     .font(.subheadline)
             }
             .foregroundStyle(Color(uiColor: .label))
