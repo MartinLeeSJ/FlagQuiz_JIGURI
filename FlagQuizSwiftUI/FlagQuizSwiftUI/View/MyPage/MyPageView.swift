@@ -177,10 +177,9 @@ struct MyPageView: View {
                 presentingMenu = .info
             }
             .myPageContainer()
-            .overlay {
-                //TODO: 공지 로드시 로케일정보를 전달해줘야함
-                Text(locale.language.languageCode?.identifier(.alpha2) ?? "abcd")
-            }
+            
+            //TODO: 공지 로드시 로케일정보를 전달해줘야함
+            
         }
     }
     
