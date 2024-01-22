@@ -36,6 +36,7 @@ struct EarthCandyRewardView: View {
             }
             .navigationTitle("rewardView.title") //오늘의 무료 지구 알사탕
             .navigationBarTitleDisplayMode(.inline)
+            .toastAlert($viewModel.toastAlert)
             .task {
                 viewModel.observe()
             }
@@ -69,7 +70,7 @@ struct EarthCandyRewardView: View {
             Spacer()
            
             Button {
-                viewModel.send(.getDailyReward)
+                getDailyReward()
             } label: {
                 if let canGetDailyReward = viewModel.canGetDailyReward,
                    canGetDailyReward {
@@ -119,6 +120,10 @@ struct EarthCandyRewardView: View {
        
         }
         .rewardContentContainer()
+    }
+    
+    private func getDailyReward() {
+        viewModel.send(.getDailyReward)
     }
 }
 

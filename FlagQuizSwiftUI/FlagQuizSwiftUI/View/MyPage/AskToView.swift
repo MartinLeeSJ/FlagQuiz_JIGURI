@@ -13,6 +13,7 @@ struct AskToView: View {
     @State private var isPresented: Bool = false
     @State private var offset: CGFloat = 0
     @State private var workItem: DispatchWorkItem?
+    @State private var toast: ToastAlert? = nil
     
     private let mail: String = "nomadmeta.company@gmail.com"
     
@@ -31,50 +32,11 @@ struct AskToView: View {
                 mail,
                 forPasteboardType: UTType.plainText.identifier
             )
-            toast()
+            toast = ToastAlert(message: String(localized: "askToView.copy.completed"))
         }
-        .overlay(alignment: .bottom) {
-            if isPresented {
-                Text("askToView.copy.completed")
-                    .font(.callout)
-                    .foregroundStyle(scheme == .dark ? .black : .white)
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 12)
-                    .background(in: RoundedRectangle(cornerRadius: 8, style: .continuous))
-                    .backgroundStyle(scheme == .dark ? .white : .black)
-                    .padding(.bottom)
-                    .offset(y: offset)
-                    .animation(.spring, value: offset)
-            }
-        }
-    }
-    
-    private func toast() {
-        UIImpactFeedbackGenerator(style: .light)
-              .impactOccurred()
+        .toastAlert($toast)
         
-        workItem?.cancel()
-        isPresented = true
-        offset = .zero
-       
-        let task = DispatchWorkItem {
-               dismissToast()
-        }
-             
-        workItem = task
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            offset = -20
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: task)
     }
-    
-    private func dismissToast() {
-        isPresented = false
-        workItem?.cancel()
-        workItem = nil
-      }
-    
-    
 }
 
 #Preview {
