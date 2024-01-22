@@ -474,6 +474,22 @@
         }
       }
     },
+    "createFrogView.select.country.whatever.your.country" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are free to choose whatever your nationality is"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "국적에 관계없이 자유롭게 선택하실 수 있습니다"
+          }
+        }
+      }
+    },
     "createFrogView.shuffle.button.title" : {
       "localizations" : {
         "en" : {
@@ -495,13 +511,29 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Where is my first settlement?"
+            "value" : "Where is FlagFrog's first settlement?"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "내 첫번째 정착지는 어디인가요?"
+            "value" : "지구리의 첫 정착지는 어디인가요?"
+          }
+        }
+      }
+    },
+    "createFrogView.you.can.change.after.using.points" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can change it after using the points(EarthCandy) later"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추후 포인트를 사용하여 변경하실 수 있습니다"
           }
         }
       }

@@ -29,6 +29,7 @@ struct CreateFrogView: View {
                     
                     searchACountryView(isPortrait: true)
                     
+                    
                     chooseCountryButton
                 }
                 .padding()
@@ -88,11 +89,17 @@ struct CreateFrogView: View {
 
         }
         .padding()
-        .frame(minHeight: isPortrait ? 360 : nil, maxHeight: 380)
+        .frame(minHeight: isPortrait ? 385 : nil, maxHeight: 390)
         .background(in: RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
     
+    @ViewBuilder
     var chooseCountryButton: some View {
+        Text("createFrogView.you.can.change.after.using.points")
+            .foregroundStyle(.black)
+            .font(.caption2)
+            .fontWeight(.medium)
+            
         Button {
             viewModel.submitCountry()
         } label: {
@@ -117,15 +124,19 @@ struct CreateFrogView: View {
         }
     }
     
+    @ViewBuilder
     var chosenCountry: some View {
         HStack {
             if let selectedCode = viewModel.selectedCode {
+                
                 Text(selectedCode.flagEmoji ?? "")
-                   
+                
                 Text(selectedCode.localizedName ?? "")
+                
                 
             } else {
                 Text("createFrogView.select.country.below.list")
+              
             }
         }
         .font(.subheadline)
@@ -136,6 +147,9 @@ struct CreateFrogView: View {
             .thinMaterial,
             in: RoundedRectangle(cornerRadius: 8, style: .continuous)
         )
+        Text("createFrogView.select.country.whatever.your.country")
+            .font(.caption2)
+            .padding(.vertical, -12)
     }
     
     var countryList: some View {
