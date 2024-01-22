@@ -17,6 +17,7 @@ final class EarthCandyRewardViewModel: ObservableObject {
     }
     @Published var canGetDailyReward: Bool?
     @Published var restCountOfAdReward: Int?
+    @Published var toastAlert: ToastAlert?
     @AppStorage("didVisitEarthRewardView") var didVisit: Bool = false
      
     private let container: DIContainer
@@ -106,8 +107,22 @@ final class EarthCandyRewardViewModel: ObservableObject {
             )
             .eraseToAnyPublisher()
         }
-        .sink { _ in
-            //TODO:
+        .sink { [weak self] completion in
+            switch completion {
+            case .finished:
+                self?.toastAlert = .init(
+                    message: String(
+                        localized: "toastAlert.get.daily.reward.\(FQEarthCandy.dailyRewardCandyPoint)"
+                    )
+                )
+            case .failure:
+                self?.toastAlert = .init(
+                    style: .failed,
+                    message: String(
+                        localized: "toastAlert.failed.to.get.daily.reward"
+                    )
+                )
+            }
         } receiveValue: { _ in
             
         }
@@ -133,8 +148,22 @@ final class EarthCandyRewardViewModel: ObservableObject {
             )
             .eraseToAnyPublisher()
         }
-        .sink { _ in
-            //TODO:
+        .sink { [weak self] completion in
+            switch completion {
+            case .finished:
+                self?.toastAlert = .init(
+                    message: String(
+                        localized: "toastAlert.get.ad.reward.\(FQEarthCandy.adRewardCandyPoint)"
+                    )
+                )
+            case .failure:
+                self?.toastAlert = .init(
+                    style: .failed,
+                    message: String(
+                        localized: "toastAlert.failed.to.get.ad.reward"
+                    )
+                )
+            }
         } receiveValue: { _ in
             
         }
