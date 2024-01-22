@@ -10,6 +10,7 @@ import SwiftUI
 struct QuizSettingControls: View {
     @EnvironmentObject private var viewModel: QuizViewModel
     @EnvironmentObject private var navigationModel: NavigationModel
+    @AppStorage("didthequiz") private var didTheQuiz: Bool = false
     
     @State private var quizCount: FQQuizCount = .ten
     @State private var quizOptionsCount: FQQuizOptionsCount = .four
@@ -18,28 +19,54 @@ struct QuizSettingControls: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            HStack(alignment: .top, spacing: 16) {
-                quizTypeMenu
-                Divider()
-                    .frame(height: 100)
-                quizCountPicker
-                Divider()
-                    .frame(height: 100)
-                quizItemCountPicker
+            ZStack {
+                VStack(spacing: 20) {
+                    HStack(alignment: .top, spacing: 16) {
+                        quizTypeMenu
+                        Divider()
+                            .frame(height: 100)
+                        quizCountPicker
+                        Divider()
+                            .frame(height: 100)
+                        quizItemCountPicker
+                    }
+                    
+                    
+                    Text("quizSettingControls.total.maximum.candy.description\(quizType.advantageCandy + quizCount.rawValue +  quizOptionsCount.advantageCandy)")
+                        .font(.caption)
+                        .fontWeight(.medium)
+                        .foregroundStyle(.black)
+                        .padding(4)
+                        .frame(maxWidth: .infinity)
+                        .background(in: Capsule(style: .continuous))
+                        .backgroundStyle(.fqAccent)
+                        .padding(.horizontal)
+                }
+                .overlay {
+                    if !didTheQuiz {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundStyle(.ultraThinMaterial)
+                    }
+                }
+                
+                if !didTheQuiz {
+                    VStack(spacing: 16) {
+                        Text(
+                            String(
+                                localized: "quizSettingControls.quiz.first",
+                                defaultValue: "Shall we just start the quiz first?"
+                            )
+                        )
+                        Image(systemName: "arrow.down")
+                    }
+                    .font(.headline)
+                }
             }
             
-            
-            Text("quizSettingControls.total.maximum.candy.description\(quizType.advantageCandy + quizCount.rawValue +  quizOptionsCount.advantageCandy)")
-                .font(.caption)
-                .fontWeight(.medium)
-                .foregroundStyle(.black)
-                .padding(4)
-                .frame(maxWidth: .infinity)
-                .background(in: Capsule(style: .continuous))
-                .backgroundStyle(.fqAccent)
-                .padding(.horizontal)
-            
             Button {
+                if !didTheQuiz {
+                    didTheQuiz = true
+                }
                 viewModel.send(
                     .setNewQuiz(
                         count: quizCount,

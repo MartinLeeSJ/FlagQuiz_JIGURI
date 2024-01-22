@@ -11,6 +11,7 @@ import Combine
 @MainActor
 final class UserRankViewModel: ObservableObject {
     @Published var userQuizStat: FQUserQuizStat?
+    @Published var toast: ToastAlert?
     
     private let container: DIContainer
     private var cancellables = Set<AnyCancellable>()
@@ -21,11 +22,29 @@ final class UserRankViewModel: ObservableObject {
     
     func loadUserQuizStat() async {
         guard let userId = container.services.authService.checkAuthenticationState() else {
+            toast = ToastAlert(
+                style: .failed,
+                message: String(
+                    localized: "toastAlert.invalid.user",
+                    defaultValue: "Invalid User"
+                )
+            )
             return
         }
         
+        
         do {
-            self.userQuizStat = try await container.services.quizStatService.getQuizStat(ofUser: userId)
+            if let userQuizStat = try await container.services.quizStatService.getQuizStat(ofUser: userId) {
+                self.userQuizStat = userQuizStat
+            } else {
+                toast = .init(
+                    style: .failed,
+                    message: String(
+                        localized: "toastAlert.userQuizStat.nilData",
+                        defaultValue: "You have to do a quiz first"
+                    )
+                )
+            }
         } catch {
             print(error.localizedDescription)
         }

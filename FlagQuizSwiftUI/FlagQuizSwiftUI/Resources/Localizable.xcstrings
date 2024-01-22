@@ -2178,6 +2178,23 @@
         }
       }
     },
+    "quizSettingControls.quiz.first" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Shall we just start the quiz first?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "그냥 먼저 퀴즈를 시작해 볼까요?"
+          }
+        }
+      }
+    },
     "quizSettingControls.quizCount.candy%lld" : {
       "localizations" : {
         "en" : {
@@ -2891,6 +2908,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "일일 출석 보상으로 %lld개의 지구알사탕을 받았습니다"
+          }
+        }
+      }
+    },
+    "toastAlert.invalid.user" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Invalid User"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유효하지 않은 사용자입니다. 다시 로그인 해주세요."
+          }
+        }
+      }
+    },
+    "toastAlert.userQuizStat.nilData" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You have to do a quiz first"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈를 먼저 풀어야 합니다."
           }
         }
       }

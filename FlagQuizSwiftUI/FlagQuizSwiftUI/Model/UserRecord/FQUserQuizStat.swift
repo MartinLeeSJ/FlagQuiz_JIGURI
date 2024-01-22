@@ -37,6 +37,8 @@ struct FQUserQuizStat: Codable {
         guard let correct,
               let total else { return nil }
         
+        guard total != 0 else { return 0.0 }
+        
         return Double(correct) / Double(total)
     }
     

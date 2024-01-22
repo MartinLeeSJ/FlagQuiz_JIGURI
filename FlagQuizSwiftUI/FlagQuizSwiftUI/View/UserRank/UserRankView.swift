@@ -17,15 +17,18 @@ struct UserRankView: View {
 
     
     var body: some View {
-        if let userQuizStat = viewModel.userQuizStat {
-            content(userQuizStat)
-        } else {
-            content(.mock)
-                .redacted(reason: .placeholder)
-                .task {
-                    await viewModel.loadUserQuizStat()
-                }
+        Group {
+            if let userQuizStat = viewModel.userQuizStat {
+                content(userQuizStat)
+            } else {
+                content(.mock)
+                    .redacted(reason: .placeholder)
+                    .task {
+                        await viewModel.loadUserQuizStat()
+                    }
+            }
         }
+        .toastAlert($viewModel.toast)
     }
     
     private func content(_ userQuizStat: FQUserQuizStat) -> some View {

@@ -10,7 +10,7 @@ import Combine
 import FirebaseFirestore
 
 protocol FQUserQuizStatRepositoryType {
-    func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStatObject
+    func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStatObject?
     func addQuizStat(quizStat model: FQUserQuizStat) async throws
     func deleteQuizStat(ofUser userId: String) async throws
 }
@@ -19,11 +19,11 @@ final class FQUserQuizStatRepository: FQUserQuizStatRepositoryType {
     
     private let db = Firestore.firestore()
     
-    func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStatObject {
+    func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStatObject? {
         
         let docRef = db.collection(CollectionKey.UserQuizStats).document(userId)
         
-        let object = try await docRef.getDocument(as: FQUserQuizStatObject.self)
+        let object = try await docRef.getDocument(as: FQUserQuizStatObject?.self)
         
         return object
     }

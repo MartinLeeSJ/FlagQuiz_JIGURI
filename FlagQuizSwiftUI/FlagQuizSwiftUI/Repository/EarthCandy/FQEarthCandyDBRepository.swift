@@ -11,7 +11,7 @@ import Combine
 import FirebaseFirestore
 
 protocol FQEarthCandyDBRepositoryType {
-    func createEarthCandy(ofUser userId: String) -> AnyPublisher<Void, DBError>
+    func createEarthCandy(ofUser userId: String, candyCount: Int) -> AnyPublisher<Void, DBError>
     
     func getEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandyObject?, DBError>
     func observeEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandyObject?, DBError>
@@ -41,8 +41,8 @@ final class FQEarthCandyDBRepository: FQEarthCandyDBRepositoryType {
         db.collection(CollectionKey.EarthCandy)
     }
     
-    func createEarthCandy(ofUser userId: String) -> AnyPublisher<Void, DBError> {
-        let newObject: FQEarthCandyObject = .init(point: 0)
+    func createEarthCandy(ofUser userId: String, candyCount: Int = 0) -> AnyPublisher<Void, DBError> {
+        let newObject: FQEarthCandyObject = .init(point: candyCount)
         return Future { [weak self] promise in
             guard let self else {
                 promise(.failure(DBError.invalidSelf))

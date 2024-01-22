@@ -65,7 +65,7 @@ final class FQUserRepository: FQUserRepositoryType {
     func setUser(ofUser userId: String, object: FQUserObject) -> AnyPublisher<Void, DBError> {
         Future { [weak self] promise in
             do {
-                try self?.usersCollection.document(userId).setData(from: object, mergeFields: [])
+                try self?.usersCollection.document(userId).setData(from: object)
                 promise(.success(()))
             } catch {
                 promise(.failure(error))

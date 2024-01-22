@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol QuizStatServiceType {
-    func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStat
+    func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStat?
     func addQuizStat(ofUser userId: String, quiz: FQQuiz) async throws
     func deleteQuizStat(ofUser userId: String) async throws
 }
@@ -21,14 +21,11 @@ final class QuizStatService: QuizStatServiceType {
         self.repository = repository
     }
     
-    func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStat {
+    func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStat? {
         let object = try await repository.getQuizStat(ofUser: userId)
         
-        guard let model = object.toModel() else {
-            throw ServiceError.failedToConvertObjectIntoModel
-        }
+        return object?.toModel()
         
-        return model
     }
     
     func addQuizStat(ofUser userId: String, quiz: FQQuiz) async throws {
@@ -57,7 +54,7 @@ final class QuizStatService: QuizStatServiceType {
 }
 
 final class StubQuizStatService: QuizStatServiceType {
-    func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStat {
+    func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStat? {
         .mock
     }
     
