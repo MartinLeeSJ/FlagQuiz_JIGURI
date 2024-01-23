@@ -32,6 +32,12 @@ struct NewsView: View {
                     NewsGrid()
                 }
             }
+            .sheet(item: $viewModel.linkingLocation) {
+                LinkingLoginView(
+                    viewModel: .init(container: container),
+                    location: $0
+                )
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     EarthCandyView()
@@ -45,7 +51,6 @@ struct NewsView: View {
                             .font(.custom(FontName.pixel, size: 24))
                     }
                 }
-              
             }
             .task {
                 await viewModel.load()

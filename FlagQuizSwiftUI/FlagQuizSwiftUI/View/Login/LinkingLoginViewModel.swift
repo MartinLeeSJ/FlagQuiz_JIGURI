@@ -11,17 +11,15 @@ import AuthenticationServices
 
 class LinkingLoginViewModel: ObservableObject {
     @Published var linkingState: LinkingLoginState = .unlinked
+    @Published var presentsShouldLogOutAlert: Bool = false
     @Published var toast: ToastAlert?
     
     private let container: DIContainer
-    let location: LinkingLoginLocation
     
     init(
-        container: DIContainer,
-        location: LinkingLoginLocation
+        container: DIContainer
     ) {
         self.container = container
-        self.location = location
     }
     
     private var userId: String?
@@ -31,6 +29,7 @@ class LinkingLoginViewModel: ObservableObject {
     enum Action {
         case requestSignInWithApple(ASAuthorizationAppleIDRequest)
         case completeSignInWithApple(ASAuthorization)
+        case signOut
     }
     
     func send(_ action: Action) {
@@ -48,31 +47,78 @@ class LinkingLoginViewModel: ObservableObject {
                 nonce: nonce
             )
             
-            completeAuthentication(from: publisher)
+            completeLinking(from: publisher)
+        case .signOut:
+            signOut()
         }
     }
     
-    private func completeAuthentication(from publisher: AnyPublisher<FQUser, AuthenticationServiceError>) {
+    private func completeLinking(from publisher: AnyPublisher<FQUser, AuthenticationServiceError>) {
         linkingState = .linking
         
         publisher
-            .mapError { ServiceError.custom($0) }
-            .sink { [weak self] completion in
-                if case .failure = completion {
-                    self?.linkingState = .failed
-                    self?.toast = .init(
-                        style: .failed,
-                        message: String(
-                            localized: "toastAlert.linkingLogin.failed",
-                            defaultValue: "Failed to create an account"
-                        )
+            .flatMap { [weak self] user in
+                guard let self else {
+                    return Fail<FQUser, AuthenticationServiceError>(error: .invalidated).eraseToAnyPublisher()
+                }
+                
+                return self.container.services.userService.updateUser(
+                    of: user.id,
+                    model: .init(
+                        id: user.id,
+                        createdAt: user.createdAt,
+                        email: user.email,
+                        userName: user.userName,
+                        isAnonymous: false
                     )
+                )
+                .map { user }
+                .mapError { AuthenticationServiceError.custom($0) }
+                .eraseToAnyPublisher()
+            }
+            .sink { [weak self] completion in
+                if case .failure(let error) = completion {
+                    self?.linkingState = .failed
+                    
+                    switch error {
+                    case .credentialAlreadyInUse:
+                        self?.toast = .init(
+                            style: .failed,
+                            message: String(
+                                localized: "toastAlert.linkingLogin.failed.already.In.Use",
+                                defaultValue: "This Account Is Aleady In Use"
+                            )
+                        )
+                        self?.presentsShouldLogOutAlert = true
+                    default :
+                        self?.toast = .init(
+                            style: .failed,
+                            message: String(
+                                localized: "toastAlert.linkingLogin.failed",
+                                defaultValue: "Failed to create an account"
+                            )
+                        )
+                    }
                 }
             } receiveValue: { [weak self] user in
                 self?.userId = user.id
                 self?.linkingState = .linked
             }
             .store(in: &cancellables)
+    }
+    
+    private func signOut() {
+        do {
+            try container.services.authService.signOut()
+        } catch {
+            self.toast = .init(
+                style: .failed,
+                message: String(
+                    localized: "toastAlert.linkingLogin.failed.to.signOut",
+                    defaultValue: "Failed To Sign Out"
+                )
+            )
+        }
     }
     
 }
@@ -84,59 +130,3 @@ enum LinkingLoginState: Hashable {
     case failed
 }
 
-enum LinkingLoginLocation {
-    case mypage
-    case reward
-    case frogStateButton
-    case userRank
-    case countryStat
-    case userStat
-    case store
-    case closet
-    
-    var description: String {
-        switch self {
-        case .mypage:
-            String(
-                localized: "linkingLogin.mypage.description",
-                defaultValue: "To access more features,\nplease create an account now."
-            )
-        case .reward:
-            String(
-                localized: "linkingLogin.reward.description",
-                defaultValue: "To receive EarthCandy rewards,\nplease create an account now."
-            )
-        case .frogStateButton:
-            String(
-                localized: "linkingLogin.frogStateButton.description",
-                defaultValue: "To make the frog happy,\nplease create an account now."
-            )
-        case .userRank:
-            String(
-                localized: "linkingLogin.userRank.description",
-                defaultValue: "If you want to see your detailed rank,\nplease create an account now."
-            )
-        case .countryStat:
-            String(
-                localized: "linkingLogin.countryStat.description",
-                defaultValue: "If you'd like to see your country stats, \n please create an account now."
-            )
-        case .userStat:
-            String(
-                localized: "linkingLogin.userStat.description",
-                defaultValue: "If you'd like to see your quiz record, \n please create an account now."
-            )
-        case .store:
-            String(
-                localized: "linkingLogin.store.description",
-                defaultValue: "To access the store,\nplease create an account now."
-            )
-        case .closet:
-            String(
-                localized: "linkingLogin.closet.description",
-                defaultValue: "To access the closet,\nplease create an account now."
-            )
-        }
-    }
-    
-}

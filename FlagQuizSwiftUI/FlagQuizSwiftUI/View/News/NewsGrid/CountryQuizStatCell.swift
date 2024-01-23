@@ -32,7 +32,15 @@ struct CountryQuizStatCell: View {
         }
         .gridCellColumns(2)
         .onTapGesture {
-            navigationModel.navigate(to: NewsDestination.countryQuizStat)
+            guard let isAnonymousUser = viewModel.isAnonymousUser() else {
+                 return
+            }
+            
+            if isAnonymousUser {
+                viewModel.setLinkingLocation(.countryStat)
+            } else {
+                navigationModel.navigate(to: NewsDestination.countryQuizStat)
+            }
         }
     }
 }

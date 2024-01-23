@@ -15,6 +15,9 @@ protocol EarthCandyServiceType {
     func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Bool, ServiceError>
     func deleteEarthCandy(ofUser userId: String) async throws
     
+    func getEarthCandyRewardRecord(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandyRewardRecord?, ServiceError>
     
     func observeEarthCandyRewardRecord(
         ofUser userId: String
@@ -66,7 +69,7 @@ final class EarthCandyService: EarthCandyServiceType {
                 guard let self else {
                     return Fail<Void, DBError>(error: .invalidSelf).eraseToAnyPublisher()
                 }
-                guard let object else {
+                if object == nil {
                     return self.repository.createEarthCandy(ofUser: userId, candyCount: point).eraseToAnyPublisher()
                 }
                 
@@ -89,6 +92,16 @@ final class EarthCandyService: EarthCandyServiceType {
     func deleteEarthCandy(ofUser userId: String) async throws {
         try await repository.deleteEarthCandy(ofUser: userId)
     }
+    
+    func getEarthCandyRewardRecord(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandyRewardRecord?, ServiceError> {
+        repository.getEarthCandyRewardRecord(ofUser: userId)
+            .map { $0?.toModel() }
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
+    }
+    
     
     func observeEarthCandyRewardRecord(
         ofUser userId: String
@@ -138,6 +151,13 @@ final class StubEarthCandyService: EarthCandyServiceType {
     }
     
     func deleteEarthCandy(ofUser userId: String) async throws {}
+    
+    func getEarthCandyRewardRecord(
+        ofUser userId: String
+    ) -> AnyPublisher<FQEarthCandyRewardRecord?, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
     
     func observeEarthCandyRewardRecord(
         ofUser userId: String

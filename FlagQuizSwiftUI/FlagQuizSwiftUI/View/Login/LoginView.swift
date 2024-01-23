@@ -24,6 +24,7 @@ struct LoginView: View {
                     .frame(width: 200)
                 Text("loginView.title")
                     .font(.custom(FontName.pixel, size: 45))
+                    .foregroundStyle(.black)
                 
                 Spacer()
                 
@@ -36,6 +37,7 @@ struct LoginView: View {
                 .multilineTextAlignment(.center)
                 .font(.caption)
                 .fontWeight(.medium)
+                .foregroundStyle(.black)
                 
                 SignInWithAppleButton(.continue) { request in
                     authViewModel.send(.requestSignInWithApple(request))
@@ -55,6 +57,7 @@ struct LoginView: View {
                                 defaultValue:"OR"
                             )
                         )
+                        .foregroundStyle(.black)
                         .fontWeight(.bold)
                         .padding(2)
                         .background(.fqAccent)

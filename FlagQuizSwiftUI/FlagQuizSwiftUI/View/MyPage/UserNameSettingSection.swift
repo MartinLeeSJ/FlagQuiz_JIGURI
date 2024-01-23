@@ -14,6 +14,7 @@ struct UserNameSettingSection: View {
     
     @ObservedObject private var viewModel: MyPageViewModel
     @Binding private var presentingMenu: MyPageMenuType?
+    @State private var linkingLoginLocation: LinkingLoginLocation?
     
     init(
         viewModel: MyPageViewModel,
@@ -23,7 +24,6 @@ struct UserNameSettingSection: View {
         self._presentingMenu = presentingMenu
     }
     
-    @State private var presentsLinkingLoginView: Bool = false
     
     
     var body: some View {
@@ -57,7 +57,7 @@ struct UserNameSettingSection: View {
                     if let isAnonymous = viewModel.isAnonymousUser(),
                        isAnonymous {
                         Button {
-                            presentsLinkingLoginView = true
+                            linkingLoginLocation = .mypage
                         } label: {
                             Text("mypage.logInButton.title")
                                 .font(.subheadline)
@@ -69,11 +69,12 @@ struct UserNameSettingSection: View {
                             Capsule()
                                 .stroke()
                         }
-                        .linkingLogin(
-                            isPresented: $presentsLinkingLoginView,
-                            container: container,
-                            location: .mypage
-                        )
+                        .sheet(item: $linkingLoginLocation) { location in
+                            LinkingLoginView(
+                                viewModel: .init(container: container),
+                                location: location
+                            )
+                        }
                         
                     } else {
                         Button {

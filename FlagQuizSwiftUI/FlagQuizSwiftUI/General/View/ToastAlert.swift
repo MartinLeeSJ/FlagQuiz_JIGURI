@@ -60,7 +60,6 @@ fileprivate struct ToastAlertView: View {
         Text(message)
             .font(.callout)
             .padding()
-            .frame(width: width)
             .background {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                     .foregroundStyle(.background)

@@ -1500,6 +1500,39 @@
         }
       }
     },
+    "linkingLoginView.should.signOut.alert.message" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You already have an account. Please Sign In"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음 화면에서 다시 애플로그인을 진행해주세요!"
+          }
+        }
+      }
+    },
+    "linkingLoginView.should.signOut.alert.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This Account Is Aleady In Use"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미 등록한 계정입니다."
+          }
+        }
+      }
+    },
     "loginView.anonymous.login.title" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1993,6 +2026,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "-"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확인"
           }
         }
       }
@@ -3149,6 +3192,46 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Failed to create an account"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 계정을 만드는데 실패했습니다."
+          }
+        }
+      }
+    },
+    "toastAlert.linkingLogin.failed.already.In.Use" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This Account Is Aleady In Use"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미 등록한 계정입니다."
+          }
+        }
+      }
+    },
+    "toastAlert.linkingLogin.failed.to.signOut" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Failed To Sign Out"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그아웃을 실패했습니다."
           }
         }
       }

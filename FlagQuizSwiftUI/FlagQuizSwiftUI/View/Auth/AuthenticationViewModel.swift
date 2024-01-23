@@ -5,7 +5,7 @@
 //  Created by Martin on 12/12/23.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 import AuthenticationServices
 
@@ -27,6 +27,7 @@ final class AuthenticationViewModel: ObservableObject {
     }
     
     @Published var authState: AuthenticationState = .unauthenticated
+    @AppStorage(UserDefaultKey.ShowOnboarding) private var showOnBoarding: Bool = true
     
     private let container: DIContainer
     
@@ -45,10 +46,6 @@ final class AuthenticationViewModel: ObservableObject {
                 self.userId = userId
                 self.authState = .authenticated
             }
-//        case .signInWithGoogle:
-//            let publisher = container.services.authService.signInWithGoogle()
-//            completeAuthentication(from: publisher)
-            
         case .requestSignInWithApple(let request):
             let nonce = container.services.authService.requestSignInWithApple(request)
             self.nonce = nonce
@@ -92,6 +89,19 @@ final class AuthenticationViewModel: ObservableObject {
                     return Fail(outputType: FQUser.self, failure: ServiceError.nilSelf).eraseToAnyPublisher()
                 }
                 return self.container.services.userService.addUserIfNotExist(user)
+                    .eraseToAnyPublisher()
+            }
+            .flatMap { [weak self] user in
+                guard let self else {
+                    return Fail(outputType: FQUser.self, failure: ServiceError.nilSelf).eraseToAnyPublisher()
+                }
+                
+                if showOnBoarding {
+                    return Just(user).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
+                }
+                
+                return self.container.services.frogService.addFrogIfNotExist(ofUser: user.id)
+                    .map { user }
                     .eraseToAnyPublisher()
             }
             .sink { [weak self] completion in

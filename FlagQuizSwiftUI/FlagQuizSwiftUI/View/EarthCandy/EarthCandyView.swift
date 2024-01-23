@@ -10,6 +10,7 @@ import SwiftUI
 struct EarthCandyView: View {
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var container: DIContainer
+    @EnvironmentObject private var newsViewModel: NewsViewModel
     @EnvironmentObject private var viewModel: EarthCandyViewModel
     
     @State private var showDetail: Bool = false
@@ -46,11 +47,15 @@ struct EarthCandyView: View {
             viewModel.observe()
         }
         .onTapGesture {
-            showDetail = true
+            guard let isAnonymous = newsViewModel.isAnonymousUser() else { return }
+            if isAnonymous {
+                newsViewModel.setLinkingLocation(.reward)
+            } else {
+                showDetail = true
+            }
         }
         .fullScreenCover(isPresented: $showDetail) {
             EarthCandyRewardView(viewModel: .init(container: container))
-            
         }
         
     }

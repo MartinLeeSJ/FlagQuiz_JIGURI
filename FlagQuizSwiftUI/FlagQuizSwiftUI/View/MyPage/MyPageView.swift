@@ -55,7 +55,9 @@ struct MyPageView: View {
                     generalSettings
                         .myPageContainer()
                     
-                    deleteAccountButton
+                    if viewModel.isAnonymousUser() == false  {
+                        deleteAccountButton
+                    }
                     
                 }
                 .padding(.vertical)
@@ -295,6 +297,7 @@ struct MyPageView: View {
                 presentReallyDelete = false
                 Task {
                     await viewModel.deleteAccount()
+                    navigationModel.toRoot()
                 }
             }
         }

@@ -8,12 +8,20 @@
 import SwiftUI
 import AuthenticationServices
 
-fileprivate struct LinkingLoginView: View {
+struct LinkingLoginView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var authViewModel: AuthenticationViewModel
+    @EnvironmentObject private var navigationModel: NavigationModel
     @StateObject private var viewModel: LinkingLoginViewModel
     
-    init(viewModel: LinkingLoginViewModel) {
+    private let location: LinkingLoginLocation?
+    
+    init(
+        viewModel: LinkingLoginViewModel,
+        location: LinkingLoginLocation?
+    ) {
         self._viewModel = StateObject(wrappedValue: viewModel)
+        self.location = location
     }
     var body: some View {
         VStack {
@@ -27,9 +35,10 @@ fileprivate struct LinkingLoginView: View {
                 .scaledToFit()
                 .frame(maxWidth: 340)
                 .overlay {
-                    Text(viewModel.location.description)
+                    Text(location?.description ?? "")
                         .multilineTextAlignment(.center)
                         .font(.custom(FontName.pixel, size: 20))
+                        .foregroundStyle(.black)
                         .lineSpacing(10.0)
                         .offset(y: 10)
                 }
@@ -64,59 +73,28 @@ fileprivate struct LinkingLoginView: View {
                 dismiss()
             }
         })
+        .alert(
+            "linkingLoginView.should.signOut.alert.title",
+            isPresented: $viewModel.presentsShouldLogOutAlert) {
+                Button {
+                    navigationModel.toRoot()
+                    authViewModel.send(.signOut)
+                } label: {
+                    Text("OK")
+                }
+            } message: {
+                Text(
+                    String(
+                        localized: "linkingLoginView.should.signOut.alert.message",
+                        defaultValue: "You already have an account. Please Sign In"
+                    )
+                )
+            }
+
         
     }
 }
 
-fileprivate struct LinkingLogin: ViewModifier {
-    @Binding var isPresented: Bool
-    private let container: DIContainer
-    private let location: LinkingLoginLocation
-    
-    init(
-        isPresented: Binding<Bool>,
-        container: DIContainer,
-        location: LinkingLoginLocation
-    ) {
-        self._isPresented = isPresented
-        self.container = container
-        self.location = location
-    }
-
-    
-    func body(content: Content) -> some View {
-        content
-            .sheet(isPresented: $isPresented) {
-                LinkingLoginView(
-                    viewModel: .init(
-                        container: container,
-                        location: location
-                    )
-                )
-            }
-    }
-}
-
-extension View {
-    func linkingLogin( isPresented: Binding<Bool>,
-                       container: DIContainer,
-                       location: LinkingLoginLocation ) -> some View {
-        self.modifier(
-                LinkingLogin(
-                    isPresented: isPresented,
-                    container: container,
-                    location: location
-                )
-            )
-    }
-}
 
 
-#Preview {
-    LinkingLoginView(
-        viewModel: .init(
-            container: .init(services: StubService()),
-            location: .userRank
-        )
-    )
-}
+

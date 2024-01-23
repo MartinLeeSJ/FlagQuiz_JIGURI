@@ -38,6 +38,7 @@ enum AuthenticationServiceError: Error {
     case invalidCredential
     case invalidToken
     case invalidated
+    case credentialAlreadyInUse
     case custom(Error)
 }
 
@@ -74,7 +75,8 @@ final class AuthService: AuthServiceType {
                     id: user.uid,
                     createdAt: Date.now,
                     email: user.email ?? "",
-                    userName: user.displayName ?? ""
+                    userName: user.displayName ?? "",
+                    isAnonymous: true
                 )
                 
                 promise(.success(fqUser))
@@ -111,9 +113,7 @@ final class AuthService: AuthServiceType {
             self?.completeSignInWithApple(authorization,
                                           nonce: nonce,
                                           isLinking: isLinking,
-                                          completion: {
-                promise($0)
-            })
+                                          completion: {promise($0)})
         }
         .eraseToAnyPublisher()
     }
@@ -122,6 +122,7 @@ final class AuthService: AuthServiceType {
         try Auth.auth().signOut()
     }
     
+    @discardableResult
     func deleteAccount() async throws -> String {
         guard let user = Auth.auth().currentUser else {
             throw AuthenticationServiceError.invalidUser
@@ -214,6 +215,7 @@ extension AuthService {
                     .joined(separator: " ")
                 user.email = appleIDCredential.email
                 user.userName = name
+                user.isAnonymous = false
                 completion(.success(user))
             case .failure(let error):
                 completion(.failure(error))
@@ -236,8 +238,9 @@ extension AuthService {
         }
         
         user.link(with: credetial) { result, error in
-            if let error {
-                completion(.failure(.custom(error)))
+            if let error,
+               let errorCode = AuthErrorCode.Code(rawValue: error._code){
+                completion(.failure(errorCode == .credentialAlreadyInUse ? .credentialAlreadyInUse : .custom(error)))
                 return
             }
             
