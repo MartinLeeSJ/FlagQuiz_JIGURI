@@ -44,8 +44,11 @@ struct MyPageView: View {
                 .foregroundStyle(.thinMaterial)
             ScrollView {
                 VStack(alignment: .leading, spacing: 32) {
-                    userNameSettings
-                        .myPageContainer()
+                    UserNameSettingSection(
+                        viewModel: viewModel,
+                        presentingMenu: $presentingMenu
+                    )
+                    .myPageContainer()
                     
                     pinnedInformation
                     
@@ -115,9 +118,16 @@ struct MyPageView: View {
     @ViewBuilder
     var userNameSettings: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("mypage.userInfo.title")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            HStack {
+                Text("mypage.userInfo.title")
+                    
+                    .foregroundStyle(.secondary)
+                if let isAnonymous = viewModel.isAnonymousUser(),
+                   isAnonymous {
+                    Text("mypage.userInfo.anonymous.badge")
+                }
+            }
+            .font(.caption)
             
             
             if let userName = viewModel.user?.userName {
@@ -133,33 +143,52 @@ struct MyPageView: View {
             
             HStack {
                 Spacer()
-                Button {
-                    navigationModel.toRoot()
-                    authViewModel.send(.signOut)
-                } label: {
-                    Text("mypage.logOutButton.title")
-                        .font(.subheadline)
-                        .foregroundStyle(.foreground)
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 12)
-                }
-                .overlay {
-                    Capsule()
-                        .stroke()
-                }
-                
-                Button {
-                    presentingMenu = .editUserName
-                } label: {
-                    Text("mypage.editUserNameButton.title")
-                        .font(.subheadline)
-                        .foregroundStyle(.foreground)
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 12)
-                }
-                .overlay {
-                    Capsule()
-                        .stroke()
+                if let isAnonymous = viewModel.isAnonymousUser(),
+                   isAnonymous {
+                    Button {
+                        // TODO: Linking user
+             
+                    } label: {
+                        Text("mypage.logInButton.title")
+                            .font(.subheadline)
+                            .foregroundStyle(.foreground)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 12)
+                    }
+                    .overlay {
+                        Capsule()
+                            .stroke()
+                    }
+                    
+                } else {
+                    Button {
+                        navigationModel.toRoot()
+                        authViewModel.send(.signOut)
+                    } label: {
+                        Text("mypage.logOutButton.title")
+                            .font(.subheadline)
+                            .foregroundStyle(.foreground)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 12)
+                    }
+                    .overlay {
+                        Capsule()
+                            .stroke()
+                    }
+                    
+                    Button {
+                        presentingMenu = .editUserName
+                    } label: {
+                        Text("mypage.editUserNameButton.title")
+                            .font(.subheadline)
+                            .foregroundStyle(.foreground)
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 12)
+                    }
+                    .overlay {
+                        Capsule()
+                            .stroke()
+                    }
                 }
                 
                 

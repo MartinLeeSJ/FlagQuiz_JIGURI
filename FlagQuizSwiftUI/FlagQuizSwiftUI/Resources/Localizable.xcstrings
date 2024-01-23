@@ -447,7 +447,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose a country or state from the list below."
+            "value" : "Choose from the list below."
           }
         },
         "ko" : {
@@ -511,7 +511,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Where is FlagFrog's first settlement?"
+            "value" : "Where is my first settlement?"
           }
         },
         "ko" : {
@@ -1364,6 +1364,193 @@
         }
       }
     },
+    "linkingLogin.closet.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To access the closet,\nplease create an account now."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리 옷을 갈아입히고 싶나요?\n먼저 계정을 생성해주세요!"
+          }
+        }
+      }
+    },
+    "linkingLogin.countryStat.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "If you'd like to see your country stats, \n please create an account now."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나라별 퀴즈 기록을 보고 싶나요?\n먼저 계정을 생성해주세요!"
+          }
+        }
+      }
+    },
+    "linkingLogin.frogStateButton.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To make the frog happy,\nplease create an account now."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리를 행복하게 만들고 싶다면,\n먼저 계정을 생성해주세요!"
+          }
+        }
+      }
+    },
+    "linkingLogin.mypage.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To access more features,\nplease create an account now."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더 많은 기능을 사용하고 싶다면,\n먼저 계정을 생성해주세요!"
+          }
+        }
+      }
+    },
+    "linkingLogin.reward.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To receive EarthCandy rewards,\nplease create an account now."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구알사탕 보상을 받고 싶나요?\n먼저 계정을 생성해주세요!"
+          }
+        }
+      }
+    },
+    "linkingLogin.store.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To access the store,\nplease create an account now."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리 옷을 쇼핑하고 싶나요?\n먼저 계정을 생성해주세요!"
+          }
+        }
+      }
+    },
+    "linkingLogin.userRank.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "If you want to see your detailed rank,\nplease create an account now."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "등급을 보고 싶나요?\n먼저 계정을 생성해주세요!"
+          }
+        }
+      }
+    },
+    "linkingLogin.userStat.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "If you'd like to see your quiz record, \n please create an account now."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 기록을 보고 싶나요?\n먼저 계정을 생성해주세요!"
+          }
+        }
+      }
+    },
+    "loginView.anonymous.login.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Start Without Sign In"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그인 없이 시작하기"
+          }
+        }
+      }
+    },
+    "loginView.login.condition" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Do you have a account or want to start with sign in?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미 계정이 있거나 바로 가입해서 시작하시고 싶나요?"
+          }
+        }
+      }
+    },
+    "loginView.or" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "OR"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "또는"
+          }
+        }
+      }
+    },
     "loginView.title" : {
       "localizations" : {
         "en" : {
@@ -1482,6 +1669,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "공지사항"
+          }
+        }
+      }
+    },
+    "mypage.logInButton.title" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로그인"
           }
         }
       }
@@ -1626,6 +1823,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "이용약관"
+          }
+        }
+      }
+    },
+    "mypage.userInfo.anonymous.badge" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "익명 사용자"
           }
         }
       }
@@ -1827,13 +2034,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "There's an extraterrestrial being\nnamed Jiguri,\nresembling a frog, who, \nfor the past 30,000 years, \nhad harbored ambitions of conquering Earth, \nabandoning their deteriorating home planet."
+            "value" : "There's an extraterrestrial being\nresembling a frog, who, \nfor the past 30,000 years, \nhad harbored ambitions of\nconquering Earth, \nabandoning their deteriorating\nhome planet."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "개구리를 닮은 외계인 지구리\n그들은 3만 년 전부터 망가져 가는\n고향 행성을 떠나\n지구를 정복하겠다는\n야망을 품고 있었다..."
+            "value" : "개구리를 닮은 외계인\n그들은 3만 년 전부터 망가져 가는\n고향 행성을 떠나\n지구를 정복하겠다는\n야망을 품고 있었다..."
           }
         }
       }
@@ -1843,13 +2050,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eventually, they decide to disguise \nthemselves as human pets.\nWhile maintaining their ambition\nto conquer Earth someday,\nthey start studying each of Earth's \ncountries one by one."
+            "value" : "Eventually, they decide to disguise \nthemselves as human pets.\nWhile maintaining their ambition\nto conquer Earth someday,\nthey start studying each of Earth's \ncountries one by one.\nThey began to be called \"FlagFrog\"."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "결국 그들은 인간의 애완동물로 \n위장하기로 결심한다.\n언젠가는 지구를 정복하겠다는\n야망을 유지하면서,\n하나씩 지구의 각 나라를\n공부하기 시작한다."
+            "value" : "결국 그들은 인간의 애완동물로 \n위장하기로 결심한다.\n언젠가는 지구를 정복하겠다는\n야망을 품고, 지구의 나라를\n하나씩 공부하기 시작한다.\n그들은 \"지구리\"라 불리우게 된다."
           }
         }
       }
@@ -2931,6 +3138,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "유효하지 않은 사용자입니다. 다시 로그인 해주세요."
+          }
+        }
+      }
+    },
+    "toastAlert.linkingLogin.failed" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Failed to create an account"
           }
         }
       }

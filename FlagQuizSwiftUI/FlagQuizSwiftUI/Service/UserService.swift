@@ -38,10 +38,25 @@ class UserService: UserServiceType {
     }
     
     func addUserIfNotExist(_ user: FQUser) -> AnyPublisher<FQUser, ServiceError> {
-        repository.setUser(ofUser: user.id, object: user.toObject())
-            .map { user }
+        repository.getUser(ofId: user.id)
+            .flatMap { [weak self] object in
+                guard let self else {
+                    return Fail<FQUser,DBError>(error: .invalidSelf).eraseToAnyPublisher()
+                }
+                
+                if let object {
+                    return Just(object.toModel(withId: user.id))
+                        .setFailureType(to: DBError.self)
+                        .eraseToAnyPublisher()
+                }
+                
+                return self.repository.setUser(ofUser: user.id, object: user.toObject())
+                    .map { user }
+                    .eraseToAnyPublisher()
+            }
             .mapError { ServiceError.custom($0) }
             .eraseToAnyPublisher()
+       
     }
     
     func deleteUser(of userId: String) async throws {

@@ -19,9 +19,9 @@ enum AuthenticationState {
 final class AuthenticationViewModel: ObservableObject {
     enum Action {
         case checkAuthenticationState
-//        case signInWithGoogle
         case requestSignInWithApple(ASAuthorizationAppleIDRequest)
         case completeSignInWithApple(ASAuthorization)
+        case anonymousSignIn
         case retry
         case signOut
     }
@@ -55,10 +55,20 @@ final class AuthenticationViewModel: ObservableObject {
             
         case .completeSignInWithApple(let authorization):
             guard let nonce else { return }
-            let publisher = container.services.authService.completeSignInWithApple(authorization, nonce: nonce)
+            let publisher = container.services.authService.completeSignWithApple(
+                authorization,
+                isLinking: false,
+                nonce: nonce
+            )
             completeAuthentication(from: publisher)
+        
+        case .anonymousSignIn:
+            let publisher = container.services.authService.signInAnonymously()
+            completeAuthentication(from: publisher)
+            
         case .retry:
             authState = .unauthenticated
+        
         case .signOut:
             do {
                 try container.services.authService.signOut()
@@ -69,6 +79,7 @@ final class AuthenticationViewModel: ObservableObject {
             }
         }
     }
+
     
     
     private func completeAuthentication(from publisher: AnyPublisher<FQUser, AuthenticationServiceError>) {

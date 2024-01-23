@@ -31,6 +31,10 @@ final class MyPageViewModel: ObservableObject {
         self.user = try? await container.services.userService.getUser(ofId: userId)
     }
     
+    func isAnonymousUser() -> Bool? {
+        container.services.authService.checkIfAnonymousUser()
+    }
+    
     func deleteAccount() async {
         do {
             try container.services.authService.signOut()
