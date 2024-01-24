@@ -44,5 +44,6 @@ extension Constant {
     struct UserDefaultKey {
         static let ShowOnboarding: String = "ShowOnBoarding"
         static let ShowATTConsent: String = "ShowATTConsent"
+        static let FirstTimeToGetEarthCandyReward: String = "FirstTimeToGetEarthCandyReward"
     }
 }

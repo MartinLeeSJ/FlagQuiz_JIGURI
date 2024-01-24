@@ -25,6 +25,7 @@ final class CreateUserNameViewModel: ObservableObject {
             return
         }
         
+        
         container.services.userService.updateUser(
             of: userId,
             model: .init(id: "", createdAt: .now, userName: userName)

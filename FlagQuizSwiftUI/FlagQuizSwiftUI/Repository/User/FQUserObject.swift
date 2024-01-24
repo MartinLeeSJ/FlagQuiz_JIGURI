@@ -13,6 +13,7 @@ struct FQUserObject: Codable {
     var createdAt: Timestamp
     var email: String?
     var userName: String?
+    var isAnonymous: Bool?
 }
 
 extension FQUserObject {
@@ -23,7 +24,8 @@ extension FQUserObject {
             id: id,
             createdAt: createdAt.dateValue(),
             email: email,
-            userName: userName
+            userName: userName,
+            isAnonymous: isAnonymous
         )
     }
     
@@ -32,7 +34,8 @@ extension FQUserObject {
             id: userId,
             createdAt: createdAt.dateValue(),
             email: email,
-            userName: userName
+            userName: userName,
+            isAnonymous: isAnonymous
         )
     }
 }

@@ -80,7 +80,8 @@ final class FQUserRepository: FQUserRepositoryType {
             self?.usersCollection.document(userId)
                 .updateData([
                     "email": object.email ?? "",
-                    "userName": object.userName ?? ""
+                    "userName": object.userName ?? "",
+                    "isAnonymous": object.isAnonymous ?? true
                 ]) { error in
                     if let error {
                         promise(.failure(error))

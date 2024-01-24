@@ -31,7 +31,13 @@ struct UserRankCell: View {
         }
         .gridCellColumns(1)
         .onTapGesture {
-            navigationModel.navigate(to: NewsDestination.userRank)
+            guard let isAnonymousUser = viewModel.isAnonymousUser() else { return }
+            
+            if isAnonymousUser {
+                viewModel.setLinkingLocation(.userRank)
+            } else {
+                navigationModel.navigate(to: NewsDestination.userRank)
+            }
         }
     }
 }
