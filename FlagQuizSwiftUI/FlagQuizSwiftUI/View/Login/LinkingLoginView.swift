@@ -33,15 +33,24 @@ struct LinkingLoginView: View {
             Image("LetterBoxBig")
                 .resizable()
                 .scaledToFit()
-                .frame(maxWidth: 340)
                 .overlay {
                     Text(location?.description ?? "")
                         .multilineTextAlignment(.center)
-                        .font(.custom(FontName.pixel, size: 20))
+                        .minimumScaleFactor(0.5)
+                        .font(
+                            .custom(
+                                FontName.pixel,
+                                size: 16,
+                                relativeTo: .headline
+                            )
+                        )
                         .foregroundStyle(.black)
                         .lineSpacing(10.0)
                         .offset(y: 10)
+                        .padding(.horizontal)
                 }
+                .frame(maxWidth: 360)
+                .padding(.horizontal, 8)
             
             Spacer()
             
@@ -63,8 +72,9 @@ struct LinkingLoginView: View {
             }
             .signInWithAppleButtonStyle(.whiteOutline)
             .frame(height: 45)
+            .padding()
         }
-        .padding()
+      
         .background(.fqAccent)
         .background(ignoresSafeAreaEdges: .all)
         .toastAlert($viewModel.toast)
@@ -95,6 +105,19 @@ struct LinkingLoginView: View {
     }
 }
 
-
+#Preview {
+    LinkingLoginView(
+        viewModel: .init(
+            container: .init(services: StubService())
+        ),
+        location: .store
+    )
+    .environmentObject(
+        AuthenticationViewModel(
+            container: .init(services: StubService())
+        )
+    )
+    .environmentObject(NavigationModel())
+}
 
 

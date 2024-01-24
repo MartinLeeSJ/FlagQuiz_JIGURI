@@ -30,6 +30,7 @@ struct FrogSettlementIcon: View {
                         )
                     )
                     .font(.caption2)
+                    .multilineTextAlignment(.center)
                     
                     Text(flagEmoji)
                         .font(.system(size: 30))
@@ -37,6 +38,7 @@ struct FrogSettlementIcon: View {
                     Text(localizedName)
                         .font(.caption2)
                         .frame(height: 12)
+                        .lineLimit(2)
                 }
             }
             .padding(.horizontal)

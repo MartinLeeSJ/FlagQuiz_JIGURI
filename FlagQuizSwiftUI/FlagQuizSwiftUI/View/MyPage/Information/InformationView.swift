@@ -21,6 +21,7 @@ struct InformationView: View {
             if let pinnedInfo {
                 Section {
                     InformationRow(info: pinnedInfo)
+                        .listRowBackground(Color.fqBg)
                 }
             }
             

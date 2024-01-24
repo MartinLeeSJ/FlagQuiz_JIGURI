@@ -35,7 +35,12 @@ struct UserNameSettingSection: View {
                     
                     if let isAnonymous = viewModel.isAnonymousUser(),
                        isAnonymous {
-                        Text("mypage.userInfo.anonymous.badge")
+                        Text(
+                            String(
+                                localized:  "mypage.userInfo.anonymous.badge",
+                                defaultValue: "Anonymous User"
+                            )
+                        )
                     }
                 }
                 .font(.caption)
@@ -59,7 +64,12 @@ struct UserNameSettingSection: View {
                         Button {
                             linkingLoginLocation = .mypage
                         } label: {
-                            Text("mypage.logInButton.title")
+                            Text(
+                                String(
+                                    localized: "mypage.logInButton.title",
+                                    defaultValue: "Log in"
+                                )
+                            )
                                 .font(.subheadline)
                                 .foregroundStyle(.foreground)
                                 .padding(.vertical, 4)

@@ -1707,7 +1707,14 @@
       }
     },
     "mypage.logInButton.title" : {
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Log in"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1861,7 +1868,14 @@
       }
     },
     "mypage.userInfo.anonymous.badge" : {
+      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Anonymous User"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
