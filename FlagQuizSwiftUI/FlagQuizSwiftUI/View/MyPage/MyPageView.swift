@@ -295,10 +295,9 @@ struct MyPageView: View {
             
             Button("mypage.reallyDelete.delete", role: .destructive ) {
                 presentReallyDelete = false
-                Task {
-                    await viewModel.deleteAccount()
-                    navigationModel.toRoot()
-                }
+                authViewModel.send(.deleteAccount)
+                navigationModel.toRoot()
+                
             }
         }
     }
