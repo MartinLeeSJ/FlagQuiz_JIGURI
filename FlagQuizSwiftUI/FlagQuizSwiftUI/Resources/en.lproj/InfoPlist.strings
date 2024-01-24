@@ -6,4 +6,4 @@
   
 */
 "CFBundleDisplayName" = "FlagFrog";
-"NSUserTrackingUsageDescription" = "To enhance ad effectiveness in the app, we utilize an advertising identifier. Opt in for optimized personalized ads, or continue to access basic functionality without consent. You can withdraw your consent anytime in the app settings.";
+"NSUserTrackingUsageDescription" = "Opt in for optimized personalized ads, or continue to access basic functionality without consent.";
