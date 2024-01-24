@@ -44,15 +44,20 @@ struct MyPageView: View {
                 .foregroundStyle(.thinMaterial)
             ScrollView {
                 VStack(alignment: .leading, spacing: 32) {
-                    userNameSettings
-                        .myPageContainer()
+                    UserNameSettingSection(
+                        viewModel: viewModel,
+                        presentingMenu: $presentingMenu
+                    )
+                    .myPageContainer()
                     
                     pinnedInformation
                     
                     generalSettings
                         .myPageContainer()
                     
-                    deleteAccountButton
+                    if viewModel.isAnonymousUser() == false  {
+                        deleteAccountButton
+                    }
                     
                 }
                 .padding(.vertical)
@@ -98,7 +103,7 @@ struct MyPageView: View {
             }
             .task {
                 await viewModel.load()
-                await infoViewModel.load()
+                await infoViewModel.loadInfo(of: locale.language.languageCode?.identifier(.alpha2))
             }
             .safeAreaInset(edge: .bottom, content: {
                 let nsObject: AnyObject? = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? AnyObject
@@ -111,64 +116,7 @@ struct MyPageView: View {
             .navigationTitle("mypage.navigationTitle")
         }
     }
-    
-    @ViewBuilder
-    var userNameSettings: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("mypage.userInfo.title")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            
-            
-            if let userName = viewModel.user?.userName {
-                Text(!userName.isEmpty ? userName : String(localized: "mypage.userName.placeholder"))
-                    .font(!userName.isEmpty ?
-                        .custom(FontName.pixel, size: 24) :
-                            .system(size: 24)
-                    )
-                    .italic(userName.isEmpty)
-            } else {
-                Text("mypage.userName.placeholder")
-            }
-            
-            HStack {
-                Spacer()
-                Button {
-                    navigationModel.toRoot()
-                    authViewModel.send(.signOut)
-                } label: {
-                    Text("mypage.logOutButton.title")
-                        .font(.subheadline)
-                        .foregroundStyle(.foreground)
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 12)
-                }
-                .overlay {
-                    Capsule()
-                        .stroke()
-                }
-                
-                Button {
-                    presentingMenu = .editUserName
-                } label: {
-                    Text("mypage.editUserNameButton.title")
-                        .font(.subheadline)
-                        .foregroundStyle(.foreground)
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 12)
-                }
-                .overlay {
-                    Capsule()
-                        .stroke()
-                }
-                
-                
-            }
-            .padding(.vertical, 8)
-            
-        }
-        
-    }
+
     
     @ViewBuilder
     var pinnedInformation: some View {
@@ -176,10 +124,7 @@ struct MyPageView: View {
             PinnedInformation(info: pinnedInfo) {
                 presentingMenu = .info
             }
-            .myPageContainer()
-            
-            //TODO: 공지 로드시 로케일정보를 전달해줘야함
-            
+            .myPageContainer()            
         }
     }
     
@@ -212,7 +157,6 @@ struct MyPageView: View {
                     .foregroundStyle(.foreground)
             }
             
-            
             Button {
                 presentingMenu = .maker
             } label: {
@@ -226,7 +170,6 @@ struct MyPageView: View {
                 Text("mypage.privacyPolicy.title")
                     .foregroundStyle(.foreground)
             }
-            
             
             Button {
                 presentingMenu = .termsOfUse
@@ -264,9 +207,9 @@ struct MyPageView: View {
             
             Button("mypage.reallyDelete.delete", role: .destructive ) {
                 presentReallyDelete = false
-                Task {
-                    await viewModel.deleteAccount()
-                }
+                authViewModel.send(.deleteAccount)
+                navigationModel.toRoot()
+                
             }
         }
     }

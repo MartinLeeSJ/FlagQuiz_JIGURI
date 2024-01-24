@@ -22,6 +22,7 @@ protocol FrogServiceType {
     
     func addFrog(_ model: FQFrog, ofUser userId: String) -> AnyPublisher<Void, ServiceError>
     func addFrogIfNotExist(ofUser userId: String) -> AnyPublisher<Void, ServiceError>
+    
     func updateFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError>
     func updateFrogNation(ofUser userId: String, nationCode: FQCountryISOCode) -> AnyPublisher<Void, ServiceError>
     func deleteFrog(ofUser userId: String) async throws

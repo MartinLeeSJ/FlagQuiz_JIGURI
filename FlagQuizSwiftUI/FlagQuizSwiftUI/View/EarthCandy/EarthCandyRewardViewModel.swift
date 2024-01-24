@@ -18,8 +18,8 @@ final class EarthCandyRewardViewModel: ObservableObject {
     @Published var canGetDailyReward: Bool?
     @Published var restCountOfAdReward: Int?
     @Published var toastAlert: ToastAlert?
-    @AppStorage("didVisitEarthRewardView") var didVisit: Bool = false
-     
+    @AppStorage(UserDefaultKey.FirstTimeToGetEarthCandyReward) var isFirstTimeToVisit: Bool = true
+ 
     private let container: DIContainer
     private var cancellables = Set<AnyCancellable>()
     
@@ -33,49 +33,49 @@ final class EarthCandyRewardViewModel: ObservableObject {
     }
     
     func observe() {
-        guard let userId = container.services.authService.checkAuthenticationState() else {
-            //TODO: // 유효하지 않아 불러올 수 없음을 알리는 오류
-            return
-        }
-        if !didVisit {
-           createFirstAndObserve(userId: userId)
-            return
+            guard let userId = container.services.authService.checkAuthenticationState() else {
+                //TODO: // 유효하지 않아 불러올 수 없음을 알리는 오류
+                return
+            }
+            if isFirstTimeToVisit {
+               createFirstAndObserve(userId: userId)
+                return
+            }
+            
+            container.services.earthCandyService.observeEarthCandyRewardRecord(ofUser: userId)
+                .sink { _ in
+                    //TODO: 에러핸들링
+                } receiveValue: { [weak self] record in
+                    self?.record = record
+                }
+                .store(in: &cancellables)
         }
         
-        container.services.earthCandyService.observeEarthCandyRewardRecord(ofUser: userId)
+        private func createFirstAndObserve(userId: String) {
+            container.services.earthCandyService.recordEarthCandyRewardRecord(
+                .initialModel,
+                userId: userId
+            )
+            .handleEvents(receiveOutput:  { [weak self] _ in
+                self?.isFirstTimeToVisit = false
+            })
+            .flatMap { [weak self] _ in
+                guard let self else {
+                    return Fail<FQEarthCandyRewardRecord?, ServiceError>(error: .nilSelf).eraseToAnyPublisher()
+                }
+                
+                return self.container.services.earthCandyService.observeEarthCandyRewardRecord(ofUser: userId)
+                    .eraseToAnyPublisher()
+            }
+            .compactMap { $0 }
             .sink { _ in
                 //TODO: 에러핸들링
             } receiveValue: { [weak self] record in
                 self?.record = record
             }
             .store(in: &cancellables)
-    }
-    
-    private func createFirstAndObserve(userId: String) {
-        container.services.earthCandyService.recordEarthCandyRewardRecord(
-            .initialModel,
-            userId: userId
-        )
-        .handleEvents(receiveOutput:  { [weak self] _ in
-            self?.didVisit = true
-        })
-        .flatMap { [weak self] _ in
-            guard let self else {
-                return Fail<FQEarthCandyRewardRecord?, ServiceError>(error: .nilSelf).eraseToAnyPublisher()
-            }
-            
-            return self.container.services.earthCandyService.observeEarthCandyRewardRecord(ofUser: userId)
-                .eraseToAnyPublisher()
         }
-        .compactMap { $0 }
-        .sink { _ in
-            //TODO: 에러핸들링
-        } receiveValue: { [weak self] record in
-            self?.record = record
-        }
-        .store(in: &cancellables)
-    }
-    
+        
     func send(_ action: Action) {
         switch action {
         case .getDailyReward:
@@ -104,7 +104,7 @@ final class EarthCandyRewardViewModel: ObservableObject {
             return container.services.earthCandyService.updateCandy(
                 FQEarthCandy.dailyRewardCandyPoint,
                 ofUser: userId
-            )
+            ) 
             .eraseToAnyPublisher()
         }
         .sink { [weak self] completion in

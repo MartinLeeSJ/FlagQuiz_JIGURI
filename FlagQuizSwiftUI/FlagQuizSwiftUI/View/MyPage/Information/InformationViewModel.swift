@@ -22,9 +22,12 @@ final class InformationViewModel: ObservableObject {
     
     private let db = Firestore.firestore()
     
-    func load() async {
+    func loadInfo(of languageCode: String?) async {
+        let alpha2code: String = ServiceLangCode(rawValue: languageCode ?? "en" )?.rawValue ?? "en"
+        
         do {
             self.infos = try await db.collection("Information")
+                .whereField("languageAlpha2Code", in: [alpha2code])
                 .order(by: "timestamp", descending: true)
                 .getDocuments(as: FQInfo.self)
         } catch {

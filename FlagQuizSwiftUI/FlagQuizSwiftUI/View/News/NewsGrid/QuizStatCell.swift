@@ -29,7 +29,15 @@ struct QuizStatCell: View {
         }
         .gridCellColumns(1)
         .onTapGesture {
-            navigationModel.navigate(to: NewsDestination.quizRecord)
+            guard let isAnonymousUser = viewModel.isAnonymousUser() else {
+                 return
+            }
+            
+            if isAnonymousUser {
+                viewModel.setLinkingLocation(.userStat)
+            } else {
+                navigationModel.navigate(to: NewsDestination.quizRecord)
+            }
         }
     }
 }

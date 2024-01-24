@@ -10,6 +10,7 @@ import SwiftUI
 struct FrogView: View {
     @Environment(\.colorScheme) var scheme
     @EnvironmentObject private var earthCandyViewModel: EarthCandyViewModel
+    @EnvironmentObject private var newsViewModel: NewsViewModel
     @StateObject private var viewModel: FrogViewModel
     
     init(viewModel: FrogViewModel) {
@@ -125,8 +126,15 @@ struct FrogView: View {
         } else {
             Button {
                 guard frog.state != .great else { return }
+                guard let isAnonymous = newsViewModel.isAnonymousUser() else {
+                    return
+                }
                 
-                viewModel.send(.feedFrog)
+                if isAnonymous {
+                    newsViewModel.setLinkingLocation(.frogStateButton)
+                } else {
+                    viewModel.send(.feedFrog)
+                }
             } label: {
                 HStack {
                     Text(frog.state.feedFrogButtonTitle)
@@ -150,7 +158,7 @@ struct FrogView: View {
     
     private var notEnoughCandyButton: some View {
         Button {
-            
+       
         } label: {
             HStack {
                 Text("frogView.notEnoughCandyButton.title")

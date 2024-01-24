@@ -12,6 +12,7 @@ final class NewsViewModel: ObservableObject {
     
     @Published var quizStat: FQUserQuizStat?
     @Published var countryQuizStat: FQCountryQuizStat?
+    @Published var linkingLocation: LinkingLoginLocation?
     
     
     private let container: DIContainer
@@ -31,5 +32,12 @@ final class NewsViewModel: ObservableObject {
         }
     }
     
+    public func isAnonymousUser() -> Bool? {
+        container.services.authService.checkIfAnonymousUser()
+    }
+    
+    public func setLinkingLocation(_ location: LinkingLoginLocation) {
+        self.linkingLocation = location
+    }
     
 }

@@ -34,7 +34,7 @@ struct PinnedInformation: View {
                 .font(.caption2)
                 .foregroundStyle(.secondary)
             
-            Text(info.body)
+            Text(info.body.replacingOccurrences(of: "\\n", with: "\n"))
                 .font(.system(size: 12))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(2)
@@ -95,7 +95,7 @@ struct InformationRow: View {
                 .font(.caption2)
                 .foregroundStyle(.secondary)
             
-            Text(info.body)
+            Text(info.body.replacingOccurrences(of: "\\n", with: "\n"))
                 .font(.system(size: 12))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(isExpanded ? nil : 2)

@@ -19,6 +19,6 @@ final class NavigationModel: ObservableObject {
     }
     
     public func toRoot() {
-        destinations.removeLast(destinations.count)
+        destinations = .init()
     }
 }
