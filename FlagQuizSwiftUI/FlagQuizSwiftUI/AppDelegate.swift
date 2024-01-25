@@ -21,11 +21,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             let googleMobileAds =  GADMobileAds.sharedInstance()
             // Initialize the Google Mobile Ads SDK.
             googleMobileAds.start(completionHandler: nil)
-            
-            //TODO: - 출시할 때 지우기
-#if DEBUG
-            googleMobileAds.requestConfiguration.testDeviceIdentifiers = [ "92c9cb5011fb3415d6601fc50ae0a153" ]
-#endif
+            googleMobileAds.requestConfiguration.testDeviceIdentifiers = [ "d9f08d9cab2fd3e9547c5309d09a0d19" ]
         }
         
         return true
