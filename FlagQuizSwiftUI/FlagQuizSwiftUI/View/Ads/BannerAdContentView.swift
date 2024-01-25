@@ -22,7 +22,7 @@ private struct BannerAdView: UIViewControllerRepresentable {
         #if DEBUG
         return "ca-app-pub-3940256099942544/2934735716"
         #else
-        return Bundle.main.newsViewBannerAdID
+        return "ca-app-pub-5402872764357733/2692196617"
         #endif
     }
     
