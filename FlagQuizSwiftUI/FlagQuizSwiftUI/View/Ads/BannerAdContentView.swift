@@ -27,11 +27,6 @@ private struct BannerAdView: UIViewControllerRepresentable {
         bannerAdView.rootViewController = bannerAdViewController
         bannerAdViewController.view.addSubview(bannerAdView)
         
-        NSLayoutConstraint.activate([
-            bannerAdView.centerYAnchor.constraint(
-            equalTo: bannerAdViewController.view.centerYAnchor),
-            bannerAdView.centerXAnchor.constraint(equalTo: bannerAdViewController.view.centerXAnchor),
-        ])
         // Tell the bannerViewController to update our Coordinator when the ad
         // width changes.
         bannerAdViewController.delegate = context.coordinator
