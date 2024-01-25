@@ -26,13 +26,15 @@ struct EarthCandyRewardView: View {
                 adRewardContent
                 
                 Spacer()
-
+                
             }
             .toolbar {
-                Button("close") {
+                Button {
                     dismiss()
+                } label: {
+                    Image(systemName: "xmark")
                 }
-                .shadow(radius: 5)
+                .fontWeight(.semibold)
             }
             .navigationTitle("rewardView.title") //오늘의 무료 지구 알사탕
             .navigationBarTitleDisplayMode(.inline)
@@ -64,11 +66,11 @@ struct EarthCandyRewardView: View {
                         .font(.title3)
                 }
                 Text("rewardView.daily.content.description")//출석체크 시 받을 수 있는 리워드
-                    .font(.caption)
+                    .font(.caption2)
             }
             
             Spacer()
-           
+            
             Button {
                 getDailyReward()
             } label: {
@@ -80,7 +82,7 @@ struct EarthCandyRewardView: View {
                 }
             }
             .earthCandyRewardViewButton(!(viewModel.canGetDailyReward ?? false))
-       
+            
         }
         .rewardContentContainer()
     }
@@ -94,31 +96,46 @@ struct EarthCandyRewardView: View {
             .offset(y: 24)
             .zIndex(1)
         
+        
         HStack {
             VStack {
-                HStack {
+                Label {
+                    Text(FQEarthCandy.adRewardCandyPoint, format: .number)
+                        .font(.title3)
+                } icon: {
                     Image("EarthCandy")
                         .resizable()
                         .aspectRatio(1, contentMode: .fit)
                         .frame(width: 20)
-                    
-                    Text(FQEarthCandy.adRewardCandyPoint, format: .number)
-                        .font(.title3)
                 }
+                
                 Text("rewardView.ad.content.description")//1회 시청 시 받을 수 있는 리워드
-                    .font(.caption)
+                    .font(.caption2)
             }
             
             Spacer()
-            RewardedAdButton { reward in
-                viewModel.send(.getAdReward)
-            } buttonLabel: {
-                Text("rewardView.ad.content.button.description.\(viewModel.restCountOfAdReward ?? 0)")
-                //오늘 남은 횟수 \(viewModel.restCountOfAdReward ?? 0)번
+            
+            VStack(alignment: .trailing) {
+                Text("rewardView.ad.content.description.\(viewModel.restCountOfAdReward ?? 0)")
+                    .font(.caption2)
+                
+                
+                RewardedAdButton { reward in
+                    viewModel.send(.getAdReward)
+                } buttonLabel: {
+                    if let restCount = viewModel.restCountOfAdReward,
+                       restCount > 0 {
+                        Text("rewardView.ad.content.button.title")
+                    } else {
+                        Text("rewardView.ad.content.button.title.ready")
+                    }
+                }
+                .earthCandyRewardViewButton((viewModel.restCountOfAdReward ?? 0) <= 0)
             }
-            .earthCandyRewardViewButton((viewModel.restCountOfAdReward ?? 0) <= 0)
-       
+     
+            
         }
+        .frame(maxWidth: .infinity)
         .rewardContentContainer()
     }
     
@@ -150,10 +167,15 @@ struct EarthCandyRewardViewButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.subheadline)
+            .foregroundStyle(disabled ? .gray : .green)
             .padding(.vertical, 4)
             .padding(.horizontal, 10)
             .background(in: .rect(cornerRadius: 10))
             .backgroundStyle(.thinMaterial)
+            .overlay {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .stroke(disabled ? .gray : .fqAccent, lineWidth: 1.0)
+            }
             .disabled(disabled)
         
     }

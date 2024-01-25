@@ -41,24 +41,16 @@ struct OnBoardingView: View {
         VStack {
             TabView(selection: $story) {
                 ForEach(OnBoardingStory.allCases, id: \.self) { current in
-                    VStack {
-                        Image(current.imageNameOfColorScheme(scheme == .dark))
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200)
-                            .padding(.top, 128)
-                          
-                        Spacer()
+                    GeometryReader { geo in
+                        let size = geo.size
                         
-                        TypeWritingText(
-                            originalText: current.letters,
-                            latency: 0.06
-                        )
-                        .font(.custom(FontName.pixel, size: 18))
-                        .lineSpacing(10.0)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.bottom, 64)
+                        if size.width < size.height {
+                            portraitStoryContent(currentStory: current)
+                        } else {
+                            landscapeStoryContent(currentStory: current)
+                        }
                     }
+                    
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
@@ -76,7 +68,7 @@ struct OnBoardingView: View {
             .buttonStyle(QuizFilledButtonStyle(disabled: false))
             
             Spacer()
-                .frame(height: 50)
+                .frame(height: 30)
                 .frame(maxWidth: .infinity)
                 .overlay {
                     if story != .three {
@@ -91,6 +83,48 @@ struct OnBoardingView: View {
                 }
         }
         .padding(.horizontal)
+    }
+    
+    private func portraitStoryContent(currentStory current: OnBoardingStory) -> some View {
+        VStack {
+            Image(current.imageNameOfColorScheme(scheme == .dark))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200)
+                .padding(.top, 128)
+              
+            Spacer()
+            
+            TypeWritingText(
+                originalText: current.lettersForPortrait,
+                latency: 0.06
+            )
+            .font(.custom(FontName.pixel, size: 18))
+            .lineSpacing(10.0)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.bottom, 64)
+        }
+    }
+    
+    private func landscapeStoryContent(currentStory current: OnBoardingStory) -> some View {
+        ZStack {
+            Image(current.imageNameOfColorScheme(scheme == .dark))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200)
+                .opacity(0.1)
+
+            TypeWritingText(
+                originalText: current.lettersForLandscape,
+                latency: 0.06
+            )
+            .font(.custom(FontName.pixel, size: 20))
+            .lineSpacing(10.0)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity, alignment: .center)
+        }
+        .frame(maxWidth: .infinity)
+        .frame(maxHeight: .infinity)
     }
     
     private func next() {
@@ -108,7 +142,7 @@ enum OnBoardingStory: Int, Hashable, CaseIterable {
     case two
     case three
     
-    var letters: String {
+    var lettersForPortrait: String {
         switch self {
         case .one:
             String(localized: "onboarding.story.one")
@@ -118,6 +152,18 @@ enum OnBoardingStory: Int, Hashable, CaseIterable {
             String(localized: "onboarding.story.three")
         }
     }
+    
+    var lettersForLandscape: String {
+        switch self {
+        case .one:
+            String(localized: "onboarding.story.one.landscape")
+        case .two:
+            String(localized: "onboarding.story.two.landscape")
+        case .three:
+            String(localized: "onboarding.story.three.landscape")
+        }
+    }
+    
     
     func imageNameOfColorScheme(_ isDarkMode: Bool) -> String {
         switch self {
