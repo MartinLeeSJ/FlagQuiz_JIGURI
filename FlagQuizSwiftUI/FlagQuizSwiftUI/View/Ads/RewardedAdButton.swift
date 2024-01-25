@@ -107,12 +107,12 @@ private class RewardedAdCoordinator: NSObject, ObservableObject, GADFullScreenCo
       userDidEarnRewardHandler completion: @escaping (Int) -> Void
     ) {
       guard let rewardedAd = rewardedAd else {
-        return print("Ad wasn't ready")
+        return
       }
         
       rewardedAd.present(fromRootViewController: viewController) {
         let reward = rewardedAd.adReward
-        print("Reward amount: \(reward.amount)")
+        
         completion(reward.amount.intValue)
       }
     }
