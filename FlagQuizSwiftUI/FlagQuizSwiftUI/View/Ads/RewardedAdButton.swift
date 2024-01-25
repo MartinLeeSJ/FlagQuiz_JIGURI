@@ -81,7 +81,7 @@ private class RewardedAdCoordinator: NSObject, ObservableObject, GADFullScreenCo
         #if DEBUG
         return "ca-app-pub-3940256099942544/1712485313"
         #else
-        return "ca-app-pub-5402872764357733/9393019107"
+        return Bundle.main.earthCandyRewardAdID
         #endif
     }
     
