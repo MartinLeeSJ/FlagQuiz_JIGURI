@@ -70,7 +70,6 @@ struct ATTDescriptionView: View {
             }
             .padding(24)
             .font(.callout)
-            .frame(maxWidth: .infinity, alignment: .leading)
             .background {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                     .stroke(.fqAccent, lineWidth: 2.0)

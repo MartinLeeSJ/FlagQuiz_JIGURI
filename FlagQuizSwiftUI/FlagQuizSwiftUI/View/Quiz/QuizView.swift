@@ -19,14 +19,18 @@ struct QuizView: View {
     }
     
     var body: some View {
-        GeometryReader { geo in
-            let size = geo.size
+        VStack(spacing: 0) {
+            Spacer()
             
-            if size.width < size.height {
-                portraitContent
-            } else {
-                landscapeContent
-            }
+            QuizAnswer()
+            
+            QuizQuestion()
+            
+            QuizOptions()
+            
+            QuizSubmitButton()
+                .animation(.smooth, value: viewModel.isSubmitted)
+                .padding()
         }
         .task {
             viewModel.send(.loadCountryInfo)
@@ -62,42 +66,6 @@ struct QuizView: View {
         }
         
     }
-    
-    private var portraitContent: some View {
-        VStack(spacing: 0) {
-            Spacer()
-            
-            QuizAnswer()
-            
-            QuizQuestion()
-            
-            QuizOptions()
-            
-            QuizSubmitButton()
-                .animation(.smooth, value: viewModel.isSubmitted)
-                .padding()
-        }
-    }
-    
-    
-    private var landscapeContent: some View {
-        HStack(alignment: .bottom) {
-            VStack(spacing: 0) {
-                QuizAnswer()
-                
-                QuizQuestion()
-            }
-            
-            VStack(spacing: 0) {
-                QuizOptions()
-                
-                QuizSubmitButton()
-                    .animation(.smooth, value: viewModel.isSubmitted)
-                    .padding()
-            }
-        }
-    }
-
 
     private var currentEarthCandyView: some View {
         HStack {

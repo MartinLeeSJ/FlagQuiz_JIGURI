@@ -11,7 +11,7 @@ import Combine
 
 
 final class QuizViewModel: ObservableObject {
-    @Published var quiz: FQQuiz = .init(quizCount: .ten, quizOptionsCount: .five, quizType: .chooseNameFromFlag)
+    @Published var quiz: FQQuiz = .init(quizCount: .ten, quizOptionsCount: .four, quizType: .chooseNameFromFlag)
     @Published var isSubmitted: Bool = false
     @Published var countries: [FQCountry] = []
     @Published var optionsCountries: [FQCountry] = []

@@ -43,14 +43,7 @@ struct QuizResultScoreCard: View {
                 }
             } label: {
                 Text("show.result.button.title")
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 4)
-                    .fontWeight(.medium)
-                    .foregroundStyle(scheme == .dark ? .black : .fqAccent)
-                    .background(in: .capsule(style: .continuous))
-                    .backgroundStyle(scheme == .dark ? .fqAccent : .black)
             }
-            .padding(.bottom)
         }
         .navigationBarBackButtonHidden()
     }
@@ -68,7 +61,7 @@ struct QuizResultScoreCard: View {
                     in: scoreAnimation
                 )
                 .scaledToFit()
-                .frame(minHeight: 30, maxHeight: 90)
+                .frame(height: 90)
                 .frame(maxWidth: .infinity)
                 .shadow(
                     color: quizScore.classifiedScore.tintColor.opacity(0.5),
@@ -119,7 +112,7 @@ struct QuizResultScoreCard: View {
             
             earthCandyRecipt
         }
-        .floatingCard()
+        .floadingCard()
     }
     
     

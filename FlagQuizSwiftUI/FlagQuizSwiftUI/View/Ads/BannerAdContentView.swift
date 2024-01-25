@@ -18,8 +18,13 @@ private struct BannerAdView: UIViewControllerRepresentable {
     @State private var viewWidth: CGFloat = .zero
     private let bannerAdView = GADBannerView()
     //TODO: - 실제 광고 유닛아이디 적용하기
-    private let adUnitID: String =  "ca-app-pub-5402872764357733/2692196617"
-    
+    private var adUnitID: String {
+        #if DEBUG
+        return "ca-app-pub-3940256099942544/2934735716"
+        #else
+        return Bundle.main.newsViewBannerAdID
+        #endif
+    }
     
     func makeUIViewController(context: Context) -> some UIViewController {
         let bannerAdViewController = BannerAdViewController()

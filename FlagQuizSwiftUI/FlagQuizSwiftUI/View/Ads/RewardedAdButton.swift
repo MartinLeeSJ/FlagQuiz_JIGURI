@@ -77,8 +77,13 @@ private struct RewardedAdViewControllerRepresentable: UIViewControllerRepresenta
 private class RewardedAdCoordinator: NSObject, ObservableObject, GADFullScreenContentDelegate {
     @Published var rewardedAd: GADRewardedAd?
     
-    private let adUnitID: String = "ca-app-pub-5402872764357733/9393019107"
-    
+    private var adUnitID: String {
+        #if DEBUG
+        return "ca-app-pub-3940256099942544/1712485313"
+        #else
+        return Bundle.main.earthCandyRewardAdID
+        #endif
+    }
     
     @MainActor
     func loadAd() async {
@@ -102,12 +107,12 @@ private class RewardedAdCoordinator: NSObject, ObservableObject, GADFullScreenCo
       userDidEarnRewardHandler completion: @escaping (Int) -> Void
     ) {
       guard let rewardedAd = rewardedAd else {
-        return
+        return print("Ad wasn't ready")
       }
         
       rewardedAd.present(fromRootViewController: viewController) {
         let reward = rewardedAd.adReward
-        
+        print("Reward amount: \(reward.amount)")
         completion(reward.amount.intValue)
       }
     }

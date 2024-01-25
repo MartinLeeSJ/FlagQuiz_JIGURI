@@ -59,9 +59,6 @@ struct QuizResultView: View {
                 
                 QuizRoundsResultScroll(quizResult: quizResult)
                 QuizRoundsCountriesInfoView(quizRounds: quizResult.quizRounds)
-                
-                Spacer()
-                    .frame(height: 32)
             }
         }
         .navigationBarBackButtonHidden()
@@ -76,46 +73,3 @@ struct QuizResultView: View {
     
 }
 
-#Preview {
-    QuizResultView(
-        quizResult: .init(
-            quizCount: .five,
-            quizOptionsCount: .three,
-            quizType: .chooseNameFromFlag,
-            quizRounds: [
-                .init(
-                    answerCountryCode: .init("170"),
-                    submittedCountryCode: .init("172"),
-                    quizOptionsCount: 3,
-                    quizType: .chooseNameFromFlag
-                ),
-                .init(
-                    answerCountryCode: .init("170"),
-                    submittedCountryCode: .init("170"),
-                    quizOptionsCount: 3,
-                    quizType: .chooseNameFromFlag
-                ),
-                .init(
-                    answerCountryCode: .init("370"),
-                    submittedCountryCode: .init("370"),
-                    quizOptionsCount: 3,
-                    quizType: .chooseNameFromFlag
-                ),
-                .init(
-                    answerCountryCode: .init("175"),
-                    submittedCountryCode: .init("175"),
-                    quizOptionsCount: 3,
-                    quizType: .chooseNameFromFlag
-                ),
-                .init(
-                    answerCountryCode: .init("008"),
-                    submittedCountryCode: .init("170"),
-                    quizOptionsCount: 3,
-                    quizType: .chooseNameFromFlag
-                )
-            ]
-        )
-    )
-    .environmentObject(QuizViewModel(container: .init(services: StubService())))
-    .environmentObject(NavigationModel())
-}
