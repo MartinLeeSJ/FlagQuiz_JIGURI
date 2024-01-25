@@ -23,7 +23,7 @@ struct FloatingCard: ViewModifier {
 }
 
 extension View {
-    func floadingCard() -> some View {
+    func floatingCard() -> some View {
         self.modifier(FloatingCard())
     }
 }

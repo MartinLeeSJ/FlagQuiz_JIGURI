@@ -13,31 +13,41 @@ struct NewsGrid: View {
     
 
     var body: some View {
-        Grid(horizontalSpacing: 8, verticalSpacing: 8) {
-            GridRow {
-                UserRankCell()
+        GeometryReader { geo in
+            Grid(horizontalSpacing: 8, verticalSpacing: 8) {
+                GridRow {
+                    UserRankCell()
+                    
+                    CountryQuizStatCell()
+                    
+                    QuizStatCell()
+                }
+                .frame(height: 110)
                 
-                CountryQuizStatCell()
+                GridRow {
+                    BannerAdContentView()
+                        .padding(6)
+                        .background(.thinMaterial, in: Rectangle())
+                        .gridCellColumns(4)
+                }
+                .frame(height: 70)
                 
-                QuizStatCell()
+                GridRow {
+                    TodayCountryCell()
+                }
+                .frame(height: 110)
             }
-            .frame(maxHeight: 140)
-            
-            GridRow {
-                BannerAdContentView()
-                    .padding(6)
-                    .background(.thinMaterial, in: Rectangle())
-                    .gridCellColumns(4)
-                    .frame(minHeight: 62, alignment: .center)
-            }
-            
-            GridRow {
-                TodayCountryCell()
-            }
-            .frame(maxHeight: 110)
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .padding()
+            .frame(width: geo.size.width)
         }
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-        .padding()
+        .frame(minHeight: 300, maxHeight: 400)
+    
     }
 }
 
+#Preview {
+    NewsGrid()
+        .environmentObject(NewsViewModel(container: .init(services: StubService())))
+        .environmentObject(NavigationModel())
+}

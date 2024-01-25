@@ -30,6 +30,9 @@ struct NewsView: View {
                     )
                     
                     NewsGrid()
+                    
+                    Spacer()
+                        .frame(height: 32)
                 }
             }
             .sheet(item: $viewModel.linkingLocation) {
@@ -95,12 +98,21 @@ struct NewsView: View {
 
 
 #Preview {
+    
     NavigationStack {
-        let container = DIContainer(services: StubService())
-        NewsView(viewModel: NewsViewModel(container: container))
-            .environmentObject(container)
+        
+        NewsView(
+            viewModel: NewsViewModel(container: DIContainer(services: StubService()))
+        )
+            .environmentObject(DIContainer(services: StubService()))
             .environmentObject(NavigationModel())
             .environmentObject(NotificationManager())
-            .environmentObject(AuthenticationViewModel(container: container))
+            .environmentObject(
+                AuthenticationViewModel(
+                    container: DIContainer(
+                        services: StubService()
+                    )
+                )
+            )
     }
 }

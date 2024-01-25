@@ -235,6 +235,7 @@
       }
     },
     "close" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2102,6 +2103,22 @@
         }
       }
     },
+    "onboarding.story.one.landscape" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's an extraterrestrial being resembling a frog,\nwho, for the past 30,000 years, had harbored ambitions of\nconquering Earth, abandoning their deteriorating home planet."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개구리를 닮은 외계인, 그들은 3만 년 전부터 망가져 가는\n고향 행성을 떠나 지구를 정복하겠다는 야망을 품고 있었다..."
+          }
+        }
+      }
+    },
     "onboarding.story.three" : {
       "localizations" : {
         "en" : {
@@ -2118,6 +2135,22 @@
         }
       }
     },
+    "onboarding.story.three.landscape" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eventually, they decide to disguise themselves as human pets.\nWhile maintaining their ambition to conquer Earth someday,\nthey start studying each of Earth's countries one by one.\nThey began to be called \"FlagFrog\"."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "결국 그들은 인간의 애완동물로 위장하기로 결심한다.\n언젠가는 지구를 정복하겠다는 야망을 품고,\n지구의 나라를 하나씩 공부하기 시작한다.\n그들은 \"지구리\"라 불리우게 된다."
+          }
+        }
+      }
+    },
     "onboarding.story.two" : {
       "localizations" : {
         "en" : {
@@ -2130,6 +2163,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "그러나 실제로 도착한 지구는\n낙원이 아니었다.\n그들의 몸집에 비해 거대하며,\n무자비하고 잔인한 지적 생명체\n'인간'도 존재했다."
+          }
+        }
+      }
+    },
+    "onboarding.story.two.landscape" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "However, upon their arrival, Earth turned out to be far from a paradise.\nIt was not only massive compared to their size, but it also harbored\nruthless and brutal intellectual beings known as humans."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "그러나 실제로 도착한 지구는 낙원이 아니었다.\n그들의 몸집에 비해 거대하며, 무자비하고 잔인한 지적 생명체\n'인간'도 존재했다."
           }
         }
       }
@@ -2619,13 +2668,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Name → Flag"
+            "value" : "Name"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이름 → 국기"
+            "value" : "이름"
           }
         }
       }
@@ -2651,13 +2700,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Flag → Name"
+            "value" : "Flag"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "국기 → 이름"
+            "value" : "국기"
           }
         }
       }
@@ -2838,7 +2887,55 @@
         }
       }
     },
-    "rewardView.ad.content.button.description.%lld" : {
+    "rewardView.ad.content.button.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "받기"
+          }
+        }
+      }
+    },
+    "rewardView.ad.content.button.title.ready" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "불러오는 중..."
+          }
+        }
+      }
+    },
+    "rewardView.ad.content.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reward for One-time Viewing."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1회 시청 시 받을 수 있는 리워드"
+          }
+        }
+      }
+    },
+    "rewardView.ad.content.description.%lld" : {
       "localizations" : {
         "en" : {
           "variations" : {
@@ -2876,26 +2973,10 @@
               "zero" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "남은 광고 시청 횟수 없음"
+                  "value" : "오늘 남은 광고시청 횟수가 없습니다."
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "rewardView.ad.content.description" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reward for One-time Viewing."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1회 시청 시 받을 수 있는 리워드"
           }
         }
       }

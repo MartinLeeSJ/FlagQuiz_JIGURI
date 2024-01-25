@@ -60,6 +60,7 @@ struct QuizRoundsCountriesInfoView: View {
             .safeAreaInset(edge: .trailing) {}
             .padding(.vertical)
         }
+        .frame(minHeight: 200)
         .background(Material.ultraThin)
         .scrollIndicators(.never)
     }

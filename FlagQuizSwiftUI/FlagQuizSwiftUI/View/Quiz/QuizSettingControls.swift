@@ -21,16 +21,7 @@ struct QuizSettingControls: View {
         VStack(spacing: 20) {
             ZStack {
                 VStack(spacing: 20) {
-                    HStack(alignment: .top, spacing: 16) {
-                        quizTypeMenu
-                        Divider()
-                            .frame(height: 100)
-                        quizCountPicker
-                        Divider()
-                            .frame(height: 100)
-                        quizItemCountPicker
-                    }
-                    
+                   controlPane
                     
                     Text("quizSettingControls.total.maximum.candy.description\(quizType.advantageCandy + quizCount.rawValue +  quizOptionsCount.advantageCandy)")
                         .font(.caption)
@@ -84,26 +75,50 @@ struct QuizSettingControls: View {
         .padding()
     }
     
-    
+    @ViewBuilder
+    private var controlPane: some View {
+        HStack(alignment: .top, spacing: 16) {
+            quizTypeMenu
+            Divider()
+                .frame(height: 100)
+            quizCountPicker
+            Divider()
+                .frame(height: 100)
+            quizItemCountPicker
+        }
+    }
     
     private var quizTypeMenu: some View {
         VStack {
             Text("quizIntro.quizTypeMenu.title")
                 .font(.subheadline)
                 .fontWeight(.medium)
-           
-            Picker(
-                "quizIntro.quizTypeMenu.title",
-                selection: $quizType) {
-                ForEach(FQQuizType.allCases, id: \.self) { quizType in
-                        Text(quizType.localizedShortenedTitle)
-                        .font(.custom(FontName.pixel, size: 15))
-                        .fontWeight(.medium)
-                        
+            
+            if #available(iOS 17.0, *) {
+                Picker(
+                    "quizIntro.quizTypeMenu.title",
+                    selection: $quizType) {
+                        ForEach(FQQuizType.allCases, id: \.self) { quizType in
+                            Text(quizType.localizedShortenedTitle)
+                                .font(.custom(FontName.pixel, size: 15))
+                                .fontWeight(.medium)
+                            
+                        }
                     }
-                }
-                .pickerStyle(.wheel)
-                .frame(maxHeight: 100)
+                    .pickerStyle(.wheel)
+                    .frame(maxHeight: 100)
+            } else {
+                Picker(
+                    "quizIntro.quizTypeMenu.title",
+                    selection: $quizType) {
+                        ForEach(FQQuizType.allCases, id: \.self) { quizType in
+                            Text(quizType.localizedShortenedTitle)
+                                .font(.custom(FontName.pixel, size: 15))
+                                .fontWeight(.medium)
+                            
+                        }
+                    }
+            }
             
             Text("quizSettingControls.quizType.extra.candy\(quizType.advantageCandy)")
                 .font(.caption)
@@ -117,25 +132,37 @@ struct QuizSettingControls: View {
             Text("quizIntro.quizCountPicker.title")
                 .font(.subheadline)
                 .fontWeight(.medium)
-               
-
             
-            Picker("quizIntro.quizCountPicker.title",
-                   selection: $quizCount
-            ) {
-                ForEach(FQQuizCount.allCases, id: \.self) { quizCount in
-                    Text("\(quizCount.rawValue)")
-                        .font(.custom(FontName.pixel, size: 30))
-                        .fontWeight(.medium)
-                        .tag(quizCount)
+            
+            if #available(iOS 17.0, *) {
+                Picker("quizIntro.quizCountPicker.title",
+                       selection: $quizCount
+                ) {
+                    ForEach(FQQuizCount.allCases, id: \.self) { quizCount in
+                        Text("\(quizCount.rawValue)")
+                            .font(.custom(FontName.pixel, size: 30))
+                            .fontWeight(.medium)
+                            .tag(quizCount)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(maxHeight: 100)
+            } else {
+                Picker("quizIntro.quizCountPicker.title",
+                       selection: $quizCount
+                ) {
+                    ForEach(FQQuizCount.allCases, id: \.self) { quizCount in
+                        Text("\(quizCount.rawValue)")
+                            .font(.custom(FontName.pixel, size: 30))
+                            .fontWeight(.medium)
+                            .tag(quizCount)
+                    }
                 }
             }
-            .pickerStyle(.wheel)
-            .frame(maxHeight: 100)
             
             Text("quizSettingControls.quizCount.candy\(quizCount.rawValue)")
                 .font(.caption)
-         
+            
         }
         
     }
@@ -145,20 +172,33 @@ struct QuizSettingControls: View {
             Text("quizIntro.quizItemCountPicker.title")
                 .font(.subheadline)
                 .fontWeight(.medium)
-                
-            Picker("quizIntro.quizItemCountPicker.title",
-                   selection: $quizOptionsCount
-            ) {
-                ForEach(FQQuizOptionsCount.allCases, id: \.self) { quizItemCount in
-                    Text("\(quizItemCount.rawValue)")
-                        .font(.custom(FontName.pixel, size: 30))
-                        .fontWeight(.medium)
-                        .tag(quizItemCount)
+            
+            if #available(iOS 17.0, *) {
+                Picker("quizIntro.quizItemCountPicker.title",
+                       selection: $quizOptionsCount
+                ) {
+                    ForEach(FQQuizOptionsCount.allCases, id: \.self) { quizItemCount in
+                        Text("\(quizItemCount.rawValue)")
+                            .font(.custom(FontName.pixel, size: 30))
+                            .fontWeight(.medium)
+                            .tag(quizItemCount)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .frame(maxHeight: 100)
+            } else {
+                Picker("quizIntro.quizItemCountPicker.title",
+                       selection: $quizOptionsCount
+                ) {
+                    ForEach(FQQuizOptionsCount.allCases, id: \.self) { quizItemCount in
+                        Text("\(quizItemCount.rawValue)")
+                            .font(.custom(FontName.pixel, size: 30))
+                            .fontWeight(.medium)
+                            .tag(quizItemCount)
+                    }
                 }
             }
-            .pickerStyle(.wheel)
-            .frame(maxHeight: 100)
-          
+            
             Text("quizSettingControls.quizOptions.extra.candy\(quizOptionsCount.advantageCandy)")
                 .font(.caption)
         }
