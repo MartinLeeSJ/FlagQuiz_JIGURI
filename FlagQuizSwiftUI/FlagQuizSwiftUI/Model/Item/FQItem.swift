@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FQItem: Codable {
+struct FQItem: Codable, Identifiable, Hashable {
     var id: String
     var type: FQItemType
     var names: [FQItemName]

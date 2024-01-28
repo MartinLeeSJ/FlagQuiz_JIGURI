@@ -42,7 +42,6 @@ extension FQItemObject {
         .init(
             id: nil,
             type: type,
-            code: code,
             names: names,
             price: price,
             isOnMarket: isOnMarket,

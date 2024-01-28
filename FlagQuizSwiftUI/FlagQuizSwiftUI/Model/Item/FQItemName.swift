@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FQItemName: Codable {
+struct FQItemName: Codable, Hashable {
     var languageCode: ServiceLangCode
     var name: String    
 }
