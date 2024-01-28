@@ -8,14 +8,14 @@
 import Foundation
 
 struct FQItemName: Codable {
-    var identifier: ServiceLangCode
+    var languageCode: ServiceLangCode
     var name: String    
 }
 
 extension FQItemName {
     func toObject() -> FQItemNameObject {
         .init(
-            identifier: identifier.rawValue,
+            identifier: languageCode.rawValue,
             name: name
         )
     }

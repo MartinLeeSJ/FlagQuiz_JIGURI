@@ -13,6 +13,8 @@ struct FQItemObject: Codable {
     var code: String
     var names: [FQItemNameObject]
     var isOnMarket: Bool
+    var imageUrl: String?
+    var storeImageUrl: String?
 }
 
 extension FQItemObject {
@@ -26,7 +28,9 @@ extension FQItemObject {
             type: type,
             code: code,
             names: names.map { $0.toModel() },
-            isOnMarket: isOnMarket
+            isOnMarket: isOnMarket,
+            imageUrl: imageUrl,
+            storeImageUrl: storeImageUrl
         )
     }
 }

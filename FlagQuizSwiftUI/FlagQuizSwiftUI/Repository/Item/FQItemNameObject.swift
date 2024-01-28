@@ -16,7 +16,7 @@ extension FQItemNameObject {
     func toModel() -> FQItemName {
         let code = ServiceLangCode(rawValue: identifier) ?? .EN
         return .init(
-            identifier: code,
+            languageCode: code,
             name: name
         )
     }

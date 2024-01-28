@@ -8,13 +8,16 @@
 import Foundation
 
 enum FQItemType: String, Hashable, Codable, CaseIterable {
-    case hat
     case hair
+    case hat
     case top
     case bottom
-    case shoes
+    case necklace
     case rightHandAccesory
     case leftHandAccesory
+    case glove
+    case shoes
     case background
     case skin
+    case pack
 }

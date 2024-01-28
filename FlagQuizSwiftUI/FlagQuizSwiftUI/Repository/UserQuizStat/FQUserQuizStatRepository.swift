@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import FirebaseFirestore
 
+
 protocol FQUserQuizStatRepositoryType {
     func getQuizStat(ofUser userId: String) async throws -> FQUserQuizStatObject?
     func addQuizStat(quizStat model: FQUserQuizStat) async throws
