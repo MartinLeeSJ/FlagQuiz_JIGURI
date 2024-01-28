@@ -69,6 +69,7 @@ final class EarthCandyService: EarthCandyServiceType {
                 guard let self else {
                     return Fail<Void, DBError>(error: .invalidSelf).eraseToAnyPublisher()
                 }
+                
                 if object == nil {
                     return self.repository.createEarthCandy(ofUser: userId, candyCount: point).eraseToAnyPublisher()
                 }
