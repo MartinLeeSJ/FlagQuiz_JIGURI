@@ -171,6 +171,9 @@
 		5BDD3C302B66479F0088D3A3 /* UserItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD3C2F2B66479F0088D3A3 /* UserItemService.swift */; };
 		5BDD3C322B6647AD0088D3A3 /* StoreItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD3C312B6647AD0088D3A3 /* StoreItemService.swift */; };
 		5BDD3C342B664B970088D3A3 /* FQUserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD3C332B664B970088D3A3 /* FQUserItem.swift */; };
+		5BDD3C362B6651620088D3A3 /* FQUserItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD3C352B6651620088D3A3 /* FQUserItemObject.swift */; };
+		5BDD3C382B6653370088D3A3 /* CollectionReference+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD3C372B6653370088D3A3 /* CollectionReference+Extensions.swift */; };
+		5BDD3C3A2B667B200088D3A3 /* FQItem+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD3C392B667B200088D3A3 /* FQItem+Preview.swift */; };
 		5BE0864F2B29D25E00D38C01 /* CountryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0864E2B29D25E00D38C01 /* CountryRequest.swift */; };
 		5BE086512B29D6A500D38C01 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE086502B29D6A500D38C01 /* APIError.swift */; };
 		5BE086542B317F6500D38C01 /* CountriesSampleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE086532B317F6500D38C01 /* CountriesSampleJSON.swift */; };
@@ -386,6 +389,9 @@
 		5BDD3C2F2B66479F0088D3A3 /* UserItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItemService.swift; sourceTree = "<group>"; };
 		5BDD3C312B6647AD0088D3A3 /* StoreItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemService.swift; sourceTree = "<group>"; };
 		5BDD3C332B664B970088D3A3 /* FQUserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserItem.swift; sourceTree = "<group>"; };
+		5BDD3C352B6651620088D3A3 /* FQUserItemObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQUserItemObject.swift; sourceTree = "<group>"; };
+		5BDD3C372B6653370088D3A3 /* CollectionReference+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionReference+Extensions.swift"; sourceTree = "<group>"; };
+		5BDD3C392B667B200088D3A3 /* FQItem+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FQItem+Preview.swift"; sourceTree = "<group>"; };
 		5BE0864E2B29D25E00D38C01 /* CountryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRequest.swift; sourceTree = "<group>"; };
 		5BE086502B29D6A500D38C01 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		5BE086532B317F6500D38C01 /* CountriesSampleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesSampleJSON.swift; sourceTree = "<group>"; };
@@ -587,6 +593,7 @@
 				5B16F96E2B286C670011ACF7 /* randomNonceString.swift */,
 				5B16F9702B286C7D0011ACF7 /* SHA256.swift */,
 				5BB40D362B4D281400E907F0 /* DocumentReference+Extension.swift */,
+				5BDD3C372B6653370088D3A3 /* CollectionReference+Extensions.swift */,
 				5BC707682B57BFD2005752A8 /* Bundle+AdId.swift */,
 			);
 			path = Utils;
@@ -742,6 +749,7 @@
 			children = (
 				5B5C2AD32B280A34009A382B /* Preview Assets.xcassets */,
 				5BE086532B317F6500D38C01 /* CountriesSampleJSON.swift */,
+				5BDD3C392B667B200088D3A3 /* FQItem+Preview.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -1080,6 +1088,7 @@
 			isa = PBXGroup;
 			children = (
 				5BFF43802B4679AC00C3DBCB /* FQItemObject.swift */,
+				5BDD3C352B6651620088D3A3 /* FQUserItemObject.swift */,
 				5BFF438D2B469F4400C3DBCB /* FQItemNameObject.swift */,
 				5BFF43862B468DE500C3DBCB /* UserItemDBRepository.swift */,
 				5BDD3C2C2B6642700088D3A3 /* StoreItemDBRepository.swift */,
@@ -1406,6 +1415,7 @@
 				5B9FC6062B47FAAA00B694C7 /* QuizError.swift in Sources */,
 				5B39012C2B5F96D9009BB9C6 /* LinkingLoginViewModel.swift in Sources */,
 				5B16F9682B2850000011ACF7 /* FQUser.swift in Sources */,
+				5BDD3C3A2B667B200088D3A3 /* FQItem+Preview.swift in Sources */,
 				5BC998392B44074700A5EA12 /* UserRankProgressView.swift in Sources */,
 				5BE086612B3190F300D38C01 /* FQContinent.swift in Sources */,
 				5BB40D3C2B4E6C8100E907F0 /* FrogViewButtonStyle.swift in Sources */,
@@ -1422,6 +1432,7 @@
 				5BB40D372B4D281400E907F0 /* DocumentReference+Extension.swift in Sources */,
 				5B9FC6022B47D90300B694C7 /* EarthCandyService.swift in Sources */,
 				5B795CC02B3D5AD1004AF9EE /* FQQuizRoundRecord.swift in Sources */,
+				5BDD3C382B6653370088D3A3 /* CollectionReference+Extensions.swift in Sources */,
 				5B757DDC2B5CB3EF000E611E /* ToastAlert.swift in Sources */,
 				5B34484C2B35527F002E2222 /* QuizStatService.swift in Sources */,
 				5B32103A2B542C2800B2134B /* QuizProgressView.swift in Sources */,
@@ -1439,6 +1450,7 @@
 				5BC707652B57A576005752A8 /* BannerAdContentView.swift in Sources */,
 				5B16F9792B287B700011ACF7 /* DBError.swift in Sources */,
 				5B0F29262B517AA800788FE7 /* MakerView.swift in Sources */,
+				5BDD3C362B6651620088D3A3 /* FQUserItemObject.swift in Sources */,
 				5B6171822B56991A005987A5 /* ATTDescriptionView.swift in Sources */,
 				5B16F97B2B287E750011ACF7 /* UserService.swift in Sources */,
 				5BC707632B57A46A005752A8 /* BannerAdViewController.swift in Sources */,

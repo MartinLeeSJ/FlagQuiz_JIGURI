@@ -9,26 +9,25 @@ import Foundation
 import Combine
 
 protocol StoreItemServiceType {
-    func getAllItemsOnStore(ofType: FQItemType) -> AnyPublisher<[FQItem], ServiceError>
-    func buyItems(userId: String, items: [FQItem]) -> AnyPublisher<Void, ServiceError>
+    func getItems() async throws -> [FQItem]
 }
 
 final class StoreItemService: StoreItemServiceType {
-    func getAllItemsOnStore(ofType: FQItemType) -> AnyPublisher<[FQItem], ServiceError> {
-        Empty().eraseToAnyPublisher()
+    private let repository: StoreItemDBRepositoryType
+    
+    init(repository: StoreItemDBRepositoryType) {
+        self.repository = repository
     }
     
-    func buyItems(userId: String, items: [FQItem]) -> AnyPublisher<Void, ServiceError> {
-        Empty().eraseToAnyPublisher()
+    func getItems() async throws -> [FQItem] {
+        let items = try await repository.getItems()
+        return items.compactMap { $0?.toModel() }
     }
+    
 }
 
 final class StubStoreItemService: StoreItemServiceType {
-    func getAllItemsOnStore(ofType: FQItemType) -> AnyPublisher<[FQItem], ServiceError> {
-        Empty().eraseToAnyPublisher()
-    }
-    
-    func buyItems(userId: String, items: [FQItem]) -> AnyPublisher<Void, ServiceError> {
-        Empty().eraseToAnyPublisher()
+    func getItems() async throws -> [FQItem] {
+        []
     }
 }

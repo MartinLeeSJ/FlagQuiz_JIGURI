@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 유저가 가지고 있는 아이템
 struct FQUserItem {
     var itemId: String
     var itemType: FQItemType
@@ -15,4 +16,14 @@ struct FQUserItem {
 
 extension FQUserItem: Identifiable {
     var id: String { itemId }
+}
+
+extension FQUserItem {
+    func toObject() -> FQUserItemObject {
+        .init(
+            itemId: itemId,
+            itemTypeName: itemType.rawValue,
+            purchasedAt: .init(date: purchasedAt)
+        )
+    }
 }

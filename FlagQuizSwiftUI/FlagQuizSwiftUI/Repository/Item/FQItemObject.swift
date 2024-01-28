@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct FQItemObject: Codable {
-    var id: String
+    @DocumentID var id: String?
     var type: String
-    var code: String
     var names: [FQItemNameObject]
+    var price: Int
     var isOnMarket: Bool
     var imageUrl: String?
     var storeImageUrl: String?
@@ -19,6 +20,9 @@ struct FQItemObject: Codable {
 
 extension FQItemObject {
     func toModel() -> FQItem? {
+        guard let id else {
+            return nil
+        }
         guard let type = FQItemType(rawValue: type) else {
             return nil
         } 
@@ -26,8 +30,21 @@ extension FQItemObject {
         return .init(
             id: id,
             type: type,
-            code: code,
             names: names.map { $0.toModel() },
+            price: price,
+            isOnMarket: isOnMarket,
+            imageUrl: imageUrl,
+            storeImageUrl: storeImageUrl
+        )
+    }
+    
+    func nilIdObject() -> FQItemObject {
+        .init(
+            id: nil,
+            type: type,
+            code: code,
+            names: names,
+            price: price,
             isOnMarket: isOnMarket,
             imageUrl: imageUrl,
             storeImageUrl: storeImageUrl

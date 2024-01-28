@@ -12,6 +12,7 @@ enum DBError: Error {
     case emptyData
     case fetchingError
     case decodingError
+    case batchError
     case invalidObject
     case invalidSelf
 }

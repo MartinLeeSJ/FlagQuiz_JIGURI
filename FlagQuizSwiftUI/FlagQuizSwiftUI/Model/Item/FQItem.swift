@@ -10,8 +10,8 @@ import Foundation
 struct FQItem: Codable {
     var id: String
     var type: FQItemType
-    var code: String
     var names: [FQItemName]
+    var price: Int
     var isOnMarket: Bool
     var imageUrl: String?
     var storeImageUrl: String?
@@ -24,8 +24,8 @@ extension FQItem {
         .init(
             id: id,
             type: type.rawValue,
-            code: code,
             names: names.map { $0.toObject() },
+            price: price,
             isOnMarket: isOnMarket,
             imageUrl: imageUrl,
             storeImageUrl: storeImageUrl
