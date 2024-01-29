@@ -48,5 +48,6 @@ extension FQItemObject {
             imageUrl: imageUrl,
             storeImageUrl: storeImageUrl
         )
+       
     }
 }

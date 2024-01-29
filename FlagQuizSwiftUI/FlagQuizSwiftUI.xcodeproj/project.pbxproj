@@ -198,6 +198,14 @@
 		5BF5EFD42B4F9536006D5B4B /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5EFD32B4F9536006D5B4B /* SafariWebView.swift */; };
 		5BF5EFD62B4FB67D006D5B4B /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5EFD52B4FB67D006D5B4B /* MyPageViewModel.swift */; };
 		5BF5EFD82B4FE402006D5B4B /* EditUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5EFD72B4FE402006D5B4B /* EditUserNameView.swift */; };
+		5BFC5C9F2B6768EF00DE0F49 /* ItemStoreFrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC5C9E2B6768EF00DE0F49 /* ItemStoreFrogView.swift */; };
+		5BFC5CA12B67691800DE0F49 /* ItemStoreWearingClothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC5CA02B67691800DE0F49 /* ItemStoreWearingClothes.swift */; };
+		5BFC5CA32B6769C500DE0F49 /* ItemTypeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC5CA22B6769C400DE0F49 /* ItemTypeButtons.swift */; };
+		5BFC5CA52B676A4200DE0F49 /* StoreItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC5CA42B676A4200DE0F49 /* StoreItemGrid.swift */; };
+		5BFC5CA72B6784A700DE0F49 /* StoreItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC5CA62B6784A700DE0F49 /* StoreItemCell.swift */; };
+		5BFC5CA92B67858100DE0F49 /* ItemStoreCartButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC5CA82B67858100DE0F49 /* ItemStoreCartButtons.swift */; };
+		5BFC5CAB2B6790F600DE0F49 /* ItemStoreSelectedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC5CAA2B6790F600DE0F49 /* ItemStoreSelectedItemView.swift */; };
+		5BFC5CAD2B679F1A00DE0F49 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC5CAC2B679F1A00DE0F49 /* CartView.swift */; };
 		5BFF43792B466D9900C3DBCB /* FQFrog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF43782B466D9800C3DBCB /* FQFrog.swift */; };
 		5BFF437B2B466E3A00C3DBCB /* FQItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF437A2B466E3A00C3DBCB /* FQItem.swift */; };
 		5BFF437E2B46764C00C3DBCB /* FQFrogObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF437D2B46764C00C3DBCB /* FQFrogObject.swift */; };
@@ -417,6 +425,14 @@
 		5BF5EFD32B4F9536006D5B4B /* SafariWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
 		5BF5EFD52B4FB67D006D5B4B /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		5BF5EFD72B4FE402006D5B4B /* EditUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameView.swift; sourceTree = "<group>"; };
+		5BFC5C9E2B6768EF00DE0F49 /* ItemStoreFrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStoreFrogView.swift; sourceTree = "<group>"; };
+		5BFC5CA02B67691800DE0F49 /* ItemStoreWearingClothes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStoreWearingClothes.swift; sourceTree = "<group>"; };
+		5BFC5CA22B6769C400DE0F49 /* ItemTypeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypeButtons.swift; sourceTree = "<group>"; };
+		5BFC5CA42B676A4200DE0F49 /* StoreItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemGrid.swift; sourceTree = "<group>"; };
+		5BFC5CA62B6784A700DE0F49 /* StoreItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemCell.swift; sourceTree = "<group>"; };
+		5BFC5CA82B67858100DE0F49 /* ItemStoreCartButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStoreCartButtons.swift; sourceTree = "<group>"; };
+		5BFC5CAA2B6790F600DE0F49 /* ItemStoreSelectedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStoreSelectedItemView.swift; sourceTree = "<group>"; };
+		5BFC5CAC2B679F1A00DE0F49 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		5BFF43782B466D9800C3DBCB /* FQFrog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQFrog.swift; sourceTree = "<group>"; };
 		5BFF437A2B466E3A00C3DBCB /* FQItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQItem.swift; sourceTree = "<group>"; };
 		5BFF437D2B46764C00C3DBCB /* FQFrogObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQFrogObject.swift; sourceTree = "<group>"; };
@@ -526,6 +542,7 @@
 				5B6742002B36A23C007335A6 /* CountryDetail */,
 				5B89317E2B41D02300FA331E /* UserRank */,
 				5BDD3C3B2B6682890088D3A3 /* ItemStore */,
+				5BFC5CAE2B679F2000DE0F49 /* Cart */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1038,6 +1055,13 @@
 			isa = PBXGroup;
 			children = (
 				5BDD3C3C2B6682AE0088D3A3 /* ItemStoreView.swift */,
+				5BFC5C9E2B6768EF00DE0F49 /* ItemStoreFrogView.swift */,
+				5BFC5CA02B67691800DE0F49 /* ItemStoreWearingClothes.swift */,
+				5BFC5CA22B6769C400DE0F49 /* ItemTypeButtons.swift */,
+				5BFC5CA42B676A4200DE0F49 /* StoreItemGrid.swift */,
+				5BFC5CA62B6784A700DE0F49 /* StoreItemCell.swift */,
+				5BFC5CA82B67858100DE0F49 /* ItemStoreCartButtons.swift */,
+				5BFC5CAA2B6790F600DE0F49 /* ItemStoreSelectedItemView.swift */,
 			);
 			path = ItemStore;
 			sourceTree = "<group>";
@@ -1084,6 +1108,14 @@
 				5BE3E4CF2B3985C30048C10E /* CountryDiskStorage.swift */,
 			);
 			path = CountryCache;
+			sourceTree = "<group>";
+		};
+		5BFC5CAE2B679F2000DE0F49 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				5BFC5CAC2B679F1A00DE0F49 /* CartView.swift */,
+			);
+			path = Cart;
 			sourceTree = "<group>";
 		};
 		5BFF437C2B46763500C3DBCB /* Frog */ = {
@@ -1341,6 +1373,7 @@
 				5B16F9422B2830570011ACF7 /* OnBoardingView.swift in Sources */,
 				5BE7D2A02B29A63A0044C3D4 /* FQCountryISOCode.swift in Sources */,
 				5B795CC32B3D5B8C004AF9EE /* FQQuizType.swift in Sources */,
+				5BFC5CAB2B6790F600DE0F49 /* ItemStoreSelectedItemView.swift in Sources */,
 				5B9ECB732B33EB1700098BF3 /* QuizResultView.swift in Sources */,
 				5B0F31382B4AE35100121561 /* FloatingCard.swift in Sources */,
 				5B7BCAF82B32DCC000E50C5F /* QuizSubmitButton.swift in Sources */,
@@ -1355,6 +1388,7 @@
 				5B0F31182B4A9BEC00121561 /* Line.swift in Sources */,
 				5B9FC6042B47F3BD00B694C7 /* FQQuiz+DEBUG.swift in Sources */,
 				5BE086652B31D59C00D38C01 /* QuizFilledButtonStyle.swift in Sources */,
+				5BFC5CAD2B679F1A00DE0F49 /* CartView.swift in Sources */,
 				5BD3B7662B31EC7400B930E0 /* QuizView.swift in Sources */,
 				5B9ECB752B340DFD00098BF3 /* FQQuizScore.swift in Sources */,
 				5B16F94E2B2845420011ACF7 /* DIContainer.swift in Sources */,
@@ -1440,6 +1474,7 @@
 				5B5056312B4BC3C900FCA5A7 /* FrogViewModel.swift in Sources */,
 				5BCFA2912B4987FE0074C998 /* QuizSettingControls.swift in Sources */,
 				5BE0865F2B3190DA00D38C01 /* FQMapsLinks.swift in Sources */,
+				5BFC5CA12B67691800DE0F49 /* ItemStoreWearingClothes.swift in Sources */,
 				5B795CB52B3D298B004AF9EE /* QuizRecordView.swift in Sources */,
 				5BB40D372B4D281400E907F0 /* DocumentReference+Extension.swift in Sources */,
 				5B9FC6022B47D90300B694C7 /* EarthCandyService.swift in Sources */,
@@ -1447,6 +1482,7 @@
 				5BDD3C382B6653370088D3A3 /* CollectionReference+Extensions.swift in Sources */,
 				5B757DDC2B5CB3EF000E611E /* ToastAlert.swift in Sources */,
 				5B34484C2B35527F002E2222 /* QuizStatService.swift in Sources */,
+				5BFC5CA32B6769C500DE0F49 /* ItemTypeButtons.swift in Sources */,
 				5B32103A2B542C2800B2134B /* QuizProgressView.swift in Sources */,
 				5BE086582B31907C00D38C01 /* FQCountryDetail.swift in Sources */,
 				5B19C1752B3C2E16001A74CE /* TodayCountryCell.swift in Sources */,
@@ -1455,6 +1491,8 @@
 				5B61717E2B566553005987A5 /* OnBoardingDestination.swift in Sources */,
 				5B9ECB772B34255100098BF3 /* QuizRoundsResultScroll.swift in Sources */,
 				5B3448582B35D3F1002E2222 /* HapticsManager.swift in Sources */,
+				5BFC5C9F2B6768EF00DE0F49 /* ItemStoreFrogView.swift in Sources */,
+				5BFC5CA92B67858100DE0F49 /* ItemStoreCartButtons.swift in Sources */,
 				5BD29BC12B58F32C00404D11 /* FQQuizOptionsCount.swift in Sources */,
 				5B0F292B2B52546100788FE7 /* InformationViewModel.swift in Sources */,
 				5B67423C2B370F28007335A6 /* FlowingText.swift in Sources */,
@@ -1480,10 +1518,12 @@
 				5B9FC6082B48272D00B694C7 /* EarthCandyView.swift in Sources */,
 				5BC998372B43E16900A5EA12 /* UserRankViewModel.swift in Sources */,
 				5B9A81B32B3AC6AF0087142A /* FQCountryQuizStatRepository.swift in Sources */,
+				5BFC5CA52B676A4200DE0F49 /* StoreItemGrid.swift in Sources */,
 				5B7BCAFE2B3336D900E50C5F /* FQQuizRoundRecordObject.swift in Sources */,
 				5B16F9712B286C7D0011ACF7 /* SHA256.swift in Sources */,
 				5B697EB62B38754D003089F8 /* URLImageViewModel.swift in Sources */,
 				5B697EB32B386E1E003089F8 /* ImageDiskStorage.swift in Sources */,
+				5BFC5CA72B6784A700DE0F49 /* StoreItemCell.swift in Sources */,
 				5B6171782B553816005987A5 /* CreateUserNameViewModel.swift in Sources */,
 				5B9A81B12B3AC4F00087142A /* FQCountryQuizStat.swift in Sources */,
 				5B16F9532B2845DF0011ACF7 /* AuthService.swift in Sources */,
