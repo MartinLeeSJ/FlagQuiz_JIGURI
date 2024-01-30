@@ -53,7 +53,6 @@ struct ItemStoreView: View {
                     .padding(.horizontal)
                     .padding(.vertical, 120)
             }
-            
            
         }
         .toolbar {

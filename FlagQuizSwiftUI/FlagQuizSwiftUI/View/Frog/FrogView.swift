@@ -11,15 +11,11 @@ struct FrogView: View {
     @Environment(\.colorScheme) var scheme
     @EnvironmentObject private var earthCandyViewModel: EarthCandyViewModel
     @EnvironmentObject private var newsViewModel: NewsViewModel
-    @StateObject private var viewModel: FrogViewModel
-    
-    init(viewModel: FrogViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @EnvironmentObject private var frogModel: FrogModel
     
     var body: some View {
         VStack(spacing: 16) {
-            if let frog = viewModel.frog {
+            if let frog = frogModel.frog {
                 content(frog)
             } else {
                 placeholder
@@ -29,11 +25,11 @@ struct FrogView: View {
         }
         .frame(maxWidth: .infinity)
         .overlay(alignment: .topTrailing) {
-            FrogSettlementIcon(frog: viewModel.frog)
+            FrogSettlementIcon(frog: frogModel.frog)
         }
         .padding()
         .task {
-            viewModel.observe()
+            frogModel.observe()
         }
         .background {
             if scheme == .dark {
@@ -52,7 +48,7 @@ struct FrogView: View {
                 }
             }
             
-            Image("Frog")
+            Image("frogSoSo")
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: 200)
@@ -133,7 +129,7 @@ struct FrogView: View {
                 if isAnonymous {
                     newsViewModel.setLinkingLocation(.frogStateButton)
                 } else {
-                    viewModel.send(.feedFrog)
+                    frogModel.send(.feedFrog)
                 }
             } label: {
                 HStack {
@@ -185,19 +181,14 @@ struct FrogView: View {
 
 
 #Preview {
-    FrogView(
-        viewModel: .init(
-            container: .init(
-                services: StubService()
-            ), notificationManager: NotificationManager()
-        )
-    )
-    .environmentObject(NotificationManager())
-    .environmentObject(
-        EarthCandyViewModel(
-            container: .init(
-                services: StubService()
+    FrogView()
+        .environmentObject(FrogModel(container: .init(services: StubService()), notificationManager: NotificationManager()))
+        .environmentObject(NotificationManager())
+        .environmentObject(
+            EarthCandyViewModel(
+                container: .init(
+                    services: StubService()
+                )
             )
         )
-    )
 }

@@ -77,11 +77,13 @@ final class FrogService: FrogServiceType {
         let calendar: Calendar = Calendar.current
         let components = calendar.dateComponents([.hour], from: lastUpdated, to: .now)
         
+        // 마지막 업데이트 시기로부터 4시간이 지나지 않았으면 해당 오브젝트를 그대로 퍼블리시한다.
         guard let hours = components.hour, abs(hours) > 4 else {
             return Just(object.toModel()).setFailureType(to: DBError.self).eraseToAnyPublisher()
         }
         
-        let newStatus: Int = object.status - Int(abs(hours) / 2)
+        // 4시간마다 1씩 감소하는 상태값을 적용한다.
+        let newStatus: Int = object.status - Int(abs(hours) / 4)
         object.status = FrogState.safeValue(rawValue: newStatus).rawValue
         object.lastUpdated = .init(date: .now)
         
@@ -192,7 +194,7 @@ final class StubFrogService: FrogServiceType {
     }
     
     func observeFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError> {
-        Just(FQFrog(userId: "1", state: .bad, lastUpdated: .now, items: []))
+        Just(FQFrog(userId: "1", state: .great, lastUpdated: .now, items: []))
             .setFailureType(to: ServiceError.self)
             .eraseToAnyPublisher()
     }

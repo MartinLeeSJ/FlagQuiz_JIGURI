@@ -53,6 +53,9 @@
         }
       }
     },
+    "1" : {
+
+    },
     "120" : {
 
     },
@@ -771,6 +774,17 @@
         }
       }
     },
+    "fQItemType.accessory" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Accessories"
+          }
+        }
+      }
+    },
     "fQItemType.background" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -874,7 +888,7 @@
       }
     },
     "fQItemType.necklace" : {
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
