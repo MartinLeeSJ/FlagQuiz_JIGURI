@@ -148,12 +148,7 @@ struct CartView: View {
                     
                     if isFrogStateGreat {
                         //"지구리 기분이 좋아서 할인"
-                        Text(
-                            String(
-                                localized:"cartView.frogstate.great.discount.description",
-                                defaultValue: "Discounted due to FlagFrog's great mood."
-                            )
-                        )
+                        Text("cartView.frogstate.great.discount.\(FrogState.frogInGreatMoodDiscountPercentPoint).description")
                             .font(.caption2)
                     }
                     
