@@ -10,11 +10,14 @@ import SwiftUI
 struct ItemStoreView: View {
     @Environment(\.locale) var locale
     @EnvironmentObject private var container: DIContainer
+    @StateObject private var itemStoreViewModel: ItemStoreViewModel
+    
     @State private var selectedType: FQItemType? = .hair
-    @State private var storeItems: [FQItem] = FQItem.mockItems
-    @State private var wearingItems: [FQItem] = []
-    @State private var cartSet: Set<FQItem> = .init()
     @State private var isCartViewPresented: Bool = false
+    
+    init(itemStoreViewModel: ItemStoreViewModel) {
+        self._itemStoreViewModel = StateObject(wrappedValue: itemStoreViewModel)
+    }
     
     private var languageCodeString: String {
         guard let code = locale.language.languageCode?.identifier(.alpha2) else {
@@ -29,7 +32,7 @@ struct ItemStoreView: View {
     
     private var currentTypeItems: [FQItem] {
         guard let selectedType else { return [] }
-        return storeItems.filter { $0.type == selectedType }
+        return itemStoreViewModel.storeItems.filter { $0.type == selectedType }
     }
     
     var body: some View {
@@ -53,12 +56,16 @@ struct ItemStoreView: View {
                     }
                 
                 CartView(
-                    viewModel: .init(cartItems: Array(cartSet), container: container),
+                    viewModel: .init(
+                        cartItems: Array(itemStoreViewModel.cart),
+                        container: container
+                    ),
                     isCartViewPresented: $isCartViewPresented
                 )
             }
            
         }
+        .environmentObject(itemStoreViewModel)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 HStack {
@@ -93,7 +100,6 @@ struct ItemStoreView: View {
             ItemStoreFrogView()
             
             ItemStoreWearingClothes(
-                wearingItems: $wearingItems,
                 languageCodeString: languageCodeString
             )
             
@@ -104,8 +110,6 @@ struct ItemStoreView: View {
                 .padding(.horizontal)
             
             StoreItemGrid(
-                wearingItems: $wearingItems,
-                cartSet: $cartSet,
                 isCartViewPresented: $isCartViewPresented,
                 currentTypeItems: currentTypeItems,
                 languageCodeString: languageCodeString
@@ -119,7 +123,6 @@ struct ItemStoreView: View {
                 ItemStoreFrogView()
                 
                 ItemStoreWearingClothes(
-                    wearingItems: $wearingItems,
                     languageCodeString: languageCodeString
                 )
             }
@@ -131,8 +134,6 @@ struct ItemStoreView: View {
                     .padding(.horizontal)
                 
                 StoreItemGrid(
-                    wearingItems: $wearingItems,
-                    cartSet: $cartSet,
                     isCartViewPresented: $isCartViewPresented,
                     currentTypeItems: currentTypeItems,
                     languageCodeString: languageCodeString
@@ -144,7 +145,7 @@ struct ItemStoreView: View {
 
 
 
-#Preview {
-    ItemStoreView()
-        .environmentObject(DIContainer(services: StubService()))
-}
+//#Preview {
+//    ItemStoreView()
+//        .environmentObject(DIContainer(services: StubService()))
+//}

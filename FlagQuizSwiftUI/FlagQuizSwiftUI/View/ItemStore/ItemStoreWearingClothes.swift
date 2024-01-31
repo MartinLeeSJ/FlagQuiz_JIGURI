@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct ItemStoreWearingClothes: View {
-    @Binding private var wearingItems: [FQItem]
+    @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
     private let languageCodeString: String
     
-    init(wearingItems: Binding<[FQItem]>, languageCodeString: String) {
-        self._wearingItems = wearingItems
+    init(languageCodeString: String) {
         self.languageCodeString = languageCodeString
     }
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(wearingItems, id: \.self) { item in
+                ForEach(itemStoreViewModel.wearingItems, id: \.self) { item in
                     Button {
-                        if let index = wearingItems.firstIndex(where: { $0 == item }) {
-                            _ = withAnimation {
-                                wearingItems.remove(at: index)
-                            }
-                        }
+                        // TODO: 뷰모델에 Take Off 만들기
+//                        if let index = wearingItems.firstIndex(where: { $0 == item }) {
+//                            _ = withAnimation {
+//                                wearingItems.remove(at: index)
+//                            }
+//                        }
                     } label: {
                         Text(localizedItemName(of: item))
                         Image(systemName: "xmark")
@@ -39,7 +39,7 @@ struct ItemStoreWearingClothes: View {
                         RoundedRectangle(cornerRadius: 4, style: .continuous)
                             .stroke(.fqAccent, lineWidth: 2)
                     }
-                    .animation(.easeInOut, value: wearingItems)
+                    .animation(.easeInOut, value: itemStoreViewModel.wearingItems)
                 }
             }
             .safeAreaInset(edge: .leading) {}

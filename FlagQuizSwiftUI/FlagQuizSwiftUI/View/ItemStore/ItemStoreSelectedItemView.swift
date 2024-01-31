@@ -48,7 +48,8 @@ struct ItemStoreSelectedItemView: View {
     var body: some View {
         VStack {
             Rectangle()
-                .scaledToFit()
+                .aspectRatio(1, contentMode: .fit)
+                .frame(width: 100)
             
             Text(localizedItemName(of: item))
             Label {
@@ -70,13 +71,23 @@ struct ItemStoreSelectedItemView: View {
                 Button(action: tryOn) {
                     Text(isWearing ? Localized.alreadyWearing : Localized.tryOn)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(
+                    FQStrokeButtonStyle(
+                        disabled: isWearing,
+                        hasInfinityWidth: false
+                    )
+                )
                 .disabled(isWearing)
                 
                 Button(action: addToCart) {
                     Text(isInTheCart ? Localized.isInTheCart : Localized.addToCart)
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(
+                    FQFilledButtonStyle(
+                        disabled: isInTheCart,
+                        hasInfinityWidth: false
+                    )
+                )
                 .disabled(isInTheCart)
             }
         }

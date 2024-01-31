@@ -9,9 +9,15 @@ import SwiftUI
 
 struct FQStrokeButtonStyle: ButtonStyle {
     @Environment(\.colorScheme) private var scheme
+    private let disabled: Bool
     private let hasInfinityWidth: Bool
     
-    init(hasInfinityWidth: Bool = true) {
+    
+    init(
+        disabled: Bool = false ,
+        hasInfinityWidth: Bool = true
+    ) {
+        self.disabled = disabled
         self.hasInfinityWidth = hasInfinityWidth
     }
     
@@ -33,7 +39,15 @@ struct FQStrokeButtonStyle: ButtonStyle {
                 .stroke(lineWidth: 1)
                 .foregroundStyle(scheme == .dark ? Color.fqAccent : .black)
         }
+        .overlay {
+            if disabled {
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundStyle(scheme == .dark ? .black.opacity(0.5) : .white.opacity(0.5))
+            }
+        }
         .opacity(configuration.isPressed ? 0.5 : 1)
     }
+    
+   
 }
 

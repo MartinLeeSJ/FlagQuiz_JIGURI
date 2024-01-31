@@ -8,24 +8,20 @@
 import SwiftUI
 
 struct StoreItemGrid: View {
+    @EnvironmentObject private var itemStoreViewModel
+    
     @State private var selectedItem: FQItem?
     @State private var toast: ToastAlert?
   
-    @Binding private var wearingItems: [FQItem]
-    @Binding private var cartSet: Set<FQItem>
     @Binding private var isCartViewPresented: Bool
     private var currentTypeItems: [FQItem]
     private let languageCodeString: String
     
     init(
-        wearingItems: Binding<[FQItem]>,
-        cartSet: Binding<Set<FQItem>>,
         isCartViewPresented: Binding<Bool>,
         currentTypeItems: [FQItem],
         languageCodeString: String
     ) {
-        self._wearingItems = wearingItems
-        self._cartSet = cartSet
         self._isCartViewPresented = isCartViewPresented
         self.currentTypeItems = currentTypeItems
         self.languageCodeString = languageCodeString
