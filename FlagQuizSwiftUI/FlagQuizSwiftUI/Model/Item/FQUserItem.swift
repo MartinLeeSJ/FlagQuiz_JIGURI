@@ -23,7 +23,8 @@ extension FQUserItem {
         .init(
             itemId: itemId,
             itemTypeName: itemType.rawValue,
-            purchasedAt: .init(date: purchasedAt)
+            purchasedAt: .init(date: purchasedAt),
+            itemReference: FQUserItemObject.makeDocumentReference(with: itemId)
         )
     }
 }

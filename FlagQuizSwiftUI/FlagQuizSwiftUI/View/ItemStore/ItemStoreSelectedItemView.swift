@@ -9,24 +9,13 @@ import SwiftUI
 
 struct ItemStoreSelectedItemView: View {
     @Environment(\.locale) private var locale
-    @Binding private var selectedItem: FQItem?
-    @Binding private var wearingItems: [FQItem]
-    @Binding private var cartSet: Set<FQItem>
-    @Binding private var toast: ToastAlert?
-
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
+    @EnvironmentObject private var cart: CartModel
+    
     private let item: FQItem
     
-    init(
-        selectedItem: Binding<FQItem?>,
-        wearingItems: Binding<[FQItem]>,
-        cartSet: Binding<Set<FQItem>>,
-        toast: Binding<ToastAlert?>,
-        item: FQItem
-    ) {
-        self._selectedItem = selectedItem
-        self._wearingItems = wearingItems
-        self._cartSet = cartSet
-        self._toast = toast
+    init(item: FQItem) {
         self.item = item
     }
     
@@ -48,10 +37,12 @@ struct ItemStoreSelectedItemView: View {
     var body: some View {
         VStack {
             Rectangle()
-                .scaledToFit()
+                .aspectRatio(1, contentMode: .fit)
+                .frame(width: 100)
             
             Text(localizedItemName(of: item))
             Label {
+                //TODO: 할인된 가격도 표시해야함
                 Text(item.price, format: .number)
                     .font(.caption)
             } icon: {
@@ -63,46 +54,50 @@ struct ItemStoreSelectedItemView: View {
             
             Spacer()
             
+            
             HStack {
-                let isWearing: Bool = wearingItems.contains(where: { $0 == item })
-                let isInTheCart: Bool = cartSet.contains { $0 == item }
+                let isWearing: Bool = itemStoreViewModel.wearingItems.contains(where: { $0 == item })
+                let isInTheCart: Bool = cart.items.contains { $0 == item }
                 
                 Button(action: tryOn) {
                     Text(isWearing ? Localized.alreadyWearing : Localized.tryOn)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(
+                    FQStrokeButtonStyle(
+                        disabled: isWearing,
+                        hasInfinityWidth: false
+                    )
+                )
                 .disabled(isWearing)
                 
                 Button(action: addToCart) {
                     Text(isInTheCart ? Localized.isInTheCart : Localized.addToCart)
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(
+                    FQFilledButtonStyle(
+                        disabled: isInTheCart,
+                        hasInfinityWidth: false
+                    )
+                )
                 .disabled(isInTheCart)
             }
+            
         }
         .padding()
         .presentationDetents([.fraction(0.4)])
     }
     
     private func tryOn() {
-        if let index = wearingItems.firstIndex(where: { $0.type == item.type }) {
-            let takingOffItem: FQItem = wearingItems.remove(at: index)
-            toast = .init(
-                message: Localized.changeCloth(
-                    from: localizedItemName(of: takingOffItem),
-                    to: localizedItemName(of: item)
-                )
-            )
-        }
-        
-        wearingItems.append(item)
-        selectedItem = nil
+        itemStoreViewModel.send(.tryOn(item: item, languageCode: languageCodeString))
+        //TODO: 중복된 카테고리의 옷을 벗고 갈아입었다는 토스트
+        dismiss()
+
     }
     
     private func addToCart() {
-        cartSet.insert(item)
-        toast = .init(message: Localized.addedToCart(item: localizedItemName(of: item)))
-        selectedItem = nil
+        cart.send(.addItemToCart(item: item))
+        //TODO: 카트에 추가했다는 토스트
+        dismiss()
     }
 }
 
@@ -121,12 +116,7 @@ fileprivate struct Localized {
         )
     }
     
-    static func changeCloth(from: String, to: String) -> String {
-        String(
-            localized: "itemStoreView.toastAlert.change.cloth.from.\(from).to.\(to)"
-        )
-    }
-    
+   
     static var isInTheCart: String {
         String(
             localized: "itemStoreView.is.in.the.cart.button.title",
@@ -141,9 +131,4 @@ fileprivate struct Localized {
         )
     }
     
-    static func addedToCart(item: String) -> String {
-        String(
-            localized: "itemStoreView.toastAlert.added.to.cart.\(item)"
-        )
-    }
 }

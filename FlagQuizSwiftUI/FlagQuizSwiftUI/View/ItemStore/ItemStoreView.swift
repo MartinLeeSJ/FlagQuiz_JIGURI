@@ -9,11 +9,21 @@ import SwiftUI
 
 struct ItemStoreView: View {
     @Environment(\.locale) var locale
-    @State private var selectedType: FQItemType? = .hair
-    @State private var storeItems: [FQItem] = FQItem.mockItems
-    @State private var wearingItems: [FQItem] = []
-    @State private var cartSet: Set<FQItem> = .init()
+    @EnvironmentObject private var container: DIContainer
+    
+    @StateObject private var itemStoreViewModel: ItemStoreViewModel
+    @StateObject private var cart: CartModel
+    
     @State private var isCartViewPresented: Bool = false
+    @State private var toast: ToastAlert?
+    
+    init(
+        itemStoreViewModel: ItemStoreViewModel,
+        cart: CartModel
+    ) {
+        self._itemStoreViewModel = StateObject(wrappedValue: itemStoreViewModel)
+        self._cart = StateObject(wrappedValue: cart)
+    }
     
     private var languageCodeString: String {
         guard let code = locale.language.languageCode?.identifier(.alpha2) else {
@@ -26,10 +36,6 @@ struct ItemStoreView: View {
         return "en"
     }
     
-    private var currentTypeItems: [FQItem] {
-        guard let selectedType else { return [] }
-        return storeItems.filter { $0.type == selectedType }
-    }
     
     var body: some View {
         GeometryReader { geo in
@@ -41,21 +47,31 @@ struct ItemStoreView: View {
                 }
             }
             .blur(radius: isCartViewPresented ? 3 : 0)
-            .onTapGesture {
-                if isCartViewPresented {
-                    isCartViewPresented = false
-                }
-            }
             
+ 
             if isCartViewPresented {
                 Rectangle()
-                    .fill(.red)
-                    .padding(.horizontal)
-                    .padding(.vertical, 120)
+                    .fill(.clear)
+                    .onTapGesture {
+                        if isCartViewPresented {
+                            isCartViewPresented = false
+                        }
+                    }
+                
+                CartView(isCartViewPresented: $isCartViewPresented)
             }
-            
            
         }
+        .task {
+            do {
+                try await itemStoreViewModel.load()
+            } catch {
+                //Toast
+            }
+        }
+        .environmentObject(itemStoreViewModel)
+        .environmentObject(cart)
+        .toastAlert($toast)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 HStack {
@@ -89,24 +105,19 @@ struct ItemStoreView: View {
         VStack {
             ItemStoreFrogView()
             
-            ItemStoreWearingClothes(
-                wearingItems: $wearingItems,
-                languageCodeString: languageCodeString
-            )
+            ItemStoreWearingClothes()
             
-            ItemTypeButtons(selectedType: $selectedType)
-            
+            ItemTypeButtons()
             
             Divider()
                 .padding(.horizontal)
             
-            StoreItemGrid(
-                wearingItems: $wearingItems,
-                cartSet: $cartSet,
-                isCartViewPresented: $isCartViewPresented,
-                currentTypeItems: currentTypeItems,
-                languageCodeString: languageCodeString
-            )
+            StoreItemGrid()
+            .overlay(alignment: .bottom) {
+                ItemStoreCartButtons(
+                    isCartViewPresented: $isCartViewPresented
+                )
+            }
         }
     }
     
@@ -115,34 +126,22 @@ struct ItemStoreView: View {
             VStack {
                 ItemStoreFrogView()
                 
-                ItemStoreWearingClothes(
-                    wearingItems: $wearingItems,
-                    languageCodeString: languageCodeString
-                )
+                ItemStoreWearingClothes()
             }
             VStack {
-                ItemTypeButtons(selectedType: $selectedType)
-                
+                ItemTypeButtons()
                 
                 Divider()
                     .padding(.horizontal)
                 
-                StoreItemGrid(
-                    wearingItems: $wearingItems,
-                    cartSet: $cartSet,
-                    isCartViewPresented: $isCartViewPresented,
-                    currentTypeItems: currentTypeItems,
-                    languageCodeString: languageCodeString
-                )
+                StoreItemGrid()
+                .overlay(alignment: .bottom) {
+                    ItemStoreCartButtons(
+                        isCartViewPresented: $isCartViewPresented
+                    )
+                }
             }
         }
     }
 }
 
-
-
-#Preview {
-    NavigationStack {
-        ItemStoreView()
-    }
-}

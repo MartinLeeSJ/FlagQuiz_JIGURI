@@ -54,7 +54,14 @@
       }
     },
     "120" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "120"
+          }
+        }
+      }
     },
     "Accuracy" : {
       "localizations" : {
@@ -236,6 +243,127 @@
           }
         }
       }
+    },
+    "cartView.checkout.button.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Check Out"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "결제하기"
+          }
+        }
+      }
+    },
+    "cartView.discounted.price" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Discounted Price"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "할인된 가격"
+          }
+        }
+      }
+    },
+    "cartView.frogstate.great.discount.%lld.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discounted %lld% thanks to FlagFrog's great mood"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리가 기분이 좋아서 %lld% 할인 적용!"
+          }
+        }
+      }
+    },
+    "cartView.original.price" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Original Price"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정가"
+          }
+        }
+      }
+    },
+    "cartView.total.items.count.%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Total %lld item"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Total %lld items"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "총 %lld개 아이템"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "cartView.total.price.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "TOTAL"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가격 합계"
+          }
+        }
+      }
+    },
+    "closet" : {
+
     },
     "correct.%lld.total.%lld" : {
       "localizations" : {
@@ -541,6 +669,17 @@
         }
       }
     },
+    "delete" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삭제"
+          }
+        }
+      }
+    },
     "editUserNameError.endOfTrial.description" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -771,6 +910,23 @@
         }
       }
     },
+    "fQItemType.accessory" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Accessories"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "악세사리"
+          }
+        }
+      }
+    },
     "fQItemType.background" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -869,23 +1025,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "모자"
-          }
-        }
-      }
-    },
-    "fQItemType.necklace" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Accessories"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "악세서리"
           }
         }
       }
@@ -1550,7 +1689,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "장착 아이템 카트에 담기"
+            "value" : "착용 아이템 카트에 담기"
           }
         }
       }
@@ -1573,6 +1712,7 @@
       }
     },
     "itemStoreView.go.to.cart.view.to.pay.button.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1583,7 +1723,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "장바구니 결재"
+            "value" : "카트 품목 결제"
           }
         }
       }
@@ -1670,13 +1810,19 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "You have added one item to the cart, excluding the items already in the cart."
+                  "value" : "You have added one item to the cart, excluding the items already in the cart"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "You have added %lld items to the cart, excluding the items already in the cart."
+                  "value" : "You have added %lld items to the cart, excluding the items already in the cart"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Already in the cart"
                 }
               }
             }
@@ -1688,13 +1834,19 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "이미 카트에 있는 옷을 빼고 %lld개의 옷을 담았습니다."
+                  "value" : "이미 카트에 있는 아이템을 빼고 %lld개의 아이템을 담았습니다."
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "이미 카트에 있는 옷을 빼고 %lld개의 옷을 담았습니다."
+                  "value" : "이미 카트에 있는 아이템을 빼고 %lld개의 아이템을 담았습니다."
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "이미 카트에 있는 아이템입니다."
                 }
               }
             }
@@ -1729,7 +1881,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@에서 %2$@로 갈아입었습니다."
+            "value" : "%1$@에서 %2$@(으)로 갈아입었습니다."
           }
         }
       }
@@ -1746,7 +1898,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "장착해보기"
+            "value" : "착용해보기"
           }
         }
       }
@@ -3597,6 +3749,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퀴즈"
+          }
+        }
+      }
+    },
+    "toastAlert.cannot.get.store.items" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Can not get items"
           }
         }
       }

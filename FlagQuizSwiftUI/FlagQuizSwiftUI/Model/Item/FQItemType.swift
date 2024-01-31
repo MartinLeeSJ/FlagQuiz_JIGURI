@@ -27,7 +27,7 @@ enum FQItemType: String, Hashable, Codable, CaseIterable {
         case .top: String(localized:"fQItemType.top", defaultValue: "Tops")
         case .bottom:  String(localized:"fQItemType.bottom", defaultValue: "Bottoms")
         case .overall:  String(localized:"fQItemType.overall", defaultValue: "Overalls")
-        case .accessory: String(localized:"fQItemType.necklace", defaultValue: "Accessories")
+        case .accessory: String(localized:"fQItemType.accessory", defaultValue: "Accessories")
         case .gloves: String(localized:"fQItemType.gloves", defaultValue: "Gloves")
         case .shoes: String(localized:"fQItemType.shoes", defaultValue: "Shoes")
         case .background: String(localized:"fQItemType.background", defaultValue: "Backgrounds")

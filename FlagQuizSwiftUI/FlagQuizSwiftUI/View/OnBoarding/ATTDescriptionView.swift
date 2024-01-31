@@ -88,7 +88,7 @@ struct ATTDescriptionView: View {
                     )
                 )
             }
-            .buttonStyle(QuizFilledButtonStyle(disabled: false))
+            .buttonStyle(FQFilledButtonStyle(disabled: false))
         }
         .padding()
         .navigationBarBackButtonHidden()

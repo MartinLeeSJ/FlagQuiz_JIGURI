@@ -17,6 +17,8 @@ protocol ServiceType {
     var imageCacheService: ImageCacheServiceType { get set }
     var frogService: FrogServiceType { get set }
     var earthCandyService: EarthCandyServiceType { get set }
+    var storeItemService: StoreItemServiceType { get set }
+    var userItemService: UserItemServiceType { get set }
 }
 
 class Services: ServiceType {
@@ -30,6 +32,8 @@ class Services: ServiceType {
     var imageCacheService: ImageCacheServiceType
     var frogService: FrogServiceType
     var earthCandyService: EarthCandyServiceType
+    var storeItemService: StoreItemServiceType
+    var userItemService: UserItemServiceType
 
     init() {
         self.authService = AuthService()
@@ -62,6 +66,9 @@ class Services: ServiceType {
         self.frogService = FrogService(repository: FrogDBRepository())
         
         self.earthCandyService = EarthCandyService(repository: FQEarthCandyDBRepository())
+        
+        self.storeItemService = StoreItemService(repository: StoreItemDBRepository())
+        self.userItemService = UserItemService(repository: UserItemDBRepository())
   
     }
 }
@@ -76,6 +83,9 @@ class StubService: ServiceType {
     var imageCacheService: ImageCacheServiceType
     var frogService: FrogServiceType
     var earthCandyService: EarthCandyServiceType
+    var storeItemService: StoreItemServiceType
+    var userItemService: UserItemServiceType
+
   
     
     init() {
@@ -88,5 +98,8 @@ class StubService: ServiceType {
         self.imageCacheService = StubImageCacheService()
         self.frogService = StubFrogService()
         self.earthCandyService = StubEarthCandyService()
+        self.storeItemService = StubStoreItemService()
+        self.userItemService = StubUserItemService()
+
     }
 }

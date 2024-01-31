@@ -8,39 +8,38 @@
 import SwiftUI
 
 struct ItemTypeButtons: View {
-    @Binding private var selectedType: FQItemType?
-    
-    init(selectedType: Binding<FQItemType?>) {
-        self._selectedType = selectedType
-    }
+    @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
+    @Namespace private var selectedButton
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 12) {
                 ForEach(FQItemType.allCases, id: \.self) { type in
                     Button {
-                       selectedType = type
+                        itemStoreViewModel.send(.selectType(type: type))
                     } label: {
                         Text(type.localizedName)
                             .foregroundStyle(.foreground)
                             .font(.caption)
+                            .fontWeight(.semibold)
                     }
-                    .padding(.vertical, 8)
+                    .padding(.bottom, 8)
                     .padding(.horizontal, 14)
-                    .background {
-                        Capsule(style: .continuous)
-                            .stroke(
-                                selectedType == type ? .fqAccent : .gray,
-                                lineWidth: selectedType == type ? 2 : 1
-                            )
+                    .overlay {
+                        if let selectedType = itemStoreViewModel.selectedType,
+                           selectedType == type {
+                            Line(.bottom)
+                                .stroke(.fqAccent, lineWidth: 2)
+                                .matchedGeometryEffect(id: "highlight", in: selectedButton)
+                        }
                     }
-                    .animation(.easeInOut, value: selectedType)
+                    .animation(.spring, value: itemStoreViewModel.selectedType)
                 }
             }
             .safeAreaInset(edge: .leading) {}
             .safeAreaInset(edge: .trailing) {}
         }
         .scrollIndicators(.hidden)
-        .frame(idealHeight: 42, maxHeight: 45)
+        .frame(idealHeight: 30, maxHeight: 40)
     }
 }

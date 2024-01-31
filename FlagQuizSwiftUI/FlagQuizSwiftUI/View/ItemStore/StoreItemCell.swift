@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct StoreItemCell: View {
-    @Binding private var selectedItem: FQItem?
-    private let item: FQItem
-    private let localizedItemName: String
+    @Environment(\.locale) private var locale
     
-    init(
-        selectedItem: Binding<FQItem?>,
-        item: FQItem,
-        localizedItemName: String
-    ) {
-        self._selectedItem = selectedItem
+    private let item: FQItem
+    private var localizedItemName: String {
+        guard let alpha2Code = locale.language.languageCode?.identifier(.alpha2) else {
+            return "No Data"
+        }
+        
+        return item.names.first(where: {$0.languageCode.rawValue == alpha2Code})?.name ?? "No Data"
+    }
+    
+    
+    init(item: FQItem) {
         self.item = item
-        self.localizedItemName = localizedItemName
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            Rectangle()
-                .fill(.purple)
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .foregroundStyle(.thinMaterial)
                 .aspectRatio(1, contentMode: .fit)
             
             FlowingText(localizedItemName)
@@ -42,9 +44,7 @@ struct StoreItemCell: View {
                     .frame(width: 15)
             }
         }
-        .onTapGesture {
-            selectedItem = item
-        }
+        
     }
 }
 

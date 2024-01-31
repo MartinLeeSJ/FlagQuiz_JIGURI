@@ -1,5 +1,5 @@
 //
-//  FrogViewModel.swift
+//  FrogModel.swift
 //  FlagQuizSwiftUI
 //
 //  Created by Martin on 1/8/24.
@@ -17,7 +17,7 @@ enum FrogError: Error {
     case custom(Error)
 }
 
-final class FrogViewModel: ObservableObject {
+final class FrogModel: ObservableObject {
     @Published var frog: FQFrog?
     @Published var error: FrogError?
     

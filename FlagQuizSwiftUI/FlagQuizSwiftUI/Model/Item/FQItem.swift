@@ -10,11 +10,12 @@ import Foundation
 struct FQItem: Codable, Identifiable, Hashable {
     var id: String
     var type: FQItemType
+    var stockName: String
     var names: [FQItemName]
     var price: Int
+    var specialPrice: Int
+    var isOnEvent: Bool
     var isOnMarket: Bool
-    var imageUrl: String?
-    var storeImageUrl: String?
 }
 
 
@@ -24,11 +25,12 @@ extension FQItem {
         .init(
             id: id,
             type: type.rawValue,
+            stockName: stockName,
             names: names.map { $0.toObject() },
             price: price,
-            isOnMarket: isOnMarket,
-            imageUrl: imageUrl,
-            storeImageUrl: storeImageUrl
+            specialPrice: specialPrice,
+            isOnEvent: isOnEvent,
+            isOnMarket: isOnMarket
         )
     }
 }

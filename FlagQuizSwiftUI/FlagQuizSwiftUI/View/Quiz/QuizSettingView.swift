@@ -8,8 +8,6 @@
 import SwiftUI
 
 
-
-
 struct QuizSettingView: View {
     @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var navigationModel: NavigationModel
@@ -57,14 +55,14 @@ struct QuizSettingView: View {
             
             Divider()
                 .overlay {
-                Text(
-                    String(
-                        localized:"quizSettingView.quiz.setting.title",
-                        defaultValue:"Setting up a quiz"
+                    Text(
+                        String(
+                            localized:"quizSettingView.quiz.setting.title",
+                            defaultValue:"Setting up a quiz"
+                        )
                     )
-                )
-                        .font(.custom(FontName.pixel, size: 16))
-                        .background(.background)
+                    .font(.custom(FontName.pixel, size: 16))
+                    .background(.background)
                 }
             
             quizSettingControls
@@ -85,8 +83,8 @@ struct QuizSettingView: View {
                         defaultValue:"Setting up a quiz"
                     )
                 )
-                    .font(.custom(FontName.pixel, size: 16))
-                    .background(.background)
+                .font(.custom(FontName.pixel, size: 16))
+                .background(.background)
                 
                 
                 quizSettingControls
@@ -115,7 +113,7 @@ struct QuizSettingView: View {
         QuizSettingControls()
             .environmentObject(viewModel)
     }
-
+    
 }
 
 

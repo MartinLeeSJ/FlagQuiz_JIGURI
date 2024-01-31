@@ -11,11 +11,12 @@ import FirebaseFirestore
 struct FQItemObject: Codable {
     @DocumentID var id: String?
     var type: String
+    var stockName: String
     var names: [FQItemNameObject]
     var price: Int
+    var specialPrice: Int
+    var isOnEvent: Bool
     var isOnMarket: Bool
-    var imageUrl: String?
-    var storeImageUrl: String?
 }
 
 extension FQItemObject {
@@ -30,11 +31,12 @@ extension FQItemObject {
         return .init(
             id: id,
             type: type,
+            stockName: stockName,
             names: names.map { $0.toModel() },
             price: price,
-            isOnMarket: isOnMarket,
-            imageUrl: imageUrl,
-            storeImageUrl: storeImageUrl
+            specialPrice: specialPrice,
+            isOnEvent: isOnEvent,
+            isOnMarket: isOnMarket
         )
     }
     
@@ -42,11 +44,12 @@ extension FQItemObject {
         .init(
             id: nil,
             type: type,
+            stockName: stockName,
             names: names,
             price: price,
-            isOnMarket: isOnMarket,
-            imageUrl: imageUrl,
-            storeImageUrl: storeImageUrl
+            specialPrice: specialPrice,
+            isOnEvent: isOnEvent,
+            isOnMarket: isOnMarket
         )
        
     }

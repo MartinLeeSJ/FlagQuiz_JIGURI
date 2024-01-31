@@ -14,7 +14,10 @@ struct NewsView: View {
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @StateObject private var viewModel: NewsViewModel
     
-    init(viewModel: NewsViewModel) {
+    
+    init(
+        viewModel: NewsViewModel
+    ) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -23,12 +26,12 @@ struct NewsView: View {
             ScrollView {
                 VStack {
                     FrogView(
-                        viewModel: .init(
+                        frogModel: .init(
                             container: container,
                             notificationManager: notificationManager
                         )
                     )
-                    
+                       
                     NewsGrid()
                     
                     Spacer()
@@ -84,6 +87,7 @@ struct NewsView: View {
                                 countryCode: countryCode
                             )
                         )
+                        
                     }
                 }
                 .toolbar(.hidden, for: .tabBar)
@@ -96,23 +100,23 @@ struct NewsView: View {
 }
 
 
-
-#Preview {
-    
-    NavigationStack {
-        
-        NewsView(
-            viewModel: NewsViewModel(container: DIContainer(services: StubService()))
-        )
-            .environmentObject(DIContainer(services: StubService()))
-            .environmentObject(NavigationModel())
-            .environmentObject(NotificationManager())
-            .environmentObject(
-                AuthenticationViewModel(
-                    container: DIContainer(
-                        services: StubService()
-                    )
-                )
-            )
-    }
-}
+//
+//#Preview {
+//    
+//    NavigationStack {
+//        
+//        NewsView(
+//            viewModel: NewsViewModel(container: DIContainer(services: StubService()))
+//        )
+//            .environmentObject(DIContainer(services: StubService()))
+//            .environmentObject(NavigationModel())
+//            .environmentObject(NotificationManager())
+//            .environmentObject(
+//                AuthenticationViewModel(
+//                    container: DIContainer(
+//                        services: StubService()
+//                    )
+//                )
+//            )
+//    }
+//}

@@ -70,7 +70,7 @@ struct QuizSettingControls: View {
                 Text("start.quiz")
                     .font(.custom(FontName.pixel, size: 16))
             }
-            .buttonStyle(QuizFilledButtonStyle(disabled: false))
+            .buttonStyle(FQFilledButtonStyle(disabled: false))
         }
         .padding()
     }
