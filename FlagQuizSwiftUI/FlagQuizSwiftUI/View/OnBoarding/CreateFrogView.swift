@@ -106,7 +106,7 @@ struct CreateFrogView: View {
             Text("createFrogView.select.country.button.title")
         }
         .buttonStyle(
-            QuizFilledButtonStyle(
+            FQFilledButtonStyle(
                 disabled: viewModel.selectedCode == nil,
                 isLightModeOnly: true
             )

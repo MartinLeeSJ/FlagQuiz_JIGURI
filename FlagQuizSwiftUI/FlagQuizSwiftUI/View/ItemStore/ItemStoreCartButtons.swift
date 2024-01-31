@@ -25,22 +25,45 @@ struct ItemStoreCartButtons: View {
         self._isCartViewPresented = isCartViewPresented
     }
     
+    var backgroundGradient: LinearGradient {
+        LinearGradient(
+            gradient: .init(
+                stops: [
+                    .init(color: .clear, location: 0),
+                    .init(color: .fqBg.opacity(0.05), location: 0.2),
+                    .init(color: .fqBg, location: 0.7)
+                ]
+            ),
+            startPoint: .top,
+            endPoint: .bottom
+        )
+    }
+    
     var body: some View {
-        HStack {
+        HStack(spacing: 16) {
             Button(action: addWearingItemsToCart) {
                 Text(Localized.addWearingsInTheCart)
             }
+            .buttonStyle(FQStrokeButtonStyle())
+            .padding(.leading, 16)
+            .padding(.top, 16)
             
             Button(action: goToCartViewToPay) {
-                Text(Localized.goToPayItems)
+                Image(systemName: "cart.fill")
+                    .font(.title3)
             }
-            .padding(8)
+            .buttonStyle(FQFilledButtonStyle(disabled: false, hasInfinityWidth: false))
+            .padding(.trailing, 16)
+            .padding(.top, 16)
             .overlay(alignment: .topTrailing) {
                 itemsInTheCartCountBadge
             }
-            
         }
-        .buttonStyle(.borderedProminent)
+        .padding(.top, 24)
+        .background(in: .rect)
+        .background(ignoresSafeAreaEdges: .all)
+        .backgroundStyle(backgroundGradient)
+        
     }
     
     @ViewBuilder
@@ -53,6 +76,7 @@ struct ItemStoreCartButtons: View {
                 .padding(6)
                 .background(in: .circle)
                 .backgroundStyle(.red)
+                .padding(8)
         }
     }
     
@@ -104,4 +128,26 @@ fileprivate struct Localized {
     static func addedWearingsInTheCartExcept(clothes count: Int) -> String {
         String(localized: "itemStoreView.toastAlert.added.\(count).wearing.items.in.the.cart.except.already.exists")
     }
+}
+
+#Preview {
+    GeometryReader { geo in
+        Rectangle()
+            .foregroundStyle(.white)
+            .ignoresSafeArea()
+        
+        
+        VStack {
+            Spacer()
+            ItemStoreCartButtons(
+                wearingItems: .constant([]),
+                cartSet: .constant(Set(FQItem.mockItems)),
+                toast: .constant(nil),
+                isCartViewPresented: .constant(false)
+            )
+        }
+        
+    }
+   
+ 
 }

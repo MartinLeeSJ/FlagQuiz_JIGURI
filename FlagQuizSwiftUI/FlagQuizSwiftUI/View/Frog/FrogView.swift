@@ -11,8 +11,11 @@ struct FrogView: View {
     @Environment(\.colorScheme) var scheme
     @EnvironmentObject private var earthCandyViewModel: EarthCandyViewModel
     @EnvironmentObject private var newsViewModel: NewsViewModel
-    @EnvironmentObject private var frogModel: FrogModel
+    @StateObject private var frogModel: FrogModel
     
+    init(frogModel: FrogModel) {
+        self._frogModel = StateObject(wrappedValue: frogModel)
+    }
     var body: some View {
         VStack(spacing: 16) {
             if let frog = frogModel.frog {
@@ -23,6 +26,19 @@ struct FrogView: View {
             
             FrogMenuView()
         }
+        .navigationDestination(for: FrogDestination.self) { destination in
+            Group {
+                switch destination {
+                case .store:
+                    ItemStoreView()
+                case .closet:
+                    Text("closet")
+                }
+            }
+            .environmentObject(frogModel)
+            .toolbar(.hidden, for: .tabBar)
+        }
+        .environmentObject(frogModel)
         .frame(maxWidth: .infinity)
         .overlay(alignment: .topTrailing) {
             FrogSettlementIcon(frog: frogModel.frog)
@@ -181,8 +197,7 @@ struct FrogView: View {
 
 
 #Preview {
-    FrogView()
-        .environmentObject(FrogModel(container: .init(services: StubService()), notificationManager: NotificationManager()))
+    FrogView(frogModel: FrogModel(container: .init(services: StubService()), notificationManager: NotificationManager()))
         .environmentObject(NotificationManager())
         .environmentObject(
             EarthCandyViewModel(

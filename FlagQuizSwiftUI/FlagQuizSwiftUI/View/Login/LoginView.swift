@@ -75,7 +75,7 @@ struct LoginView: View {
                     )
                     .font(.headline)
                 }
-                .buttonStyle(QuizFilledButtonStyle(disabled: false, isLightModeOnly: true))
+                .buttonStyle(FQFilledButtonStyle(disabled: false, isLightModeOnly: true))
 
             }
             .padding()

@@ -12,7 +12,7 @@ struct ItemStoreFrogView: View {
         Image("frogGood")
             .resizable()
             .aspectRatio(1, contentMode: .fit)
-            .frame(width: 200)
+            .frame(width: 175)
             .padding(25)
             .background(in: .rect(cornerRadius: 12, style: .continuous))
             .backgroundStyle(.thinMaterial)

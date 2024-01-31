@@ -24,8 +24,8 @@ struct StoreItemCell: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Rectangle()
-                .fill(.purple)
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .foregroundStyle(.thinMaterial)
                 .aspectRatio(1, contentMode: .fit)
             
             FlowingText(localizedItemName)

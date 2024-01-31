@@ -47,7 +47,7 @@ struct StoreItemGrid: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.bottom, 60)
+            .padding(.bottom, 120)
         }
         .overlay(alignment: .bottom) {
             ItemStoreCartButtons(

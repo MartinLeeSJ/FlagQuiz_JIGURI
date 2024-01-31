@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemStoreView: View {
     @Environment(\.locale) var locale
+    @EnvironmentObject private var container: DIContainer
     @State private var selectedType: FQItemType? = .hair
     @State private var storeItems: [FQItem] = FQItem.mockItems
     @State private var wearingItems: [FQItem] = []
@@ -41,17 +42,20 @@ struct ItemStoreView: View {
                 }
             }
             .blur(radius: isCartViewPresented ? 3 : 0)
-            .onTapGesture {
-                if isCartViewPresented {
-                    isCartViewPresented = false
-                }
-            }
-            
+ 
             if isCartViewPresented {
                 Rectangle()
-                    .fill(.red)
-                    .padding(.horizontal)
-                    .padding(.vertical, 120)
+                    .fill(.clear)
+                    .onTapGesture {
+                        if isCartViewPresented {
+                            isCartViewPresented = false
+                        }
+                    }
+                
+                CartView(
+                    viewModel: .init(cartItems: Array(cartSet), container: container),
+                    isCartViewPresented: $isCartViewPresented
+                )
             }
            
         }
@@ -141,7 +145,6 @@ struct ItemStoreView: View {
 
 
 #Preview {
-    NavigationStack {
-        ItemStoreView()
-    }
+    ItemStoreView()
+        .environmentObject(DIContainer(services: StubService()))
 }

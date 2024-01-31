@@ -13,23 +13,25 @@ struct NewsView: View {
     @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @StateObject private var viewModel: NewsViewModel
-    @StateObject private var frogModel: FrogModel
+    
     
     init(
-        viewModel: NewsViewModel,
-        frogModel: FrogModel
+        viewModel: NewsViewModel
     ) {
         self._viewModel = StateObject(wrappedValue: viewModel)
-        self._frogModel = StateObject(wrappedValue: frogModel)
     }
     
     var body: some View {
         NavigationStack(path: $navigationModel.destinations) {
             ScrollView {
                 VStack {
-                    FrogView()
-                        .environmentObject(frogModel)
-                    
+                    FrogView(
+                        frogModel: .init(
+                            container: container,
+                            notificationManager: notificationManager
+                        )
+                    )
+                       
                     NewsGrid()
                     
                     Spacer()
@@ -85,6 +87,7 @@ struct NewsView: View {
                                 countryCode: countryCode
                             )
                         )
+                        
                     }
                 }
                 .toolbar(.hidden, for: .tabBar)

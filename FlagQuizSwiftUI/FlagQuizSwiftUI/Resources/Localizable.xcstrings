@@ -256,7 +256,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "결재 하기"
+            "value" : "결제하기"
           }
         }
       }
@@ -357,10 +357,13 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "총"
+            "value" : "가격 합계"
           }
         }
       }
+    },
+    "closet" : {
+
     },
     "correct.%lld.total.%lld" : {
       "localizations" : {
@@ -1685,7 +1688,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "장착 아이템 카트에 담기"
+            "value" : "착용 아이템 카트에 담기"
           }
         }
       }
@@ -1718,7 +1721,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "장바구니 결재"
+            "value" : "카트 품목 결제"
           }
         }
       }
@@ -1805,13 +1808,19 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "You have added one item to the cart, excluding the items already in the cart."
+                  "value" : "You have added one item to the cart, excluding the items already in the cart"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "You have added %lld items to the cart, excluding the items already in the cart."
+                  "value" : "You have added %lld items to the cart, excluding the items already in the cart"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Already in the cart"
                 }
               }
             }
@@ -1823,13 +1832,19 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "이미 카트에 있는 옷을 빼고 %lld개의 옷을 담았습니다."
+                  "value" : "이미 카트에 있는 아이템을 빼고 %lld개의 아이템을 담았습니다."
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "이미 카트에 있는 옷을 빼고 %lld개의 옷을 담았습니다."
+                  "value" : "이미 카트에 있는 아이템을 빼고 %lld개의 아이템을 담았습니다."
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "이미 카트에 있는 아이템입니다."
                 }
               }
             }
@@ -1864,7 +1879,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@에서 %2$@로 갈아입었습니다."
+            "value" : "%1$@에서 %2$@(으)로 갈아입었습니다."
           }
         }
       }

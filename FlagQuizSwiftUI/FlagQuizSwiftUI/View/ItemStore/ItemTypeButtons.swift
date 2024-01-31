@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemTypeButtons: View {
     @Binding private var selectedType: FQItemType?
+    @Namespace private var selectedButton
     
     init(selectedType: Binding<FQItemType?>) {
         self._selectedType = selectedType
@@ -24,23 +25,24 @@ struct ItemTypeButtons: View {
                         Text(type.localizedName)
                             .foregroundStyle(.foreground)
                             .font(.caption)
+                            .fontWeight(.semibold)
                     }
-                    .padding(.vertical, 8)
+                    .padding(.bottom, 8)
                     .padding(.horizontal, 14)
-                    .background {
-                        Capsule(style: .continuous)
-                            .stroke(
-                                selectedType == type ? .fqAccent : .gray,
-                                lineWidth: selectedType == type ? 2 : 1
-                            )
+                    .overlay {
+                        if selectedType == type {
+                            Line(.bottom)
+                                .stroke(.fqAccent, lineWidth: 2)
+                                .matchedGeometryEffect(id: "highlight", in: selectedButton)
+                        }
                     }
-                    .animation(.easeInOut, value: selectedType)
+                    .animation(.spring, value: selectedType)
                 }
             }
             .safeAreaInset(edge: .leading) {}
             .safeAreaInset(edge: .trailing) {}
         }
         .scrollIndicators(.hidden)
-        .frame(idealHeight: 42, maxHeight: 45)
+        .frame(idealHeight: 30, maxHeight: 40)
     }
 }

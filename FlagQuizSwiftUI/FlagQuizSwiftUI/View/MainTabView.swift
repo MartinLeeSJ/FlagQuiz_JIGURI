@@ -57,13 +57,7 @@ struct MainTabView: View {
                     QuizSettingView(viewModel: .init(container: container))
                     
                 case .news:
-                    NewsView(
-                        viewModel: .init(container: container),
-                        frogModel: .init(
-                            container: container,
-                            notificationManager: notificationManager
-                        )
-                    )
+                    NewsView(viewModel: .init(container: container))
                 }
             }
             .tabItem {

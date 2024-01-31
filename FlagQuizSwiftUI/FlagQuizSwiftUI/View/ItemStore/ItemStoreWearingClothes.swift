@@ -32,11 +32,13 @@ struct ItemStoreWearingClothes: View {
                             .fontWeight(.bold)
                     }
                     .font(.caption)
-                    .foregroundStyle(.black)
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 14)
-                    .background(in: .rect(cornerRadius: 4, style: .continuous))
-                    .backgroundStyle(.fqAccent.opacity(0.35))
+                    .foregroundStyle(.foreground)
+                    .padding(.vertical, 6)
+                    .padding(.horizontal, 8)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 4, style: .continuous)
+                            .stroke(.fqAccent, lineWidth: 2)
+                    }
                     .animation(.easeInOut, value: wearingItems)
                 }
             }
