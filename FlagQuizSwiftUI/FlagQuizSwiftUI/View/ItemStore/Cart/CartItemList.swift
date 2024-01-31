@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct CartItemList: View {
-    @EnvironmentObject private var viewModel: CartViewModel
+    @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
+    @EnvironmentObject private var cart: CartModel
     
     var body: some View {
-        List(viewModel.cartItems) { item in
+        List(cart.items) { item in
             CartItemListCell(item: item)
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                    Button("delete", role: .destructive) {
-                        
+                    Button(role: .destructive) {
+                        cart.send(.removeItem(item))
+                    } label: {
+                        Image(systemName: "trash.fill")
                     }
                 }
         }
@@ -113,19 +116,8 @@ fileprivate struct CartItemListCell: View {
             .foregroundStyle(.secondary)
         }
         .frame(height: geo.size.height, alignment: .center)
-        .frame(minWidth: 90, maxWidth: geo.size.width * 0.35, alignment: .leading)
+        .frame(minWidth: 90, alignment: .leading)
     }
     
 }
 
-#Preview {
-    CartItemList()
-        .environmentObject(
-            CartViewModel(
-                cartItems: FQItem.mockItems,
-                container: .init(
-                    services: StubService()
-                )
-            )
-        )
-}

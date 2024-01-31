@@ -670,6 +670,7 @@
       }
     },
     "delete" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -1711,6 +1712,7 @@
       }
     },
     "itemStoreView.go.to.cart.view.to.pay.button.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3747,6 +3749,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퀴즈"
+          }
+        }
+      }
+    },
+    "toastAlert.cannot.get.store.items" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Can not get items"
           }
         }
       }

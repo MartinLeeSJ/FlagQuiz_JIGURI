@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FrogView: View {
     @Environment(\.colorScheme) var scheme
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var earthCandyViewModel: EarthCandyViewModel
     @EnvironmentObject private var newsViewModel: NewsViewModel
     @StateObject private var frogModel: FrogModel
@@ -30,7 +31,11 @@ struct FrogView: View {
             Group {
                 switch destination {
                 case .store:
-                    ItemStoreView()
+                    ItemStoreView(
+                        itemStoreViewModel: .init(container: container),
+                        cart: .init(container: container)
+                        
+                    )
                 case .closet:
                     Text("closet")
                 }
@@ -198,6 +203,7 @@ struct FrogView: View {
 
 #Preview {
     FrogView(frogModel: FrogModel(container: .init(services: StubService()), notificationManager: NotificationManager()))
+        .environmentObject(DIContainer(services: StubService()))
         .environmentObject(NotificationManager())
         .environmentObject(
             EarthCandyViewModel(

@@ -8,24 +8,16 @@
 import SwiftUI
 
 struct ItemStoreWearingClothes: View {
+    @Environment(\.locale) private var locale
     @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
-    private let languageCodeString: String
     
-    init(languageCodeString: String) {
-        self.languageCodeString = languageCodeString
-    }
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(itemStoreViewModel.wearingItems, id: \.self) { item in
                     Button {
-                        // TODO: 뷰모델에 Take Off 만들기
-//                        if let index = wearingItems.firstIndex(where: { $0 == item }) {
-//                            _ = withAnimation {
-//                                wearingItems.remove(at: index)
-//                            }
-//                        }
+                        itemStoreViewModel.send(.takeOff(item: item))
                     } label: {
                         Text(localizedItemName(of: item))
                         Image(systemName: "xmark")
@@ -48,7 +40,11 @@ struct ItemStoreWearingClothes: View {
     }
     
     func localizedItemName(of item: FQItem) -> String {
-        item.names.first {
+        guard let languageCodeString = locale.language.languageCode?.identifier(.alpha2) else {
+            return "No Data"
+        }
+        
+        return item.names.first {
             $0.languageCode == .init(rawValue: languageCodeString) ?? ServiceLangCode.EN
         }?.name ?? "No Data"
     }

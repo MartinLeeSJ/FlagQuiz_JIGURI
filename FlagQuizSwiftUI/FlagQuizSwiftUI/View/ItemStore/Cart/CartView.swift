@@ -10,14 +10,12 @@ import SwiftUI
 struct CartView: View {
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var earthCandyViewModel: EarthCandyViewModel
-    @StateObject private var viewModel: CartViewModel
+    @EnvironmentObject private var cart: CartModel
     @Binding private var isCartViewPresented: Bool
  
     init(
-        viewModel: CartViewModel,
         isCartViewPresented: Binding<Bool>
     ) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
         self._isCartViewPresented = isCartViewPresented
     }
     
@@ -42,7 +40,7 @@ struct CartView: View {
         .backgroundStyle(.thinMaterial)
         .padding(.horizontal)
         .padding(.vertical, 60)
-        .environmentObject(viewModel)
+        
     }
     
     @ViewBuilder
@@ -58,7 +56,7 @@ struct CartView: View {
             }
             
         }
-        Text("cartView.total.items.count.\(viewModel.cartItems.count)")
+        Text("cartView.total.items.count.\(cart.items.count)")
             .font(.caption)
             .fontWeight(.medium)
 
@@ -73,7 +71,6 @@ struct CartView: View {
     let container: DIContainer = .init(services: StubService())
     return ZStack {
         CartView(
-            viewModel: CartViewModel(cartItems: FQItem.mockItems, container: container),
             isCartViewPresented: .constant(true)
         )
         .environmentObject(

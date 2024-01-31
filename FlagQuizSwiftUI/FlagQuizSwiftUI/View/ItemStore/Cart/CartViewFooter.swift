@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CartViewFooter: View {
-    @EnvironmentObject private var viewModel: CartViewModel
+    @EnvironmentObject private var cart: CartModel
     @EnvironmentObject private var frogModel: FrogModel
     
     var isFrogStateGreat: Bool {
@@ -37,7 +37,7 @@ struct CartViewFooter: View {
         VStack {
             HStack(spacing: 12) {
                 Label {
-                    Text(viewModel.totalPrice, format: .number)
+                    Text(cart.totalPrice, format: .number)
                         .font(isFrogStateGreat ? .caption : .subheadline)
                         .monospacedDigit()
                 } icon: {
@@ -56,7 +56,7 @@ struct CartViewFooter: View {
                 }
                 
                 if isFrogStateGreat {
-                    Text(viewModel.discountedPrice, format: .number)
+                    Text(cart.discountedPrice, format: .number)
                         .font(.headline)
                         .monospacedDigit()
                 }
@@ -74,7 +74,7 @@ struct CartViewFooter: View {
     
     private var checkoutButton: some View {
         Button {
-            viewModel.send(.checkout)
+            cart.send(.checkout)
         } label: {
             Text(String(localized:"cartView.checkout.button.title", defaultValue: "Check Out"))
                 .foregroundStyle(.foreground)
@@ -97,10 +97,7 @@ struct CartViewFooter: View {
     
     return CartViewFooter()
         .environmentObject(
-            CartViewModel(
-                cartItems: FQItem.mockItems,
-                container: container
-            )
+            CartModel(container: container)
         )
         .environmentObject(
             FrogModel(

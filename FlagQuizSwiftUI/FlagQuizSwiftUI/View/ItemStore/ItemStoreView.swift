@@ -10,13 +10,19 @@ import SwiftUI
 struct ItemStoreView: View {
     @Environment(\.locale) var locale
     @EnvironmentObject private var container: DIContainer
+    
     @StateObject private var itemStoreViewModel: ItemStoreViewModel
+    @StateObject private var cart: CartModel
     
-    @State private var selectedType: FQItemType? = .hair
     @State private var isCartViewPresented: Bool = false
+    @State private var toast: ToastAlert?
     
-    init(itemStoreViewModel: ItemStoreViewModel) {
+    init(
+        itemStoreViewModel: ItemStoreViewModel,
+        cart: CartModel
+    ) {
         self._itemStoreViewModel = StateObject(wrappedValue: itemStoreViewModel)
+        self._cart = StateObject(wrappedValue: cart)
     }
     
     private var languageCodeString: String {
@@ -30,10 +36,6 @@ struct ItemStoreView: View {
         return "en"
     }
     
-    private var currentTypeItems: [FQItem] {
-        guard let selectedType else { return [] }
-        return itemStoreViewModel.storeItems.filter { $0.type == selectedType }
-    }
     
     var body: some View {
         GeometryReader { geo in
@@ -45,6 +47,7 @@ struct ItemStoreView: View {
                 }
             }
             .blur(radius: isCartViewPresented ? 3 : 0)
+            
  
             if isCartViewPresented {
                 Rectangle()
@@ -55,17 +58,20 @@ struct ItemStoreView: View {
                         }
                     }
                 
-                CartView(
-                    viewModel: .init(
-                        cartItems: Array(itemStoreViewModel.cart),
-                        container: container
-                    ),
-                    isCartViewPresented: $isCartViewPresented
-                )
+                CartView(isCartViewPresented: $isCartViewPresented)
             }
            
         }
+        .task {
+            do {
+                try await itemStoreViewModel.load()
+            } catch {
+                //Toast
+            }
+        }
         .environmentObject(itemStoreViewModel)
+        .environmentObject(cart)
+        .toastAlert($toast)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 HStack {
@@ -99,21 +105,19 @@ struct ItemStoreView: View {
         VStack {
             ItemStoreFrogView()
             
-            ItemStoreWearingClothes(
-                languageCodeString: languageCodeString
-            )
+            ItemStoreWearingClothes()
             
-            ItemTypeButtons(selectedType: $selectedType)
-            
+            ItemTypeButtons()
             
             Divider()
                 .padding(.horizontal)
             
-            StoreItemGrid(
-                isCartViewPresented: $isCartViewPresented,
-                currentTypeItems: currentTypeItems,
-                languageCodeString: languageCodeString
-            )
+            StoreItemGrid()
+            .overlay(alignment: .bottom) {
+                ItemStoreCartButtons(
+                    isCartViewPresented: $isCartViewPresented
+                )
+            }
         }
     }
     
@@ -122,30 +126,22 @@ struct ItemStoreView: View {
             VStack {
                 ItemStoreFrogView()
                 
-                ItemStoreWearingClothes(
-                    languageCodeString: languageCodeString
-                )
+                ItemStoreWearingClothes()
             }
             VStack {
-                ItemTypeButtons(selectedType: $selectedType)
-                
+                ItemTypeButtons()
                 
                 Divider()
                     .padding(.horizontal)
                 
-                StoreItemGrid(
-                    isCartViewPresented: $isCartViewPresented,
-                    currentTypeItems: currentTypeItems,
-                    languageCodeString: languageCodeString
-                )
+                StoreItemGrid()
+                .overlay(alignment: .bottom) {
+                    ItemStoreCartButtons(
+                        isCartViewPresented: $isCartViewPresented
+                    )
+                }
             }
         }
     }
 }
 
-
-
-//#Preview {
-//    ItemStoreView()
-//        .environmentObject(DIContainer(services: StubService()))
-//}
