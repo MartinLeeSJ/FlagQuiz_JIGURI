@@ -12,8 +12,8 @@ final class CartModel: ObservableObject {
     
     enum Action {
         case checkout
-        case addItemToCart(item: FQItem)
-        case addWearingItemsToCart(items: [FQItem])
+        case addItemToTheCart(item: FQItem)
+        case addTheTriedOnItemsToCart(items: [FQItem])
         case removeItem(FQItem)
     }
     
@@ -41,10 +41,10 @@ final class CartModel: ObservableObject {
         switch action {
         case .checkout: 
             checkout()
-        case .addItemToCart(let item) :
+        case .addItemToTheCart(let item) :
             addToCart(item)
-        case .addWearingItemsToCart(let items):
-            addWearingItemsToCart(items)
+        case .addTheTriedOnItemsToCart(let items):
+            addTheTriedOnItemsToCart(items)
         case .removeItem(let item):
             removeItem(item)
         }
@@ -62,21 +62,12 @@ final class CartModel: ObservableObject {
     
     private func addToCart(_ item: FQItem) {
         items.append(item)
-        
-//        toast = .init(
-//            message: Localized.addedToCart(
-//                item: localizedItemName(
-//                    of: item,
-//                    languageCode: code
-//                )
-//            )
-//        )
     }
     
     //MARK: - Add Wearings To Cart
     
     /// 이미 입고 있는 옷을 장바구니에 추가하는 함수
-    private func addWearingItemsToCart(_ wearingItems: [FQItem]) {
+    private func addTheTriedOnItemsToCart(_ wearingItems: [FQItem]) {
         guard !wearingItems.isEmpty else { return }
         
         let cartSet = Set<FQItem>(items)
@@ -84,21 +75,6 @@ final class CartModel: ObservableObject {
         /// 이미 장바구니에 있는 착용하고 잇는 옷 개수
         let alreadyInCartItemCount: Int = Set(wearingItems).intersection(cartSet).count
         
-        if alreadyInCartItemCount != 0 {
-            /// 이미 장바구니에 있는 착용하고 잇는 옷이 있다면
-//            toast = .init(
-//                message: Localized.addedWearingsToTheCartExcept(
-//                    clothes: wearingItems.count - alreadyInCartItemCount
-//                )
-//            )
-        } else {
-            /// 장바구니에 있는 착용하고 잇는 옷이 없다면
-//            toast = .init(
-//                message: Localized.addedWearingsToTheCart(
-//                    clothes: wearingItems.count
-//                )
-//            )
-        }
         
         /// 장바구니에 추가하기
         items = Array(cartSet.union(wearingItems))
@@ -108,40 +84,4 @@ final class CartModel: ObservableObject {
         
     }
     
-}
-
-// MARK: - Localization
-
-fileprivate struct Localized  {
-    static var cannotGetStoreItems: String {
-        String(
-            localized: "toastAlert.cannot.get.store.items",
-            defaultValue: "Can not get items"
-        )
-    }
-    
-    static func changeCloth(from: [String], to: String) -> String {
-        String(
-            localized: "itemStoreView.toastAlert.change.cloth.from.\(from.joined(separator: ", ")).to.\(to)"
-        )
-    }
-    
-    static func addedToCart(item: String) -> String {
-        String(
-            localized: "itemStoreView.toastAlert.added.to.cart.\(item)"
-        )
-    }
-    
-    static var addWearingsInTheCart: String {
-        String(localized: "itemStoreView.add.wearings.in.the.cart.button.title")
-    }
-    
-    static func addedWearingsToTheCart(clothes count: Int) -> String {
-        String(localized: "itemStoreView.toastAlert.added.\(count).wearing.items.in.the.cart")
-    }
-    
-    
-    static func addedWearingsToTheCartExcept(clothes count: Int) -> String {
-        String(localized: "itemStoreView.toastAlert.added.\(count).wearing.items.in.the.cart.except.already.exists")
-    }
 }

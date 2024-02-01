@@ -12,6 +12,7 @@ struct ItemStoreSelectedItemView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
     @EnvironmentObject private var cart: CartModel
+    @EnvironmentObject private var toastModel: ItemStoreToast
     
     private let item: FQItem
     
@@ -56,7 +57,7 @@ struct ItemStoreSelectedItemView: View {
             
             
             HStack {
-                let isWearing: Bool = itemStoreViewModel.wearingItems.contains(where: { $0 == item })
+                let isWearing: Bool = itemStoreViewModel.triedOnItems.contains(where: { $0 == item })
                 let isInTheCart: Bool = cart.items.contains { $0 == item }
                 
                 Button(action: tryOn) {
@@ -70,7 +71,7 @@ struct ItemStoreSelectedItemView: View {
                 )
                 .disabled(isWearing)
                 
-                Button(action: addToCart) {
+                Button(action: addToTheCart) {
                     Text(isInTheCart ? Localized.isInTheCart : Localized.addToCart)
                 }
                 .buttonStyle(
@@ -88,15 +89,20 @@ struct ItemStoreSelectedItemView: View {
     }
     
     private func tryOn() {
-        itemStoreViewModel.send(.tryOn(item: item, languageCode: languageCodeString))
-        //TODO: 중복된 카테고리의 옷을 벗고 갈아입었다는 토스트
+        let hasDuplication: Bool = ItemStoreViewModel.hasAnyDuplicateOrRelevantCategoryInTheTriedOnItem(
+            triedOnItems: itemStoreViewModel.triedOnItems,
+            item
+        )
+        toastModel.send(.tryOnTheItem(hasDuplication: hasDuplication))
+        
+        itemStoreViewModel.send(.tryOn(item: item))
         dismiss()
 
     }
     
-    private func addToCart() {
-        cart.send(.addItemToCart(item: item))
-        //TODO: 카트에 추가했다는 토스트
+    private func addToTheCart() {
+        cart.send(.addItemToTheCart(item: item))
+        toastModel.send(.addedToCart)
         dismiss()
     }
 }

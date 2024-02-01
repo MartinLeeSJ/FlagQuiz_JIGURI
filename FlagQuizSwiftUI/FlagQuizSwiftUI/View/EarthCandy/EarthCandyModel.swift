@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class EarthCandyViewModel: ObservableObject {
+class EarthCandyModel: ObservableObject {
     @Published var earthCandy: FQEarthCandy?
     
     private let container: DIContainer
