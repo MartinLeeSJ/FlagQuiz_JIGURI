@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemStoreCartButtons: View {
     @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
+    @EnvironmentObject private var toastModel: ItemStoreToast
     @EnvironmentObject private var cart: CartModel
     @Binding private var isCartViewPresented: Bool
     
@@ -34,7 +35,7 @@ struct ItemStoreCartButtons: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            Button(action: addWearingItemsToCart) {
+            Button(action: addTriedOnItemsToCart) {
                 Text(Localized.addWearingsInTheCart)
             }
             .buttonStyle(FQStrokeButtonStyle())
@@ -74,11 +75,10 @@ struct ItemStoreCartButtons: View {
     }
     
     /// 이미 입고 있는 옷을 장바구니에 추가하는 함수
-    private func addWearingItemsToCart() {
-        guard !itemStoreViewModel.wearingItems.isEmpty else { return }
-        cart.send(.addWearingItemsToCart(items: itemStoreViewModel.wearingItems))
-        //TODO: 중복된 옷을 제하고 카트에 담았다는 토스트
-        
+    private func addTriedOnItemsToCart() {
+        guard !itemStoreViewModel.triedOnItems.isEmpty else { return }
+        cart.send(.addTheTriedOnItemsToCart(items: itemStoreViewModel.triedOnItems))
+        toastModel.send(.addedTheTriedOnItems)
     }
     
     private func goToCartViewToPay() {

@@ -54,6 +54,7 @@
       }
     },
     "120" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ko" : {
           "stringUnit" : {
@@ -665,17 +666,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "당신을 어떻게 부를까요?"
-          }
-        }
-      }
-    },
-    "delete" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "삭제"
           }
         }
       }
@@ -1711,23 +1701,6 @@
         }
       }
     },
-    "itemStoreView.go.to.cart.view.to.pay.button.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Checkout"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "카트 품목 결제"
-          }
-        }
-      }
-    },
     "itemStoreView.is.in.the.cart.button.title" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1762,126 +1735,87 @@
         }
       }
     },
-    "itemStoreView.toastAlert.added.%lld.wearing.items.in.the.cart" : {
+    "itemStoreView.toastAlert.addedTheTriedOnItems" : {
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Added one item to the cart"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Added %lld items to the cart"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Added the tried-on item to the cart"
           }
         },
         "ko" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld개의 아이템을 카트에 담았습니다."
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld개의 아이템을 카트에 담았습니다."
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 입고 있는 옷들을 카트에 담습니다."
           }
         }
       }
     },
-    "itemStoreView.toastAlert.added.%lld.wearing.items.in.the.cart.except.already.exists" : {
+    "itemStoreView.toastAlert.addedToCart" : {
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "You have added one item to the cart, excluding the items already in the cart"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "You have added %lld items to the cart, excluding the items already in the cart"
-                }
-              },
-              "zero" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Already in the cart"
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Added the item to the cart"
           }
         },
         "ko" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "이미 카트에 있는 아이템을 빼고 %lld개의 아이템을 담았습니다."
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "이미 카트에 있는 아이템을 빼고 %lld개의 아이템을 담았습니다."
-                }
-              },
-              "zero" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "이미 카트에 있는 아이템입니다."
-                }
-              }
-            }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아이템을 카트에 추가합니다"
           }
         }
       }
     },
-    "itemStoreView.toastAlert.added.to.cart.%@" : {
+    "itemStoreView.toastAlert.cannotGetStoreItems" : {
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add %@ to the cart"
+            "state" : "new",
+            "value" : "Can not get items"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@을(를) 카트에 담았습니다."
+            "value" : "상점의 아이템을 가져올 수 없습니다."
           }
         }
       }
     },
-    "itemStoreView.toastAlert.change.cloth.from.%@.to.%@" : {
+    "itemStoreView.toastAlert.tryOnTheItem" : {
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chage from the %1$@ to the %2$@"
+            "state" : "new",
+            "value" : "Trying on the item"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@에서 %2$@(으)로 갈아입었습니다."
+            "value" : "아이템을 착용합니다."
+          }
+        }
+      }
+    },
+    "itemStoreView.toastAlert.tryOnTheItem.hasDuplication" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Trying on the item, taking off any duplicate items from the relevant category"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "연관된 카테고리의 아이템을 벗고 새로운 아이템을 착용합니다."
           }
         }
       }
@@ -3749,17 +3683,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퀴즈"
-          }
-        }
-      }
-    },
-    "toastAlert.cannot.get.store.items" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Can not get items"
           }
         }
       }

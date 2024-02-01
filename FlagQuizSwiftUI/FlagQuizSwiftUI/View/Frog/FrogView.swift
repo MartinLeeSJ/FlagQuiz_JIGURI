@@ -10,7 +10,7 @@ import SwiftUI
 struct FrogView: View {
     @Environment(\.colorScheme) var scheme
     @EnvironmentObject private var container: DIContainer
-    @EnvironmentObject private var earthCandyViewModel: EarthCandyViewModel
+    @EnvironmentObject private var earthCandyModel: EarthCandyModel
     @EnvironmentObject private var newsViewModel: NewsViewModel
     @StateObject private var frogModel: FrogModel
     
@@ -137,7 +137,7 @@ struct FrogView: View {
     
     @ViewBuilder
     private func feedFrogButton(_ frog: FQFrog) -> some View {
-        if let earthCandy = earthCandyViewModel.earthCandy,
+        if let earthCandy = earthCandyModel.earthCandy,
            !earthCandy.hasEnoughCandyForFeedFrog {
             notEnoughCandyButton
         } else {
@@ -206,7 +206,7 @@ struct FrogView: View {
         .environmentObject(DIContainer(services: StubService()))
         .environmentObject(NotificationManager())
         .environmentObject(
-            EarthCandyViewModel(
+            EarthCandyModel(
                 container: .init(
                     services: StubService()
                 )

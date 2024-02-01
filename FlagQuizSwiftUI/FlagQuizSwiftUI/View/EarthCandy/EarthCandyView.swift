@@ -11,9 +11,15 @@ struct EarthCandyView: View {
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var newsViewModel: NewsViewModel
-    @EnvironmentObject private var viewModel: EarthCandyViewModel
+    @EnvironmentObject private var viewModel: EarthCandyModel
     
     @State private var showDetail: Bool = false
+    
+    private let isShowingInStoreView: Bool
+    
+    init(isShowingInStoreView: Bool = false) {
+        self.isShowingInStoreView = isShowingInStoreView
+    }
     
     var body: some View {
         HStack(spacing: 8) {
@@ -38,20 +44,24 @@ struct EarthCandyView: View {
             .font(.system(.subheadline, design: .monospaced))
             .fontWeight(.medium)
             
-            Image(systemName: "plus", variableValue: 0.5)
-                .font(.caption)
-                .fontWeight(.black)
-                .padding(.trailing, 8)
+            if !isShowingInStoreView {
+                Image(systemName: "plus", variableValue: 0.5)
+                    .font(.caption)
+                    .fontWeight(.black)
+                    .padding(.trailing, 8)
+            }
         }
         .task {
             viewModel.observe()
         }
         .onTapGesture {
-            guard let isAnonymous = newsViewModel.isAnonymousUser() else { return }
-            if isAnonymous {
-                newsViewModel.setLinkingLocation(.reward)
-            } else {
-                showDetail = true
+            if !isShowingInStoreView {
+                guard let isAnonymous = newsViewModel.isAnonymousUser() else { return }
+                if isAnonymous {
+                    newsViewModel.setLinkingLocation(.reward)
+                } else {
+                    showDetail = true
+                }
             }
         }
         .fullScreenCover(isPresented: $showDetail) {
@@ -67,7 +77,7 @@ struct EarthCandyView: View {
     let container = DIContainer(services: StubService())
     return EarthCandyView()
         .environmentObject(
-            EarthCandyViewModel(
+            EarthCandyModel(
               container: container
             )
         )

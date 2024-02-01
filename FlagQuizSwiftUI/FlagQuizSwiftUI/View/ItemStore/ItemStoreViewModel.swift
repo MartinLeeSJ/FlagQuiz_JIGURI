@@ -10,15 +10,15 @@ import Combine
 
 @MainActor
 final class ItemStoreViewModel: ObservableObject {
-    @Published var storeItems: [FQItem] = FQItem.mockItems
-    @Published var selectedType: FQItemType? = .hair
-    @Published var wearingItems: [FQItem] = []
+    @Published var storeItems: [FQItem] = []
+    @Published var selectedType: FQItemType? = .hair 
+    @Published var triedOnItems: [FQItem] = []
     
     private let container: DIContainer
     
     enum Action {
         case selectType(type: FQItemType)
-        case tryOn(item: FQItem, languageCode: String)
+        case tryOn(item: FQItem)
         case takeOff(item: FQItem)
     }
     
@@ -27,14 +27,8 @@ final class ItemStoreViewModel: ObservableObject {
     }
     
     func load() async throws {
-//        do {
-            storeItems = try await container.services.storeItemService.getItems()
-//        } catch {
-//            toast = .init(
-//                style: .failed,
-//                message: Localized.cannotGetStoreItems
-//            )
-//        }
+//        storeItems = try await container.services.storeItemService.getItems()
+        storeItems = FQItem.mockItems
     }
     
     func send(_ action: Action) {
@@ -42,12 +36,12 @@ final class ItemStoreViewModel: ObservableObject {
         case .selectType(let type):
             selectedType = type
             
-        case .tryOn(let item, let code):
-            tryOn(item: item, languageCode: code)
+        case .tryOn(let item):
+            tryOn(item: item)
             
         case .takeOff(let item):
-            if let index = wearingItems.firstIndex(of: item) {
-                wearingItems.remove(at: index)
+            if let index = triedOnItems.firstIndex(of: item) {
+                triedOnItems.remove(at: index)
             }
         }
     }
@@ -55,39 +49,50 @@ final class ItemStoreViewModel: ObservableObject {
     
     //MARK: - Try on
     
+    /// 중복된 카테고리의 옷이 있는지 확인하는 함수
+    static func hasAnyDuplicateOrRelevantCategoryInTheTriedOnItem(
+        triedOnItems: [FQItem],
+        _ item: FQItem
+    ) -> Bool {
+        guard !triedOnItems.contains(where: {$0.type == item.type}) else {
+            return true
+        }
+        
+        switch item.type {
+        case .top, .bottom:
+            return triedOnItems.contains(where: {$0.type == .overall})
+        case .overall:
+            return triedOnItems.contains(where: {$0.type == .top || $0.type == .bottom})
+        default:
+            return false
+        }
+    }
+    
     /// 지구리가 아이템을 착용할 때 실행하는 함수
     /// - Parameters:
     ///   - item: 착용하는 아이템
-    ///   - code: 언어코드 <- 뷰에서 토스트를 띄우는 방향으로 리팩토링 필요해보임
-    private func tryOn(item: FQItem, languageCode code: String) {
+    private func tryOn(item: FQItem) {
         // 만약 상하의를 입는 거라면 tryTopBottom(item:languageCode:)를 실행한다.
         if item.type == .top || item.type == .bottom {
-            tryTopBottomOn(item: item, languageCode: code)
+            tryTopBottomOn(item: item)
             return
         }
         
         // 만약 한벌 의상을 입는 거라면 tryTopBottom(item:languageCode:)를 실행한다.
         if item.type == .overall {
-            tryOverAllOn(item: item, languageCode: code)
+            tryOverAllOn(item: item)
             return
         }
         
         
         // 입을 옷 종류가 현재 입고있는 옷 종류와 겹친다면 제거하고 입어준다.
-        if let index = wearingItems.firstIndex(where: { $0.type == item.type }) {
-            let takingOffItem: FQItem = wearingItems.remove(at: index)
-            wearingItems.insert(item, at: index)
-            
-//            toast = .init(
-//                message: Localized.changeCloth(
-//                    from: [ localizedItemName(of: takingOffItem, languageCode: code) ],
-//                    to: localizedItemName(of: item, languageCode: code)
-//                )
-//            )
+        if let index = triedOnItems.firstIndex(where: { $0.type == item.type }) {
+            triedOnItems.remove(at: index)
+            triedOnItems.insert(item, at: index)
             return
         }
         
-        wearingItems.append(item)
+        triedOnItems.append(item)
     }
     
     
@@ -95,13 +100,12 @@ final class ItemStoreViewModel: ObservableObject {
     /// 상 하의를 입을 때에는 이미 입고있는 상하의를 벗거나, 한 벌 의상을 벗어야한다.
     /// - Parameters:
     ///   - item: 착용할 아이템
-    ///   - code: 언어코드
-    private func tryTopBottomOn(item: FQItem, languageCode code: String) {
+    private func tryTopBottomOn(item: FQItem) {
         var indexes: [Int] = .init()
         
         // 착용할 아이템이 착용하고 있는 아이템과 겹치거나, 한벌의상을 입고 있는 경우
         // 배열에 벗을 아이템을 담아주고 인덱스도 indexes에 저장한다.
-        let takingOffItems = wearingItems.enumerated().compactMap { index, wearing in
+        let takingOffItems = triedOnItems.enumerated().compactMap { index, wearing in
             if (wearing.type == item.type) || (wearing.type == .overall) {
                 indexes.append(index)
                 return wearing
@@ -111,20 +115,13 @@ final class ItemStoreViewModel: ObservableObject {
         
         // 만약 벗어야하는 아이템이 없다면
         if takingOffItems.isEmpty {
-            wearingItems.append(item)
+            triedOnItems.append(item)
             return
         }
         
         // 벗어야하는 아이템을 wearingItems에서 지우고 입을 아이템을 insert한다
-        wearingItems.remove(atOffsets: IndexSet(indexes))
-        wearingItems.insert(item, at: indexes.first ?? 0)
-        
-//        toast = .init(
-//            message: Localized.changeCloth(
-//                from: takingOffItems.map { localizedItemName(of: $0, languageCode: code) },
-//                to: localizedItemName(of: item, languageCode: code)
-//            )
-//        )
+        triedOnItems.remove(atOffsets: IndexSet(indexes))
+        triedOnItems.insert(item, at: indexes.first ?? 0)
     }
     
     
@@ -132,13 +129,12 @@ final class ItemStoreViewModel: ObservableObject {
     /// 한 벌 의상을 착용할 때 이미 입고 있는 한 벌의상을 벗거나, 상 하의를 벗어야한다.
     /// - Parameters:
     ///   - item: 착용할 아이템
-    ///   - code: 언어코드
-    private func tryOverAllOn(item: FQItem, languageCode code: String) {
+    private func tryOverAllOn(item: FQItem) {
         var indexes: [Int] = .init()
         
         // 이미 상의, 하의 또는 한 벌 의상을 입고 있는 경우 벗어야한다.
         // 배열에 벗을 아이템을 담아주고 인덱스도 indexes에 저장한다.
-        let takingOffItems = wearingItems.enumerated().compactMap { index, wearing in
+        let takingOffItems = triedOnItems.enumerated().compactMap { index, wearing in
             let findingTypes: [FQItemType] = [.overall, .top, .bottom]
             
             if findingTypes.contains(where: { $0 == wearing.type }) {
@@ -150,73 +146,21 @@ final class ItemStoreViewModel: ObservableObject {
         
         // 벗을 아이템이 없을 경우 착용할 아이템을 입고 종료한다.
         if takingOffItems .isEmpty {
-            wearingItems.append(item)
+            triedOnItems.append(item)
             return
         }
         
         // 벗어야하는 아이템을 wearingItems에서 지우고 입을 아이템을 insert한다
-        wearingItems.remove(atOffsets: IndexSet(indexes))
-        wearingItems.insert(item, at: indexes.first ?? 0)
-        
-        
-//        toast = .init(
-//            message: Localized.changeCloth(
-//                from: takingOffItems.map { localizedItemName(of: $0, languageCode: code) },
-//                to: localizedItemName(of: item, languageCode: code)
-//            )
-//        )
+        triedOnItems.remove(atOffsets: IndexSet(indexes))
+        triedOnItems.insert(item, at: indexes.first ?? 0)
     }
     
     //MARK: - Take Off
     
     private func takeOff(_ item: FQItem) {
-        if let index = wearingItems.firstIndex(where: { $0 == item }) {
-            wearingItems.remove(at: index)
+        if let index = triedOnItems.firstIndex(where: { $0 == item }) {
+            triedOnItems.remove(at: index)
         }
     }
     
-   
-    
-    private func localizedItemName(of item: FQItem, languageCode code: String) -> String {
-        item.names.first {
-            $0.languageCode == .init(rawValue: code) ?? ServiceLangCode.EN
-        }?.name ?? "No Data"
-    }
-    
-}
-
-// MARK: - Localization
-
-fileprivate struct Localized  {
-    static var cannotGetStoreItems: String {
-        String(
-            localized: "toastAlert.cannot.get.store.items",
-            defaultValue: "Can not get items"
-        )
-    }
-    
-    static func changeCloth(from: [String], to: String) -> String {
-        String(
-            localized: "itemStoreView.toastAlert.change.cloth.from.\(from.joined(separator: ", ")).to.\(to)"
-        )
-    }
-    
-    static func addedToCart(item: String) -> String {
-        String(
-            localized: "itemStoreView.toastAlert.added.to.cart.\(item)"
-        )
-    }
-    
-    static var addWearingsInTheCart: String {
-        String(localized: "itemStoreView.add.wearings.in.the.cart.button.title")
-    }
-    
-    static func addedWearingsToTheCart(clothes count: Int) -> String {
-        String(localized: "itemStoreView.toastAlert.added.\(count).wearing.items.in.the.cart")
-    }
-    
-    
-    static func addedWearingsToTheCartExcept(clothes count: Int) -> String {
-        String(localized: "itemStoreView.toastAlert.added.\(count).wearing.items.in.the.cart.except.already.exists")
-    }
 }

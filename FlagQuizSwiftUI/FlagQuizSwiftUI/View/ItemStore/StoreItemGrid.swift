@@ -11,13 +11,11 @@ struct StoreItemGrid: View {
     @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
     @State private var selectedItem: FQItem? = nil
 
-    
     private var currentTypeItems: [FQItem] {
-        guard let selectedType = itemStoreViewModel.selectedType else {
-            return []
-        }
+        guard let selectedType = itemStoreViewModel.selectedType else { return [] }
         
         return itemStoreViewModel.storeItems.filter { $0.type == selectedType }
+                
     }
     
     private var colums: [GridItem] {

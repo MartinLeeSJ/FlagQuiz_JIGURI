@@ -34,14 +34,26 @@ struct StoreItemCell: View {
                 .font(.caption)
                 .frame(height: 30)
                
-            Label {
-                Text(item.price, format: .number)
-                    .font(.caption)
-            } icon: {
+            HStack {
                 Image("EarthCandy")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 15)
+                
+                Text(item.price, format: .number)
+                    .font(.caption)
+                    .overlay {
+                        if item.isOnEvent {
+                            Line()
+                                .stroke(.red, lineWidth: 2)
+                        }
+                    }
+                
+                if item.isOnEvent {
+                    Text(item.specialPrice, format: .number)
+                        .font(.caption)
+                        .padding(.leading, -4)
+                }
             }
         }
         

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CartView: View {
     @Environment(\.colorScheme) private var scheme
-    @EnvironmentObject private var earthCandyViewModel: EarthCandyViewModel
+    @EnvironmentObject private var earthCandyModel: EarthCandyModel
     @EnvironmentObject private var cart: CartModel
     @Binding private var isCartViewPresented: Bool
  
@@ -74,7 +74,7 @@ struct CartView: View {
             isCartViewPresented: .constant(true)
         )
         .environmentObject(
-            EarthCandyViewModel(
+            EarthCandyModel(
                 container: container
             )
         )

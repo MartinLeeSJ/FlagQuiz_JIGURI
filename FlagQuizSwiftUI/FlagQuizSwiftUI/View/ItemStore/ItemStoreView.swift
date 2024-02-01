@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ItemStoreView: View {
     @Environment(\.locale) var locale
-    @EnvironmentObject private var container: DIContainer
-    
+    @Environment(\.dismiss) var dismiss
     @StateObject private var itemStoreViewModel: ItemStoreViewModel
     @StateObject private var cart: CartModel
+    @StateObject private var toastModel = ItemStoreToast()
     
     @State private var isCartViewPresented: Bool = false
-    @State private var toast: ToastAlert?
+    
     
     init(
         itemStoreViewModel: ItemStoreViewModel,
@@ -47,7 +47,7 @@ struct ItemStoreView: View {
                 }
             }
             .blur(radius: isCartViewPresented ? 3 : 0)
-            
+            .disabled(isCartViewPresented)
  
             if isCartViewPresented {
                 Rectangle()
@@ -57,36 +57,29 @@ struct ItemStoreView: View {
                             isCartViewPresented = false
                         }
                     }
-                
                 CartView(isCartViewPresented: $isCartViewPresented)
             }
-           
         }
         .task {
             do {
                 try await itemStoreViewModel.load()
             } catch {
-                //Toast
+                toastModel.send(.cannotGetStoreItems)
             }
         }
+        .navigationBarBackButtonHidden()
         .environmentObject(itemStoreViewModel)
         .environmentObject(cart)
-        .toastAlert($toast)
+        .environmentObject(toastModel)
+        .toastAlert($toastModel.toast)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                HStack {
-                    Image("EarthCandy")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20)
-                    //TODO: - EarthCandy연동하기
-                    Text("120")
-                }
+                EarthCandyView(isShowingInStoreView: true)
             }
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    
+                    dismiss()
                 } label: {
                     Text(String(localized: "itemStoreView.quit", defaultValue: "Quit"))
                         .fontWeight(.medium)
@@ -105,7 +98,7 @@ struct ItemStoreView: View {
         VStack {
             ItemStoreFrogView()
             
-            ItemStoreWearingClothes()
+            TriedOnItemsView()
             
             ItemTypeButtons()
             
@@ -126,7 +119,7 @@ struct ItemStoreView: View {
             VStack {
                 ItemStoreFrogView()
                 
-                ItemStoreWearingClothes()
+                TriedOnItemsView()
             }
             VStack {
                 ItemTypeButtons()

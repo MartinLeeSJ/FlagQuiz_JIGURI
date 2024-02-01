@@ -1,5 +1,5 @@
 //
-//  ItemStoreWearingClothes.swift
+//  TriedOnItemsView.swift
 //  FlagQuizSwiftUI
 //
 //  Created by Martin on 1/29/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ItemStoreWearingClothes: View {
+struct TriedOnItemsView: View {
     @Environment(\.locale) private var locale
     @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
     
@@ -15,7 +15,7 @@ struct ItemStoreWearingClothes: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(itemStoreViewModel.wearingItems, id: \.self) { item in
+                ForEach(itemStoreViewModel.triedOnItems, id: \.self) { item in
                     Button {
                         itemStoreViewModel.send(.takeOff(item: item))
                     } label: {
@@ -29,9 +29,9 @@ struct ItemStoreWearingClothes: View {
                     .padding(.horizontal, 8)
                     .overlay {
                         RoundedRectangle(cornerRadius: 4, style: .continuous)
-                            .stroke(.fqAccent, lineWidth: 2)
+                            .stroke(.fqAccent, lineWidth: 1)
                     }
-                    .animation(.easeInOut, value: itemStoreViewModel.wearingItems)
+                    .animation(.easeInOut, value: itemStoreViewModel.triedOnItems)
                 }
             }
             .safeAreaInset(edge: .leading) {}
