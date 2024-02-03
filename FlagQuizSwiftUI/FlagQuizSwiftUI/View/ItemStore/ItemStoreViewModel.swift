@@ -27,8 +27,7 @@ final class ItemStoreViewModel: ObservableObject {
     }
     
     func load() async throws {
-//        storeItems = try await container.services.storeItemService.getItems()
-        storeItems = FQItem.mockItems
+        storeItems = try await container.services.storeItemService.getItems()
     }
     
     func send(_ action: Action) {

@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import Combine
+
+enum ItemStorePayingingState {
+    case none
+    case paying
+    case success
+    case failed
+}
 
 final class CartModel: ObservableObject {
     @Published var items: [FQItem] = .init()
+    @Published var payingState: ItemStorePayingingState = .none
     
     enum Action {
-        case checkout
+        case checkout(isFrogHappy: Bool)
         case addItemToTheCart(item: FQItem)
         case addTheTriedOnItemsToCart(items: [FQItem])
         case removeItem(FQItem)
@@ -29,6 +38,7 @@ final class CartModel: ObservableObject {
     
     
     private let container: DIContainer
+    private var cancellables = Set<AnyCancellable>()
     
     init(
         container: DIContainer
@@ -39,8 +49,8 @@ final class CartModel: ObservableObject {
     
     public func send(_ action: Action) {
         switch action {
-        case .checkout: 
-            checkout()
+        case .checkout(let frogStateDiscount):
+            checkout(applying: frogStateDiscount)
         case .addItemToTheCart(let item) :
             addToCart(item)
         case .addTheTriedOnItemsToCart(let items):
@@ -80,8 +90,60 @@ final class CartModel: ObservableObject {
         items = Array(cartSet.union(wearingItems))
     }
     
-    private func checkout() {
+    private func checkout(applying frogStateDiscount: Bool) {
+        payingState = .paying
         
+        guard let userId = container.services.authService.checkAuthenticationState() else {
+            payingState = .failed
+            return
+        }
+        
+        let point: Int = frogStateDiscount ? discountedPrice : totalPrice
+        
+        container.services.earthCandyService.checkEarthCandyIsEnough(
+            userId,
+            needed: frogStateDiscount ? discountedPrice : totalPrice
+        )
+        .flatMap { [weak self] canAfford in
+            guard let self else {
+                return Fail<Bool, ServiceError>(error: .nilSelf).eraseToAnyPublisher()
+            }
+            
+            if !canAfford {
+                return  Just(false).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
+            }
+            
+            return continueCheckOutProcess(userId: userId, point: point)
+        }
+        .sink { [weak self] completion in
+            if case .failure = completion {
+                self?.payingState = .failed
+            }
+        } receiveValue: { [weak self] checkedOut in
+            self?.payingState = checkedOut ? .success : .failed
+        }
+        .store(in: &cancellables)
+    }
+    
+    
+    private func continueCheckOutProcess(userId: String, point: Int) -> AnyPublisher<Bool, ServiceError> {
+        self.container.services.userItemService.addUserItems(
+            of: userId,
+            items: items.map { $0.toUserItem() }
+        )
+        .flatMap { [weak self] _ in
+            guard let self else {
+                return Fail<Void, ServiceError>(error: .nilSelf).eraseToAnyPublisher()
+            }
+            
+            return self.container.services.earthCandyService.updateCandy(
+                -point,
+                ofUser: userId
+            )
+            .eraseToAnyPublisher()
+        }
+        .map { _ in true }
+        .eraseToAnyPublisher()
     }
     
 }

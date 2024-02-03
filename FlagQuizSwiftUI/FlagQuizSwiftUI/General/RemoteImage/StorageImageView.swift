@@ -1,50 +1,50 @@
 //
-//  URLImageView.swift
+//  StorageImageView.swift
 //  FlagQuizSwiftUI
 //
-//  Created by Martin on 12/24/23.
+//  Created by Martin on 2/3/24.
 //
 
 import SwiftUI
+import FirebaseStorage
 
-struct URLImageView<Placeholder>: View where Placeholder: View {
+struct StorageImageView<Placeholder>: View where Placeholder: View {
     @EnvironmentObject private var container: DIContainer
+    @State private var urlString: String?
     
-    private let imageUrlString: String?
+    private let storageReferencePath: String?
     private let placeholder: () -> Placeholder
+    private let storageRef = Storage.storage().reference()
     
     init(
-        _ imageUrlString: String?,
+        _ storageReferencePath: String?,
         @ViewBuilder placeholder: @escaping () -> Placeholder
     ) {
-        self.imageUrlString = imageUrlString
+        self.storageReferencePath = storageReferencePath
         self.placeholder = placeholder
     }
     
     var body: some View {
-        if let imageUrlString {
-            URLImageInnerView(
-                viewModel: .init(container: container, imageUrlString: imageUrlString),
+        if let storageReferencePath {
+            StorageImageInnerView(
+                viewModel: .init(
+                    container: container,
+                    storagePath: storageReferencePath
+                ),
                 placeholder: placeholder
             )
-            .id(imageUrlString)
         } else {
             placeholder()
         }
     }
-    
-    
 }
 
-fileprivate struct URLImageInnerView<Placeholder>: View where Placeholder: View{
-    @StateObject private var viewModel: URLImageViewModel
-    
+fileprivate struct StorageImageInnerView<Placeholder>: View where Placeholder: View {
+    @StateObject private var viewModel: StorageImageViewModel
     private let placeholder: () -> Placeholder
     
-    
-    
     init(
-        viewModel: URLImageViewModel,
+        viewModel: StorageImageViewModel,
         @ViewBuilder placeholder: @escaping () -> Placeholder
     ) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -68,4 +68,5 @@ fileprivate struct URLImageInnerView<Placeholder>: View where Placeholder: View{
             }
         }
     }
+    
 }

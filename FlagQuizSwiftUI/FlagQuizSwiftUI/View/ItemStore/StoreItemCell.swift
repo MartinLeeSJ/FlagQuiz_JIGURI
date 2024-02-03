@@ -29,6 +29,12 @@ struct StoreItemCell: View {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .foregroundStyle(.thinMaterial)
                 .aspectRatio(1, contentMode: .fit)
+                .overlay {
+                    StorageImageView(item.storageImagePath(false)) {
+                        ProgressView()
+                    }
+                    .scaledToFit()
+                }
             
             FlowingText(localizedItemName)
                 .font(.caption)

@@ -20,6 +20,7 @@ enum FrogError: Error {
 final class FrogModel: ObservableObject {
     @Published var frog: FQFrog?
     @Published var error: FrogError?
+    @Published var items: [FQUserItem] = []
     
     private let container: DIContainer
     private let notificationManager: NotificationManager
@@ -35,17 +36,33 @@ final class FrogModel: ObservableObject {
     }
     
     public func observe() {
+        typealias Output = (FQFrog?, [FQUserItem])
+        
         guard let userId = container.services.authService.checkAuthenticationState() else {
             return
         }
         
         container.services.frogService.observeFrogWhileCheckingStatus(ofUser: userId)
+            .flatMap { [weak self] frog in
+                guard let self else {
+                    return Fail<Output, ServiceError>(error: ServiceError.nilSelf).eraseToAnyPublisher()
+                }
+                
+                guard let frog else {
+                    return Just<Output>((nil, self.items)).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
+                }
+                
+                return self.container.services.userItemService.getUserItems(ofUser: userId, itemIds: frog.items)
+                    .map { (frog, $0) }
+                    .eraseToAnyPublisher()
+            }
             .sink { [weak self] completion in
                 if case .failure = completion {
                     self?.error = FrogError.failedToObserve
                 }
-            } receiveValue: { [weak self] frog in
-                self?.frog = frog
+            } receiveValue: { [weak self] output in
+                self?.frog = output.0
+                self?.items = output.1
             }
             .store(in: &cancellables)
     }
@@ -65,7 +82,10 @@ final class FrogModel: ObservableObject {
             return
         }
         
-        container.services.earthCandyService.checkEarthCandyIsEnough(userId)
+        container.services.earthCandyService.checkEarthCandyIsEnough(
+            userId,
+            needed: FQEarthCandy.earthCandyPointForFeedingFrog
+        )
             .mapError { FrogError.custom($0) }
             .flatMap { [weak self] isEnough in
                 guard let self else {

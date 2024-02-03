@@ -74,7 +74,7 @@ struct CartViewFooter: View {
     
     private var checkoutButton: some View {
         Button {
-            cart.send(.checkout)
+            cart.send(.checkout(isFrogHappy: frogModel.frog?.state == .great))
         } label: {
             Text(String(localized:"cartView.checkout.button.title", defaultValue: "Check Out"))
                 .foregroundStyle(.foreground)

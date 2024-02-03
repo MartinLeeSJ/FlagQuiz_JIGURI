@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ItemStoreView: View {
-    @Environment(\.locale) var locale
     @Environment(\.dismiss) var dismiss
     @StateObject private var itemStoreViewModel: ItemStoreViewModel
     @StateObject private var cart: CartModel
@@ -23,17 +22,6 @@ struct ItemStoreView: View {
     ) {
         self._itemStoreViewModel = StateObject(wrappedValue: itemStoreViewModel)
         self._cart = StateObject(wrappedValue: cart)
-    }
-    
-    private var languageCodeString: String {
-        guard let code = locale.language.languageCode?.identifier(.alpha2) else {
-            return "en"
-        }
-        if code == "ko" {
-            return code
-        }
-        
-        return "en"
     }
     
     
@@ -67,6 +55,13 @@ struct ItemStoreView: View {
                 toastModel.send(.cannotGetStoreItems)
             }
         }
+        .navigationTitle(
+            String(
+                localized: "itemStoreView.title",
+                defaultValue: "Store"
+            )
+        )
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .environmentObject(itemStoreViewModel)
         .environmentObject(cart)
@@ -76,6 +71,7 @@ struct ItemStoreView: View {
             ToolbarItem(placement: .topBarLeading) {
                 EarthCandyView(isShowingInStoreView: true)
             }
+            
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -88,11 +84,6 @@ struct ItemStoreView: View {
         }
     }
     
-    func localizedItemName(of item: FQItem) -> String {
-        item.names.first {
-            $0.languageCode == .init(rawValue: languageCodeString) ?? ServiceLangCode.EN
-        }?.name ?? "No Data"
-    }
     
     private var verticalContent: some View {
         VStack {
@@ -138,3 +129,13 @@ struct ItemStoreView: View {
     }
 }
 
+
+#Preview {
+    let container = DIContainer(services: StubService())
+    return NavigationStack {
+        ItemStoreView(
+            itemStoreViewModel: .init(container: container),
+            cart: .init(container: container)
+        )
+    }
+}

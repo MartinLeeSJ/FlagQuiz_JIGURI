@@ -363,8 +363,16 @@
         }
       }
     },
-    "closet" : {
-
+    "closetView.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Closet"
+          }
+        }
+      }
     },
     "correct.%lld.total.%lld" : {
       "localizations" : {
@@ -1617,6 +1625,9 @@
         }
       }
     },
+    "Hello, World!" : {
+
+    },
     "How about showing a little more interest in Earth's neighbors?" : {
       "comment" : "Quiz result comment for middle, middle-low score",
       "localizations" : {
@@ -1731,6 +1742,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "나가기"
+          }
+        }
+      }
+    },
+    "itemStoreView.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Store"
           }
         }
       }
@@ -2436,6 +2458,9 @@
           }
         }
       }
+    },
+    "need" : {
+
     },
     "news.country.quiz.stats.title" : {
       "localizations" : {
@@ -3580,6 +3605,9 @@
           }
         }
       }
+    },
+    "save and quit" : {
+
     },
     "save.and.quit" : {
       "localizations" : {

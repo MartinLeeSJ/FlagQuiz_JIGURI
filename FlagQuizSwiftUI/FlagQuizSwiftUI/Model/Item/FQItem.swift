@@ -7,16 +7,22 @@
 
 import Foundation
 
-struct FQItem: Codable, Identifiable, Hashable {
-    var id: String
-    var type: FQItemType
-    var stockName: String
+struct FQItem: FQItemProtocol {
+    let id: String
+    let type: FQItemType
+    let stockName: String
     var names: [FQItemName]
     var price: Int
     var specialPrice: Int
     var isOnEvent: Bool
     var isOnMarket: Bool
+    
+    func storageImagePath(_ equipped: Bool) -> String {
+        "\(StoragePath.items)/\(type.rawValue)/\(stockName)/\(equipped ? "item_equipped" : "item").png"
+    }
 }
+
+extension FQItem: Codable, Identifiable, Hashable {}
 
 
 
@@ -31,6 +37,16 @@ extension FQItem {
             specialPrice: specialPrice,
             isOnEvent: isOnEvent,
             isOnMarket: isOnMarket
+        )
+    }
+    
+    func toUserItem() -> FQUserItem {
+        .init(
+            id: id,
+            type: type,
+            stockName: stockName,
+            purchasedAt: .now,
+            purchasedPrice: isOnEvent ? specialPrice : price
         )
     }
 }
