@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 protocol ImageCacheServiceType {
-    func image(for key: String) -> AnyPublisher<UIImage?, Never>
+    func image(for key: String) -> AnyPublisher<UIImage?, ServiceError>
 }
 
 final class ImageCacheService: ImageCacheServiceType {
@@ -24,11 +24,11 @@ final class ImageCacheService: ImageCacheServiceType {
         self.imageDiskStorage = imageDiskStorage
     }
     
-    func image(for key: String) -> AnyPublisher<UIImage?, Never> {
+    func image(for key: String) -> AnyPublisher<UIImage?, ServiceError> {
         imageWithMemoryCache(for: key)
-            .flatMap { image -> AnyPublisher<UIImage?, Never> in
+            .flatMap { image -> AnyPublisher<UIImage?, ServiceError> in
                 if let image {
-                    return Just(image).eraseToAnyPublisher()
+                    return Just(image).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
                 }
                 return self.imageWithDiskCache(for: key)
                 
@@ -36,15 +36,16 @@ final class ImageCacheService: ImageCacheServiceType {
             .eraseToAnyPublisher()
     }
     
-    private func imageWithMemoryCache(for key: String) -> AnyPublisher<UIImage?, Never> {
+    private func imageWithMemoryCache(for key: String) -> AnyPublisher<UIImage?, ServiceError> {
         Future { [weak self] promise in
             let image: UIImage? = self?.imageMemoryStorage.image(for: key)
             promise(.success(image))
         }
+        .setFailureType(to: ServiceError.self)
         .eraseToAnyPublisher()
     }
     
-    private func imageWithDiskCache(for key: String) -> AnyPublisher<UIImage?, Never> {
+    private func imageWithDiskCache(for key: String) -> AnyPublisher<UIImage?, ServiceError> {
         Future<UIImage?, Never> { [weak self] promise in
             do {
                 let image: UIImage? = try self?.imageDiskStorage.image(for: key)
@@ -53,9 +54,10 @@ final class ImageCacheService: ImageCacheServiceType {
                 promise(.success(nil))
             }
         }
-        .flatMap { image -> AnyPublisher<UIImage?, Never> in
+        .flatMap { image -> AnyPublisher<UIImage?, ServiceError> in
             if let image {
                 return Just(image)
+                    .setFailureType(to: ServiceError.self)
                     .handleEvents(receiveOutput: { [weak self] image in
                         if let image {
                             self?.store(for: key, image: image, alsoInDisk: false)
@@ -69,16 +71,16 @@ final class ImageCacheService: ImageCacheServiceType {
         .eraseToAnyPublisher()
     }
     
-    private func remoteImage(for urlString: String) -> AnyPublisher<UIImage?, Never> {
+    private func remoteImage(for urlString: String) -> AnyPublisher<UIImage?, ServiceError> {
         guard let url =  URL(string: urlString) else {
-            return Empty().eraseToAnyPublisher()
+            return Fail<UIImage?, ServiceError>(error: .invalid).eraseToAnyPublisher()
         }
         
         return URLSession.shared.dataTaskPublisher(for: url)
+            .mapError{ ServiceError.custom($0) }
             .map { data, _ in
                 UIImage(data: data)
             }
-            .replaceError(with: nil)
             .handleEvents(receiveOutput: { [weak self] image in
                 if let image {
                     self?.store(for: urlString, image: image, alsoInDisk: true)
@@ -91,13 +93,13 @@ final class ImageCacheService: ImageCacheServiceType {
         imageMemoryStorage.store(for: key, image: image)
         
         if shouldStoreInDisk {
-            try? imageDiskStorage.store(for: key, image: image)
+            try? imageDiskStorage.store(for: key, image: image, convertToJpeg: true)
         }
     }
 }
 
 final class StubImageCacheService: ImageCacheServiceType {
-    func image(for key: String) -> AnyPublisher<UIImage?, Never> {
+    func image(for key: String) -> AnyPublisher<UIImage?, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     

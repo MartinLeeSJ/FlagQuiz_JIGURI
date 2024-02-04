@@ -10,13 +10,20 @@ import SwiftUI
 struct CartViewFooter: View {
     @EnvironmentObject private var cart: CartModel
     @EnvironmentObject private var frogModel: FrogModel
+    @EnvironmentObject private var toastModel: ItemStoreToast
+    
+    @Binding private var isCartViewPresented: Bool
+    
+    init(isCartViewPresented: Binding<Bool>) {
+        self._isCartViewPresented = isCartViewPresented
+    }
     
     var isFrogStateGreat: Bool {
         frogModel.frog?.state == .great
     }
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .center) {
             totalPriceDescription
             checkoutButton
         }
@@ -33,7 +40,22 @@ struct CartViewFooter: View {
         )
         .font(.caption)
         
-        
+        if cart.items.isEmpty {
+            Text(
+                String(
+                    localized: "cartViewFooter.cart.is.empty",
+                    defaultValue: "Cart is empty"
+                )
+            )
+            .font(.caption2)
+            .frame(maxWidth: .infinity)
+        } else {
+            totalPriceLabel
+        }
+       
+    }
+    
+    private var totalPriceLabel: some View {
         VStack {
             HStack(spacing: 12) {
                 Label {
@@ -50,7 +72,7 @@ struct CartViewFooter: View {
                     if isFrogStateGreat {
                         Line()
                             .stroke(style: .init(lineCap: .round))
-                            .stroke(lineWidth: 2)
+                            .stroke(lineWidth: 1)
                             .foregroundStyle(.red)
                     }
                 }
@@ -66,15 +88,16 @@ struct CartViewFooter: View {
                 //"지구리 기분이 좋아서 할인"
                 Text("cartView.frogstate.great.discount.\(FrogState.frogInGreatMoodDiscountPercentPoint).description")
                     .font(.caption2)
+                    .multilineTextAlignment(.center)
             }
             
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity)
     }
     
     private var checkoutButton: some View {
         Button {
-            cart.send(.checkout)
+            cart.send(.checkout(isFrogHappy: frogModel.frog?.state == .great))
         } label: {
             Text(String(localized:"cartView.checkout.button.title", defaultValue: "Check Out"))
                 .foregroundStyle(.foreground)
@@ -86,6 +109,20 @@ struct CartViewFooter: View {
             RoundedRectangle(cornerRadius: 8, style: .continuous)
                 .foregroundStyle(.fqAccent)
         }
+        .onChange(of: cart.payingState, perform: { payingState in
+            switch payingState {
+            case .success: paidSuccessfully()
+            case .canNotAfford: toastModel.send(.canNotAffordToBuy)
+            case .failed: toastModel.send(.failedToCheckingOut)
+            default: break
+            }
+        })
+    }
+    
+    private func paidSuccessfully() {
+        toastModel.send(.checkedOutSuccessfully(itemCount: cart.items.count))
+        cart.send(.reset)
+        isCartViewPresented = false
     }
 }
 
@@ -95,7 +132,7 @@ struct CartViewFooter: View {
 #Preview {
     let container: DIContainer = .init(services: StubService())
     
-    return CartViewFooter()
+    return CartViewFooter(isCartViewPresented: .constant(true))
         .environmentObject(
             CartModel(container: container)
         )

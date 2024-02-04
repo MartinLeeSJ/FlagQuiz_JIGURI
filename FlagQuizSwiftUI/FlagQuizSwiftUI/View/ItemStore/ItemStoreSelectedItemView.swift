@@ -37,23 +37,41 @@ struct ItemStoreSelectedItemView: View {
     
     var body: some View {
         VStack {
-            Rectangle()
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .foregroundStyle(.thinMaterial)
                 .aspectRatio(1, contentMode: .fit)
-                .frame(width: 100)
-            
+                .frame(width: 150)
+                .overlay {
+                    StorageImageView(item.storageImagePath(equipped: false)) {
+                        ProgressView()
+                    }
+                    .scaledToFit()
+                }
+        
             Text(localizedItemName(of: item))
-            Label {
-                //TODO: 할인된 가격도 표시해야함
-                Text(item.price, format: .number)
-                    .font(.caption)
-            } icon: {
+          
+            HStack {
                 Image("EarthCandy")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 15)
+                
+                Text(item.price, format: .number)
+                    .font(.caption)
+                    .overlay {
+                        if item.isOnEvent {
+                            Line()
+                                .stroke(.red, lineWidth: 2)
+                        }
+                    }
+                
+                if item.isOnEvent {
+                    Text(item.specialPrice, format: .number)
+                        .font(.caption)
+                        .padding(.leading, -4)
+                }
             }
-            
-            Spacer()
+            .padding(.bottom, 32)
             
             
             HStack {

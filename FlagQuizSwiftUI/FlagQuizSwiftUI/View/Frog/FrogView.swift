@@ -37,7 +37,11 @@ struct FrogView: View {
                         
                     )
                 case .closet:
-                    Text("closet")
+                    ClosetView(
+                        closetViewModel: .init(
+                            container: container
+                        )
+                    )
                 }
             }
             .environmentObject(frogModel)
@@ -69,10 +73,11 @@ struct FrogView: View {
                 }
             }
             
-            Image("frogSoSo")
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: 200)
+            FrogImageView(
+                frog: nil,
+                items: frogModel.items,
+                size: 200
+            )
             
             Button {
                 
@@ -96,16 +101,13 @@ struct FrogView: View {
                 }
             }
             
-            ZStack {
-                Image(frog.state.frogImageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 200)
-            }
+            FrogImageView(frog: frog, items: frogModel.items, size: 200)
             
             frogStateButton(frog)
         }
     }
+    
+    
     
     private var heart: some View {
         Image("frogHeart")

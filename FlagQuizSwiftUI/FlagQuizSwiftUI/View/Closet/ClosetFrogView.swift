@@ -1,24 +1,23 @@
 //
-//  ItemStoreFrogView.swift
+//  ClosetFrogView.swift
 //  FlagQuizSwiftUI
 //
-//  Created by Martin on 1/29/24.
+//  Created by Martin on 2/1/24.
 //
 
 import SwiftUI
 
-struct ItemStoreFrogView: View {
+struct ClosetFrogView: View {
+    @EnvironmentObject private var closetViewModel: ClosetViewModel
     @EnvironmentObject private var frogModel: FrogModel
-    @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
+
     
     var body: some View {
         FrogImageView(
             frog: frogModel.frog,
-            items: itemStoreViewModel.triedOnItems,
-            size: 175
+            items: closetViewModel.currentEquippedItems,
+            size: 200
         )
-        .aspectRatio(1, contentMode: .fit)
-        .frame(width: 175)
         .padding(25)
         .background(in: .rect(cornerRadius: 12, style: .continuous))
         .backgroundStyle(.thinMaterial)

@@ -10,13 +10,10 @@ import FirebaseFirestore
 
 struct FQUserItemObject: Codable {
     @DocumentID var itemId: String?
-    var itemTypeName: String
-    var purchasedAt: Timestamp
-    var itemReference: DocumentReference?
-    
-    static func makeDocumentReference(with itemId: String) -> DocumentReference {
-        Firestore.firestore().collection(CollectionKey.Items).document(itemId)
-    }
+    let itemTypeName: String
+    let stockName: String
+    let purchasedAt: Timestamp
+    let purchasedPrice: Int
     
 }
 
@@ -26,9 +23,11 @@ extension FQUserItemObject {
         guard let itemType = FQItemType(rawValue: itemTypeName) else { return nil }
 
         return .init(
-            itemId: itemId,
-            itemType: itemType,
-            purchasedAt: purchasedAt.dateValue()
+            id: itemId,
+            type: itemType,
+            stockName: stockName,
+            purchasedAt: purchasedAt.dateValue(),
+            purchasedPrice: purchasedPrice
         )
     }
 }
@@ -39,8 +38,9 @@ extension FQUserItemObject {
         .init(
             itemId: nil,
             itemTypeName: itemTypeName,
+            stockName: stockName,
             purchasedAt: purchasedAt,
-            itemReference: itemReference
+            purchasedPrice: purchasedPrice
         )
     }
 }

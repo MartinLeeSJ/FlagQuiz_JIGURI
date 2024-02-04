@@ -11,10 +11,12 @@ import Combine
 @MainActor
 final class ItemStoreViewModel: ObservableObject {
     @Published var storeItems: [FQItem] = []
-    @Published var selectedType: FQItemType? = .hair 
+    @Published var selectedType: FQItemType = .hair 
+    @Published var userItemsOfType: [FQItemType:[FQUserItem]] = .init()
     @Published var triedOnItems: [FQItem] = []
     
     private let container: DIContainer
+    private var cancellables = Set<AnyCancellable>()
     
     enum Action {
         case selectType(type: FQItemType)
@@ -24,11 +26,42 @@ final class ItemStoreViewModel: ObservableObject {
     
     init(container: DIContainer) {
         self.container = container
+        loadUserItem()
     }
     
     func load() async throws {
-//        storeItems = try await container.services.storeItemService.getItems()
-        storeItems = FQItem.mockItems
+        storeItems = try await container.services.storeItemService.getItems()
+    }
+    
+    func loadUserItem() {
+        guard let userId = container.services.authService.checkAuthenticationState() else {
+            return
+        }
+        
+        $selectedType
+            .flatMap { [weak self] type in
+                guard let self else {
+                    return Fail<[FQUserItem], ServiceError>(error: .nilSelf).eraseToAnyPublisher()
+                }
+                
+                if let items = userItemsOfType[type] {
+                    return Just(items).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
+                }
+                               
+                return container.services.userItemService.getUserItems(ofUser: userId, ofType: type)
+                    .eraseToAnyPublisher()
+            }
+            .sink { _ in
+                //TODO: Error Handling
+                
+            } receiveValue: { [weak self] items in
+                if let type = items.first?.type {
+                    self?.userItemsOfType[type] = items
+                }
+            }
+            .store(in: &cancellables)
+
+            
     }
     
     func send(_ action: Action) {

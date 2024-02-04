@@ -1,22 +1,27 @@
 //
-//  ItemTypeButtons.swift
+//  ClosetItemTypeButtons.swift
 //  FlagQuizSwiftUI
 //
-//  Created by Martin on 1/29/24.
+//  Created by Martin on 2/1/24.
 //
 
 import SwiftUI
 
-struct ItemTypeButtons: View {
-    @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
-    @Namespace private var selectedButton
+struct ClosetItemTypeButtons: View {
+    @EnvironmentObject private var closetViewModel: ClosetViewModel
+    @Namespace private var closetSelectedType
+    
     
     var body: some View {
         ScrollView(.horizontal) {
+            
             HStack(spacing: 12) {
+                Spacer()
+                    .frame(width: 16)
+                
                 ForEach(FQItemType.allCases, id: \.self) { type in
                     Button {
-                        itemStoreViewModel.send(.selectType(type: type))
+                        closetViewModel.send(.selectType(type))
                     } label: {
                         Text(type.localizedName)
                             .foregroundStyle(.foreground)
@@ -26,19 +31,22 @@ struct ItemTypeButtons: View {
                     .padding(.bottom, 8)
                     .padding(.horizontal, 14)
                     .overlay {
-                        if itemStoreViewModel.selectedType == type {
+                        if closetViewModel.selectedType == type {
                             Line(.bottom)
                                 .stroke(.fqAccent, lineWidth: 2)
-                                .matchedGeometryEffect(id: "highlight", in: selectedButton)
+                                .matchedGeometryEffect(id: "highlight", in: closetSelectedType)
                         }
                     }
-                    .animation(.spring, value: itemStoreViewModel.selectedType)
+                    .animation(.spring, value: closetViewModel.selectedType)
                 }
+                
+                Spacer()
+                    .frame(width: 16)
             }
-            .safeAreaInset(edge: .leading) {}
-            .safeAreaInset(edge: .trailing) {}
         }
-        .scrollIndicators(.hidden)
-        .frame(idealHeight: 30, maxHeight: 40)
+        .scrollIndicators(.never)
+            
+        
     }
 }
+

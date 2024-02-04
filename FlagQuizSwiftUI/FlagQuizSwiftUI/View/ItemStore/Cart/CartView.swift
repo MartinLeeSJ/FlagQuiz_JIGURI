@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CartView: View {
     @Environment(\.colorScheme) private var scheme
-    @EnvironmentObject private var earthCandyModel: EarthCandyModel
     @EnvironmentObject private var cart: CartModel
     @Binding private var isCartViewPresented: Bool
  
@@ -27,7 +26,7 @@ struct CartView: View {
                 
             Divider()
             
-            CartViewFooter()
+            CartViewFooter(isCartViewPresented: $isCartViewPresented)
            
         }
         .padding(16)

@@ -8,23 +8,32 @@
 import Foundation
 
 /// 유저가 가지고 있는 아이템
-struct FQUserItem {
-    var itemId: String
-    var itemType: FQItemType
-    var purchasedAt: Date
+struct FQUserItem: Identifiable, FQItemProtocol {
+    let id: String
+    let type: FQItemType
+    let stockName: String
+    let purchasedAt: Date
+    let purchasedPrice: Int
+    
+    func storageImagePath(equipped: Bool) -> String {
+        "\(StoragePath.items)/\(type.rawValue)/\(stockName)/\(equipped ? "item_equipped" : "item").png"
+    }
 }
 
-extension FQUserItem: Identifiable {
-    var id: String { itemId }
+extension FQUserItem: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 extension FQUserItem {
     func toObject() -> FQUserItemObject {
         .init(
-            itemId: itemId,
-            itemTypeName: itemType.rawValue,
+            itemId: id,
+            itemTypeName: type.rawValue,
+            stockName: stockName,
             purchasedAt: .init(date: purchasedAt),
-            itemReference: FQUserItemObject.makeDocumentReference(with: itemId)
+            purchasedPrice: purchasedPrice
         )
     }
 }

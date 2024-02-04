@@ -15,6 +15,7 @@ protocol ServiceType {
     var countryService: CountryServiceType { get set }
     var countryQuizStatService: CountryQuizStatServiceType { get set }
     var imageCacheService: ImageCacheServiceType { get set }
+    var storageImageCacheService: ImageCacheServiceType { get set }
     var frogService: FrogServiceType { get set }
     var earthCandyService: EarthCandyServiceType { get set }
     var storeItemService: StoreItemServiceType { get set }
@@ -30,6 +31,7 @@ class Services: ServiceType {
     var countryService: CountryServiceType
     var countryQuizStatService: CountryQuizStatServiceType
     var imageCacheService: ImageCacheServiceType
+    var storageImageCacheService: ImageCacheServiceType
     var frogService: FrogServiceType
     var earthCandyService: EarthCandyServiceType
     var storeItemService: StoreItemServiceType
@@ -58,9 +60,17 @@ class Services: ServiceType {
         
         self.countryQuizStatService = CountryQuizStatService(repository: FQCountryQuizStatRepository())
         
+        let imageMemoryStorage = ImageMemoryStorage()
+        let imageDiskStorage = ImageDiskStorage()
+        
         self.imageCacheService = ImageCacheService(
-            imageMemoryStorage: ImageMemoryStorage(),
-            imageDiskStorage: ImageDiskStorage()
+            imageMemoryStorage: imageMemoryStorage,
+            imageDiskStorage: imageDiskStorage
+        )
+        
+        self.storageImageCacheService = StorageImageCacheService(
+            imageMemoryStorage: imageMemoryStorage,
+            imageDiskStorage: imageDiskStorage
         )
         
         self.frogService = FrogService(repository: FrogDBRepository())
@@ -81,6 +91,7 @@ class StubService: ServiceType {
     var countryService: CountryServiceType
     var countryQuizStatService: CountryQuizStatServiceType
     var imageCacheService: ImageCacheServiceType
+    var storageImageCacheService: ImageCacheServiceType
     var frogService: FrogServiceType
     var earthCandyService: EarthCandyServiceType
     var storeItemService: StoreItemServiceType
@@ -96,6 +107,7 @@ class StubService: ServiceType {
         self.countryService = StubCountryService()
         self.countryQuizStatService = StubCountryQuizStatService()
         self.imageCacheService = StubImageCacheService()
+        self.storageImageCacheService = StubImageCacheService()
         self.frogService = StubFrogService()
         self.earthCandyService = StubEarthCandyService()
         self.storeItemService = StubStoreItemService()

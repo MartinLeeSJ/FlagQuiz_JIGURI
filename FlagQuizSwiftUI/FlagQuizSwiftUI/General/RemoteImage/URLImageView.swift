@@ -32,9 +32,9 @@ struct URLImageView<Placeholder>: View where Placeholder: View {
             placeholder()
         }
     }
-    
-    
 }
+
+
 
 fileprivate struct URLImageInnerView<Placeholder>: View where Placeholder: View{
     @StateObject private var viewModel: URLImageViewModel
