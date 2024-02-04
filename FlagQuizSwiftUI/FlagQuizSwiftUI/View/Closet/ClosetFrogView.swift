@@ -15,7 +15,7 @@ struct ClosetFrogView: View {
     var body: some View {
         FrogImageView(
             frog: frogModel.frog,
-            items: $closetViewModel.currentEquippedItems,
+            items: closetViewModel.currentEquippedItems,
             size: 200
         )
         .padding(25)

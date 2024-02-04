@@ -26,8 +26,7 @@ struct ItemTypeButtons: View {
                     .padding(.bottom, 8)
                     .padding(.horizontal, 14)
                     .overlay {
-                        if let selectedType = itemStoreViewModel.selectedType,
-                           selectedType == type {
+                        if itemStoreViewModel.selectedType == type {
                             Line(.bottom)
                                 .stroke(.fqAccent, lineWidth: 2)
                                 .matchedGeometryEffect(id: "highlight", in: selectedButton)

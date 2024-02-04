@@ -9,7 +9,7 @@ import UIKit
 
 protocol ImageDiskStorageType {
     func image(for key: String) throws -> UIImage?
-    func store(for key: String, image: UIImage) throws
+    func store(for key: String, image: UIImage, convertToJpeg: Bool) throws
 }
 
 final class ImageDiskStorage: ImageDiskStorageType {
@@ -55,9 +55,10 @@ final class ImageDiskStorage: ImageDiskStorageType {
         return UIImage(data: data)
     }
     
-    func store(for key: String, image: UIImage) throws {
+    func store(for key: String, image: UIImage, convertToJpeg: Bool = true) throws {
         let fileURL: URL = cacheFileURL(for: key)
-        let data: Data? = image.jpegData(compressionQuality: 0.8)
+        
+        let data: Data? = convertToJpeg ? image.jpegData(compressionQuality: 0.8) : image.pngData()
         try data?.write(to: fileURL)
     }
 }

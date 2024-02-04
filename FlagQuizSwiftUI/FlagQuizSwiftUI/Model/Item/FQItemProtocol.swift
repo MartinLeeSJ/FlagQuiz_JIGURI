@@ -11,5 +11,5 @@ protocol FQItemProtocol {
     var id: String { get }
     var type: FQItemType { get }
     var stockName: String { get }
-    func storageImagePath(_ equipped: Bool) -> String
+    func storageImagePath(equipped: Bool) -> String
 }

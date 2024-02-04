@@ -12,6 +12,7 @@ enum FrogError: Error {
     case failedToObserve
     case failedToFeed
     case failedToCancelFeedFrog
+    case failedToGetItems
     case notEnoughCandy
     case invalidSelf
     case custom(Error)
@@ -36,35 +37,37 @@ final class FrogModel: ObservableObject {
     }
     
     public func observe() {
-        typealias Output = (FQFrog?, [FQUserItem])
-        
         guard let userId = container.services.authService.checkAuthenticationState() else {
             return
         }
         
         container.services.frogService.observeFrogWhileCheckingStatus(ofUser: userId)
-            .flatMap { [weak self] frog in
-                guard let self else {
-                    return Fail<Output, ServiceError>(error: ServiceError.nilSelf).eraseToAnyPublisher()
-                }
-                
-                guard let frog else {
-                    return Just<Output>((nil, self.items)).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
-                }
-                
-                return self.container.services.userItemService.getUserItems(ofUser: userId, itemIds: frog.items)
-                    .map { (frog, $0) }
-                    .eraseToAnyPublisher()
-            }
+            .handleEvents(receiveOutput: { [weak self] frog in
+                guard let strongSelf = self else { return }
+                guard let frog else { return }
+                Just(frog)
+                    .last()
+                    .flatMap { frog in
+                        strongSelf.container.services.userItemService.getUserItems(ofUser: userId, itemIds: frog.items)
+                            .eraseToAnyPublisher()
+                    }
+                    .sink { [weak self] completion in
+                        if case .failure = completion {
+                            self?.error = FrogError.failedToGetItems
+                        }
+                    } receiveValue: { [weak self] items in
+                        self?.items = items
+                    }
+                    .store(in: &strongSelf.cancellables)
+            })
             .sink { [weak self] completion in
                 if case .failure = completion {
                     self?.error = FrogError.failedToObserve
                 }
-            } receiveValue: { [weak self] output in
-                self?.frog = output.0
-                self?.items = output.1
+            } receiveValue: { [weak self] frog in
+                self?.frog = frog
             }
-            .store(in: &cancellables)
+            .store(in: &cancellables) 
     }
     
     

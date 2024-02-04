@@ -39,8 +39,7 @@ struct FrogView: View {
                 case .closet:
                     ClosetView(
                         closetViewModel: .init(
-                            container: container,
-                            initialItems: frogModel.items
+                            container: container
                         )
                     )
                 }
@@ -76,7 +75,7 @@ struct FrogView: View {
             
             FrogImageView(
                 frog: nil,
-                items: $frogModel.items,
+                items: frogModel.items,
                 size: 200
             )
             
@@ -102,7 +101,7 @@ struct FrogView: View {
                 }
             }
             
-            FrogImageView(frog: frog, items: $frogModel.items, size: 200)
+            FrogImageView(frog: frog, items: frogModel.items, size: 200)
             
             frogStateButton(frog)
         }

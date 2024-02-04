@@ -63,6 +63,12 @@ fileprivate struct CartItemListCell: View {
         Rectangle()
             .foregroundStyle(.thinMaterial)
             .frame(width: 60, height: 60)
+            .overlay {
+                StorageImageView(item.storageImagePath(equipped: false)) {
+                    ProgressView()
+                }
+                .scaledToFit()
+            }
     }
     
     private func itemTypeAndName(_ geo: GeometryProxy) -> some View {

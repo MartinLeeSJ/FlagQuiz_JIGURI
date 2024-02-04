@@ -15,6 +15,9 @@ final class ItemStoreToast: ObservableObject {
         case addedToCart
         case addedTheTriedOnItems
         case tryOnTheItem(hasDuplication: Bool)
+        case checkedOutSuccessfully(itemCount: Int)
+        case failedToCheckingOut
+        case canNotAffordToBuy
     }
     
     public func send(_ toastAction: ToastAction) {
@@ -58,6 +61,30 @@ final class ItemStoreToast: ObservableObject {
                     )
                 )
             }
+            
+        case .checkedOutSuccessfully(let itemCounts):
+                .init(
+                    message: String(
+                        localized:"itemStoreView.toastAlert.checkedOutSuccessfully.\(itemCounts)"
+                    )
+                )
+            
+        case .failedToCheckingOut:
+                .init(
+                    style: .failed,
+                    message: String(
+                        localized:"itemStoreView.toastAlert.failedToCheckingOut",
+                        defaultValue: "The payment for the item failed."
+                    )
+                )
+        case .canNotAffordToBuy:
+                .init(
+                    style: .failed,
+                    message: String(
+                        localized:"itemStoreView.toastAlert.canNotAffordToBuy",
+                        defaultValue: "You don't have enough points to buy."
+                    )
+                )
                
         }
     }

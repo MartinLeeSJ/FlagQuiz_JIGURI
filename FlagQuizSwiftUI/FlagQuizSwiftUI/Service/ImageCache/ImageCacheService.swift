@@ -93,7 +93,7 @@ final class ImageCacheService: ImageCacheServiceType {
         imageMemoryStorage.store(for: key, image: image)
         
         if shouldStoreInDisk {
-            try? imageDiskStorage.store(for: key, image: image)
+            try? imageDiskStorage.store(for: key, image: image, convertToJpeg: true)
         }
     }
 }

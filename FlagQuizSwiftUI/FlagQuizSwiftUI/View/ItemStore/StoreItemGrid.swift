@@ -12,10 +12,7 @@ struct StoreItemGrid: View {
     @State private var selectedItem: FQItem? = nil
 
     private var currentTypeItems: [FQItem] {
-        guard let selectedType = itemStoreViewModel.selectedType else { return [] }
-        
-        return itemStoreViewModel.storeItems.filter { $0.type == selectedType }
-                
+        return itemStoreViewModel.storeItems.filter { $0.type == itemStoreViewModel.selectedType }
     }
     
     private var colums: [GridItem] {
@@ -24,21 +21,65 @@ struct StoreItemGrid: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: colums, alignment: .center) {
-                ForEach(currentTypeItems, id: \.self) { item in
-                    StoreItemCell(item: item)
-                    .onTapGesture {
-                        selectedItem = item
-                    }
+            if currentTypeItems.isEmpty {
+                VStack {
+                    Spacer()
+                        .frame(height: 64)
+                    Text(
+                        String(
+                            localized: "itemStoreView.there.are.no.items",
+                            defaultValue: "There are currently no items listed."
+                        )
+                    )
+                        .font(.caption)
                 }
+                .frame(maxWidth: .infinity)
+            } else {
+                grid
             }
-            .padding(.horizontal)
-            .padding(.bottom, 120)
         }
         .sheet(item: $selectedItem) { item in
             ItemStoreSelectedItemView(item: item)
         }
     }
     
+    private var grid: some View {
+        LazyVGrid(columns: colums, alignment: .center) {
+            ForEach(currentTypeItems, id: \.self) { item in
+                let isOwnedItem: Bool = itemStoreViewModel.userItemsOfType[item.type]?.contains(where: { $0.id == item.id }) ?? false
+                
+                StoreItemCell(item: item)
+                    .overlay(alignment: .topLeading) {
+                        if isOwnedItem {
+                            ownedBadge
+                        }
+                    }
+                    .onTapGesture {
+                        if !isOwnedItem {
+                            selectedItem = item
+                        }
+                    }
+            }
+        }
+        .padding(.horizontal)
+        .padding(.bottom, 120)
+    }
+    
+    private var ownedBadge: some View {
+        Text(
+            String(
+                localized: "storeItemCell.owned.item.description",
+                defaultValue: "Owned"
+            )
+        )
+        .font(.caption2)
+        .fontWeight(.medium)
+        .foregroundStyle(.white)
+        .padding(.horizontal, 4)
+        .padding(.vertical, 2)
+        .background(in: .capsule)
+        .backgroundStyle(.red)
+        .padding(4)
+    }
  
 }

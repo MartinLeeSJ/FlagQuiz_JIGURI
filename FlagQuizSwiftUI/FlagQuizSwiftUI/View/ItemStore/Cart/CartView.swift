@@ -26,7 +26,7 @@ struct CartView: View {
                 
             Divider()
             
-            CartViewFooter()
+            CartViewFooter(isCartViewPresented: $isCartViewPresented)
            
         }
         .padding(16)

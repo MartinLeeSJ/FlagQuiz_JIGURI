@@ -53,17 +53,6 @@
         }
       }
     },
-    "120" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "120"
-          }
-        }
-      }
-    },
     "Accuracy" : {
       "localizations" : {
         "ko" : {
@@ -284,13 +273,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Discounted %lld% thanks to FlagFrog's great mood"
+            "value" : "Discounted %lldpercent\nthanks to FlagFrog's great mood"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "지구리가 기분이 좋아서 %lld% 할인 적용!"
+            "value" : "지구리가 기분이 좋아서\n%lld퍼센트 할인 적용!"
           }
         }
       }
@@ -363,6 +352,40 @@
         }
       }
     },
+    "cartViewFooter.cart.is.empty" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cart is empty"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카트가 비어있습니다."
+          }
+        }
+      }
+    },
+    "closetView.save.button.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Save current look"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지금 모습 저장하기"
+          }
+        }
+      }
+    },
     "closetView.title" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -370,6 +393,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Closet"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "옷 갈아입기"
           }
         }
       }
@@ -1746,6 +1775,23 @@
         }
       }
     },
+    "itemStoreView.there.are.no.items" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "There are currently no items listed."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아직 팔고 있는 상품이 없습니다."
+          }
+        }
+      }
+    },
     "itemStoreView.title" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1753,6 +1799,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Store"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상점"
           }
         }
       }
@@ -1791,6 +1843,23 @@
         }
       }
     },
+    "itemStoreView.toastAlert.canNotAffordToBuy" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You don't have enough points to buy."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아이템을 구입할 지구알사탕이 부족합니다."
+          }
+        }
+      }
+    },
     "itemStoreView.toastAlert.cannotGetStoreItems" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1804,6 +1873,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "상점의 아이템을 가져올 수 없습니다."
+          }
+        }
+      }
+    },
+    "itemStoreView.toastAlert.checkedOutSuccessfully.%lld" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "You bought %lld item"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "You bought %lld items"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld개의 아이템을 구입했습니다."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "itemStoreView.toastAlert.failedToCheckingOut" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The payment for the item failed."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아이템 결제에 실패했습니다."
           }
         }
       }
@@ -2458,9 +2578,6 @@
           }
         }
       }
-    },
-    "need" : {
-
     },
     "news.country.quiz.stats.title" : {
       "localizations" : {
@@ -3606,9 +3723,6 @@
         }
       }
     },
-    "save and quit" : {
-
-    },
     "save.and.quit" : {
       "localizations" : {
         "en" : {
@@ -3663,6 +3777,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "퀴즈 시작하기"
+          }
+        }
+      }
+    },
+    "storeItemCell.owned.item.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Owned"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "소유 중"
           }
         }
       }

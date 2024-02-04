@@ -18,25 +18,22 @@ final class ClosetViewModel: ObservableObject {
     }
     @Published var currentEquippedItems: [FQUserItem] = []
     
-    private let initialEquippedItems: [FQUserItem]
+    
     private let container: DIContainer
     private var cancellables = Set<AnyCancellable>()
     
     enum Action {
         case selectType(FQItemType)
         case equipItem(FQUserItem)
+        case equipItems([FQUserItem])
         case takeOffItem(FQItemType)
-        case reset
         case save
     }
     
     init(
-        container: DIContainer,
-        initialItems: [FQUserItem]
+        container: DIContainer
     ) {
         self.container = container
-        self.initialEquippedItems = initialItems
-        initialItems.forEach { equippedItem[$0.type] = $0 }
         load()
     }
     
@@ -46,10 +43,10 @@ final class ClosetViewModel: ObservableObject {
             selectedType = type
         case .equipItem(let item) :
             equipItem(item)
+        case .equipItems(let items):
+            items.forEach { equippedItem[$0.type] = $0 }
         case .takeOffItem(let type):
             equippedItem[type] = nil
-        case .reset:
-            initialEquippedItems.forEach { equippedItem[$0.type] = $0 }
         case .save:
             save()
         }
@@ -106,7 +103,6 @@ final class ClosetViewModel: ObservableObject {
     
     private func save() {
         let items: [FQUserItem] = equippedItem.values.compactMap { $0 }
-        guard items != initialEquippedItems else { return }
         guard let userId = container.services.authService.checkAuthenticationState() else { return }
         
         container.services.frogService.updateFrogItems(ofUser: userId, itemIds: items.map { $0.id } )

@@ -14,7 +14,7 @@ struct ItemStoreFrogView: View {
     var body: some View {
         FrogImageView(
             frog: frogModel.frog,
-            items: $itemStoreViewModel.triedOnItems,
+            items: itemStoreViewModel.triedOnItems,
             size: 175
         )
         .aspectRatio(1, contentMode: .fit)

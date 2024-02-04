@@ -10,7 +10,6 @@ import FirebaseStorage
 
 struct StorageImageView<Placeholder>: View where Placeholder: View {
     @EnvironmentObject private var container: DIContainer
-    @State private var urlString: String?
     
     private let storageReferencePath: String?
     private let placeholder: () -> Placeholder
@@ -33,6 +32,7 @@ struct StorageImageView<Placeholder>: View where Placeholder: View {
                 ),
                 placeholder: placeholder
             )
+            .id(storageReferencePath)
         } else {
             placeholder()
         }

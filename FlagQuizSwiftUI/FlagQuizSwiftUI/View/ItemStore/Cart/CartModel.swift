@@ -13,6 +13,7 @@ enum ItemStorePayingingState {
     case paying
     case success
     case failed
+    case canNotAfford
 }
 
 final class CartModel: ObservableObject {
@@ -24,6 +25,7 @@ final class CartModel: ObservableObject {
         case addItemToTheCart(item: FQItem)
         case addTheTriedOnItemsToCart(items: [FQItem])
         case removeItem(FQItem)
+        case reset
     }
     
     var totalPrice: Int {
@@ -57,6 +59,9 @@ final class CartModel: ObservableObject {
             addTheTriedOnItemsToCart(items)
         case .removeItem(let item):
             removeItem(item)
+        case .reset:
+            items = []
+            payingState = .none
         }
     }
     
@@ -81,10 +86,6 @@ final class CartModel: ObservableObject {
         guard !wearingItems.isEmpty else { return }
         
         let cartSet = Set<FQItem>(items)
-        
-        /// 이미 장바구니에 있는 착용하고 잇는 옷 개수
-        let alreadyInCartItemCount: Int = Set(wearingItems).intersection(cartSet).count
-        
         
         /// 장바구니에 추가하기
         items = Array(cartSet.union(wearingItems))
@@ -119,8 +120,8 @@ final class CartModel: ObservableObject {
             if case .failure = completion {
                 self?.payingState = .failed
             }
-        } receiveValue: { [weak self] checkedOut in
-            self?.payingState = checkedOut ? .success : .failed
+        } receiveValue: { [weak self] checkedOutWithEnoughEarthCandy in
+            self?.payingState = checkedOutWithEnoughEarthCandy ? .success : .canNotAfford
         }
         .store(in: &cancellables)
     }

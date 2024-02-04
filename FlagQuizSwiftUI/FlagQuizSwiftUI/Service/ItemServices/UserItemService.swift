@@ -75,7 +75,9 @@ final class UserItemService: UserItemServiceType {
         of userId: String,
         items: [FQUserItem]
     ) -> AnyPublisher<Void, ServiceError> {
-        Empty().eraseToAnyPublisher()
+        repository.addUserItems(of: userId, items: items.map { $0.toObject() } )
+            .mapError { ServiceError.custom($0) }
+            .eraseToAnyPublisher()
     }
     
     func deleteUserItem(of userId: String, deleting: FQUserItem) async throws {

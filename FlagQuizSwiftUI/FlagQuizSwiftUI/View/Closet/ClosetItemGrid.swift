@@ -46,6 +46,12 @@ struct ClosetItemGrid: View {
                                 .foregroundStyle(.thinMaterial)
                                 .aspectRatio(1, contentMode: .fit)
                                 .overlay {
+                                    StorageImageView(item.storageImagePath(equipped: false)) {
+                                        ProgressView()
+                                    }
+                                    .scaledToFit()
+                                }
+                                .overlay {
                                     if let equipped = closetViewModel.equippedItem[item.type],
                                        equipped == item {
                                         RoundedRectangle(cornerRadius: 10, style: .continuous)

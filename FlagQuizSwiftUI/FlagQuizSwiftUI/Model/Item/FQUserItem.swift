@@ -15,7 +15,7 @@ struct FQUserItem: Identifiable, FQItemProtocol {
     let purchasedAt: Date
     let purchasedPrice: Int
     
-    func storageImagePath(_ equipped: Bool) -> String {
+    func storageImagePath(equipped: Bool) -> String {
         "\(StoragePath.items)/\(type.rawValue)/\(stockName)/\(equipped ? "item_equipped" : "item").png"
     }
 }

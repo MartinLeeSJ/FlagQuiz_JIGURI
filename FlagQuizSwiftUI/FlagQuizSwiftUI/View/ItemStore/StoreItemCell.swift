@@ -30,7 +30,7 @@ struct StoreItemCell: View {
                 .foregroundStyle(.thinMaterial)
                 .aspectRatio(1, contentMode: .fit)
                 .overlay {
-                    StorageImageView(item.storageImagePath(false)) {
+                    StorageImageView(item.storageImagePath(equipped: false)) {
                         ProgressView()
                     }
                     .scaledToFit()

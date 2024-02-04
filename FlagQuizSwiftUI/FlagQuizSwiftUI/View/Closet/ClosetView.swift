@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ClosetView: View {
+    @EnvironmentObject private var frogModel: FrogModel
     @StateObject private var closetViewModel: ClosetViewModel
     
     init(closetViewModel: ClosetViewModel) {
@@ -29,16 +30,12 @@ struct ClosetView: View {
             )
         )
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden()
         .environmentObject(closetViewModel)
-        .toolbar {
-            ToolbarItem {
-                Button {
-                    
-                } label: {
-                    Text("save and quit")
-                }
-            }
+        .onAppear {
+            closetViewModel.send(.equipItems(frogModel.items))
+        }
+        .onChange(of: frogModel.items) { newItems in
+            closetViewModel.send(.equipItems(newItems))
         }
     }
     
@@ -52,27 +49,61 @@ struct ClosetView: View {
             Divider()
             
             ClosetItemGrid()
+                .overlay(alignment: .bottom) {
+                    
+                    Button {
+                        closetViewModel.send(.save)
+                    } label: {
+                        Text(
+                            String(
+                                localized: "closetView.save.button.title",
+                                defaultValue: "Save current look"
+                            )
+                        )
+                    }
+                    .buttonStyle(
+                        FQFilledButtonStyle(
+                            disabled: frogModel.items == closetViewModel.currentEquippedItems
+                        )
+                    )
+                }
             
         }
         .padding(.horizontal, 16)
-        .overlay {
-            
-        }
+      
     }
     
     func horizontalContent(geo: GeometryProxy) -> some View {
-        Text("need")
-    }
-}
-
-#Preview {
-    NavigationStack {
-        ClosetView(
-            closetViewModel: .init(
-                container: .init(
-                    services: StubService()
-                ), initialItems: []
-            )
-        )
+        HStack(spacing: 12) {
+            ClosetFrogView()
+            VStack(spacing: 12) {
+                ClosetItemTypeButtons()
+                    .padding(.horizontal, -16)
+                
+                Divider()
+                
+                ClosetItemGrid()
+                    .overlay(alignment: .bottom) {
+                        
+                        Button {
+                            closetViewModel.send(.save)
+                        } label: {
+                            Text(
+                                String(
+                                    localized: "closetView.save.button.title",
+                                    defaultValue: "Save current look"
+                                )
+                            )
+                        }
+                        .buttonStyle(
+                            FQFilledButtonStyle(
+                                disabled: frogModel.items == closetViewModel.currentEquippedItems
+                            )
+                        )
+                    }
+            }
+            
+        }
+        .padding(.horizontal, 16)
     }
 }

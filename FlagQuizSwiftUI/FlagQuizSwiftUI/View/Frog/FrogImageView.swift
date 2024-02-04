@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct FrogImageView<Item>: View where Item: FQItemProtocol {
-    @Binding private var items: [Item]
+    private var items: [Item]
     
     private let frog: FQFrog?
     private let size: CGFloat
     
     init(
         frog: FQFrog?,
-        items: Binding<[Item]>,
+        items: [Item],
         size: CGFloat
     ) {
         self.frog = frog
-        self._items = items
+        self.items = items
         self.size = size
     }
     
@@ -51,14 +51,15 @@ struct FrogImageView<Item>: View where Item: FQItemProtocol {
             itemImage(ofType: .hat)
             
             itemImage(ofType: .set)
+           
         }
     }
     
     @ViewBuilder
     func itemImage(ofType type: FQItemType) -> some View {
         if let item = items.first(where: { $0.type == type }) {
-            StorageImageView(item.storageImagePath(true)) {
-                
+            StorageImageView(item.storageImagePath(equipped: true)) {
+                ProgressView()
             }
             .scaledToFit()
             .frame(maxWidth: size)

@@ -78,7 +78,7 @@ final class UserItemDBRepository: UserItemDBRepositoryType {
             }
             
             self.collectionRef(ofUser: userId)
-                .whereField("itemId", in: itemIds)
+                .whereField(FieldPath.documentID(), in: itemIds)
                 .getDocuments { snapshot, error in
                     guard error == nil else {
                         promise(.failure(DBError.custom(error!)))
@@ -141,7 +141,7 @@ final class UserItemDBRepository: UserItemDBRepositoryType {
             
             batch.commit { error in
                 if let error {
-                    promise(.failure(DBError.batchError))
+                    promise(.failure(DBError.custom(error)))
                     return
                 }
                 promise(.success(()))
