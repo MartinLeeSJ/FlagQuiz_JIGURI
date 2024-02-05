@@ -2643,6 +2643,23 @@
         }
       }
     },
+    "newsViewEarthCandyView.balloon.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Claim your daily rewards"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "일일 보상을 받아가세요"
+          }
+        }
+      }
+    },
     "next.quiz" : {
       "localizations" : {
         "en" : {

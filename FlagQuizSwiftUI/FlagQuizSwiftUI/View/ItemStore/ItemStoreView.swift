@@ -69,7 +69,7 @@ struct ItemStoreView: View {
         .toastAlert($toastModel.toast)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                EarthCandyView(isShowingInStoreView: true)
+                ItemStoreEarthCandyView()
             }
             
             

@@ -15,6 +15,7 @@ struct NewsView: View {
     @StateObject private var viewModel: NewsViewModel
     
     
+    
     init(
         viewModel: NewsViewModel
     ) {
@@ -46,7 +47,7 @@ struct NewsView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    EarthCandyView()
+                    NewsViewEarthCandyView()
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
@@ -100,23 +101,22 @@ struct NewsView: View {
 }
 
 
-//
-//#Preview {
-//    
-//    NavigationStack {
-//        
-//        NewsView(
-//            viewModel: NewsViewModel(container: DIContainer(services: StubService()))
-//        )
-//            .environmentObject(DIContainer(services: StubService()))
-//            .environmentObject(NavigationModel())
-//            .environmentObject(NotificationManager())
-//            .environmentObject(
-//                AuthenticationViewModel(
-//                    container: DIContainer(
-//                        services: StubService()
-//                    )
-//                )
-//            )
-//    }
-//}
+
+#Preview {
+    
+    NavigationStack {
+        NewsView(
+            viewModel: NewsViewModel(container: DIContainer(services: StubService()))
+        )
+        .environmentObject(DIContainer(services: StubService()))
+        .environmentObject(NavigationModel())
+        .environmentObject(NotificationManager())
+        .environmentObject(
+            AuthenticationViewModel(
+                container: DIContainer(
+                    services: StubService()
+                )
+            )
+        )
+    }
+}
