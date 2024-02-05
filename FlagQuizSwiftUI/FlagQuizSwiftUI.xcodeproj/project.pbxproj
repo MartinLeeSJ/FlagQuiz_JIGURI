@@ -67,6 +67,7 @@
 		5B39012A2B5F9696009BB9C6 /* LinkingLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3901292B5F9696009BB9C6 /* LinkingLoginView.swift */; };
 		5B39012C2B5F96D9009BB9C6 /* LinkingLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39012B2B5F96D9009BB9C6 /* LinkingLoginViewModel.swift */; };
 		5B39012E2B5FAEDF009BB9C6 /* UserNameSettingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39012D2B5FAEDF009BB9C6 /* UserNameSettingSection.swift */; };
+		5B4DF92F2B6FA109005AA2DB /* InformationBalloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF92E2B6FA109005AA2DB /* InformationBalloon.swift */; };
 		5B50562F2B4BBEDF00FCA5A7 /* FrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */; };
 		5B5056312B4BC3C900FCA5A7 /* FrogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5056302B4BC3C900FCA5A7 /* FrogModel.swift */; };
 		5B559F062B28B84A00B131BE /* QuizSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B559F052B28B84A00B131BE /* QuizSettingView.swift */; };
@@ -160,7 +161,6 @@
 		5BB8FE242B6B83EA008ADA3C /* ClosetFrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8FE232B6B83EA008ADA3C /* ClosetFrogView.swift */; };
 		5BB8FE262B6B8410008ADA3C /* ClosetItemTypeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8FE252B6B8410008ADA3C /* ClosetItemTypeButtons.swift */; };
 		5BB8FE292B6B846E008ADA3C /* ClosetItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8FE282B6B846E008ADA3C /* ClosetItemGrid.swift */; };
-		5BB8FE2B2B6B84AF008ADA3C /* ClosetFooterButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8FE2A2B6B84AF008ADA3C /* ClosetFooterButtons.swift */; };
 		5BB8FE2D2B6B84BE008ADA3C /* ClosetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8FE2C2B6B84BE008ADA3C /* ClosetViewModel.swift */; };
 		5BC016302B510E2D00A79C45 /* UserNameUpdateRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0162F2B510E2D00A79C45 /* UserNameUpdateRecord.swift */; };
 		5BC016322B51105B00A79C45 /* EditUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC016312B51105B00A79C45 /* EditUserNameViewModel.swift */; };
@@ -310,6 +310,7 @@
 		5B3901292B5F9696009BB9C6 /* LinkingLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingLoginView.swift; sourceTree = "<group>"; };
 		5B39012B2B5F96D9009BB9C6 /* LinkingLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingLoginViewModel.swift; sourceTree = "<group>"; };
 		5B39012D2B5FAEDF009BB9C6 /* UserNameSettingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameSettingSection.swift; sourceTree = "<group>"; };
+		5B4DF92E2B6FA109005AA2DB /* InformationBalloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationBalloon.swift; sourceTree = "<group>"; };
 		5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogView.swift; sourceTree = "<group>"; };
 		5B5056302B4BC3C900FCA5A7 /* FrogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogModel.swift; sourceTree = "<group>"; };
 		5B559F052B28B84A00B131BE /* QuizSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingView.swift; sourceTree = "<group>"; };
@@ -406,7 +407,6 @@
 		5BB8FE232B6B83EA008ADA3C /* ClosetFrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetFrogView.swift; sourceTree = "<group>"; };
 		5BB8FE252B6B8410008ADA3C /* ClosetItemTypeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetItemTypeButtons.swift; sourceTree = "<group>"; };
 		5BB8FE282B6B846E008ADA3C /* ClosetItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetItemGrid.swift; sourceTree = "<group>"; };
-		5BB8FE2A2B6B84AF008ADA3C /* ClosetFooterButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetFooterButtons.swift; sourceTree = "<group>"; };
 		5BB8FE2C2B6B84BE008ADA3C /* ClosetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewModel.swift; sourceTree = "<group>"; };
 		5BC0162F2B510E2D00A79C45 /* UserNameUpdateRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameUpdateRecord.swift; sourceTree = "<group>"; };
 		5BC016312B51105B00A79C45 /* EditUserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameViewModel.swift; sourceTree = "<group>"; };
@@ -692,6 +692,7 @@
 				5B67423B2B370F28007335A6 /* FlowingText.swift */,
 				5B6171752B55350B005987A5 /* UserNameInputView.swift */,
 				5B757DDB2B5CB3EF000E611E /* ToastAlert.swift */,
+				5B4DF92E2B6FA109005AA2DB /* InformationBalloon.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1054,7 +1055,6 @@
 				5BB8FE232B6B83EA008ADA3C /* ClosetFrogView.swift */,
 				5BB8FE282B6B846E008ADA3C /* ClosetItemGrid.swift */,
 				5BB8FE252B6B8410008ADA3C /* ClosetItemTypeButtons.swift */,
-				5BB8FE2A2B6B84AF008ADA3C /* ClosetFooterButtons.swift */,
 			);
 			path = Closet;
 			sourceTree = "<group>";
@@ -1521,6 +1521,7 @@
 				5BFF438A2B469DD000C3DBCB /* FQItemType.swift in Sources */,
 				5BFF43792B466D9900C3DBCB /* FQFrog.swift in Sources */,
 				5B9A81B92B3AE3FE0087142A /* FQCountryQuizStatObject.swift in Sources */,
+				5B4DF92F2B6FA109005AA2DB /* InformationBalloon.swift in Sources */,
 				5B19C1732B3C2DD8001A74CE /* QuizStatCell.swift in Sources */,
 				5B0F29282B52543300788FE7 /* InformationView.swift in Sources */,
 				5B697EAF2B386D39003089F8 /* ImageCacheService.swift in Sources */,
@@ -1603,7 +1604,6 @@
 				5B6EAAD22B453BA7006DA3BE /* UserRankAccuracyGauge.swift in Sources */,
 				5BDD3C2D2B6642700088D3A3 /* StoreItemDBRepository.swift in Sources */,
 				5BCFAC822B42E23600803C5C /* QuizRecordsSummary.swift in Sources */,
-				5BB8FE2B2B6B84AF008ADA3C /* ClosetFooterButtons.swift in Sources */,
 				5B9FC6082B48272D00B694C7 /* EarthCandyView.swift in Sources */,
 				5BC998372B43E16900A5EA12 /* UserRankViewModel.swift in Sources */,
 				5B9A81B32B3AC6AF0087142A /* FQCountryQuizStatRepository.swift in Sources */,

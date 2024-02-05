@@ -194,11 +194,9 @@ extension View {
 
 
 #Preview {
-    EarthCandyRewardView(
-        viewModel: .init(
-            container: DIContainer(
-                services: StubService()
-            )
+    EarthCandyRewardView(viewModel: EarthCandyRewardViewModel(
+        container: .init(
+            services: StubService()
         )
-    )
+    ))
 }
