@@ -161,7 +161,6 @@
 		5BB8FE242B6B83EA008ADA3C /* ClosetFrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8FE232B6B83EA008ADA3C /* ClosetFrogView.swift */; };
 		5BB8FE262B6B8410008ADA3C /* ClosetItemTypeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8FE252B6B8410008ADA3C /* ClosetItemTypeButtons.swift */; };
 		5BB8FE292B6B846E008ADA3C /* ClosetItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8FE282B6B846E008ADA3C /* ClosetItemGrid.swift */; };
-		5BB8FE2B2B6B84AF008ADA3C /* ClosetFooterButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8FE2A2B6B84AF008ADA3C /* ClosetFooterButtons.swift */; };
 		5BB8FE2D2B6B84BE008ADA3C /* ClosetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB8FE2C2B6B84BE008ADA3C /* ClosetViewModel.swift */; };
 		5BC016302B510E2D00A79C45 /* UserNameUpdateRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0162F2B510E2D00A79C45 /* UserNameUpdateRecord.swift */; };
 		5BC016322B51105B00A79C45 /* EditUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC016312B51105B00A79C45 /* EditUserNameViewModel.swift */; };
@@ -408,7 +407,6 @@
 		5BB8FE232B6B83EA008ADA3C /* ClosetFrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetFrogView.swift; sourceTree = "<group>"; };
 		5BB8FE252B6B8410008ADA3C /* ClosetItemTypeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetItemTypeButtons.swift; sourceTree = "<group>"; };
 		5BB8FE282B6B846E008ADA3C /* ClosetItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetItemGrid.swift; sourceTree = "<group>"; };
-		5BB8FE2A2B6B84AF008ADA3C /* ClosetFooterButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetFooterButtons.swift; sourceTree = "<group>"; };
 		5BB8FE2C2B6B84BE008ADA3C /* ClosetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewModel.swift; sourceTree = "<group>"; };
 		5BC0162F2B510E2D00A79C45 /* UserNameUpdateRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameUpdateRecord.swift; sourceTree = "<group>"; };
 		5BC016312B51105B00A79C45 /* EditUserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameViewModel.swift; sourceTree = "<group>"; };
@@ -1057,7 +1055,6 @@
 				5BB8FE232B6B83EA008ADA3C /* ClosetFrogView.swift */,
 				5BB8FE282B6B846E008ADA3C /* ClosetItemGrid.swift */,
 				5BB8FE252B6B8410008ADA3C /* ClosetItemTypeButtons.swift */,
-				5BB8FE2A2B6B84AF008ADA3C /* ClosetFooterButtons.swift */,
 			);
 			path = Closet;
 			sourceTree = "<group>";
@@ -1607,7 +1604,6 @@
 				5B6EAAD22B453BA7006DA3BE /* UserRankAccuracyGauge.swift in Sources */,
 				5BDD3C2D2B6642700088D3A3 /* StoreItemDBRepository.swift in Sources */,
 				5BCFAC822B42E23600803C5C /* QuizRecordsSummary.swift in Sources */,
-				5BB8FE2B2B6B84AF008ADA3C /* ClosetFooterButtons.swift in Sources */,
 				5B9FC6082B48272D00B694C7 /* EarthCandyView.swift in Sources */,
 				5BC998372B43E16900A5EA12 /* UserRankViewModel.swift in Sources */,
 				5B9A81B32B3AC6AF0087142A /* FQCountryQuizStatRepository.swift in Sources */,

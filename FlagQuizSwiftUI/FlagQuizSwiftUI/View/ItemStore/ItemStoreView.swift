@@ -72,7 +72,6 @@ struct ItemStoreView: View {
                 ItemStoreEarthCandyView()
             }
             
-            
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     dismiss()
