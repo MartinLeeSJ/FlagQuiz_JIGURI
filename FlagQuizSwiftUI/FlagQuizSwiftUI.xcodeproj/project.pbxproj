@@ -213,6 +213,8 @@
 		5BE7D2A22B29A7F20044C3D4 /* FQCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D2A12B29A7F20044C3D4 /* FQCountry.swift */; };
 		5BE7D2A62B29A97F0044C3D4 /* CountryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D2A52B29A97F0044C3D4 /* CountryObject.swift */; };
 		5BE7D2A82B29B2220044C3D4 /* CountryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7D2A72B29B2220044C3D4 /* CountryAPIClient.swift */; };
+		5BF173A62B70B16000E1CD5D /* FrogPhotoBoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF173A52B70B16000E1CD5D /* FrogPhotoBoothView.swift */; };
+		5BF173A82B70D98400E1CD5D /* FrogPhotoBoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF173A72B70D98400E1CD5D /* FrogPhotoBoothViewModel.swift */; };
 		5BF5EFD42B4F9536006D5B4B /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5EFD32B4F9536006D5B4B /* SafariWebView.swift */; };
 		5BF5EFD62B4FB67D006D5B4B /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5EFD52B4FB67D006D5B4B /* MyPageViewModel.swift */; };
 		5BF5EFD82B4FE402006D5B4B /* EditUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5EFD72B4FE402006D5B4B /* EditUserNameView.swift */; };
@@ -458,6 +460,8 @@
 		5BE7D2A12B29A7F20044C3D4 /* FQCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQCountry.swift; sourceTree = "<group>"; };
 		5BE7D2A52B29A97F0044C3D4 /* CountryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryObject.swift; sourceTree = "<group>"; };
 		5BE7D2A72B29B2220044C3D4 /* CountryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAPIClient.swift; sourceTree = "<group>"; };
+		5BF173A52B70B16000E1CD5D /* FrogPhotoBoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogPhotoBoothView.swift; sourceTree = "<group>"; };
+		5BF173A72B70D98400E1CD5D /* FrogPhotoBoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogPhotoBoothViewModel.swift; sourceTree = "<group>"; };
 		5BF5EFD32B4F9536006D5B4B /* SafariWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
 		5BF5EFD52B4FB67D006D5B4B /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		5BF5EFD72B4FE402006D5B4B /* EditUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameView.swift; sourceTree = "<group>"; };
@@ -747,6 +751,7 @@
 			children = (
 				5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */,
 				5B69C62B2B6E174000240D4C /* FrogImageView.swift */,
+				5BF173A92B70D98A00E1CD5D /* FrogPhotoBooth */,
 				5B757DD12B5C1145000E611E /* FrogMenuView.swift */,
 				5B757DD32B5C1238000E611E /* FrogSettlementIcon.swift */,
 				5BB40D3B2B4E6C8100E907F0 /* FrogViewButtonStyle.swift */,
@@ -1178,6 +1183,15 @@
 			path = CountryCache;
 			sourceTree = "<group>";
 		};
+		5BF173A92B70D98A00E1CD5D /* FrogPhotoBooth */ = {
+			isa = PBXGroup;
+			children = (
+				5BF173A52B70B16000E1CD5D /* FrogPhotoBoothView.swift */,
+				5BF173A72B70D98400E1CD5D /* FrogPhotoBoothViewModel.swift */,
+			);
+			path = FrogPhotoBooth;
+			sourceTree = "<group>";
+		};
 		5BFC5CAE2B679F2000DE0F49 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -1520,7 +1534,9 @@
 				5B16F9572B28470E0011ACF7 /* AuthenticationRouterView.swift in Sources */,
 				5BFF438A2B469DD000C3DBCB /* FQItemType.swift in Sources */,
 				5BFF43792B466D9900C3DBCB /* FQFrog.swift in Sources */,
+				5BF173A82B70D98400E1CD5D /* FrogPhotoBoothViewModel.swift in Sources */,
 				5B9A81B92B3AE3FE0087142A /* FQCountryQuizStatObject.swift in Sources */,
+				5BF173A62B70B16000E1CD5D /* FrogPhotoBoothView.swift in Sources */,
 				5B4DF92F2B6FA109005AA2DB /* InformationBalloon.swift in Sources */,
 				5B19C1732B3C2DD8001A74CE /* QuizStatCell.swift in Sources */,
 				5B0F29282B52543300788FE7 /* InformationView.swift in Sources */,

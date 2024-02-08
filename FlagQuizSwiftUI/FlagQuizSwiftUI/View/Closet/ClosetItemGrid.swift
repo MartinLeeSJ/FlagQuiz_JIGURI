@@ -12,9 +12,14 @@ struct ClosetItemGrid: View {
     @EnvironmentObject private var closetViewModel: ClosetViewModel
     @Namespace private var closetItemGrid
     
+    private let isLandscape: Bool
+    
+    init(isLandscape: Bool = false) {
+        self.isLandscape = isLandscape
+    }
     
     private var colums: [GridItem] {
-        Array<GridItem>(repeating: .init(.flexible(minimum: 64, maximum: 84)), count: 4)
+        Array<GridItem>(repeating: .init(.flexible(minimum: 64, maximum: 84)), count: isLandscape ? 3 : 4)
     }
     
     var body: some View {

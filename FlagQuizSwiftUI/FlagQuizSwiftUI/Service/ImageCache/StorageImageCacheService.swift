@@ -36,6 +36,27 @@ final class StorageImageCacheService: ImageCacheServiceType {
             .eraseToAnyPublisher()
     }
     
+    func image(for path: String) async throws -> UIImage? {
+        if let memoryCacheImage = imageMemoryStorage.image(for: path) {
+            return memoryCacheImage
+        }
+        
+        if let diskCacheImage = try imageDiskStorage.image(for: path) {
+            store(for: path, image: diskCacheImage, alsoInDisk: false)
+            return diskCacheImage
+        }
+        
+        let url = try await downloadUrl(for: path)
+        let response = try await URLSession.shared.data(from: url)
+        
+        if let remoteImage = UIImage(data: response.0) {
+            store(for: path, image: remoteImage, alsoInDisk: true)
+            return remoteImage
+        }
+        
+        return nil
+    }
+    
     private func imageWithMemoryCache(for path: String) -> AnyPublisher<UIImage?, ServiceError> {
         Future { [weak self] promise in
             let image: UIImage? = self?.imageMemoryStorage.image(for: path)
@@ -111,6 +132,12 @@ final class StorageImageCacheService: ImageCacheServiceType {
                 }
         }
         .eraseToAnyPublisher()
+    }
+    
+    
+    private func downloadUrl(for path: String) async throws -> URL {
+        try await storageRef.child(path)
+            .downloadURL()
     }
     
     private func store(for path: String, image: UIImage, alsoInDisk shouldStoreInDisk: Bool) {

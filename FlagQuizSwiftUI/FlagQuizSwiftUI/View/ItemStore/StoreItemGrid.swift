@@ -10,13 +10,19 @@ import SwiftUI
 struct StoreItemGrid: View {
     @EnvironmentObject private var itemStoreViewModel: ItemStoreViewModel
     @State private var selectedItem: FQItem? = nil
+    
+    private let isLandscape: Bool
+    
+    init(isLandscape: Bool = false) {
+        self.isLandscape = isLandscape
+    }
 
     private var currentTypeItems: [FQItem] {
         return itemStoreViewModel.storeItems.filter { $0.type == itemStoreViewModel.selectedType }
     }
     
     private var colums: [GridItem] {
-        Array<GridItem>(repeating: .init(.flexible(minimum: 64, maximum: 84)), count: 4)
+        Array<GridItem>(repeating: .init(.flexible(minimum: 64, maximum: 84)), count: isLandscape ? 3 : 4)
     }
     
     var body: some View {

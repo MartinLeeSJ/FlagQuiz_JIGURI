@@ -1560,6 +1560,74 @@
         }
       }
     },
+    "frogPhotoBoothView.preparing.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Wait a second..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잠시만 기다려 주세요..."
+          }
+        }
+      }
+    },
+    "frogPhotoBoothView.rederedView.app.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "FlagFrog"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리"
+          }
+        }
+      }
+    },
+    "frogPhotoBoothView.share.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Click here and share this photo"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "눌러서 찍은 사진 공유하기"
+          }
+        }
+      }
+    },
+    "frogPhotoBoothView.takeAPhotoButton.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Take a photo"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사진찍기"
+          }
+        }
+      }
+    },
     "frogSettlementIcon.title" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1594,23 +1662,6 @@
         }
       }
     },
-    "frogView.coming.soom" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Coming Soon"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Coming Soon"
-          }
-        }
-      }
-    },
     "frogView.notEnoughCandyButton.title" : {
       "localizations" : {
         "en" : {
@@ -1623,6 +1674,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "지구알사탕이 부족합니다."
+          }
+        }
+      }
+    },
+    "frogView.photoBooth.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "PhotoBooth"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "포토부스"
           }
         }
       }
@@ -1654,9 +1722,6 @@
         }
       }
     },
-    "Hello, World!" : {
-
-    },
     "How about showing a little more interest in Earth's neighbors?" : {
       "comment" : "Quiz result comment for middle, middle-low score",
       "localizations" : {
@@ -1670,6 +1735,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "지구의 이웃들에게 조금만 더 관심을 가져볼까요?"
+          }
+        }
+      }
+    },
+    "Image" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미지"
           }
         }
       }
