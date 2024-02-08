@@ -60,6 +60,7 @@ struct FrogImageView<Item>: View where Item: FQItemProtocol {
         if let item = items.first(where: { $0.type == type }) {
             StorageImageView(item.storageImagePath(equipped: true)) {
                 ProgressView()
+                    .frame(width: size, height: size)
             }
             .scaledToFit()
             .frame(maxWidth: size)

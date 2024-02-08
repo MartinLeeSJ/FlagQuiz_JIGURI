@@ -13,14 +13,17 @@ struct StorageImageView<Placeholder>: View where Placeholder: View {
     
     private let storageReferencePath: String?
     private let placeholder: () -> Placeholder
-    private let storageRef = Storage.storage().reference()
+    private let completion: () -> Void
+    
     
     init(
         _ storageReferencePath: String?,
-        @ViewBuilder placeholder: @escaping () -> Placeholder
+        @ViewBuilder placeholder: @escaping () -> Placeholder,
+        completion: @escaping () -> Void = {}
     ) {
         self.storageReferencePath = storageReferencePath
         self.placeholder = placeholder
+        self.completion = completion
     }
     
     var body: some View {
@@ -30,7 +33,8 @@ struct StorageImageView<Placeholder>: View where Placeholder: View {
                     container: container,
                     storagePath: storageReferencePath
                 ),
-                placeholder: placeholder
+                placeholder: placeholder,
+                completion: completion
             )
             .id(storageReferencePath)
         } else {
@@ -42,13 +46,16 @@ struct StorageImageView<Placeholder>: View where Placeholder: View {
 fileprivate struct StorageImageInnerView<Placeholder>: View where Placeholder: View {
     @StateObject private var viewModel: StorageImageViewModel
     private let placeholder: () -> Placeholder
+    private let completion: () -> Void
     
     init(
         viewModel: StorageImageViewModel,
-        @ViewBuilder placeholder: @escaping () -> Placeholder
+        @ViewBuilder placeholder: @escaping () -> Placeholder,
+        completion: @escaping () -> Void = {}
     ) {
         self._viewModel = StateObject(wrappedValue: viewModel)
         self.placeholder = placeholder
+        self.completion = completion
     }
     
     var body: some View {
@@ -65,6 +72,11 @@ fileprivate struct StorageImageInnerView<Placeholder>: View where Placeholder: V
         .onAppear {
             if viewModel.loadingState == .none {
                 viewModel.loadImage()
+            }
+        }
+        .onChange(of: viewModel.loadingState) { state in
+            if state == .loaded {
+                completion()
             }
         }
     }

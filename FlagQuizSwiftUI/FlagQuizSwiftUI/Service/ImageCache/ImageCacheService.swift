@@ -10,6 +10,7 @@ import Combine
 
 protocol ImageCacheServiceType {
     func image(for key: String) -> AnyPublisher<UIImage?, ServiceError>
+    func image(for path: String) async throws -> UIImage?
 }
 
 final class ImageCacheService: ImageCacheServiceType {
@@ -34,6 +35,31 @@ final class ImageCacheService: ImageCacheServiceType {
                 
             }
             .eraseToAnyPublisher()
+    }
+    
+    func image(for path: String) async throws -> UIImage? {
+        if let memoryCacheImage = imageMemoryStorage.image(for: path) {
+            return memoryCacheImage
+        }
+        
+        
+        if let diskCacheImage = try imageDiskStorage.image(for: path) {
+            store(for: path, image: diskCacheImage, alsoInDisk: false)
+            return diskCacheImage
+        }
+        
+        guard let url = URL(string: path) else {
+            throw URLError(.badURL)
+        }
+        
+        let response = try await URLSession.shared.data(from: url)
+        
+        if let remoteImage = UIImage(data: response.0) {
+            store(for: path, image: remoteImage, alsoInDisk: true)
+            return remoteImage
+        }
+        
+        return nil
     }
     
     private func imageWithMemoryCache(for key: String) -> AnyPublisher<UIImage?, ServiceError> {
@@ -101,6 +127,10 @@ final class ImageCacheService: ImageCacheServiceType {
 final class StubImageCacheService: ImageCacheServiceType {
     func image(for key: String) -> AnyPublisher<UIImage?, ServiceError> {
         Empty().eraseToAnyPublisher()
+    }
+    
+    func image(for path: String) async throws -> UIImage? {
+        return nil
     }
     
 }

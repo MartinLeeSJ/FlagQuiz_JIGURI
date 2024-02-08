@@ -29,9 +29,9 @@ struct ItemStoreView: View {
         GeometryReader { geo in
             Group {
                 if geo.size.width < geo.size.height {
-                    verticalContent
+                    portraitContent
                 } else {
-                    horizontalContent
+                    landscapeContent
                 }
             }
             .blur(radius: isCartViewPresented ? 3 : 0)
@@ -84,7 +84,7 @@ struct ItemStoreView: View {
     }
     
     
-    private var verticalContent: some View {
+    private var portraitContent: some View {
         VStack {
             ItemStoreFrogView()
             
@@ -104,7 +104,7 @@ struct ItemStoreView: View {
         }
     }
     
-    private var horizontalContent: some View {
+    private var landscapeContent: some View {
         HStack {
             VStack {
                 ItemStoreFrogView()
@@ -117,7 +117,7 @@ struct ItemStoreView: View {
                 Divider()
                     .padding(.horizontal)
                 
-                StoreItemGrid()
+                StoreItemGrid(isLandscape: true)
                 .overlay(alignment: .bottom) {
                     ItemStoreCartButtons(
                         isCartViewPresented: $isCartViewPresented
