@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol EarthCandyServiceType {
-    func checkEarthCandyIsEnough(_ userId: String) -> AnyPublisher<Bool, ServiceError>
+    func checkEarthCandyIsEnough(_ userId: String, needed amount: Int) -> AnyPublisher<Bool, ServiceError>
     func observeEarthCandy(ofUser userId: String) -> AnyPublisher<FQEarthCandy?, ServiceError>
     func updateCandy(_ point: Int, ofUser userId: String) -> AnyPublisher<Void, ServiceError>
     func useCandyForFeedingFrog(ofUser userId: String) -> AnyPublisher<Bool, ServiceError>
@@ -36,7 +36,7 @@ final class EarthCandyService: EarthCandyServiceType {
         self.repository = repository
     }
     
-    func checkEarthCandyIsEnough(_ userId: String) -> AnyPublisher<Bool, ServiceError> {
+    func checkEarthCandyIsEnough(_ userId: String, needed amount: Int) -> AnyPublisher<Bool, ServiceError> {
         repository.getEarthCandy(ofUser: userId)
             .mapError {  ServiceError.custom($0) }
             .flatMap { object in
@@ -44,7 +44,7 @@ final class EarthCandyService: EarthCandyServiceType {
                     return Fail<Bool, ServiceError>(error: .invalid).eraseToAnyPublisher()
                 }
                 
-                let isEnough: Bool = object.point >= FQEarthCandy.earthCandyPointForFeedingFrog
+                let isEnough: Bool = object.point >= amount
                 
                 return Just(isEnough).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
             }
@@ -69,6 +69,7 @@ final class EarthCandyService: EarthCandyServiceType {
                 guard let self else {
                     return Fail<Void, DBError>(error: .invalidSelf).eraseToAnyPublisher()
                 }
+                
                 if object == nil {
                     return self.repository.createEarthCandy(ofUser: userId, candyCount: point).eraseToAnyPublisher()
                 }
@@ -127,7 +128,7 @@ final class EarthCandyService: EarthCandyServiceType {
 }
 
 final class StubEarthCandyService: EarthCandyServiceType {
-    func checkEarthCandyIsEnough(_ userId: String) -> AnyPublisher<Bool, ServiceError> {
+    func checkEarthCandyIsEnough(_ userId: String, needed amount: Int) -> AnyPublisher<Bool, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     

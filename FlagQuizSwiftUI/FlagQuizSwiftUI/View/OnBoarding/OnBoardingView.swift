@@ -65,7 +65,7 @@ struct OnBoardingView: View {
             } label: {
                 Text("onboarding.next")
             }
-            .buttonStyle(QuizFilledButtonStyle(disabled: false))
+            .buttonStyle(FQFilledButtonStyle(disabled: false))
             
             Spacer()
                 .frame(height: 30)

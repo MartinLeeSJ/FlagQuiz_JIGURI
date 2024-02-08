@@ -25,6 +25,8 @@ protocol FrogServiceType {
     
     func updateFrog(_ model: FQFrog) -> AnyPublisher<Void, ServiceError>
     func updateFrogNation(ofUser userId: String, nationCode: FQCountryISOCode) -> AnyPublisher<Void, ServiceError>
+    func updateFrogItems(ofUser userId: String, itemIds: [String]) -> AnyPublisher<Void, ServiceError>
+    
     func deleteFrog(ofUser userId: String) async throws
 }
 
@@ -77,11 +79,13 @@ final class FrogService: FrogServiceType {
         let calendar: Calendar = Calendar.current
         let components = calendar.dateComponents([.hour], from: lastUpdated, to: .now)
         
+        // 마지막 업데이트 시기로부터 4시간이 지나지 않았으면 해당 오브젝트를 그대로 퍼블리시한다.
         guard let hours = components.hour, abs(hours) > 4 else {
             return Just(object.toModel()).setFailureType(to: DBError.self).eraseToAnyPublisher()
         }
         
-        let newStatus: Int = object.status - Int(abs(hours) / 2)
+        // 4시간마다 1씩 감소하는 상태값을 적용한다.
+        let newStatus: Int = object.status - Int(abs(hours) / 4)
         object.status = FrogState.safeValue(rawValue: newStatus).rawValue
         object.lastUpdated = .init(date: .now)
         
@@ -173,6 +177,25 @@ final class FrogService: FrogServiceType {
             .eraseToAnyPublisher()
     }
     
+    func updateFrogItems(ofUser userId: String, itemIds: [String]) -> AnyPublisher<Void, ServiceError> {
+        repository.getFrog(ofUser: userId)
+            .mapError { ServiceError.custom($0) }
+            .flatMap { [weak self] object in
+                guard let self else {
+                    return Fail<Void, ServiceError>(error: .nilSelf).eraseToAnyPublisher()
+                }
+                guard var object else {
+                    return  Fail<Void, ServiceError>(error: .invalid).eraseToAnyPublisher()
+                }
+                object.items = itemIds
+                
+                return self.repository.updateFrog(object, ofUser: userId)
+                    .mapError { ServiceError.custom($0) }
+                    .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+    }
+    
     func deleteFrog(ofUser userId: String) async throws {
         try await repository.deleteFrog(ofUser: userId)
     }
@@ -192,7 +215,7 @@ final class StubFrogService: FrogServiceType {
     }
     
     func observeFrogWhileCheckingStatus(ofUser userId: String) -> AnyPublisher<FQFrog?, ServiceError> {
-        Just(FQFrog(userId: "1", state: .bad, lastUpdated: .now, items: []))
+        Just(FQFrog(userId: "1", state: .great, lastUpdated: .now, items: []))
             .setFailureType(to: ServiceError.self)
             .eraseToAnyPublisher()
     }
@@ -216,6 +239,10 @@ final class StubFrogService: FrogServiceType {
     }
     
     func updateFrogNation(ofUser userId: String, nationCode: FQCountryISOCode) -> AnyPublisher<Void, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func updateFrogItems(ofUser userId: String, itemIds: [String]) -> AnyPublisher<Void, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     

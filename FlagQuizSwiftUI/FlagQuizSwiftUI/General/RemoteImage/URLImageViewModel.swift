@@ -9,18 +9,10 @@ import SwiftUI
 import Combine
 
 
-enum URLImageLoadingState {
-    case none
-    case loading
-    case loaded
-    case failed
-    case empty
-    
-}
 
 final class URLImageViewModel: ObservableObject {
     @Published var image: UIImage?
-    @Published var loadingState: URLImageLoadingState = .none
+    @Published var loadingState: RemoteImageLoadingState = .none
     
     private let container: DIContainer
     private let imageUrlString: String
@@ -47,10 +39,6 @@ final class URLImageViewModel: ObservableObject {
                     self?.loadingState = .failed
                 }
             } receiveValue: { [weak self] image in
-//                guard let image else {
-//                    self?.loadingState = .empty
-//                    return
-//                }
                 self?.image = image
                 self?.loadingState = .loaded
             }

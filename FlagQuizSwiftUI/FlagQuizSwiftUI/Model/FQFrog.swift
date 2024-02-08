@@ -79,4 +79,7 @@ enum FrogState: Int {
             String(localized: "feed.frog.button.title.state.great")
         }
     }
+    
+    static let frogInGreatMoodDiscountPercentPoint: Int = 10
+        
 }

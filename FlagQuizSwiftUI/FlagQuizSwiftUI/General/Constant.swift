@@ -10,6 +10,7 @@ import Foundation
 enum Constant {}
 
 typealias CollectionKey = Constant.CollectionKey
+typealias StoragePath = Constant.StoragePath
 typealias LocalizableTable = Constant.LocalizableTable
 typealias ServiceLangCode = Constant.ServiceLangCode
 typealias FontName = Constant.FontName
@@ -22,9 +23,14 @@ extension Constant {
         static let CountryQuizStats: String = "CountryQuizStats"
         static let QuizRecord: String = "QuizRecord"
         static let Frogs: String = "Frogs"
-        static let Items: String = "Items"
+        static let Items: String = "Item"
         static let EarthCandy: String = "EarthCandy"
         static let EarthCandyRewardRecord: String = "EarthCandyRewardRecord"
+        static let UserItem: String = "UserItem"
+    }
+    
+    struct StoragePath {
+        static let items: String = "Items"
     }
     
     struct LocalizableTable {
@@ -45,5 +51,6 @@ extension Constant {
         static let ShowOnboarding: String = "ShowOnBoarding"
         static let ShowATTConsent: String = "ShowATTConsent"
         static let FirstTimeToGetEarthCandyReward: String = "FirstTimeToGetEarthCandyReward"
+        static let EarthCandyRewardInfoBalloonPresentedDate: String = "EarthCandyRewardInfoBalloonPresentedDate"
     }
 }

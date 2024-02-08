@@ -7,13 +7,90 @@
 
 import SwiftUI
 
-struct EarthCandyView: View {
-    @Environment(\.colorScheme) private var scheme
-    @EnvironmentObject private var container: DIContainer
+struct NewsViewEarthCandyView: View {
     @EnvironmentObject private var newsViewModel: NewsViewModel
-    @EnvironmentObject private var viewModel: EarthCandyViewModel
+    @EnvironmentObject private var container: DIContainer
+    
+    @AppStorage(UserDefaultKey.EarthCandyRewardInfoBalloonPresentedDate)
+    private var presentingBalloonDate: Double = Date(timeIntervalSinceReferenceDate: 0).timeIntervalSinceReferenceDate
+    
     
     @State private var showDetail: Bool = false
+    @State private var isBalloonPresented: Bool = false
+    
+
+    var body: some View {
+        HStack {
+            EarthCandyView()
+            
+            Image(systemName: "plus", variableValue: 0.5)
+                .font(.caption)
+                .fontWeight(.black)
+                .padding(.trailing, 8)
+        }
+        .onTapGesture {
+            guard let isAnonymous = newsViewModel.isAnonymousUser() else { return }
+            if isAnonymous {
+                newsViewModel.setLinkingLocation(.reward)
+            } else {
+                showDetail = true
+                presentingBalloonDate = Date.now.timeIntervalSinceReferenceDate
+                isBalloonPresented = false
+            }
+        }
+        .fullScreenCover(isPresented: $showDetail) {
+            EarthCandyRewardView(viewModel: .init(container: container))
+        }
+        .onAppear {
+            checkLastPresentedBalloonDate()
+        }
+        .informationBalloon(
+            isPresented: $isBalloonPresented,
+            ballonColor: .fqAccent,
+            cornerRadius: 4) {
+                Text(
+                    String(
+                        localized: "newsViewEarthCandyView.balloon.title",
+                        defaultValue: "Claim your daily rewards"
+                    )
+                )
+                .font(.caption)
+                .fontWeight(.medium)
+                .padding(.vertical, 4)
+                Image(systemName: "xmark.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 10)
+                    .padding(.trailing, 8)
+            }
+    }
+    
+    private func checkLastPresentedBalloonDate() {
+        let lastPresented: Date = Date(timeIntervalSinceReferenceDate: presentingBalloonDate)
+        let calendar: Calendar = Calendar.current
+        let components = calendar.dateComponents([.hour], from: lastPresented, to: .now)
+        
+        guard let hours = components.hour else {
+            return
+        }
+        
+        if calendar.isDateInYesterday(lastPresented) || abs(hours) >= 24 {
+            withAnimation(.easeInOut.delay(2)) {
+                isBalloonPresented = true
+            }
+        }
+    }
+}
+
+struct ItemStoreEarthCandyView: View {
+    var body: some View {
+        EarthCandyView()
+    }
+}
+
+fileprivate struct EarthCandyView: View {
+    @Environment(\.colorScheme) private var scheme
+    @EnvironmentObject private var viewModel: EarthCandyModel
     
     var body: some View {
         HStack(spacing: 8) {
@@ -32,44 +109,14 @@ struct EarthCandyView: View {
                     Text(point, format: .number)
                 } else {
                     Text(0, format: .number)
-                    
                 }
             }
             .font(.system(.subheadline, design: .monospaced))
             .fontWeight(.medium)
-            
-            Image(systemName: "plus", variableValue: 0.5)
-                .font(.caption)
-                .fontWeight(.black)
-                .padding(.trailing, 8)
         }
         .task {
             viewModel.observe()
         }
-        .onTapGesture {
-            guard let isAnonymous = newsViewModel.isAnonymousUser() else { return }
-            if isAnonymous {
-                newsViewModel.setLinkingLocation(.reward)
-            } else {
-                showDetail = true
-            }
-        }
-        .fullScreenCover(isPresented: $showDetail) {
-            EarthCandyRewardView(viewModel: .init(container: container))
-        }
-        
     }
 }
 
-
-
-#Preview {
-    let container = DIContainer(services: StubService())
-    return EarthCandyView()
-        .environmentObject(
-            EarthCandyViewModel(
-              container: container
-            )
-        )
-        .environmentObject(container)
-}

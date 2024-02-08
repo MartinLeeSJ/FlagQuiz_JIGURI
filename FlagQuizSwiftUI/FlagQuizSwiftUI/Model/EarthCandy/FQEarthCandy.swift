@@ -24,7 +24,7 @@ extension FQEarthCandy {
     }
     
     static var adRewardCandyPoint: Int {
-        20
+        40
     }
     
     static var dailyRewardCandyPoint: Int {

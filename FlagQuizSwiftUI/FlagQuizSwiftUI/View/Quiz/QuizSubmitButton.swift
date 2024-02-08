@@ -42,7 +42,7 @@ struct QuizSubmitButton: View {
                 isLastQuiz ? Text("finish.quiz") : Text("next.quiz")
             }
             .buttonStyle(
-                QuizStrokeButtonStyle()
+                FQStrokeButtonStyle()
             )
             .transition(.opacity)
         } else {
@@ -58,7 +58,7 @@ struct QuizSubmitButton: View {
             }
             .disabled(currentQuizRound.submittedCountryCode == nil)
             .buttonStyle(
-                QuizFilledButtonStyle(
+                FQFilledButtonStyle(
                     disabled: currentQuizRound.submittedCountryCode == nil
                 )
             )

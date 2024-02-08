@@ -9,17 +9,17 @@ import SwiftUI
 
 struct FrogView: View {
     @Environment(\.colorScheme) var scheme
-    @EnvironmentObject private var earthCandyViewModel: EarthCandyViewModel
+    @EnvironmentObject private var container: DIContainer
+    @EnvironmentObject private var earthCandyModel: EarthCandyModel
     @EnvironmentObject private var newsViewModel: NewsViewModel
-    @StateObject private var viewModel: FrogViewModel
+    @StateObject private var frogModel: FrogModel
     
-    init(viewModel: FrogViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
+    init(frogModel: FrogModel) {
+        self._frogModel = StateObject(wrappedValue: frogModel)
     }
-    
     var body: some View {
         VStack(spacing: 16) {
-            if let frog = viewModel.frog {
+            if let frog = frogModel.frog {
                 content(frog)
             } else {
                 placeholder
@@ -27,13 +27,34 @@ struct FrogView: View {
             
             FrogMenuView()
         }
+        .navigationDestination(for: FrogDestination.self) { destination in
+            Group {
+                switch destination {
+                case .store:
+                    ItemStoreView(
+                        itemStoreViewModel: .init(container: container),
+                        cart: .init(container: container)
+                        
+                    )
+                case .closet:
+                    ClosetView(
+                        closetViewModel: .init(
+                            container: container
+                        )
+                    )
+                }
+            }
+            .environmentObject(frogModel)
+            .toolbar(.hidden, for: .tabBar)
+        }
+        .environmentObject(frogModel)
         .frame(maxWidth: .infinity)
         .overlay(alignment: .topTrailing) {
-            FrogSettlementIcon(frog: viewModel.frog)
+            FrogSettlementIcon(frog: frogModel.frog)
         }
         .padding()
         .task {
-            viewModel.observe()
+            frogModel.observe()
         }
         .background {
             if scheme == .dark {
@@ -52,10 +73,11 @@ struct FrogView: View {
                 }
             }
             
-            Image("Frog")
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: 200)
+            FrogImageView(
+                frog: nil,
+                items: frogModel.items,
+                size: 200
+            )
             
             Button {
                 
@@ -79,16 +101,13 @@ struct FrogView: View {
                 }
             }
             
-            ZStack {
-                Image(frog.state.frogImageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 200)
-            }
+            FrogImageView(frog: frog, items: frogModel.items, size: 200)
             
             frogStateButton(frog)
         }
     }
+    
+    
     
     private var heart: some View {
         Image("frogHeart")
@@ -120,7 +139,7 @@ struct FrogView: View {
     
     @ViewBuilder
     private func feedFrogButton(_ frog: FQFrog) -> some View {
-        if let earthCandy = earthCandyViewModel.earthCandy,
+        if let earthCandy = earthCandyModel.earthCandy,
            !earthCandy.hasEnoughCandyForFeedFrog {
             notEnoughCandyButton
         } else {
@@ -133,7 +152,7 @@ struct FrogView: View {
                 if isAnonymous {
                     newsViewModel.setLinkingLocation(.frogStateButton)
                 } else {
-                    viewModel.send(.feedFrog)
+                    frogModel.send(.feedFrog)
                 }
             } label: {
                 HStack {
@@ -185,19 +204,14 @@ struct FrogView: View {
 
 
 #Preview {
-    FrogView(
-        viewModel: .init(
-            container: .init(
-                services: StubService()
-            ), notificationManager: NotificationManager()
-        )
-    )
-    .environmentObject(NotificationManager())
-    .environmentObject(
-        EarthCandyViewModel(
-            container: .init(
-                services: StubService()
+    FrogView(frogModel: FrogModel(container: .init(services: StubService()), notificationManager: NotificationManager()))
+        .environmentObject(DIContainer(services: StubService()))
+        .environmentObject(NotificationManager())
+        .environmentObject(
+            EarthCandyModel(
+                container: .init(
+                    services: StubService()
+                )
             )
         )
-    )
 }
