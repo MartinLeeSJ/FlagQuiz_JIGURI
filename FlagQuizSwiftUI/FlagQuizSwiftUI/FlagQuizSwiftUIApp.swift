@@ -27,9 +27,7 @@ struct FlagQuizSwiftUIApp: App {
             .environmentObject(notificationManager)
             .environmentObject(networkMonitor)
             .environmentObject(navigationModel)
-            .task {
-                await notificationManager.requestAuthorization()
-            }
+            
         }
     }
 }
