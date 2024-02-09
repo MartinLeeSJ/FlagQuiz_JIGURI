@@ -11,6 +11,7 @@ import FirebaseFirestore
 @MainActor
 final class QuizRecordViewModel: ObservableObject {
     @Published var quizRecords: [FQQuizRecord] = []
+    @Published var loadCount: Int = 0
     @Published var loadingState: LoadingState = .none
     
     enum LoadingState {
@@ -22,6 +23,7 @@ final class QuizRecordViewModel: ObservableObject {
     
     private let container: DIContainer
     private let loadingCount: Int = 25
+    private let loadCountLimit: Int = 4
     private var lastDocument: DocumentSnapshot?
     
     init(container: DIContainer) {
@@ -29,7 +31,7 @@ final class QuizRecordViewModel: ObservableObject {
     }
     
     func load() async {
-
+        guard loadCount < loadCountLimit else { return }
         guard loadingState == .none else { return }
         guard let userId = container.services.authService.checkAuthenticationState() else { return }
         
@@ -45,6 +47,7 @@ final class QuizRecordViewModel: ObservableObject {
             
 
             quizRecords.append(contentsOf: result.documents)
+            loadCount += 1
 
             
             lastDocument = result.lastDocument

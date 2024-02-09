@@ -11,7 +11,8 @@ import SwiftUI
 final class NewsViewModel: ObservableObject {
     
     @Published var quizStat: FQUserQuizStat?
-    @Published var countryQuizStat: FQCountryQuizStat?
+    @Published var bestCountryQuizStat: FQCountryQuizStat?
+    @Published var worstCountryQuizStat: FQCountryQuizStat?
     @Published var linkingLocation: LinkingLoginLocation?
     
     
@@ -26,7 +27,8 @@ final class NewsViewModel: ObservableObject {
         guard let userId = container.services.authService.checkAuthenticationState() else { return }
         do {
             quizStat = try await container.services.quizStatService.getQuizStat(ofUser: userId)
-            countryQuizStat = try await container.services.countryQuizStatService.getBestCountryQuizStat(of: userId)
+            bestCountryQuizStat = try await container.services.countryQuizStatService.getBestCountryQuizStat(of: userId)
+            worstCountryQuizStat = try await container.services.countryQuizStatService.getWorstCountryQuizStat(of: userId)
         } catch {
             print(error.localizedDescription)
         }

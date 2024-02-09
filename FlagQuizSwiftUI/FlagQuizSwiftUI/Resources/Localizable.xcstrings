@@ -2659,13 +2659,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I'm familiar with this country"
+            "value" : "Familiar to me"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "내가 제일 잘 알아"
+            "value" : "잘 알고 있어요!"
           }
         }
       }
@@ -2707,13 +2707,29 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My Rank\n"
+            "value" : "My Rank"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "내 등급"
+          }
+        }
+      }
+    },
+    "news.worst.country.quiz.stats.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unfamiliar to me"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잘 모릅니다..."
           }
         }
       }
