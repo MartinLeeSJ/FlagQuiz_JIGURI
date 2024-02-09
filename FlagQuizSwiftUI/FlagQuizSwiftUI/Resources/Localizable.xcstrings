@@ -1606,7 +1606,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "눌러서 찍은 사진 공유하기"
+            "value" : "사진 공유하기"
           }
         }
       }
@@ -1623,7 +1623,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "사진찍기"
+            "value" : "사진 찍기"
           }
         }
       }
