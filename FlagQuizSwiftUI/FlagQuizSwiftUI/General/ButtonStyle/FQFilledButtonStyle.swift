@@ -12,31 +12,58 @@ struct FQFilledButtonStyle: ButtonStyle {
     @Environment(\.colorScheme) private var scheme
     
     private var disabled: Bool
-    private let isLightModeOnly: Bool
+    private let colorSchemeMode: ColorSchemeMode
     private let hasInfinityWidth: Bool
+    
+    enum ColorSchemeMode {
+        case lightOnly
+        case darkOnly
+        case both
+    }
     
     init(
         disabled: Bool,
-        isLightModeOnly: Bool = false,
+        colorSchemeMode: ColorSchemeMode = .both,
         hasInfinityWidth: Bool = true
     ) {
         self.disabled = disabled
-        self.isLightModeOnly = isLightModeOnly
+        self.colorSchemeMode = colorSchemeMode
         self.hasInfinityWidth = hasInfinityWidth
     }
     
     private var fontWeight: Font.Weight {
-        guard !isLightModeOnly else { return .medium }
+        if colorSchemeMode == .lightOnly {
+            return .medium
+        }
+        
+        if colorSchemeMode == .darkOnly {
+            return .bold
+        }
+        
         return scheme == .light ? .medium : .bold
     }
     
     private var labelColor: Color {
-        guard !isLightModeOnly else { return Color.fqAccent }
+        if colorSchemeMode == .lightOnly {
+            return Color.fqAccent
+        }
+        
+        if colorSchemeMode == .darkOnly {
+            return Color.black
+        }
+        
         return scheme == .light ?  Color.fqAccent : Color.black
     }
     
     private var buttonBg: Color {
-        guard !isLightModeOnly else { return .black }
+        if colorSchemeMode == .lightOnly {
+            return Color.black
+        }
+        
+        if colorSchemeMode == .darkOnly {
+            return Color.fqAccent
+        }
+        
         return scheme == .light ?  Color.black : Color.fqAccent
     }
     

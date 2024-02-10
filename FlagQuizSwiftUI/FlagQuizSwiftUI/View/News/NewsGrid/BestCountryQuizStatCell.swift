@@ -1,5 +1,5 @@
 //
-//  CountryQuizStatCell.swift
+//  BestCountryQuizStatCell.swift
 //  FlagQuizSwiftUI
 //
 //  Created by Martin on 12/27/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CountryQuizStatCell: View {
+struct BestCountryQuizStatCell: View {
     @EnvironmentObject private var viewModel: NewsViewModel
     @EnvironmentObject private var navigationModel: NavigationModel
     
@@ -15,7 +15,7 @@ struct CountryQuizStatCell: View {
         NewsGridCell(
             title: "news.country.quiz.stats.title"
         ) {
-            let countryCode: FQCountryISOCode? = viewModel.countryQuizStat?.id
+            let countryCode: FQCountryISOCode? = viewModel.bestCountryQuizStat?.id
             
             Text(countryCode?.flagEmoji ?? "?")
                 .font(.largeTitle)
@@ -30,7 +30,7 @@ struct CountryQuizStatCell: View {
                 }
             
         }
-        .gridCellColumns(2)
+        .gridCellColumns(1)
         .onTapGesture {
             guard let isAnonymousUser = viewModel.isAnonymousUser() else {
                  return

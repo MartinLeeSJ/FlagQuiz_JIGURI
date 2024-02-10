@@ -49,7 +49,7 @@ struct NewsGridCell<Content>: View where Content: View {
             
         }
         .padding(12)
-        .background(.thinMaterial, in: Rectangle())
+        .background(.thinMaterial, in: .rect(cornerRadius: 12, style: .continuous))
         
         
         

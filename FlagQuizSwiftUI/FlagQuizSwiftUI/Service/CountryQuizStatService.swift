@@ -12,6 +12,11 @@ protocol CountryQuizStatServiceType {
         of userId: String
     ) async throws -> FQCountryQuizStat?
     
+    func getWorstCountryQuizStat(
+        of userId: String
+    ) async throws -> FQCountryQuizStat?
+    
+    
     func getCountryQuizStats(
         of userId: String
     ) async throws -> [FQCountryQuizStat]
@@ -35,6 +40,14 @@ final class CountryQuizStatService: CountryQuizStatServiceType {
         of userId: String
     ) async throws -> FQCountryQuizStat? {
         let object: FQCountryQuizStatObject? = try await repository.getBestCountryQuizStat(of: userId)
+        
+        return object?.toModel()
+    }
+    
+    func getWorstCountryQuizStat(
+        of userId: String
+    ) async throws -> FQCountryQuizStat? {
+        let object: FQCountryQuizStatObject? = try await repository.getWorstCountryQuizStat(of: userId)
         
         return object?.toModel()
     }
@@ -67,7 +80,16 @@ final class StubCountryQuizStatService: CountryQuizStatServiceType {
     ) async throws -> FQCountryQuizStat? {
         FQCountryQuizStat(
             id: FQCountryISOCode.randomCode(of: 1, except: nil).first ?? .init("170"),
-            quizStat: 6
+            quizStat: 10
+        )
+    }
+    
+    func getWorstCountryQuizStat(
+        of userId: String
+    ) async throws -> FQCountryQuizStat? {
+        FQCountryQuizStat(
+            id: FQCountryISOCode.randomCode(of: 1, except: nil).first ?? .init("170"),
+            quizStat: -6
         )
     }
     

@@ -18,7 +18,7 @@ struct TodayCountryCell: View {
             alignment: .leading,
             title: "news.today.country.title"
         ) {
-            HStack(spacing: 32) {
+            HStack(spacing: 8) {
                 
                 Text(todaysCode?.flagEmoji ?? "?")
                     .font(.largeTitle)
@@ -31,7 +31,7 @@ struct TodayCountryCell: View {
                 
             }
         }
-        .gridCellColumns(4)
+        .gridCellColumns(2)
         .gridCellUnsizedAxes(.horizontal)
         .onTapGesture {
             guard let todaysCode else { return }

@@ -13,6 +13,10 @@ protocol FQCountryQuizStatRepositoryType {
         of userId: String
     ) async throws -> FQCountryQuizStatObject?
     
+    func getWorstCountryQuizStat(
+        of userId: String
+    ) async throws -> FQCountryQuizStatObject?
+    
     func getCountryQuizStats(
         of userId: String
     ) async throws -> [FQCountryQuizStatObject]
@@ -37,6 +41,25 @@ final class FQCountryQuizStatRepository: FQCountryQuizStatRepositoryType {
         let snapshots: QuerySnapshot = try await collectionRef.order(
             by: "quizStat",
             descending: true
+        ).limit(to: 1).getDocuments()
+        
+        let objects: [FQCountryQuizStatObject] = try snapshots.documents.compactMap {
+            try $0.data(as: FQCountryQuizStatObject.self)
+        }
+        
+        return objects.first
+    }
+    
+    public func getWorstCountryQuizStat(
+        of userId: String
+    ) async throws -> FQCountryQuizStatObject? {
+        let collectionRef = db.collection(CollectionKey.Users)
+            .document(userId)
+            .collection(CollectionKey.CountryQuizStats)
+        
+        let snapshots: QuerySnapshot = try await collectionRef.order(
+            by: "quizStat",
+            descending: false
         ).limit(to: 1).getDocuments()
         
         let objects: [FQCountryQuizStatObject] = try snapshots.documents.compactMap {

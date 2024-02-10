@@ -10,14 +10,16 @@ import SwiftUI
 struct FlowingText: View {
     private let originalText: String
     private let text: String
+    private let fadingColor: Color
     
     @State private var offset: CGFloat = 0.0
     @State private var isAnimating: Bool = false
     
-    init(_ text: String) {
+    init(_ text: String, fadingColor: Color = .fqBg) {
         let string: String = Array(repeating: text + "   ", count: 3).joined(separator: "")
         self.originalText = text
         self.text = string
+        self.fadingColor = fadingColor
     }
 
     var body: some View {
