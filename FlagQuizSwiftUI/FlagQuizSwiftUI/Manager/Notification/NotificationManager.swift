@@ -12,6 +12,7 @@ enum FrogStateNotificationType: Int {
     case frogStateGood = 2
     case frogStateSoSo = 1
     case frogStateBad = 0
+    //TODO: -> Didyouforget 노티피케이션 추가
     
     var id: String {
         switch self {
@@ -56,17 +57,10 @@ enum FrogStateNotificationType: Int {
 class NotificationManager: ObservableObject {
     private let center = UNUserNotificationCenter.current()
     
-    public func requestAuthorization() async {
-        do {
-            try await center.requestAuthorization(options: [.alert, .badge, .sound])
-        } catch {
-            // TODO: Error Handling
-            print(error.localizedDescription)
-        }
-    }
-    
+
     public func addFrogStateNotification(when state: FrogState) {
-        // .great = 3 에선 3개의 알림을
+        // FrogState.great = 3 일때 3개의 알림을 예약한다
+        // frogStateGood = 2이니 3 - 2 = 1 따라서 1 * 4시간 후 알림을 예약한다.
         // .frogStateGood -> 4시간
         // ....SoSo -> 8시간
         // ....Bad -> 12시간

@@ -16,32 +16,36 @@ struct NewsGrid: View {
         GeometryReader { geo in
             Grid(horizontalSpacing: 8, verticalSpacing: 8) {
                 GridRow {
+                    BannerAdContentView()
+                        .padding(6)
+                        .background(.thinMaterial, in: Rectangle())
+                        .gridCellColumns(2)
+                }
+                .frame(height: 70)
+                
+                GridRow {
                     UserRankCell()
                     
-                    CountryQuizStatCell()
-                    
-                    QuizStatCell()
+                    BestCountryQuizStatCell()
                 }
                 .frame(height: 110)
                 
                 GridRow {
-                    BannerAdContentView()
-                        .padding(6)
-                        .background(.thinMaterial, in: Rectangle())
-                        .gridCellColumns(4)
+                    QuizStatCell()
+                    
+                    WorstCountryQuizStatCell()
                 }
-                .frame(height: 70)
+                .frame(height: 110)
                 
                 GridRow {
                     TodayCountryCell()
                 }
                 .frame(height: 110)
             }
-            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .padding()
             .frame(width: geo.size.width)
         }
-        .frame(minHeight: 300, maxHeight: 400)
+        .frame(minHeight: 400, maxHeight: 500)
     
     }
 }

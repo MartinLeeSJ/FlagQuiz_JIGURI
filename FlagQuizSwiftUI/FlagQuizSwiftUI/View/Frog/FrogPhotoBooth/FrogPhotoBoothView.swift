@@ -26,75 +26,26 @@ struct FrogPhotoBoothView: View {
             Spacer()
             
             if viewModel.items.count == viewModel.loadedImageCount {
-                stickerPhotoView
-                    .clipShape(.rect(cornerRadius: 10, style: .continuous))
-                    .background {
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .foregroundStyle(.white)
-                    }
-                    .overlay {
-                        Image("cameraTarget")
-                            .resizable()
-                            .scaledToFit()
-                            .opacity(0.5)
-                    }
+                cameraTargetView
             } else {
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .frame(width: 200, height: 200)
-                    .foregroundStyle(.white)
-                    .shadow(radius: 10)
-                    .overlay {
-                        ProgressView()
-                    }
+                placeHolderView
             }
             
             Spacer()
             
+            takeAPhotoButton
+            
+            
             Group {
                 if let renderedImage {
-                    ShareLink(item: renderedImage, preview: .init("Image", image: renderedImage)) {
-                        Text(
-                            String(
-                                localized:"frogPhotoBoothView.share.title",
-                                defaultValue: "Click here and share this photo"
-                            )
-                        )
-                    }
-                    .buttonStyle(FQFilledButtonStyle(disabled: false))
+                   shareButton(renderedImage)
                 } else {
-                    Text(
-                        String(
-                            localized:"frogPhotoBoothView.preparing.title",
-                            defaultValue: "Wait a second..."
-                        )
-                    )
-                    .foregroundStyle(.fqAccent)
+                   preparingText
                 }
             }
             .padding(.bottom)
             .opacity(didTapTakeAPhoto ? 1 : 0)
             .animation(.easeInOut, value: didTapTakeAPhoto)
-            
-            
-            Button {
-                didTapTakeAPhoto = true
-                UIImpactFeedbackGenerator(style: .heavy)
-                     .impactOccurred()
-            } label: {
-                Text(
-                    String(
-                        localized:"frogPhotoBoothView.takeAPhotoButton.title",
-                        defaultValue: "Take a photo"
-                    )
-                )
-                .font(.headline)
-                .foregroundStyle(.white)
-            }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.capsule)
-            .tint(.red)
-            .disabled(didTapTakeAPhoto)
-            .shadow(color: .red, radius: didTapTakeAPhoto ? 0 : 10)
             
             Spacer()
   
@@ -108,16 +59,7 @@ struct FrogPhotoBoothView: View {
         }
         .overlay {
             if didTapTakeAPhoto {
-                Rectangle()
-                    .foregroundStyle(.white)
-                    .ignoresSafeArea(.all)
-                    .opacity(flashOpacity)
-                    .onAppear {
-                        withAnimation(.easeInOut) {
-                            flashOpacity = 0
-                        }
-                    }
-                    
+               flash
             }
         }
         .task {
@@ -126,7 +68,7 @@ struct FrogPhotoBoothView: View {
         
     }
     
-    var stickerPhotoView: some View {
+    var frogImageView: some View {
         ZStack {
             itemImage(ofType: .background)
             
@@ -157,6 +99,94 @@ struct FrogPhotoBoothView: View {
         }
     }
     
+    private var cameraTargetView: some View {
+        frogImageView
+            .clipShape(.rect(cornerRadius: 10, style: .continuous))
+            .background {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .foregroundStyle(.white)
+            }
+            .overlay {
+                Image("cameraTarget")
+                    .resizable()
+                    .scaledToFit()
+                    .opacity(0.5)
+            }
+    }
+    
+    private var placeHolderView: some View {
+        RoundedRectangle(cornerRadius: 10, style: .continuous)
+            .frame(width: 200, height: 200)
+            .foregroundStyle(.white)
+            .shadow(radius: 10)
+            .overlay {
+                ProgressView()
+            }
+    }
+    
+    private var takeAPhotoButton: some View {
+        Button {
+            didTapTakeAPhoto = true
+            UIImpactFeedbackGenerator(style: .heavy)
+                 .impactOccurred()
+        } label: {
+            Text(
+                String(
+                    localized:"frogPhotoBoothView.takeAPhotoButton.title",
+                    defaultValue: "Take a photo"
+                )
+            )
+            .font(.headline)
+            .foregroundStyle(.white)
+        }
+        .buttonStyle(.borderedProminent)
+        .buttonBorderShape(.capsule)
+        .tint(.red)
+        .disabled(didTapTakeAPhoto)
+        .shadow(color: .red, radius: didTapTakeAPhoto ? 0 : 10)
+    }
+    
+    private func shareButton(_ renderedImage: Image) -> some View {
+        ShareLink(item: renderedImage, preview: .init("Image", image: renderedImage)) {
+            Text(
+                String(
+                    localized:"frogPhotoBoothView.share.title",
+                    defaultValue: "Click here and share this photo"
+                )
+            )
+        }
+        .buttonStyle(
+            FQFilledButtonStyle(
+                disabled: false,
+                colorSchemeMode: .darkOnly
+            )
+        )
+        .padding()
+    }
+    
+    private var preparingText: some View {
+        Text(
+            String(
+                localized:"frogPhotoBoothView.preparing.title",
+                defaultValue: "Wait a second..."
+            )
+        )
+        .foregroundStyle(.fqAccent)
+        .padding()
+    }
+    
+    private var flash: some View {
+        Rectangle()
+            .foregroundStyle(.white)
+            .ignoresSafeArea(.all)
+            .opacity(flashOpacity)
+            .onAppear {
+                withAnimation(.easeInOut) {
+                    flashOpacity = 0
+                }
+            }
+    }
+    
     @ViewBuilder
     func itemImage(ofType type: FQItemType) -> some View {
         if let imageOfItemType = viewModel.imagesOfItemType[type],
@@ -170,7 +200,7 @@ struct FrogPhotoBoothView: View {
     
     var renderedView: some View {
         VStack {
-            stickerPhotoView
+            frogImageView
                 .background(.white)
                 .clipShape(.rect(cornerRadius: 10, style: .continuous))
                 .padding(.horizontal, 10)
@@ -233,5 +263,5 @@ struct FrogPhotoBoothView: View {
             items: []
         )
     )
-    .renderedView
+    
 }

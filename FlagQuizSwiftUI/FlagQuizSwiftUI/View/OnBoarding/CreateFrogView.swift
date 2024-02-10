@@ -108,7 +108,7 @@ struct CreateFrogView: View {
         .buttonStyle(
             FQFilledButtonStyle(
                 disabled: viewModel.selectedCode == nil,
-                isLightModeOnly: true
+                colorSchemeMode: .lightOnly
             )
         )
         .onChange(of: viewModel.didCreateFrog) { didCreate in

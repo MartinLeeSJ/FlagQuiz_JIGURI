@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0050072B75F54B00D6B8F4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0050062B75F54B00D6B8F4 /* FirebaseMessaging */; };
+		5B0050092B76165300D6B8F4 /* WorstCountryQuizStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0050082B76165300D6B8F4 /* WorstCountryQuizStatCell.swift */; };
 		5B0F29262B517AA800788FE7 /* MakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F29252B517AA800788FE7 /* MakerView.swift */; };
 		5B0F29282B52543300788FE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F29272B52543300788FE7 /* InformationView.swift */; };
 		5B0F292B2B52546100788FE7 /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F292A2B52546100788FE7 /* InformationViewModel.swift */; };
@@ -19,7 +21,6 @@
 		5B16F9362B282AF60011ACF7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F9352B282AF60011ACF7 /* FirebaseAnalytics */; };
 		5B16F9382B282AF60011ACF7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F9372B282AF60011ACF7 /* FirebaseAuth */; };
 		5B16F93A2B282AF60011ACF7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F9392B282AF60011ACF7 /* FirebaseFirestore */; };
-		5B16F93C2B282AF60011ACF7 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F93B2B282AF60011ACF7 /* FirebaseFirestoreCombine-Community */; };
 		5B16F93E2B282AF60011ACF7 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F93D2B282AF60011ACF7 /* FirebaseFirestoreSwift */; };
 		5B16F9422B2830570011ACF7 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9412B2830570011ACF7 /* OnBoardingView.swift */; };
 		5B16F9452B2830A60011ACF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B16F9442B2830A60011ACF7 /* LaunchScreen.storyboard */; };
@@ -51,7 +52,7 @@
 		5B19C16A2B3C10D8001A74CE /* QuizDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1692B3C10D8001A74CE /* QuizDestination.swift */; };
 		5B19C16D2B3C1B0C001A74CE /* NewsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C16C2B3C1B0C001A74CE /* NewsGrid.swift */; };
 		5B19C16F2B3C2D1D001A74CE /* UserRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C16E2B3C2D1D001A74CE /* UserRankCell.swift */; };
-		5B19C1712B3C2D8E001A74CE /* CountryQuizStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1702B3C2D8E001A74CE /* CountryQuizStatCell.swift */; };
+		5B19C1712B3C2D8E001A74CE /* BestCountryQuizStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1702B3C2D8E001A74CE /* BestCountryQuizStatCell.swift */; };
 		5B19C1732B3C2DD8001A74CE /* QuizStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1722B3C2DD8001A74CE /* QuizStatCell.swift */; };
 		5B19C1752B3C2E16001A74CE /* TodayCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1742B3C2E16001A74CE /* TodayCountryCell.swift */; };
 		5B19C1782B3C2E9D001A74CE /* CountryQuizStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B19C1772B3C2E9D001A74CE /* CountryQuizStatView.swift */; };
@@ -258,6 +259,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B0050082B76165300D6B8F4 /* WorstCountryQuizStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorstCountryQuizStatCell.swift; sourceTree = "<group>"; };
 		5B0F29252B517AA800788FE7 /* MakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerView.swift; sourceTree = "<group>"; };
 		5B0F29272B52543300788FE7 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		5B0F292A2B52546100788FE7 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
@@ -296,7 +298,7 @@
 		5B19C1692B3C10D8001A74CE /* QuizDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDestination.swift; sourceTree = "<group>"; };
 		5B19C16C2B3C1B0C001A74CE /* NewsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGrid.swift; sourceTree = "<group>"; };
 		5B19C16E2B3C2D1D001A74CE /* UserRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankCell.swift; sourceTree = "<group>"; };
-		5B19C1702B3C2D8E001A74CE /* CountryQuizStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryQuizStatCell.swift; sourceTree = "<group>"; };
+		5B19C1702B3C2D8E001A74CE /* BestCountryQuizStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestCountryQuizStatCell.swift; sourceTree = "<group>"; };
 		5B19C1722B3C2DD8001A74CE /* QuizStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStatCell.swift; sourceTree = "<group>"; };
 		5B19C1742B3C2E16001A74CE /* TodayCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCountryCell.swift; sourceTree = "<group>"; };
 		5B19C1772B3C2E9D001A74CE /* CountryQuizStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryQuizStatView.swift; sourceTree = "<group>"; };
@@ -494,10 +496,10 @@
 			files = (
 				5B16F93E2B282AF60011ACF7 /* FirebaseFirestoreSwift in Frameworks */,
 				5B16F9362B282AF60011ACF7 /* FirebaseAnalytics in Frameworks */,
+				5B0050072B75F54B00D6B8F4 /* FirebaseMessaging in Frameworks */,
 				5B16F9632B284A840011ACF7 /* GoogleSignInSwift in Frameworks */,
 				5B69C6312B6E19A000240D4C /* FirebaseStorage in Frameworks */,
 				5B6171712B54F994005987A5 /* GoogleMobileAds in Frameworks */,
-				5B16F93C2B282AF60011ACF7 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				5BD3B7702B31F4B700B930E0 /* IsoCountryCodes in Frameworks */,
 				5B16F9382B282AF60011ACF7 /* FirebaseAuth in Frameworks */,
 				5B16F93A2B282AF60011ACF7 /* FirebaseFirestore in Frameworks */,
@@ -719,7 +721,8 @@
 				5B19C16C2B3C1B0C001A74CE /* NewsGrid.swift */,
 				5B19C1602B3BCA09001A74CE /* NewsGridCell.swift */,
 				5B19C16E2B3C2D1D001A74CE /* UserRankCell.swift */,
-				5B19C1702B3C2D8E001A74CE /* CountryQuizStatCell.swift */,
+				5B19C1702B3C2D8E001A74CE /* BestCountryQuizStatCell.swift */,
+				5B0050082B76165300D6B8F4 /* WorstCountryQuizStatCell.swift */,
 				5B19C1722B3C2DD8001A74CE /* QuizStatCell.swift */,
 				5B19C1742B3C2E16001A74CE /* TodayCountryCell.swift */,
 			);
@@ -1270,13 +1273,13 @@
 				5B16F9352B282AF60011ACF7 /* FirebaseAnalytics */,
 				5B16F9372B282AF60011ACF7 /* FirebaseAuth */,
 				5B16F9392B282AF60011ACF7 /* FirebaseFirestore */,
-				5B16F93B2B282AF60011ACF7 /* FirebaseFirestoreCombine-Community */,
 				5B16F93D2B282AF60011ACF7 /* FirebaseFirestoreSwift */,
 				5B16F9602B284A840011ACF7 /* GoogleSignIn */,
 				5B16F9622B284A840011ACF7 /* GoogleSignInSwift */,
 				5BD3B76F2B31F4B700B930E0 /* IsoCountryCodes */,
 				5B6171702B54F994005987A5 /* GoogleMobileAds */,
 				5B69C6302B6E19A000240D4C /* FirebaseStorage */,
+				5B0050062B75F54B00D6B8F4 /* FirebaseMessaging */,
 			);
 			productName = FlagQuizSwiftUI;
 			productReference = 5B5C2AC92B280A32009A382B /* FlagQuizSwiftUI.app */;
@@ -1516,6 +1519,7 @@
 				5B0F292D2B5254D000788FE7 /* FQInfo.swift in Sources */,
 				5BE7D2A82B29B2220044C3D4 /* CountryAPIClient.swift in Sources */,
 				5BB8FE292B6B846E008ADA3C /* ClosetItemGrid.swift in Sources */,
+				5B0050092B76165300D6B8F4 /* WorstCountryQuizStatCell.swift in Sources */,
 				5B6742022B36A261007335A6 /* CountryDetailView.swift in Sources */,
 				5B559F082B28B85400B131BE /* NewsView.swift in Sources */,
 				5BFF43832B46800900C3DBCB /* FrogDBRepository.swift in Sources */,
@@ -1616,7 +1620,7 @@
 				5BE3E4D02B3985C30048C10E /* CountryDiskStorage.swift in Sources */,
 				5B19C1782B3C2E9D001A74CE /* CountryQuizStatView.swift in Sources */,
 				5BCFAC842B42E26300803C5C /* QuizRecordsByTypeBanner.swift in Sources */,
-				5B19C1712B3C2D8E001A74CE /* CountryQuizStatCell.swift in Sources */,
+				5B19C1712B3C2D8E001A74CE /* BestCountryQuizStatCell.swift in Sources */,
 				5B6EAAD22B453BA7006DA3BE /* UserRankAccuracyGauge.swift in Sources */,
 				5BDD3C2D2B6642700088D3A3 /* StoreItemDBRepository.swift in Sources */,
 				5BCFAC822B42E23600803C5C /* QuizRecordsSummary.swift in Sources */,
@@ -2062,6 +2066,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5B0050062B75F54B00D6B8F4 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		5B16F9352B282AF60011ACF7 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -2076,11 +2085,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		5B16F93B2B282AF60011ACF7 /* FirebaseFirestoreCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseFirestoreCombine-Community";
 		};
 		5B16F93D2B282AF60011ACF7 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;

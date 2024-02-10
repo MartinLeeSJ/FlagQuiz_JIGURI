@@ -36,7 +36,7 @@ struct NewsView: View {
                     NewsGrid()
                     
                     Spacer()
-                        .frame(height: 32)
+                        .frame(height: 64)
                 }
             }
             .sheet(item: $viewModel.linkingLocation) {
