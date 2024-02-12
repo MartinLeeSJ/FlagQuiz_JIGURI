@@ -71,7 +71,6 @@ final class AuthenticationViewModel: ObservableObject {
         
         case .signOut:
             do {
-            
                 try container.services.authService.signOut()
                 authState = .unauthenticated
             } catch {
