@@ -253,7 +253,8 @@ extension AuthService {
                 id: result.user.uid,
                 createdAt: .now,
                 email: result.user.email ?? "",
-                userName: result.user.displayName ?? ""
+                userName: result.user.displayName ?? "",
+                isAnonymous: false
             )
             
             completion(.success(fqUser))

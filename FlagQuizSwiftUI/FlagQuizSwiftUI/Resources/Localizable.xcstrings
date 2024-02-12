@@ -2138,6 +2138,23 @@
         }
       }
     },
+    "linkingLogin.photoBooth.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To access the photoBooth,\nplease create an account now."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리 사진을 찍고 싶나요?\n먼저 계정을 생성해주세요!"
+          }
+        }
+      }
+    },
     "linkingLogin.reward.description" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
