@@ -16,6 +16,7 @@ enum LinkingLoginLocation: String, Identifiable {
     case userStat
     case store
     case closet
+    case photoBooth
     
     var id: String {
         self.rawValue
@@ -62,6 +63,12 @@ enum LinkingLoginLocation: String, Identifiable {
             String(
                 localized: "linkingLogin.closet.description",
                 defaultValue: "To access the closet,\nplease create an account now."
+            )
+            
+        case .photoBooth:
+            String(
+                localized: "linkingLogin.photoBooth.description",
+                defaultValue: "To access the photoBooth,\nplease create an account now."
             )
         }
     }
