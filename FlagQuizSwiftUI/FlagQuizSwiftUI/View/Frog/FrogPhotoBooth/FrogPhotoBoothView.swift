@@ -52,8 +52,8 @@ struct FrogPhotoBoothView: View {
         }
         .frame(maxWidth: .infinity)
         .background(.black, ignoresSafeAreaEdges: .all)
-        .onChange(of: viewModel.loadedImageCount) { count in
-            if count == viewModel.items.count {
+        .onChange(of: viewModel.didFinishLoading) { finished in
+            if finished {
                 render()
             }
         }
@@ -198,7 +198,7 @@ struct FrogPhotoBoothView: View {
         }
     }
     
-    var renderedView: some View {
+    var stickerPhotoView: some View {
         VStack {
             frogImageView
                 .background(.white)
@@ -210,7 +210,7 @@ struct FrogPhotoBoothView: View {
                 .backgroundStyle(.fqAccentPastel)
                 .overlay {
                     Rectangle()
-                        .stroke(.black, lineWidth: 0.3)
+                        .stroke(.black, lineWidth: 1)
                 }
                 .overlay(alignment: .bottomTrailing) {
                     HStack(spacing: 1) {
@@ -236,7 +236,7 @@ struct FrogPhotoBoothView: View {
  
     @MainActor
     func render() {
-        let renderer = ImageRenderer(content: renderedView)
+        let renderer = ImageRenderer(content: stickerPhotoView)
         
         renderer.isOpaque = true
         renderer.scale = displayScale
@@ -263,5 +263,6 @@ struct FrogPhotoBoothView: View {
             items: []
         )
     )
+//    .stickerPhotoView
     
 }

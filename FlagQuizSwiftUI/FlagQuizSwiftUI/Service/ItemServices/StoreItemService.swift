@@ -28,6 +28,6 @@ final class StoreItemService: StoreItemServiceType {
 
 final class StubStoreItemService: StoreItemServiceType {
     func getItems() async throws -> [FQItem] {
-        FQItem.mockItems
+        []
     }
 }
