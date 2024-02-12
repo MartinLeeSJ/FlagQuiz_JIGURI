@@ -10,7 +10,12 @@ import SwiftUI
 
 final class FrogPhotoBoothViewModel: ObservableObject {
     @Published var imagesOfItemType: [FQItemType:Image?] = .init()
-    @Published var loadedImageCount: Int = 0
+    @Published var loadedImageCount: Int = 0 {
+        didSet {
+            didFinishLoading = loadedImageCount == items.count
+        }
+    }
+    @Published var didFinishLoading: Bool = false
     
     public let items: [FQItemProtocol]
     private let container: DIContainer
