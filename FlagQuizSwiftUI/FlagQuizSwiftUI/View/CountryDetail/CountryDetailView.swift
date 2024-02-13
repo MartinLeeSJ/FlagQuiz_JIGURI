@@ -113,7 +113,7 @@ struct CountryDetailView: View {
         Divider()
     }
     
-    private var informationGrid: some View {
+    var informationGrid: some View {
         LazyVGrid(
             columns: [GridItem(
                 .adaptive(minimum: 120, maximum: .infinity),
@@ -128,7 +128,11 @@ struct CountryDetailView: View {
                         .font(.caption)
                     
                     HStack {
-                        Text(info.informativeText(from: viewModel.countryDetail))
+                        Text(
+                            info.informativeText(
+                                from: viewModel.countryDetail
+                            )
+                        )
                         Spacer()
                     }
                     .padding(8)
@@ -143,6 +147,11 @@ struct CountryDetailView: View {
 }
 
 #Preview {
-    CountryDetailView(viewModel: .init(container: .init(services: StubService()),
-                                       countryCode: .init("170")))
+    CountryDetailView(
+        viewModel: .init(
+            container: .init(services: StubService()),
+            countryCode: .init("170")
+        )
+    )
+    .informationGrid
 }

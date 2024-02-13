@@ -8,21 +8,26 @@
 import SwiftUI
 
 enum CountryDetailInfo: String, CaseIterable {
-    case capitals
+    case continents
+    case region
+    case subregion
     case coordinates
+    case capitals
     case languages
     case area
     case population
     case borderedCountries
     case timezones
-    case continents
     
     
-// MARK: - 보라색 에러가 왜 발생하는지 연구해보기
     var localizedTitleKey: LocalizedStringKey {
         switch self {
         case .capitals:
             "county.detail.title.capitals"
+        case .region:
+            "county.detail.title.region"
+        case .subregion:
+            "county.detail.title.subregion"
         case .coordinates:
             "county.detail.title.coordinates"
         case .languages:
@@ -52,10 +57,14 @@ enum CountryDetailInfo: String, CaseIterable {
         guard let detail else { return "" }
     
         switch self {
+        case .region:
+            return detail.region?.localizedName ?? "-"
+        case .subregion:
+            return detail.subregion?.localizedName ?? "-"
         case .capitals:
            return detail.capitals?.joined(separator: ", ") ?? "-"
         case .coordinates:
-            return detail.coordinates.compactMap { $0.description }.joined(separator: ", ")
+            return detail.coordinates.compactMap { String(format: "%.2f", $0) }.joined(separator: ", ")
         case .languages:
             return detail.languages.joined(separator: ", ")
         case .area:
