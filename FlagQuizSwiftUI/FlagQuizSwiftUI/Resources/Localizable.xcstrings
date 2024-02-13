@@ -1156,6 +1156,23 @@
         }
       }
     },
+    "fqRegion.africa" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Africa"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아프리카"
+          }
+        }
+      }
+    },
     "fqRegion.americas" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1184,7 +1201,7 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "남극"
           }
         }
@@ -1305,6 +1322,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "중앙아시아"
+          }
+        }
+      }
+    },
+    "fqSubregion.centralEurope" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Central Europe"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "중앙유럽"
           }
         }
       }
@@ -1509,6 +1543,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "동남아시아"
+          }
+        }
+      }
+    },
+    "fqSubregion.southEasternEurope" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Southeast Europe"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "동남유럽"
           }
         }
       }
@@ -2279,12 +2330,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add currently worn item to cart"
+            "value" : "Add the current outfit to the cart"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "착용 아이템 카트에 담기"
           }
         }

@@ -37,6 +37,8 @@ struct ItemStoreCartButtons: View {
         HStack(spacing: 16) {
             Button(action: addTriedOnItemsToCart) {
                 Text(Localized.addWearingsInTheCart)
+                    .font(.system(size: 14))
+                    .padding(.horizontal, -12)
             }
             .buttonStyle(FQStrokeButtonStyle())
             .padding(.leading, 16)
@@ -44,7 +46,7 @@ struct ItemStoreCartButtons: View {
             
             Button(action: goToCartViewToPay) {
                 Image(systemName: "cart.fill")
-                    .font(.title3)
+                    .font(.system(size: 14))
             }
             .buttonStyle(FQFilledButtonStyle(disabled: false, hasInfinityWidth: false))
             .padding(.trailing, 16)

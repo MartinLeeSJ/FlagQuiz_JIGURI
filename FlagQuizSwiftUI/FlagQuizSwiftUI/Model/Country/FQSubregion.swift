@@ -22,9 +22,11 @@ enum FQSubregion: String, Codable {
     case southEasternAsia = "South-Eastern Asia"
     case southernAsia = "Southern Asia"
     case westernAsia = "Western Asia"
+    case centralEurope = "Central Europe"
     case easternEurope = "Eastern Europe"
     case northernEurope = "Northern Europe"
     case southernEurope = "Southern Europe"
+    case southEasternEurope = "Southeast Europe"
     case westernEurope = "Western Europe"
     case australiaAndNewZealand = "Australia and New Zealand"
     case melanesia = "Melanesia"
@@ -102,6 +104,16 @@ enum FQSubregion: String, Codable {
             String(
                 localized: "fqSubregion.westernAsia",
                 defaultValue: "Western Asia"
+            )
+        case .centralEurope:
+            String(
+                localized: "fqSubregion.centralEurope",
+                defaultValue: "Central Europe"
+            )
+        case .southEasternEurope:
+            String(
+                localized: "fqSubregion.southEasternEurope",
+                defaultValue: "Southeast Europe"
             )
         case .easternEurope:
             String(

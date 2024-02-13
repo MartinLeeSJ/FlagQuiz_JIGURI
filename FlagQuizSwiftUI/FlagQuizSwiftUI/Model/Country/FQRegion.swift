@@ -12,6 +12,7 @@ enum FQRegion: String, Codable {
     case antartica = "Antarctic"
     case asia = "Asia"
     case europe = "Europe"
+    case africa = "Africa"
     case oceania = "Oceania"
     
     var localizedName: String {
@@ -36,7 +37,11 @@ enum FQRegion: String, Codable {
                 localized: "fqRegion.europe",
                 defaultValue: "Europe"
             )
-            
+        case .africa:
+            String(
+                localized: "fqRegion.africa",
+                defaultValue: "Africa"
+            )
         case .oceania:
             String(
                 localized: "fqRegion.oceania",
