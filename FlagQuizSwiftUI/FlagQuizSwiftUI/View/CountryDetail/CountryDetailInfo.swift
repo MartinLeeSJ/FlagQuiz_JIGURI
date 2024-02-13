@@ -8,7 +8,6 @@
 import SwiftUI
 
 enum CountryDetailInfo: String, CaseIterable {
-    case continents
     case region
     case subregion
     case coordinates
@@ -18,6 +17,7 @@ enum CountryDetailInfo: String, CaseIterable {
     case population
     case borderedCountries
     case timezones
+    case continents
     
     
     var localizedTitleKey: LocalizedStringKey {
