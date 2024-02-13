@@ -20,6 +20,8 @@ struct FQCountryDetail: FQCountryRenderer, Codable {
     let borderedCountries: [String]?
     let timezones: [String]
     let continents: [FQContinent]
+    let region: FQRegion?
+    let subregion: FQSubregion?
     let flagLinks: FQFlagLinks
     
     enum CodingKeys: String, CodingKey {
@@ -34,6 +36,8 @@ struct FQCountryDetail: FQCountryRenderer, Codable {
         case borderedCountries = "borders"
         case timezones
         case continents
+        case region
+        case subregion
         case flagLinks = "flags"
     }
     
@@ -59,6 +63,9 @@ struct FQCountryDetail: FQCountryRenderer, Codable {
         let continents: [String] = try container.decode([String].self, forKey: .continents)
         self.continents = continents.compactMap { FQContinent(rawValue: $0) }
         
+        self.region = try container.decode(FQRegion?.self, forKey: .region)
+        self.subregion = try container.decode(FQSubregion?.self, forKey: .subregion)
+        
         self.flagLinks = try container.decode(FQFlagLinks.self, forKey: .flagLinks)
     }
 }
@@ -77,6 +84,8 @@ extension FQCountryDetail {
         borderedCountries: [String]?,
         timezones: [String],
         continents: [FQContinent],
+        region: FQRegion?,
+        subregion: FQSubregion?,
         flagLinks: FQFlagLinks
     ) {
         self.id = id
@@ -90,6 +99,8 @@ extension FQCountryDetail {
         self.borderedCountries = borderedCountries
         self.timezones = timezones
         self.continents = continents
+        self.region = region
+        self.subregion = subregion
         self.flagLinks = flagLinks
         
     }
@@ -101,7 +112,7 @@ extension FQCountryDetail {
             official: "The Republic of Mockland"
         ),
         capitals: ["mokeoul"],
-        coordinates: [100, 33],
+        coordinates: [100.333333, 33.3333333],
         languages: ["mocklish"],
         mapsLinks: .init(googleMaps: "", openStreetMaps: ""),
         area: 111111,
@@ -109,7 +120,9 @@ extension FQCountryDetail {
         borderedCountries: ["fakeland", "fantasyland"],
         timezones: ["UTF +4.0"],
         continents: [.init(rawValue: "Asia")!],
-        flagLinks: .init(png: "", svg: "https://flagcdn.com/co.svg", alt: "")
+        region: .asia,
+        subregion: .easternAsia,
+        flagLinks: .init(png: "https://flagcdn.com/w320/co.png", svg: "https://flagcdn.com/co.svg", alt: "")
     )
 }
 
