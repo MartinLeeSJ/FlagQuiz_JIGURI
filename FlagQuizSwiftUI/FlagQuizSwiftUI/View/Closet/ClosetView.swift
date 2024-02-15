@@ -74,22 +74,27 @@ struct ClosetView: View {
     private func closetItemGrid(isLandscape: Bool) -> some View {
         ClosetItemGrid(isLandscape: isLandscape)
             .overlay(alignment: .bottom) {
-                Button {
-                    closetViewModel.send(.save)
-                } label: {
-                    Text(
-                        String(
-                            localized: "closetView.save.button.title",
-                            defaultValue: "Save current look"
-                        )
-                    )
-                }
-                .disabled(frogModel.items == closetViewModel.currentEquippedItems)
-                .buttonStyle(
-                    FQFilledButtonStyle(
-                        disabled: frogModel.items == closetViewModel.currentEquippedItems
-                    )
-                )
+                saveButton
             }
+    }
+    
+    private var saveButton: some View {
+        let didNotChanged: Bool = Set(frogModel.items) == Set(closetViewModel.currentEquippedItems)
+        return  Button {
+            closetViewModel.send(.save)
+        } label: {
+            Text(
+                String(
+                    localized: "closetView.save.button.title",
+                    defaultValue: "Save current look"
+                )
+            )
+        }
+        .disabled(didNotChanged)
+        .buttonStyle(
+            FQFilledButtonStyle(
+                disabled: didNotChanged
+            )
+        )
     }
 }
