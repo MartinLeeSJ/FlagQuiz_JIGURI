@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FrogImageView<Item>: View where Item: FQItemProtocol {
     private var items: [Item]
-    
     private let frog: FQFrog?
     private let size: CGFloat
     
