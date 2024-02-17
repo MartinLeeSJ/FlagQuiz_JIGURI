@@ -78,7 +78,7 @@ struct FlowingText: View {
         .overlay(alignment: .leading) {
             LinearGradient(
                 stops: [
-                    .init(color: .clear, location: 0.5),
+                    .init(color: .clear, location: 0.3),
                     .init(color: .fqBg, location: 0.9)
                 ],
                 startPoint: .center,
@@ -104,9 +104,13 @@ struct FlowingText: View {
                 flow(width)
             }
         } else {
-            withAnimation(.linear(duration: duration).repeatForever(autoreverses: true)) {
+            withAnimation(.linear(duration: duration).delay(delay)) {
                 offset -= width / 3
             }
+            
+            
+          
+
             
             isAnimating = false
             //TODO: OS버전이 낮은 경우에 completion 없이도 계속 실행 가능한지 연구
@@ -116,4 +120,5 @@ struct FlowingText: View {
 
 #Preview {
     FlowingText("Merry Christmas And Have a Happy new year Everything will be good so dont worry keep going")
+        .padding()
 }

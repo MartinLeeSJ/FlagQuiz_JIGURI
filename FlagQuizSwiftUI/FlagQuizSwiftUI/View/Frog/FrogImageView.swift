@@ -22,43 +22,38 @@ struct FrogImageView<Item>: View where Item: FQItemProtocol {
         self.size = size
     }
     
+    private var allItemTypeExceptBackground: [FQItemType] {
+        Array(FQItemType.allCases[1...])
+    }
+    
     var body: some View {
         ZStack {
-            itemImage(ofType: .background)
+            if let background = items.first(where: { $0.type == .background }) {
+                itemImage(background)
+            }
             
             Image(frog?.state.frogImageName ?? "frogSoSo")
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: size)
             
-            itemImage(ofType: .shoes)
+            ForEach(allItemTypeExceptBackground, id: \.self) { itemType in
+                let item = items.first(where: { $0.type == itemType })
+                
+                itemImage(item)
+                    .id(item?.id)
+            }
             
-            itemImage(ofType: .bottom)
-            
-            itemImage(ofType: .gloves)
-            
-            itemImage(ofType: .top)
-            
-            itemImage(ofType: .overall)
-            
-            itemImage(ofType: .faceDeco)
-            
-            itemImage(ofType: .accessory)
-            
-            itemImage(ofType: .hair)
-            
-            itemImage(ofType: .hat)
-            
-            itemImage(ofType: .set)
            
         }
     }
     
     @ViewBuilder
-    func itemImage(ofType type: FQItemType) -> some View {
-        if let item = items.first(where: { $0.type == type }) {
+    private func itemImage(_ item: FQItemProtocol?) -> some View {
+        if let item {
             StorageImageView(item.storageImagePath(equipped: true)) {
                 ProgressView()
+                    .foregroundStyle(.clear)
                     .frame(width: size, height: size)
             }
             .scaledToFit()

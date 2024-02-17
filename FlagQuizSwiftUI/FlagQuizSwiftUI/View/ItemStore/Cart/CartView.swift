@@ -19,27 +19,31 @@ struct CartView: View {
     }
     
     var body: some View {
-        VStack {
-            header
-            
-            CartItemList()
+        GeometryReader { geo in
+            let width = geo.size.width
+            let height = geo.size.height
+            let verticalPadding: CGFloat = width > height ? 10 : 60
+            VStack {
+                header
                 
-            Divider()
-            
-            CartViewFooter(isCartViewPresented: $isCartViewPresented)
-           
-        }
-        .padding(16)
-        .background(
-            in: .rect(
-                cornerRadius: 10,
-                style: .continuous
+                CartItemList()
+                    
+                Divider()
+                
+                CartViewFooter(isCartViewPresented: $isCartViewPresented)
+               
+            }
+            .padding(16)
+            .background(
+                in: .rect(
+                    cornerRadius: 10,
+                    style: .continuous
+                )
             )
-        )
-        .backgroundStyle(.thinMaterial)
-        .padding(.horizontal)
-        .padding(.vertical, 60)
-        
+            .backgroundStyle(.thinMaterial)
+            .padding(.horizontal)
+            .padding(.vertical, verticalPadding)
+        }
     }
     
     @ViewBuilder
