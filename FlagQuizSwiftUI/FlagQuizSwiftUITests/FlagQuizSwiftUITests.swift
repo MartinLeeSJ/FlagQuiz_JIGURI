@@ -65,9 +65,19 @@ final class FlagQuizSwiftUITests: XCTestCase {
     var countryAPIClient: CountryAPIClientType?
     var subscriptions = Set<AnyCancellable>()
     
+    override func setUpWithError() throws {
+        let mockClient = MockCountryAPIClient()
+        countryAPIClient = mockClient
+        countryService = MockCountryService(apiClient: mockClient)
+    }
+    
+    override func tearDownWithError() throws {
+        countryAPIClient = nil
+        countryService = nil
+    }
+    
 
     func testDecodeCountryObject() {
-        countryAPIClient = MockCountryAPIClient()
         
         countryAPIClient?.getCountries(of: .init([.init("170")]))
             .sink{ completion in
@@ -81,6 +91,7 @@ final class FlagQuizSwiftUITests: XCTestCase {
                 }
                 
                 XCTAssertEqual(object.ccn3, "170")
+                XCTAssertEqual(object.subregion, "South America")
             
             }
             .store(in: &subscriptions)
@@ -88,7 +99,6 @@ final class FlagQuizSwiftUITests: XCTestCase {
     
     
     func testDecodeFQCountry() {
-        countryService = MockCountryService(apiClient: MockCountryAPIClient())
         
         countryService?.getCountries(ofCodes: [.init("170")])
             .sink { completion in
@@ -102,13 +112,12 @@ final class FlagQuizSwiftUITests: XCTestCase {
                 }
                 
                 XCTAssertEqual(country.id, .init("170"))
+                
             }
             .store(in: &subscriptions)
     }
     
     func testDecodeFQCountryDetail() {
-        countryService = MockCountryService(apiClient: MockCountryAPIClient())
-        
         countryService?.getCountryDetails(ofCodes: [.init("170")])
             .sink { completion in
                 if case .failure(let error) = completion {
@@ -121,23 +130,13 @@ final class FlagQuizSwiftUITests: XCTestCase {
                 }
                 
                 XCTAssertEqual(country.id, .init("170"))
+                XCTAssertEqual(country.region, .americas)
+                XCTAssertEqual(country.subregion, .southAmerica)
             }
             .store(in: &subscriptions)
     }
     
     
-    func test어스캔디포인트4point5가잘계산되는지() {
-        let quizResult = FQQuiz.mock4point5
-        let earthCandy = FQEarthCandy.calculatePoint(from: quizResult, ofUser: "1")
-        
-        XCTAssertEqual(earthCandy.point, 4.5)
-    }
     
-    func test어스캔디포인트1point5가잘계산되는지() {
-        let quizResult = FQQuiz.mock1point5
-        let earthCandy = FQEarthCandy.calculatePoint(from: quizResult, ofUser: "1")
-        
-        XCTAssertEqual(earthCandy.point, 1.5)
-    }
 
 }

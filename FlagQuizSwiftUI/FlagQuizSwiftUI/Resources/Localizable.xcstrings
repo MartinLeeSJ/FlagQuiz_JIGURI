@@ -273,13 +273,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Discounted %lldpercent\nthanks to FlagFrog's great mood"
+            "value" : "Discounted %lldpercent thanks to FlagFrog's great mood"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "지구리가 기분이 좋아서\n%lld퍼센트 할인 적용!"
+            "value" : "지구리가 기분이 좋아서 %lld퍼센트 할인 적용!"
           }
         }
       }
@@ -543,6 +543,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "인구"
+          }
+        }
+      }
+    },
+    "county.detail.title.region" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지역"
+          }
+        }
+      }
+    },
+    "county.detail.title.subregion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subregion"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "하위지역"
           }
         }
       }
@@ -1120,6 +1152,516 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "상의"
+          }
+        }
+      }
+    },
+    "fqRegion.africa" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Africa"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아프리카"
+          }
+        }
+      }
+    },
+    "fqRegion.americas" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Americas"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아메리카"
+          }
+        }
+      }
+    },
+    "fqRegion.antartica" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Antarctic"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "남극"
+          }
+        }
+      }
+    },
+    "fqRegion.asia" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Asia"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아시아"
+          }
+        }
+      }
+    },
+    "fqRegion.europe" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Europe"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "유럽"
+          }
+        }
+      }
+    },
+    "fqRegion.oceania" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Oceania"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오세아니아"
+          }
+        }
+      }
+    },
+    "fqSubregion.australiaAndNewZealand" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Australia and New Zealand"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오스트레일리아와 뉴질랜드"
+          }
+        }
+      }
+    },
+    "fqSubregion.caribbean" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Caribbean"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "캐리비안"
+          }
+        }
+      }
+    },
+    "fqSubregion.centralAmerica" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Central America"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "중앙아메리카"
+          }
+        }
+      }
+    },
+    "fqSubregion.centralAsia" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Central Asia"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "중앙아시아"
+          }
+        }
+      }
+    },
+    "fqSubregion.centralEurope" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Central Europe"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "중앙유럽"
+          }
+        }
+      }
+    },
+    "fqSubregion.easternAfrica" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Eastern Africa"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "동아프리카"
+          }
+        }
+      }
+    },
+    "fqSubregion.easternAsia" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Eastern Asia"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "동아시아"
+          }
+        }
+      }
+    },
+    "fqSubregion.easternEurope" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Eastern Europe"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "동유럽"
+          }
+        }
+      }
+    },
+    "fqSubregion.melanesia" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Melanesia"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "멜라네시아"
+          }
+        }
+      }
+    },
+    "fqSubregion.micronesia" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Micronesia"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마이크로네시아"
+          }
+        }
+      }
+    },
+    "fqSubregion.middelAfrica" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Middle Africa"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "중앙아프리카"
+          }
+        }
+      }
+    },
+    "fqSubregion.northAmerica" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "North America"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "북아메리카"
+          }
+        }
+      }
+    },
+    "fqSubregion.northernAfrica" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Northern Africa"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "북아프리카"
+          }
+        }
+      }
+    },
+    "fqSubregion.northernEurope" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Northern Europe"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "북유럽"
+          }
+        }
+      }
+    },
+    "fqSubregion.polynesia" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Polynesia"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "폴리네시아"
+          }
+        }
+      }
+    },
+    "fqSubregion.southAmerica" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "South America"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "남아메리카"
+          }
+        }
+      }
+    },
+    "fqSubregion.southEasternAsia" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "South-Eastern Asia"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "동남아시아"
+          }
+        }
+      }
+    },
+    "fqSubregion.southEasternEurope" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Southeast Europe"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "동남유럽"
+          }
+        }
+      }
+    },
+    "fqSubregion.southernAfrica" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Southern Africa"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "남아프리카"
+          }
+        }
+      }
+    },
+    "fqSubregion.southernAsia" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Southern Asia"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "남아시아"
+          }
+        }
+      }
+    },
+    "fqSubregion.southernEurope" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Southern Europe"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "남유럽"
+          }
+        }
+      }
+    },
+    "fqSubregion.westernAfrica" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Western Africa"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서아프리카"
+          }
+        }
+      }
+    },
+    "fqSubregion.westernAsia" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Western Asia"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서아시아"
+          }
+        }
+      }
+    },
+    "fqSubregion.westernEurope" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Western Europe"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서유렵"
           }
         }
       }
@@ -1788,7 +2330,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add currently worn item to cart"
+            "value" : "Add the current outfit to the cart"
           }
         },
         "ko" : {
@@ -2134,6 +2676,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "더 많은 기능을 사용하고 싶다면,\n먼저 계정을 생성해주세요!"
+          }
+        }
+      }
+    },
+    "linkingLogin.photoBooth.description" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To access the photoBooth,\nplease create an account now."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지구리 사진을 찍고 싶나요?\n먼저 계정을 생성해주세요!"
           }
         }
       }

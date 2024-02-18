@@ -20,6 +20,8 @@ struct CountryObject: Codable {
     let gini: [String : Double]?
     let timezones: [String]
     let continents: [String]
+    let region: String?
+    let subregion: String?
     let flags: [String:String]
 }
 
@@ -57,6 +59,8 @@ extension CountryObject {
             borderedCountries: borders,
             timezones: timezones,
             continents: continents.compactMap { .init(rawValue: $0) },
+            region: .init(rawValue: region ?? ""),
+            subregion: .init(rawValue: subregion ?? ""),
             flagLinks: .init(png: flags["png"], svg: flags["svg"], alt: flags["alt"])
         )
     }
