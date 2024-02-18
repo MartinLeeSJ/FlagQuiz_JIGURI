@@ -67,8 +67,6 @@ fileprivate struct StorageImageInnerView<Placeholder>: View where Placeholder: V
                 placeholder()
             }
         }
-        .transition(.opacity)
-        .animation(.easeIn(duration: 1.0), value: viewModel.image)
         .onAppear {
             if viewModel.loadingState == .none {
                 viewModel.loadImage()

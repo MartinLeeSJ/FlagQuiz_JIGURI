@@ -38,8 +38,10 @@ final class StorageImageViewModel: ObservableObject {
                     self?.loadingState = .failed
                 }
             } receiveValue: { [weak self] image in
-                self?.image = image
-                self?.loadingState = .loaded
+                withAnimation(.smooth) {
+                    self?.image = image
+                    self?.loadingState = .loaded                    
+                }
             }
             .store(in: &cancellables)
         
