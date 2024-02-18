@@ -75,13 +75,13 @@ struct FlowingText: View {
                     }
                 }
         }
-        .overlay(alignment: .leading) {
+        .mask(alignment:.leading) {
             LinearGradient(
                 stops: [
-                    .init(color: .clear, location: 0.3),
-                    .init(color: .fqBg, location: 0.9)
+                    .init(color: .black, location: 0.75),
+                    .init(color: .clear, location: 1)
                 ],
-                startPoint: .center,
+                startPoint: .leading,
                 endPoint: .trailing
             )
             .frame(width: outerGeo.size.width)
@@ -108,11 +108,11 @@ struct FlowingText: View {
                 offset -= width / 3
             }
             
-            
-          
-
-            
-            isAnimating = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + duration + delay + 0.5) {
+                guard isAnimating else { return }
+                offset = 0.0
+                flow(width)
+            }
             //TODO: OS버전이 낮은 경우에 completion 없이도 계속 실행 가능한지 연구
         }
     }

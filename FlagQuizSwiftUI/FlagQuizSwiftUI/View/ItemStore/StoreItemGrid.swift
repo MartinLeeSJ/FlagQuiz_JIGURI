@@ -18,7 +18,12 @@ struct StoreItemGrid: View {
     }
 
     private var currentTypeItems: [FQItem] {
-        return itemStoreViewModel.storeItems.filter { $0.type == itemStoreViewModel.selectedType }
+        return itemStoreViewModel.storeItems
+            .filter {
+                $0.type == itemStoreViewModel.selectedType
+            }.sorted {
+                $0.stockName < $1.stockName
+            }
     }
     
     private var colums: [GridItem] {

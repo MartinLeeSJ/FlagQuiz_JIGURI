@@ -77,25 +77,29 @@ struct ItemStoreSelectedItemView: View {
             HStack {
                 let isWearing: Bool = itemStoreViewModel.triedOnItems.contains(where: { $0 == item })
                 let isInTheCart: Bool = cart.items.contains { $0 == item }
-                
                 Button(action: tryOn) {
                     Text(isWearing ? Localized.alreadyWearing : Localized.tryOn)
+                        .font(.subheadline)
                 }
                 .buttonStyle(
                     FQStrokeButtonStyle(
                         disabled: isWearing,
-                        hasInfinityWidth: false
+                        hasInfinityWidth: true
                     )
                 )
                 .disabled(isWearing)
                 
+                Spacer()
+                    .frame(width: 16)
+                
                 Button(action: addToTheCart) {
                     Text(isInTheCart ? Localized.isInTheCart : Localized.addToCart)
+                        .font(.subheadline)
                 }
                 .buttonStyle(
                     FQFilledButtonStyle(
                         disabled: isInTheCart,
-                        hasInfinityWidth: false
+                        hasInfinityWidth: true
                     )
                 )
                 .disabled(isInTheCart)

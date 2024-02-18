@@ -22,7 +22,9 @@ struct CartView: View {
         GeometryReader { geo in
             let width = geo.size.width
             let height = geo.size.height
-            let verticalPadding: CGFloat = width > height ? 10 : 60
+            let topPadding: CGFloat = width > height ? 5 : 20
+            let bottomPadding: CGFloat = width > height ? 10 : 40
+            
             VStack {
                 header
                 
@@ -42,7 +44,8 @@ struct CartView: View {
             )
             .backgroundStyle(.thinMaterial)
             .padding(.horizontal)
-            .padding(.vertical, verticalPadding)
+            .padding(.top, topPadding)
+            .padding(.bottom, bottomPadding)
         }
     }
     

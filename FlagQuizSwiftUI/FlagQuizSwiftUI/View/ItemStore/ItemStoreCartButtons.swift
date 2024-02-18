@@ -56,6 +56,7 @@ struct ItemStoreCartButtons: View {
             }
         }
         .padding(.top, 24)
+        .padding(.bottom, 12)
         .background(in: .rect)
         .background(ignoresSafeAreaEdges: .all)
         .backgroundStyle(backgroundGradient)

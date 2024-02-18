@@ -273,13 +273,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Discounted %lldpercent\nthanks to FlagFrog's great mood"
+            "value" : "Discounted %lldpercent thanks to FlagFrog's great mood"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "지구리가 기분이 좋아서\n%lld퍼센트 할인 적용!"
+            "value" : "지구리가 기분이 좋아서 %lld퍼센트 할인 적용!"
           }
         }
       }
@@ -2335,7 +2335,7 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "착용 아이템 카트에 담기"
           }
         }
