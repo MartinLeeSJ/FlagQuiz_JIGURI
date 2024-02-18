@@ -48,10 +48,12 @@ struct QuizSettingView: View {
     }
     
     private var verticalContent: some View {
+        
         VStack(alignment: .leading, spacing: 16) {
             introTitle
             
             Spacer()
+              
             
             Divider()
                 .overlay {
@@ -66,7 +68,9 @@ struct QuizSettingView: View {
                 }
             
             quizSettingControls
+            
         }
+        
     }
     
     private func horizontalContent(_ width: CGFloat) -> some View {
@@ -98,14 +102,21 @@ struct QuizSettingView: View {
             Spacer()
                 .frame(height: 64)
             
-            TypeWritingText(
-                originalText: String(localized: "quizSetting.intro"),
-                animation: .easeInOut
-            ) {
-                //TODO: 추가적인 애니메이션 실행
-            }
-            .font(.custom(FontName.pixel, size: 40))
-            .padding(.horizontal)
+            Text("quizSetting.intro")
+                .opacity(0)
+                .font(.custom(FontName.pixel, size: 40))
+                .padding(.horizontal)
+                .overlay(alignment: .leading) {
+                    TypeWritingText(
+                        originalText: String(localized: "quizSetting.intro"),
+                        animation: .easeInOut
+                    ) {
+                        //TODO: 추가적인 애니메이션 실행
+                    }
+                    .font(.custom(FontName.pixel, size: 40))
+                    .padding(.horizontal)
+                }
+                
         }
     }
     
@@ -118,8 +129,19 @@ struct QuizSettingView: View {
 
 
 #Preview {
-    QuizSettingView(viewModel: .init(container: .init(services: StubService())))
-        .environmentObject(DIContainer(services: StubService()))
-        .environmentObject(NavigationModel())
+    TabView {
+        QuizSettingView(viewModel: .init(container: .init(services: StubService())))
+            .environmentObject(DIContainer(services: StubService()))
+            .environmentObject(NavigationModel()).tabItem {
+                Text("Tab Label 1")
+        }
+        .tag(1)
+        
+        Text("Tab Content 2").tabItem {
+            Text("Tab Label 2")
+        }
+        .tag(2)
+    }
+   
 }
 

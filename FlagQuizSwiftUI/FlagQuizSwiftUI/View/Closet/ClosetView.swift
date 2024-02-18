@@ -96,5 +96,6 @@ struct ClosetView: View {
                 disabled: didNotChanged
             )
         )
+        .padding(.bottom, 12)
     }
 }
