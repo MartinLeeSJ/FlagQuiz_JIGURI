@@ -73,11 +73,12 @@ struct FrogView: View {
                 }
             }
             
-            FrogImageView(
-                frog: nil,
-                items: frogModel.items,
-                size: 200
-            )
+            Image("frogSoSo")
+                .renderingMode(.template)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200)
+                .foregroundStyle(.quaternary)
             
             Button {
                 

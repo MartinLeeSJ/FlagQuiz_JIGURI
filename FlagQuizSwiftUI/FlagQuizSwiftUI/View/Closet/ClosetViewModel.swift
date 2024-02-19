@@ -83,17 +83,27 @@ final class ClosetViewModel: ObservableObject {
     
     private func equipItem(_ item: FQUserItem) {
         defer {
+            if item.type != .background {
+                equippedItem[.set] = nil
+            }
             equippedItem[item.type] = item
         }
         
         switch item.type {
         case .top, .bottom:
             equippedItem[.overall] = nil
+            
         case .overall:
             equippedItem[.top] = nil
             equippedItem[.bottom] = nil
+            
         case .set:
-            equippedItem = .init()
+            equippedItem.forEach {
+                if $0.key != .background {
+                    equippedItem[$0.key] = nil
+                }
+            }
+            
         default:
             break
         }
@@ -104,6 +114,7 @@ final class ClosetViewModel: ObservableObject {
     private func save() {
         let items: [FQUserItem] = equippedItem.values.compactMap { $0 }
         guard let userId = container.services.authService.checkAuthenticationState() else { return }
+        
         
         container.services.frogService.updateFrogItems(ofUser: userId, itemIds: items.map { $0.id } )
             .sink { _ in

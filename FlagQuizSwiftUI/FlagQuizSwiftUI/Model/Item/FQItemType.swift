@@ -8,17 +8,7 @@
 import Foundation
 
 enum FQItemType: String, Hashable, Codable, CaseIterable {
-    case hair
-    case hat
-    case top
-    case bottom
-    case overall
-    case accessory
-    case gloves
-    case shoes
-    case background
-    case faceDeco
-    case set
+    case background, shoes, bottom, gloves, top, overall, faceDeco, accessory, hair, hat, set
     
     var localizedName: String {
         switch self {

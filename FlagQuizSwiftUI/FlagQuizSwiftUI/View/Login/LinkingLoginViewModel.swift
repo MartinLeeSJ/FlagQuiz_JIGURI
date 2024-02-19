@@ -110,6 +110,7 @@ class LinkingLoginViewModel: ObservableObject {
     private func signOut() {
         do {
             try container.services.authService.signOut()
+            
         } catch {
             self.toast = .init(
                 style: .failed,

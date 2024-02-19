@@ -68,6 +68,9 @@
 		5B39012A2B5F9696009BB9C6 /* LinkingLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3901292B5F9696009BB9C6 /* LinkingLoginView.swift */; };
 		5B39012C2B5F96D9009BB9C6 /* LinkingLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39012B2B5F96D9009BB9C6 /* LinkingLoginViewModel.swift */; };
 		5B39012E2B5FAEDF009BB9C6 /* UserNameSettingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39012D2B5FAEDF009BB9C6 /* UserNameSettingSection.swift */; };
+		5B41350E2B7B054C005E8331 /* FQRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41350D2B7B054C005E8331 /* FQRegion.swift */; };
+		5B4135102B7B055F005E8331 /* FQSubregion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41350F2B7B055F005E8331 /* FQSubregion.swift */; };
+		5B46CF322B79FB750039CE3F /* FQCountryDetailTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B46CF312B79FB750039CE3F /* FQCountryDetailTest.swift */; };
 		5B4DF92F2B6FA109005AA2DB /* InformationBalloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF92E2B6FA109005AA2DB /* InformationBalloon.swift */; };
 		5B50562F2B4BBEDF00FCA5A7 /* FrogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */; };
 		5B5056312B4BC3C900FCA5A7 /* FrogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5056302B4BC3C900FCA5A7 /* FrogModel.swift */; };
@@ -314,6 +317,9 @@
 		5B3901292B5F9696009BB9C6 /* LinkingLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingLoginView.swift; sourceTree = "<group>"; };
 		5B39012B2B5F96D9009BB9C6 /* LinkingLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingLoginViewModel.swift; sourceTree = "<group>"; };
 		5B39012D2B5FAEDF009BB9C6 /* UserNameSettingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameSettingSection.swift; sourceTree = "<group>"; };
+		5B41350D2B7B054C005E8331 /* FQRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQRegion.swift; sourceTree = "<group>"; };
+		5B41350F2B7B055F005E8331 /* FQSubregion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQSubregion.swift; sourceTree = "<group>"; };
+		5B46CF312B79FB750039CE3F /* FQCountryDetailTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQCountryDetailTest.swift; sourceTree = "<group>"; };
 		5B4DF92E2B6FA109005AA2DB /* InformationBalloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationBalloon.swift; sourceTree = "<group>"; };
 		5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogView.swift; sourceTree = "<group>"; };
 		5B5056302B4BC3C900FCA5A7 /* FrogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogModel.swift; sourceTree = "<group>"; };
@@ -828,6 +834,7 @@
 			isa = PBXGroup;
 			children = (
 				5B5C2ADD2B280A34009A382B /* FlagQuizSwiftUITests.swift */,
+				5B46CF312B79FB750039CE3F /* FQCountryDetailTest.swift */,
 			);
 			path = FlagQuizSwiftUITests;
 			sourceTree = "<group>";
@@ -1167,9 +1174,11 @@
 			isa = PBXGroup;
 			children = (
 				5BE7D2A12B29A7F20044C3D4 /* FQCountry.swift */,
-				5BE086602B3190F300D38C01 /* FQContinent.swift */,
 				5BE086572B31907C00D38C01 /* FQCountryDetail.swift */,
 				5BE0865A2B3190AC00D38C01 /* FQCountryName.swift */,
+				5BE086602B3190F300D38C01 /* FQContinent.swift */,
+				5B41350D2B7B054C005E8331 /* FQRegion.swift */,
+				5B41350F2B7B055F005E8331 /* FQSubregion.swift */,
 				5BE0865C2B3190C500D38C01 /* FQFlagLinks.swift */,
 				5BE0865E2B3190DA00D38C01 /* FQMapsLinks.swift */,
 			);
@@ -1607,6 +1616,7 @@
 				5B6EAAD42B454A2D006DA3BE /* AllRankInfoView.swift in Sources */,
 				5B69C6392B6E893800240D4C /* RemoteImageLoadingState.swift in Sources */,
 				5BC707652B57A576005752A8 /* BannerAdContentView.swift in Sources */,
+				5B4135102B7B055F005E8331 /* FQSubregion.swift in Sources */,
 				5B16F9792B287B700011ACF7 /* DBError.swift in Sources */,
 				5B0F29262B517AA800788FE7 /* MakerView.swift in Sources */,
 				5BDD3C362B6651620088D3A3 /* FQUserItemObject.swift in Sources */,
@@ -1652,6 +1662,7 @@
 				5BFF437B2B466E3A00C3DBCB /* FQItem.swift in Sources */,
 				5B16F9832B2890CD0011ACF7 /* ErrorView.swift in Sources */,
 				5BE086512B29D6A500D38C01 /* APIError.swift in Sources */,
+				5B41350E2B7B054C005E8331 /* FQRegion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1659,6 +1670,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B46CF322B79FB750039CE3F /* FQCountryDetailTest.swift in Sources */,
 				5B5C2ADE2B280A34009A382B /* FlagQuizSwiftUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1848,7 +1860,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martin.FlagQuizSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1887,7 +1899,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martin.FlagQuizSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
