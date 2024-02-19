@@ -93,11 +93,15 @@ final class ItemStoreViewModel: ObservableObject {
         
         switch item.type {
         case .top, .bottom:
-            return triedOnItems.contains(where: {$0.type == .overall})
+            return triedOnItems.contains(where: {$0.type == .overall || $0.type == .set})
         case .overall:
-            return triedOnItems.contains(where: {$0.type == .top || $0.type == .bottom})
+            return triedOnItems.contains(where: {$0.type == .top || $0.type == .bottom || $0.type == .set})
+        case .set:
+            return triedOnItems.contains { $0.type != .background }
+        case .background:
+            return triedOnItems.contains { $0.type == .background }
         default:
-            return false
+            return triedOnItems.contains { $0.type == .set }
         }
     }
     
@@ -105,6 +109,11 @@ final class ItemStoreViewModel: ObservableObject {
     /// - Parameters:
     ///   - item: 착용하는 아이템
     private func tryOn(item: FQItem) {
+        if let indexOfSet = triedOnItems.firstIndex(where: { $0.type == .set }),
+           item.type != .background{
+            triedOnItems.remove(at: indexOfSet)
+        }
+        
         // 만약 상하의를 입는 거라면 tryTopBottom(item:languageCode:)를 실행한다.
         if item.type == .top || item.type == .bottom {
             tryTopBottomOn(item: item)
@@ -114,6 +123,12 @@ final class ItemStoreViewModel: ObservableObject {
         // 만약 한벌 의상을 입는 거라면 tryTopBottom(item:languageCode:)를 실행한다.
         if item.type == .overall {
             tryOverAllOn(item: item)
+            return
+        }
+        
+        // 만약 세트를 입는 거라면 trySetOn()를 실행한다.
+        if item.type == .set {
+            trySetOn(item: item)
             return
         }
         
@@ -186,6 +201,10 @@ final class ItemStoreViewModel: ObservableObject {
         // 벗어야하는 아이템을 wearingItems에서 지우고 입을 아이템을 insert한다
         triedOnItems.remove(atOffsets: IndexSet(indexes))
         triedOnItems.insert(item, at: indexes.first ?? 0)
+    }
+    
+    private func trySetOn(item: FQItem) {
+        triedOnItems = triedOnItems.filter { $0.type == .background } + [item]
     }
     
     //MARK: - Take Off
