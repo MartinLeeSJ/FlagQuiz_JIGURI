@@ -11,7 +11,7 @@ import AuthenticationServices
 struct LinkingLoginView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
-    @EnvironmentObject private var navigationModel: NavigationModel
+    @EnvironmentObject private var container: DIContainer
     @StateObject private var viewModel: LinkingLoginViewModel
     
     private let location: LinkingLoginLocation?
@@ -87,7 +87,7 @@ struct LinkingLoginView: View {
             "linkingLoginView.should.signOut.alert.title",
             isPresented: $viewModel.presentsShouldLogOutAlert) {
                 Button {
-                    navigationModel.toRoot()
+                    container.navigationModel.toRoot()
                     authViewModel.send(.signOut)
                 } label: {
                     Text("OK")
@@ -117,7 +117,7 @@ struct LinkingLoginView: View {
             container: .init(services: StubService())
         )
     )
-    .environmentObject(NavigationModel())
+    .environmentObject(DIContainer(services: StubService()))
 }
 
 

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct QuizStatCell: View {
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var viewModel: NewsViewModel
-    @EnvironmentObject private var navigationModel: NavigationModel
     
     var body: some View {
         NewsGridCell(
@@ -30,7 +30,7 @@ struct QuizStatCell: View {
             if isAnonymousUser {
                 viewModel.setLinkingLocation(.userStat)
             } else {
-                navigationModel.navigate(to: NewsDestination.quizRecord)
+                container.navigationModel.navigate(to: NewsDestination.quizRecord)
             }
         }
     }

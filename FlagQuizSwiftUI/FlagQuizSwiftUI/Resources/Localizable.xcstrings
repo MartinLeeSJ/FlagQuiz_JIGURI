@@ -2188,17 +2188,10 @@
       }
     },
     "frogView.closet.title" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Closet"
-          }
-        },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "옷 갈아입기"
           }
         }
@@ -2221,34 +2214,20 @@
       }
     },
     "frogView.photoBooth.title" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "PhotoBooth"
-          }
-        },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "포토부스"
           }
         }
       }
     },
     "frogView.store.title" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Store"
-          }
-        },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "상점"
           }
         }

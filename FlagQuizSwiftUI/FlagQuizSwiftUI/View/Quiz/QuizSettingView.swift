@@ -10,7 +10,6 @@ import SwiftUI
 
 struct QuizSettingView: View {
     @EnvironmentObject private var container: DIContainer
-    @EnvironmentObject private var navigationModel: NavigationModel
     @StateObject private var viewModel: QuizViewModel
     
     
@@ -19,7 +18,7 @@ struct QuizSettingView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $navigationModel.destinations) {
+        NavigationStack(path: $container.navigationModel.destinations) {
             GeometryReader { geo in
                 if geo.size.width < geo.size.height {
                     verticalContent
@@ -132,7 +131,7 @@ struct QuizSettingView: View {
     TabView {
         QuizSettingView(viewModel: .init(container: .init(services: StubService())))
             .environmentObject(DIContainer(services: StubService()))
-            .environmentObject(NavigationModel()).tabItem {
+            .tabItem {
                 Text("Tab Label 1")
         }
         .tag(1)

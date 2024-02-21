@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 struct CreateUserNameView: View {
-    @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var container: DIContainer
     @StateObject private var viewModel: CreateUserNameViewModel
     
@@ -27,7 +26,7 @@ struct CreateUserNameView: View {
         }
         .onChange(of: viewModel.didCreatedUserName) { didCreated in
             if didCreated {
-                navigationModel.navigate(to: OnBoardingDestination.createFrog)
+                container.navigationModel.navigate(to: OnBoardingDestination.createFrog)
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -98,5 +97,5 @@ struct CreateUserNameView: View {
         )
     )
     .environmentObject(DIContainer(services: StubService()))
-    .environmentObject(NavigationModel())
+    
 }

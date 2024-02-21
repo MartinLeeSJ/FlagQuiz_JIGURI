@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct QuizSettingControls: View {
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var viewModel: QuizViewModel
-    @EnvironmentObject private var navigationModel: NavigationModel
     @AppStorage("didthequiz") private var didTheQuiz: Bool = false
     
     @State private var quizCount: FQQuizCount = .ten
@@ -65,7 +65,7 @@ struct QuizSettingControls: View {
                         quizType: quizType
                     )
                 )
-                navigationModel.navigate(to: QuizDestination.quiz)
+                container.navigationModel.navigate(to: QuizDestination.quiz)
             } label: {
                 Text("start.quiz")
                     .font(.custom(FontName.pixel, size: 16))
@@ -208,7 +208,7 @@ struct QuizSettingControls: View {
 
 #Preview {
     QuizSettingControls()
-        .environmentObject(NavigationModel())
+        .environmentObject(DIContainer(services: StubService()))
         .environmentObject(
             QuizViewModel(
                 container: .init(

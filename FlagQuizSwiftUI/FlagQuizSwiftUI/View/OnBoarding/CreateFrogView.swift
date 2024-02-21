@@ -10,7 +10,7 @@ import Combine
 import AppTrackingTransparency
 
 struct CreateFrogView: View {
-    @EnvironmentObject private var navigationModel: NavigationModel
+    @EnvironmentObject private var container: DIContainer
     @StateObject private var viewModel: CreateFrogViewModel
     @AppStorage(UserDefaultKey.ShowOnboarding) private var showOnBoarding: Bool = true
     
@@ -115,9 +115,9 @@ struct CreateFrogView: View {
             guard didCreate else { return }
             
             if ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
-                navigationModel.navigate(to: OnBoardingDestination.attDescription)
+                container.navigationModel.navigate(to: OnBoardingDestination.attDescription)
             } else {
-                navigationModel.toRoot()
+                container.navigationModel.toRoot()
                 showOnBoarding = false
             }
             
@@ -215,6 +215,7 @@ struct CreateFrogView: View {
             )
         )
     )
-    .environmentObject(NavigationModel())
+    .environmentObject(DIContainer(services: StubService()))
+    
     
 }

@@ -15,8 +15,8 @@ enum QuizResultViewAnimationID: String {
 }
 
 struct QuizResultView: View {
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var viewModel: QuizViewModel
-    @EnvironmentObject private var navigationModel: NavigationModel
     @State private var showScoreDetail: Bool = true
     @Namespace private var scoreAnimation
     
@@ -67,7 +67,7 @@ struct QuizResultView: View {
         .navigationBarBackButtonHidden()
         .toolbar {
             Button {
-                navigationModel.toRoot()
+                container.navigationModel.toRoot()
             } label: {
                 Text("save.and.quit")
             }

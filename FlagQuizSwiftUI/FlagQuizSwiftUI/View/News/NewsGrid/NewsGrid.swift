@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NewsGrid: View {
     @EnvironmentObject private var viewModel: NewsViewModel
-    @EnvironmentObject private var navigationModel: NavigationModel
     
 
     var body: some View {
@@ -53,5 +52,5 @@ struct NewsGrid: View {
 #Preview {
     NewsGrid()
         .environmentObject(NewsViewModel(container: .init(services: StubService())))
-        .environmentObject(NavigationModel())
+        
 }
