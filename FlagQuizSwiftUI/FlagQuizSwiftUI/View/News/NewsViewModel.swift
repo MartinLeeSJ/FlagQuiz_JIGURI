@@ -9,7 +9,6 @@ import SwiftUI
 
 @MainActor
 final class NewsViewModel: ObservableObject {
-    
     @Published var quizStat: FQUserQuizStat?
     @Published var bestCountryQuizStat: FQCountryQuizStat?
     @Published var worstCountryQuizStat: FQCountryQuizStat?

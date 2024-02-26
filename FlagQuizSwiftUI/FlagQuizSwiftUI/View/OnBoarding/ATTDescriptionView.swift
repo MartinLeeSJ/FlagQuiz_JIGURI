@@ -9,7 +9,7 @@ import SwiftUI
 import AppTrackingTransparency
 
 struct ATTDescriptionView: View {
-    @EnvironmentObject private var navigationModel: NavigationModel
+    @EnvironmentObject private var container: DIContainer
     @AppStorage(UserDefaultKey.ShowOnboarding) private var showOnBoarding: Bool = true
     
     var body: some View {
@@ -98,7 +98,7 @@ struct ATTDescriptionView: View {
     private func requestTrackingAuthorization() {
         ATTrackingManager.requestTrackingAuthorization { _ in
                 DispatchQueue.main.async {
-                    navigationModel.toRoot()
+                    container.navigationModel.toRoot()
                     showOnBoarding = false
                 }
         }
@@ -107,5 +107,5 @@ struct ATTDescriptionView: View {
 
 #Preview {
     ATTDescriptionView()
-        .environmentObject(NavigationModel())
+        .environmentObject(DIContainer(services: StubService()))
 }

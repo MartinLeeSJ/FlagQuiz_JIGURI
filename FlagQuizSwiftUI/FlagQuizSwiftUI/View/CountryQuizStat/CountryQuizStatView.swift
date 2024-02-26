@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CountryQuizStatView: View {
-    @EnvironmentObject private var navigationModel: NavigationModel
+    @EnvironmentObject private var container: DIContainer
     @StateObject private var viewModel: CountryQuizStatViewModel
     
     @State private var query: String = ""
@@ -67,7 +67,7 @@ struct CountryQuizStatView: View {
                 .foregroundStyle(Color(uiColor: .tertiaryLabel))
         }
         .onTapGesture {
-            navigationModel.navigate(to: NewsDestination.countryDetail(stat.id))
+            container.navigationModel.navigate(to: NewsDestination.countryDetail(stat.id))
         }
         
     }
@@ -84,6 +84,6 @@ struct CountryQuizStatView: View {
                 )
             )
         )
-        .environmentObject(NavigationModel())
+        .environmentObject(DIContainer(services: StubService()))
     }
 }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct UserRankCell: View {
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var viewModel: NewsViewModel
-    @EnvironmentObject private var navigationModel: NavigationModel
     
     var body: some View {
         let rank: FQUserRank? = viewModel.quizStat?.rank
@@ -36,7 +36,7 @@ struct UserRankCell: View {
             if isAnonymousUser {
                 viewModel.setLinkingLocation(.userRank)
             } else {
-                navigationModel.navigate(to: NewsDestination.userRank)
+                container.navigationModel.navigate(to: NewsDestination.userRank)
             }
         }
     }

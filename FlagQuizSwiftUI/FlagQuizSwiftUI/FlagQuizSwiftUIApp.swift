@@ -14,7 +14,7 @@ struct FlagQuizSwiftUIApp: App {
     @StateObject private var hapticsManager: HapticsManager = .init()
     @StateObject private var notificationManager: NotificationManager = .init()
     @StateObject private var networkMonitor: NetworkMonitorManager = .init()
-    @StateObject private var navigationModel: NavigationModel = .init()
+    
     
     var body: some Scene {
         WindowGroup {
@@ -26,7 +26,7 @@ struct FlagQuizSwiftUIApp: App {
             .environmentObject(hapticsManager)
             .environmentObject(notificationManager)
             .environmentObject(networkMonitor)
-            .environmentObject(navigationModel)
+            
             
         }
     }

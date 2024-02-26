@@ -9,7 +9,7 @@ import SwiftUI
 import IsoCountryCodes
 
 struct QuizView: View {
-    @EnvironmentObject private var navigationModel: NavigationModel
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var viewModel: QuizViewModel
     
     @State private var isReallyQuitAlertOn: Bool = false
@@ -48,7 +48,7 @@ struct QuizView: View {
         }
         .alert("really.quit.quiz", isPresented: $isReallyQuitAlertOn) {
             Button {
-                navigationModel.toRoot()
+                container.navigationModel.toRoot()
             } label: {
                 Text("Quit")
                     .foregroundStyle(Color.red)
@@ -146,6 +146,6 @@ struct QuizView: View {
     return NavigationStack {
         QuizView()
             .environmentObject(viewModel)
-            .environmentObject(NavigationModel())
+            .environmentObject(DIContainer(services: StubService()))
     }
 }

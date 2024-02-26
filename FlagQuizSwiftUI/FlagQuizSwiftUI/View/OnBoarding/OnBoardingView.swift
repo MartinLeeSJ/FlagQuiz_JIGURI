@@ -12,12 +12,11 @@ import SwiftUI
 struct OnBoardingView: View {
     @Environment(\.colorScheme) private var scheme
     @EnvironmentObject private var container: DIContainer
-    @EnvironmentObject private var navigationModel: NavigationModel
     @State private var story: OnBoardingStory = .one
     @State private var didReadStory: Bool = false
 
     var body: some View {
-        NavigationStack(path: $navigationModel.destinations) {
+        NavigationStack(path: $container.navigationModel.destinations) {
             stroyContent
                 .navigationDestination(for: OnBoardingDestination.self) { destination in
                     switch destination {
@@ -133,7 +132,7 @@ struct OnBoardingView: View {
     }
     
     private func toCreateUserNameView() {
-        navigationModel.navigate(to: OnBoardingDestination.createUserName)
+        container.navigationModel.navigate(to: OnBoardingDestination.createUserName)
     }
 }
 
@@ -181,5 +180,5 @@ enum OnBoardingStory: Int, Hashable, CaseIterable {
 #Preview {
     OnBoardingView()
         .environmentObject(DIContainer(services: StubService()))
-        .environmentObject(NavigationModel())
+        
 }

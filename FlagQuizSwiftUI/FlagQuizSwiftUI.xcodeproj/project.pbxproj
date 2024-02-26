@@ -108,7 +108,6 @@
 		5B69C63B2B6E8A5F00240D4C /* StorageImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C63A2B6E8A5F00240D4C /* StorageImageCacheService.swift */; };
 		5B6EAAD22B453BA7006DA3BE /* UserRankAccuracyGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6EAAD12B453BA7006DA3BE /* UserRankAccuracyGauge.swift */; };
 		5B6EAAD42B454A2D006DA3BE /* AllRankInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6EAAD32B454A2D006DA3BE /* AllRankInfoView.swift */; };
-		5B757DD22B5C1145000E611E /* FrogMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B757DD12B5C1145000E611E /* FrogMenuView.swift */; };
 		5B757DD42B5C1238000E611E /* FrogSettlementIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B757DD32B5C1238000E611E /* FrogSettlementIcon.swift */; };
 		5B757DDA2B5CB17C000E611E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B757DD92B5CB17C000E611E /* GoogleService-Info.plist */; };
 		5B757DDC2B5CB3EF000E611E /* ToastAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B757DDB2B5CB3EF000E611E /* ToastAlert.swift */; };
@@ -130,6 +129,7 @@
 		5B8A87222B3EC26D00247DB9 /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A87212B3EC26D00247DB9 /* NetworkMonitorManager.swift */; };
 		5B8A87242B3EC8F100247DB9 /* QuizAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A87232B3EC8F100247DB9 /* QuizAnswer.swift */; };
 		5B8A87262B3EC9DC00247DB9 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A87252B3EC9DC00247DB9 /* QuizQuestion.swift */; };
+		5B8C6D082B86432900CD52D1 /* FrogMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8C6D072B86432900CD52D1 /* FrogMenuView.swift */; };
 		5B9A81AD2B3AAC660087142A /* CountryDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A81AC2B3AAC660087142A /* CountryDetailInfo.swift */; };
 		5B9A81AF2B3AC3470087142A /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A81AE2B3AC3470087142A /* NewsViewModel.swift */; };
 		5B9A81B12B3AC4F00087142A /* FQCountryQuizStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A81B02B3AC4F00087142A /* FQCountryQuizStat.swift */; };
@@ -358,7 +358,6 @@
 		5B69C63A2B6E8A5F00240D4C /* StorageImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageImageCacheService.swift; sourceTree = "<group>"; };
 		5B6EAAD12B453BA7006DA3BE /* UserRankAccuracyGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankAccuracyGauge.swift; sourceTree = "<group>"; };
 		5B6EAAD32B454A2D006DA3BE /* AllRankInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRankInfoView.swift; sourceTree = "<group>"; };
-		5B757DD12B5C1145000E611E /* FrogMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FrogMenuView.swift; path = ../../../../../../Desktop/FrogMenuView.swift; sourceTree = "<group>"; };
 		5B757DD32B5C1238000E611E /* FrogSettlementIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogSettlementIcon.swift; sourceTree = "<group>"; };
 		5B757DD52B5CB167000E611E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B757DD92B5CB17C000E611E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -381,6 +380,7 @@
 		5B8A87212B3EC26D00247DB9 /* NetworkMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorManager.swift; sourceTree = "<group>"; };
 		5B8A87232B3EC8F100247DB9 /* QuizAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAnswer.swift; sourceTree = "<group>"; };
 		5B8A87252B3EC9DC00247DB9 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
+		5B8C6D072B86432900CD52D1 /* FrogMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrogMenuView.swift; sourceTree = "<group>"; };
 		5B9A81AC2B3AAC660087142A /* CountryDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailInfo.swift; sourceTree = "<group>"; };
 		5B9A81AE2B3AC3470087142A /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		5B9A81B02B3AC4F00087142A /* FQCountryQuizStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQCountryQuizStat.swift; sourceTree = "<group>"; };
@@ -577,7 +577,6 @@
 			children = (
 				5B16F97E2B2890780011ACF7 /* MainTabView.swift */,
 				5B6171832B574E83005987A5 /* Ads */,
-				5B19C1642B3C0CD3001A74CE /* Navigation */,
 				5B6171722B553392005987A5 /* OnBoarding */,
 				5B50562D2B4BBECA00FCA5A7 /* Frog */,
 				5B9FC6092B48273400B694C7 /* EarthCandy */,
@@ -604,7 +603,6 @@
 				5B16F96D2B286C2F0011ACF7 /* Utils */,
 				5B7BCAF22B32C87A00E50C5F /* ButtonStyle */,
 				5B0F31192B4A9C8500121561 /* Shape */,
-				5B16F94D2B2845420011ACF7 /* DIContainer.swift */,
 				5B16F97C2B2883670011ACF7 /* Constant.swift */,
 				5BE3E4D12B3985E40048C10E /* StructWrapper.swift */,
 				5B795CBA2B3D31FD004AF9EE /* Firestore+Extension.swift */,
@@ -761,7 +759,7 @@
 				5B50562E2B4BBEDF00FCA5A7 /* FrogView.swift */,
 				5B69C62B2B6E174000240D4C /* FrogImageView.swift */,
 				5BF173A92B70D98A00E1CD5D /* FrogPhotoBooth */,
-				5B757DD12B5C1145000E611E /* FrogMenuView.swift */,
+				5B8C6D072B86432900CD52D1 /* FrogMenuView.swift */,
 				5B757DD32B5C1238000E611E /* FrogSettlementIcon.swift */,
 				5BB40D3B2B4E6C8100E907F0 /* FrogViewButtonStyle.swift */,
 				5B5056302B4BC3C900FCA5A7 /* FrogModel.swift */,
@@ -808,6 +806,7 @@
 				5B16F95E2B28487B0011ACF7 /* FlagQuizSwiftUI.entitlements */,
 				5B5C2ACC2B280A32009A382B /* FlagQuizSwiftUIApp.swift */,
 				5B16F9482B2833390011ACF7 /* AppDelegate.swift */,
+				5B8C6D062B863CC200CD52D1 /* Dependency */,
 				5B3448562B35D3E7002E2222 /* Manager */,
 				5B16F9722B287A390011ACF7 /* Repository */,
 				5B16F94F2B2845600011ACF7 /* Service */,
@@ -965,6 +964,15 @@
 				5BC998362B43E16900A5EA12 /* UserRankViewModel.swift */,
 			);
 			path = UserRank;
+			sourceTree = "<group>";
+		};
+		5B8C6D062B863CC200CD52D1 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				5B16F94D2B2845420011ACF7 /* DIContainer.swift */,
+				5B19C1642B3C0CD3001A74CE /* Navigation */,
+			);
+			path = Dependency;
 			sourceTree = "<group>";
 		};
 		5B9A81B42B3AC7CE0087142A /* User */ = {
@@ -1533,9 +1541,9 @@
 				5B559F082B28B85400B131BE /* NewsView.swift in Sources */,
 				5BFF43832B46800900C3DBCB /* FrogDBRepository.swift in Sources */,
 				5BE3E4D22B3985E40048C10E /* StructWrapper.swift in Sources */,
+				5B8C6D082B86432900CD52D1 /* FrogMenuView.swift in Sources */,
 				5BE3E4CE2B3985A70048C10E /* CountryMemoryStorage.swift in Sources */,
 				5B0F31162B4A8F4F00121561 /* QuizResultScoreCard.swift in Sources */,
-				5B757DD22B5C1145000E611E /* FrogMenuView.swift in Sources */,
 				5B19C1682B3C0D2F001A74CE /* NavigationModel.swift in Sources */,
 				5BE7D29B2B29A4950044C3D4 /* QuizRecordService.swift in Sources */,
 				5B34257D2B5FB6B900478190 /* LinkingLoginLocation.swift in Sources */,
@@ -1870,7 +1878,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1909,7 +1917,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

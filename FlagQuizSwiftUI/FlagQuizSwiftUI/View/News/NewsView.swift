@@ -10,7 +10,6 @@ import SwiftUI
 struct NewsView: View {
     @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var notificationManager: NotificationManager
-    @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @StateObject private var viewModel: NewsViewModel
     
@@ -23,7 +22,7 @@ struct NewsView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $navigationModel.destinations) {
+        NavigationStack(path: $container.navigationModel.destinations) {
             ScrollView {
                 VStack {
                     FrogView(
@@ -52,7 +51,7 @@ struct NewsView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        navigationModel.navigate(to: NewsDestination.myPage)
+                        container.navigationModel.navigate(to: NewsDestination.myPage)
                     } label: {
                         Text("My")
                             .font(.custom(FontName.pixel, size: 24))
@@ -97,6 +96,7 @@ struct NewsView: View {
             .environmentObject(viewModel)
         }
     }
+  
 
 }
 
@@ -109,7 +109,6 @@ struct NewsView: View {
             viewModel: NewsViewModel(container: DIContainer(services: StubService()))
         )
         .environmentObject(DIContainer(services: StubService()))
-        .environmentObject(NavigationModel())
         .environmentObject(NotificationManager())
         .environmentObject(
             AuthenticationViewModel(

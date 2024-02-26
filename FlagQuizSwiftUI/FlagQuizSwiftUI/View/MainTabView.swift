@@ -29,7 +29,6 @@ enum Tabs: Int, Hashable, CaseIterable {
 
 struct MainTabView: View {
     @EnvironmentObject private var container: DIContainer
-    @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var notificationManager: NotificationManager
     @AppStorage(UserDefaultKey.ShowOnboarding) private var showOnBoarding: Bool = true
     @State private var tabSelection: Tabs = .quizSetting

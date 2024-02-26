@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct QuizRecordView: View {
+    @EnvironmentObject private var container: DIContainer
     @StateObject private var viewModel: QuizRecordViewModel
-    @EnvironmentObject private var navigationModel: NavigationModel
     
     init(viewModel: QuizRecordViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -65,7 +65,7 @@ struct QuizRecordView: View {
 }
 
 struct QuizRecordListRow: View {
-    @EnvironmentObject private var navigationModel: NavigationModel
+    @EnvironmentObject private var container: DIContainer
     private let record: FQQuizRecord
     
     
@@ -99,7 +99,7 @@ struct QuizRecordListRow: View {
 
         }
         .onTapGesture {
-            navigationModel.navigate(
+            container.navigationModel.navigate(
                 to: NewsDestination.quizRecordDetail(record)
             )
         }
@@ -129,7 +129,7 @@ struct QuizRecordListHeader: View {
                 )
             )
         )
-        .environmentObject(NavigationModel())
+        .environmentObject(DIContainer(services: StubService()))
         
     
 }

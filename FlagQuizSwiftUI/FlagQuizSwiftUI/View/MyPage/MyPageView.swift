@@ -24,7 +24,6 @@ enum MyPageMenuType: String, Identifiable {
 struct MyPageView: View {
     @Environment(\.locale) private var locale
     @EnvironmentObject private var container: DIContainer
-    @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     
     @StateObject private var viewModel: MyPageViewModel
@@ -208,7 +207,7 @@ struct MyPageView: View {
             Button("mypage.reallyDelete.delete", role: .destructive ) {
                 presentReallyDelete = false
                 authViewModel.send(.deleteAccount)
-                navigationModel.toRoot()
+                container.navigationModel.toRoot()
                 
             }
         }
@@ -234,7 +233,6 @@ extension View {
     NavigationStack {
         MyPageView(viewModel: .init(container: .init(services: StubService())))
             .environmentObject(DIContainer(services: StubService()))
-            .environmentObject(NavigationModel())
             .environmentObject(
                 AuthenticationViewModel(
                     container: .init(

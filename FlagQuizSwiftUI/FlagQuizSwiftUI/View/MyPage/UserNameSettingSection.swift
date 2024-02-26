@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct UserNameSettingSection: View {
-    @EnvironmentObject private var navigationModel: NavigationModel
     @EnvironmentObject private var authViewModel: AuthenticationViewModel
     @EnvironmentObject private var container: DIContainer
     
@@ -88,7 +87,7 @@ struct UserNameSettingSection: View {
                         
                     } else {
                         Button {
-                            navigationModel.toRoot()
+                            container.navigationModel.toRoot()
                             authViewModel.send(.signOut)
                         } label: {
                             Text("mypage.logOutButton.title")

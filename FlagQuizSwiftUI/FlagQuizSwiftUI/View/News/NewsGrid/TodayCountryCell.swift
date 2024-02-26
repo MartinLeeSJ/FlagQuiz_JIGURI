@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TodayCountryCell: View {
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var viewModel: NewsViewModel
-    @EnvironmentObject private var navigationModel: NavigationModel
     
     private let todaysCode: FQCountryISOCode? = FQCountryISOCode.todaysCode()
     
@@ -35,7 +35,7 @@ struct TodayCountryCell: View {
         .gridCellUnsizedAxes(.horizontal)
         .onTapGesture {
             guard let todaysCode else { return }
-            navigationModel.navigate(to: NewsDestination.countryDetail(todaysCode))
+            container.navigationModel.navigate(to: NewsDestination.countryDetail(todaysCode))
         }
     }
 }

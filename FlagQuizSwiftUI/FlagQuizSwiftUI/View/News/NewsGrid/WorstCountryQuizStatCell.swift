@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct WorstCountryQuizStatCell: View {
+    @EnvironmentObject private var container: DIContainer
     @EnvironmentObject private var viewModel: NewsViewModel
-    @EnvironmentObject private var navigationModel: NavigationModel
     
     var body: some View {
         NewsGridCell(
@@ -39,12 +39,9 @@ struct WorstCountryQuizStatCell: View {
             if isAnonymousUser {
                 viewModel.setLinkingLocation(.countryStat)
             } else {
-                navigationModel.navigate(to: NewsDestination.countryQuizStat)
+                container.navigationModel.navigate(to: NewsDestination.countryQuizStat)
             }
         }
     }
 }
 
-#Preview {
-    WorstCountryQuizStatCell()
-}
