@@ -16,15 +16,15 @@ struct FrogMenuView: View {
     
     var body: some View {
         GeometryReader { geo in
-            let width = geo.size.width
+            let buttonWidth = geo.size.width / 3
             HStack {
                 Spacer()
                 toItemStoreButton
-                    .frame(maxWidth: width / 3)
+                    .frame(maxWidth: buttonWidth)
                 toClosetButton
-                    .frame(maxWidth: width / 3)
+                    .frame(maxWidth: buttonWidth)
                 toPhotoBoothButton
-                    .frame(maxWidth: width / 3)
+                    .frame(maxWidth: buttonWidth)
                 Spacer()
             }
         }
@@ -32,7 +32,7 @@ struct FrogMenuView: View {
      
     }
     
-    var toItemStoreButton: some View {
+    private var toItemStoreButton: some View {
         VStack {
             Button {
                 toItemStoreButtonDidTap()
@@ -49,7 +49,7 @@ struct FrogMenuView: View {
         }
     }
     
-    func toItemStoreButtonDidTap() {
+    private func toItemStoreButtonDidTap() {
         if let isAnonymous = newsViewModel.isAnonymousUser(),
            isAnonymous {
             newsViewModel.setLinkingLocation(.store)
@@ -58,7 +58,7 @@ struct FrogMenuView: View {
         }
     }
     
-    var toClosetButton: some View {
+    private var toClosetButton: some View {
         VStack {
             Button {
                 toClosetButtonDidTap()
@@ -74,7 +74,7 @@ struct FrogMenuView: View {
         }
     }
     
-    func toClosetButtonDidTap() {
+    private func toClosetButtonDidTap() {
         if let isAnonymous = newsViewModel.isAnonymousUser(),
            isAnonymous {
             newsViewModel.setLinkingLocation(.closet)
@@ -83,7 +83,7 @@ struct FrogMenuView: View {
         }
     }
     
-    var toPhotoBoothButton: some View {
+    private var toPhotoBoothButton: some View {
         VStack {
             Button {
                 toPhotoBoothButtonDidTap()
@@ -108,7 +108,7 @@ struct FrogMenuView: View {
         
     }
     
-    func toPhotoBoothButtonDidTap() {
+    private func toPhotoBoothButtonDidTap() {
         if let isAnonymous = newsViewModel.isAnonymousUser(),
            isAnonymous {
             newsViewModel.setLinkingLocation(.photoBooth)

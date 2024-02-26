@@ -8,13 +8,17 @@
 import Foundation
 import FirebaseFirestore
 
+
 struct FQUserObject: Codable {
-    @DocumentID var id: String?
+    var id: String?
     var createdAt: Timestamp
     var email: String?
     var userName: String?
     var isAnonymous: Bool?
 }
+
+
+
 
 extension FQUserObject {
     func toModel() -> FQUser? {
