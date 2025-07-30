@@ -52,4 +52,13 @@ enum FQQuizType: String, Hashable, CaseIterable {
         case .random: 3
         }
     }
+    
+    var difficulty: FQQuizDifficulty {
+        switch self {
+        case .chooseNameFromFlag: .easy
+        case .chooseFlagFromName: .easy
+        case .chooseCaptialFromFlag: .hard
+        case .random: .extreme
+        }
+    }
 }

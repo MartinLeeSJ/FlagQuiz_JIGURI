@@ -53,6 +53,26 @@
         }
       }
     },
+    "<" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<"
+          }
+        }
+      }
+    },
+    ">" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ">"
+          }
+        }
+      }
+    },
     "Accuracy" : {
       "localizations" : {
         "ko" : {
@@ -3677,12 +3697,13 @@
         }
       }
     },
-    "quizIntro.quizCountPicker.title" : {
+    "quizCountSettings.title" : {
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quiz Counts"
+            "state" : "new",
+            "value" : "Quiz Count"
           }
         },
         "ko" : {
@@ -3693,34 +3714,19 @@
         }
       }
     },
-    "quizIntro.quizItemCountPicker.title" : {
+    "quizOptionsCountSettings.title" : {
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quiz Options"
+            "state" : "new",
+            "value" : "Quiz Options Count"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "퀴즈 선택지 수"
-          }
-        }
-      }
-    },
-    "quizIntro.quizTypeMenu.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quiz Type"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "퀴즈 타입"
+            "value" : "퀴즈 옵션 수"
           }
         }
       }
@@ -3790,90 +3796,6 @@
         }
       }
     },
-    "quizSettingControls.quizCount.candy%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Maximum %lld points"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "최대 %lld개 캔디"
-          }
-        }
-      }
-    },
-    "quizSettingControls.quizOptions.extra.candy%lld" : {
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Extra %lld Point"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Extra %lld Points"
-                }
-              }
-            }
-          }
-        },
-        "ko" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "+ 추가 %lld개 캔디"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "quizSettingControls.quizType.extra.candy%lld" : {
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Extra %lld Point"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Extra %lld Points"
-                }
-              }
-            }
-          }
-        },
-        "ko" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "+추가 %lld개 캔디"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "quizSettingControls.total.maximum.candy.description%lld" : {
       "localizations" : {
         "en" : {
@@ -3886,6 +3808,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "최대 %lld개의 캔디를 얻을 수 있습니다."
+          }
+        }
+      }
+    },
+    "quizSettings.difficulty.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Difficulty"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "난이도"
           }
         }
       }
@@ -3944,13 +3883,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Name"
+            "value" : "USA → 🇺🇸"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이름"
+            "value" : "대한민국 → 🇰🇷 "
           }
         }
       }
@@ -3976,13 +3915,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Flag"
+            "value" : "🇺🇸 → USA"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "국기"
+            "value" : "🇰🇷 → 대한민국"
           }
         }
       }
@@ -4031,6 +3970,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "랜덤"
+          }
+        }
+      }
+    },
+    "quizTypeSettings.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quiz Types"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "퀴즈 타입"
           }
         }
       }

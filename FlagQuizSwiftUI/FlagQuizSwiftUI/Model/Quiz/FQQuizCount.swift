@@ -11,4 +11,12 @@ enum FQQuizCount: Int, CaseIterable {
     case five = 5
     case ten = 10
     case fifteen = 15
+    
+    var difficulty: FQQuizDifficulty {
+        switch self {
+        case .five: .easy
+        case .ten: .hard
+        case .fifteen: .extreme
+        }
+    }
 }

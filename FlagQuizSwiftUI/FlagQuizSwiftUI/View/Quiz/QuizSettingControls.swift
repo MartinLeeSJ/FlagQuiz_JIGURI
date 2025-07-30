@@ -18,191 +18,79 @@ struct QuizSettingControls: View {
     
     
     var body: some View {
-        VStack(spacing: 20) {
-            ZStack {
-                VStack(spacing: 20) {
-                   controlPane
-                    
-                    Text("quizSettingControls.total.maximum.candy.description\(quizType.advantageCandy + quizCount.rawValue +  quizOptionsCount.advantageCandy)")
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .foregroundStyle(.black)
-                        .padding(4)
-                        .frame(maxWidth: .infinity)
-                        .background(in: Capsule(style: .continuous))
-                        .backgroundStyle(.fqAccent)
-                        .padding(.horizontal)
-                }
-                .overlay {
-                    if !didTheQuiz {
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundStyle(.ultraThinMaterial)
-                    }
-                }
-                
-                if !didTheQuiz {
-                    VStack(spacing: 16) {
-                        Text(
-                            String(
-                                localized: "quizSettingControls.quiz.first",
-                                defaultValue: "Shall we just start the quiz first?"
-                            )
-                        )
-                        Image(systemName: "arrow.down")
-                    }
-                    .font(.headline)
-                }
+        VStack(spacing: 12) {
+            VStack(spacing: 16) {
+                controls
+                totalEarthCandyDescription
             }
-            
-            Button {
-                if !didTheQuiz {
-                    didTheQuiz = true
-                }
-                viewModel.send(
-                    .setNewQuiz(
-                        count: quizCount,
-                        optionsCount: quizOptionsCount,
-                        quizType: quizType
-                    )
-                )
-                container.navigationModel.navigate(to: QuizDestination.quiz)
-            } label: {
-                Text("start.quiz")
-                    .font(.custom(FontName.pixel, size: 16))
+            .padding(8)
+            .overlay {
+                startQuizFirstView
             }
-            .buttonStyle(FQFilledButtonStyle(disabled: false))
+            startQuizButton
         }
         .padding()
     }
     
+    
     @ViewBuilder
-    private var controlPane: some View {
-        HStack(alignment: .top, spacing: 16) {
-            quizTypeMenu
-            Divider()
-                .frame(height: 100)
-            quizCountPicker
-            Divider()
-                .frame(height: 100)
-            quizItemCountPicker
+    private var controls: some View {
+        QuizTypeSettings(quizType: $quizType)
+        QuizCountSettings(quizCount: $quizCount)
+        QuizOptionsCountSettings(quizOptionsCount: $quizOptionsCount)
+    }
+    
+    @ViewBuilder
+    private var startQuizFirstView: some View {
+        if !didTheQuiz {
+            VStack(spacing: 16) {
+                Text(
+                    String(
+                        localized: "quizSettingControls.quiz.first",
+                        defaultValue: "Shall we just start the quiz first?"
+                    )
+                )
+                Image(systemName: "arrow.down")
+            }
+            .font(.headline)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background {
+                RoundedRectangle(cornerRadius: 20)
+                    .foregroundStyle(.ultraThinMaterial)
+            }
         }
     }
     
-    private var quizTypeMenu: some View {
-        VStack {
-            Text("quizIntro.quizTypeMenu.title")
-                .font(.subheadline)
-                .fontWeight(.medium)
-            
-            if #available(iOS 17.0, *) {
-                Picker(
-                    "quizIntro.quizTypeMenu.title",
-                    selection: $quizType) {
-                        ForEach(FQQuizType.allCases, id: \.self) { quizType in
-                            Text(quizType.localizedShortenedTitle)
-                                .font(.custom(FontName.pixel, size: 15))
-                                .fontWeight(.medium)
-                            
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(maxHeight: 100)
-            } else {
-                Picker(
-                    "quizIntro.quizTypeMenu.title",
-                    selection: $quizType) {
-                        ForEach(FQQuizType.allCases, id: \.self) { quizType in
-                            Text(quizType.localizedShortenedTitle)
-                                .font(.custom(FontName.pixel, size: 15))
-                                .fontWeight(.medium)
-                            
-                        }
-                    }
-            }
-            
-            Text("quizSettingControls.quizType.extra.candy\(quizType.advantageCandy)")
-                .font(.caption)
-            
-        }
-        
+    private var totalEarthCandyDescription: some View {
+        Text("quizSettingControls.total.maximum.candy.description\(quizType.advantageCandy + quizCount.rawValue +  quizOptionsCount.advantageCandy)")
+            .font(.caption)
+            .fontWeight(.medium)
+            .foregroundStyle(.black)
+            .padding(4)
+            .frame(maxWidth: .infinity)
+            .background(in: Capsule(style: .continuous))
+            .backgroundStyle(.fqAccent)
+            .padding(.horizontal)
     }
     
-    private var quizCountPicker: some View {
-        VStack(alignment: .center) {
-            Text("quizIntro.quizCountPicker.title")
-                .font(.subheadline)
-                .fontWeight(.medium)
-            
-            
-            if #available(iOS 17.0, *) {
-                Picker("quizIntro.quizCountPicker.title",
-                       selection: $quizCount
-                ) {
-                    ForEach(FQQuizCount.allCases, id: \.self) { quizCount in
-                        Text("\(quizCount.rawValue)")
-                            .font(.custom(FontName.pixel, size: 30))
-                            .fontWeight(.medium)
-                            .tag(quizCount)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .frame(maxHeight: 100)
-            } else {
-                Picker("quizIntro.quizCountPicker.title",
-                       selection: $quizCount
-                ) {
-                    ForEach(FQQuizCount.allCases, id: \.self) { quizCount in
-                        Text("\(quizCount.rawValue)")
-                            .font(.custom(FontName.pixel, size: 30))
-                            .fontWeight(.medium)
-                            .tag(quizCount)
-                    }
-                }
+    private var startQuizButton: some View {
+        Button {
+            if !didTheQuiz {
+                didTheQuiz = true
             }
-            
-            Text("quizSettingControls.quizCount.candy\(quizCount.rawValue)")
-                .font(.caption)
-            
+            viewModel.send(
+                .setNewQuiz(
+                    count: quizCount,
+                    optionsCount: quizOptionsCount,
+                    quizType: quizType
+                )
+            )
+            container.navigationModel.navigate(to: QuizDestination.quiz)
+        } label: {
+            Text("start.quiz")
+                .font(.custom(FontName.pixel, size: 16))
         }
-        
-    }
-    
-    private var quizItemCountPicker: some View {
-        VStack(alignment: .center) {
-            Text("quizIntro.quizItemCountPicker.title")
-                .font(.subheadline)
-                .fontWeight(.medium)
-            
-            if #available(iOS 17.0, *) {
-                Picker("quizIntro.quizItemCountPicker.title",
-                       selection: $quizOptionsCount
-                ) {
-                    ForEach(FQQuizOptionsCount.allCases, id: \.self) { quizItemCount in
-                        Text("\(quizItemCount.rawValue)")
-                            .font(.custom(FontName.pixel, size: 30))
-                            .fontWeight(.medium)
-                            .tag(quizItemCount)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .frame(maxHeight: 100)
-            } else {
-                Picker("quizIntro.quizItemCountPicker.title",
-                       selection: $quizOptionsCount
-                ) {
-                    ForEach(FQQuizOptionsCount.allCases, id: \.self) { quizItemCount in
-                        Text("\(quizItemCount.rawValue)")
-                            .font(.custom(FontName.pixel, size: 30))
-                            .fontWeight(.medium)
-                            .tag(quizItemCount)
-                    }
-                }
-            }
-            
-            Text("quizSettingControls.quizOptions.extra.candy\(quizOptionsCount.advantageCandy)")
-                .font(.caption)
-        }
-        
+        .buttonStyle(FQFilledButtonStyle(disabled: false))
     }
 }
 
