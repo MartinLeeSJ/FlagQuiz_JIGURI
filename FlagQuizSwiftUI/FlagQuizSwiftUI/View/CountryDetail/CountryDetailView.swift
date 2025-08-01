@@ -46,7 +46,7 @@ struct CountryDetailView: View {
     }
     
     private var maps: some View {
-        Map(coordinateRegion: $viewModel.region)
+        Map(coordinateRegion: viewModel.bindingRegion)
             .frame(
                 minHeight: 200,
                 idealHeight: 250,

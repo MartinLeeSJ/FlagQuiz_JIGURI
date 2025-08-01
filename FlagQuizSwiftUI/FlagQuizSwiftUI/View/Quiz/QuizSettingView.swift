@@ -25,7 +25,6 @@ struct QuizSettingView: View {
                 } else {
                     horizontalContent(geo.size.width)
                 }
-                
             }
             .navigationDestination(for: QuizDestination.self) { destination in
                 Group {

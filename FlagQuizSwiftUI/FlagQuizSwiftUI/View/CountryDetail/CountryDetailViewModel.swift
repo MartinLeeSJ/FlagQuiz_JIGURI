@@ -12,11 +12,19 @@ import MapKit
 
 
 
-@MainActor
 final class CountryDetailViewModel: ObservableObject {
-    @Published var countryDetail: FQCountryDetail?
+    @Published var countryDetail: FQCountryDetail? = nil
     @Published var region: MKCoordinateRegion = .init(.world)
     
+    var bindingRegion: Binding<MKCoordinateRegion> {
+        Binding {
+            self.region
+        } set: { newRegion in
+            self.region = newRegion
+        }
+
+    }
+
     
     enum Action {
         case load
@@ -54,12 +62,19 @@ final class CountryDetailViewModel: ObservableObject {
                     print(error.localizedDescription)
                 }
             } receiveValue: { [weak self] detail in
-                self?.countryDetail = detail
-                if let coordinateRegion = detail?.coordinateRegion {
-                    self?.region = coordinateRegion
-                }
+                self?.setCountryDetailInformation(from: detail)
             }
             .store(in: &cancellables)
+    }
+    
+    
+    private func setCountryDetailInformation(from detail: FQCountryDetail) {
+        DispatchQueue.main.async {
+            self.countryDetail = detail
+            if let coordinateRegion = detail.coordinateRegion {
+                self.region = coordinateRegion
+            }
+        }
     }
     
     private func openInMaps() {

@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B0050072B75F54B00D6B8F4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5B0050062B75F54B00D6B8F4 /* FirebaseMessaging */; };
 		5B0050092B76165300D6B8F4 /* WorstCountryQuizStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0050082B76165300D6B8F4 /* WorstCountryQuizStatCell.swift */; };
+		5B0BFDE72B8E15520010CF2B /* FQQuizDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0BFDE62B8E15520010CF2B /* FQQuizDifficulty.swift */; };
+		5B0BFDE92B8EAAD10010CF2B /* QuizTypeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0BFDE82B8EAAD10010CF2B /* QuizTypeSettings.swift */; };
+		5B0BFDEB2B8EAD930010CF2B /* QuizSettingTabViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0BFDEA2B8EAD930010CF2B /* QuizSettingTabViewModifier.swift */; };
+		5B0BFDED2B8EAFAC0010CF2B /* QuizCountSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0BFDEC2B8EAFAC0010CF2B /* QuizCountSettings.swift */; };
+		5B0BFDEF2B8EB2050010CF2B /* QuizOptionsCountSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0BFDEE2B8EB2050010CF2B /* QuizOptionsCountSettings.swift */; };
 		5B0F29262B517AA800788FE7 /* MakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F29252B517AA800788FE7 /* MakerView.swift */; };
 		5B0F29282B52543300788FE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F29272B52543300788FE7 /* InformationView.swift */; };
 		5B0F292B2B52546100788FE7 /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F292A2B52546100788FE7 /* InformationViewModel.swift */; };
@@ -18,10 +22,6 @@
 		5B0F31182B4A9BEC00121561 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F31172B4A9BEC00121561 /* Line.swift */; };
 		5B0F311B2B4AA36D00121561 /* QuizResultScoreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F311A2B4AA36D00121561 /* QuizResultScoreSection.swift */; };
 		5B0F31382B4AE35100121561 /* FloatingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F31372B4AE35100121561 /* FloatingCard.swift */; };
-		5B16F9362B282AF60011ACF7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F9352B282AF60011ACF7 /* FirebaseAnalytics */; };
-		5B16F9382B282AF60011ACF7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F9372B282AF60011ACF7 /* FirebaseAuth */; };
-		5B16F93A2B282AF60011ACF7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F9392B282AF60011ACF7 /* FirebaseFirestore */; };
-		5B16F93E2B282AF60011ACF7 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F93D2B282AF60011ACF7 /* FirebaseFirestoreSwift */; };
 		5B16F9422B2830570011ACF7 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9412B2830570011ACF7 /* OnBoardingView.swift */; };
 		5B16F9452B2830A60011ACF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B16F9442B2830A60011ACF7 /* LaunchScreen.storyboard */; };
 		5B16F9472B2831300011ACF7 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B16F9462B2831300011ACF7 /* Colors.xcassets */; };
@@ -32,8 +32,6 @@
 		5B16F9572B28470E0011ACF7 /* AuthenticationRouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9562B28470E0011ACF7 /* AuthenticationRouterView.swift */; };
 		5B16F95A2B28472F0011ACF7 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9592B28472F0011ACF7 /* AuthenticationViewModel.swift */; };
 		5B16F95D2B2847610011ACF7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F95C2B2847610011ACF7 /* LoginView.swift */; };
-		5B16F9612B284A840011ACF7 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F9602B284A840011ACF7 /* GoogleSignIn */; };
-		5B16F9632B284A840011ACF7 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B16F9622B284A840011ACF7 /* GoogleSignInSwift */; };
 		5B16F9682B2850000011ACF7 /* FQUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9672B2850000011ACF7 /* FQUser.swift */; };
 		5B16F96A2B2851560011ACF7 /* FQUserQuizStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9692B2851560011ACF7 /* FQUserQuizStat.swift */; };
 		5B16F96C2B2852AD0011ACF7 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F96B2B2852AD0011ACF7 /* ServiceError.swift */; };
@@ -82,7 +80,6 @@
 		5B5C2ADE2B280A34009A382B /* FlagQuizSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2ADD2B280A34009A382B /* FlagQuizSwiftUITests.swift */; };
 		5B5C2AE82B280A34009A382B /* FlagQuizSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2AE72B280A34009A382B /* FlagQuizSwiftUIUITests.swift */; };
 		5B5C2AEA2B280A34009A382B /* FlagQuizSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C2AE92B280A34009A382B /* FlagQuizSwiftUIUITestsLaunchTests.swift */; };
-		5B6171712B54F994005987A5 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 5B6171702B54F994005987A5 /* GoogleMobileAds */; };
 		5B6171742B5533B1005987A5 /* CreateUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6171732B5533B1005987A5 /* CreateUserNameView.swift */; };
 		5B6171762B55350B005987A5 /* UserNameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6171752B55350B005987A5 /* UserNameInputView.swift */; };
 		5B6171782B553816005987A5 /* CreateUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6171772B553816005987A5 /* CreateUserNameViewModel.swift */; };
@@ -100,7 +97,6 @@
 		5B697EB62B38754D003089F8 /* URLImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B697EB52B38754D003089F8 /* URLImageViewModel.swift */; };
 		5B697EB82B387563003089F8 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B697EB72B387563003089F8 /* URLImageView.swift */; };
 		5B69C62C2B6E174000240D4C /* FrogImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C62B2B6E174000240D4C /* FrogImageView.swift */; };
-		5B69C6312B6E19A000240D4C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B69C6302B6E19A000240D4C /* FirebaseStorage */; };
 		5B69C6332B6E1BC500240D4C /* StorageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C6322B6E1BC500240D4C /* StorageImageView.swift */; };
 		5B69C6352B6E49E400240D4C /* FQItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C6342B6E49E300240D4C /* FQItemProtocol.swift */; };
 		5B69C6372B6E883D00240D4C /* StorageImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69C6362B6E883D00240D4C /* StorageImageViewModel.swift */; };
@@ -130,6 +126,13 @@
 		5B8A87242B3EC8F100247DB9 /* QuizAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A87232B3EC8F100247DB9 /* QuizAnswer.swift */; };
 		5B8A87262B3EC9DC00247DB9 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8A87252B3EC9DC00247DB9 /* QuizQuestion.swift */; };
 		5B8C6D082B86432900CD52D1 /* FrogMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8C6D072B86432900CD52D1 /* FrogMenuView.swift */; };
+		5B926B942B8D700100C22EE9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B932B8D700100C22EE9 /* FirebaseAuth */; };
+		5B926B962B8D700100C22EE9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B952B8D700100C22EE9 /* FirebaseFirestore */; };
+		5B926B982B8D700100C22EE9 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B972B8D700100C22EE9 /* FirebaseMessaging */; };
+		5B926B9A2B8D700100C22EE9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B992B8D700100C22EE9 /* FirebaseStorage */; };
+		5B926B9D2B8D702500C22EE9 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B9C2B8D702500C22EE9 /* GoogleMobileAds */; };
+		5B926BA02B8D703B00C22EE9 /* IsoCountryCodes in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B9F2B8D703B00C22EE9 /* IsoCountryCodes */; };
+		5B926BA32B8D705A00C22EE9 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926BA22B8D705A00C22EE9 /* GoogleSignIn */; };
 		5B9A81AD2B3AAC660087142A /* CountryDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A81AC2B3AAC660087142A /* CountryDetailInfo.swift */; };
 		5B9A81AF2B3AC3470087142A /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A81AE2B3AC3470087142A /* NewsViewModel.swift */; };
 		5B9A81B12B3AC4F00087142A /* FQCountryQuizStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A81B02B3AC4F00087142A /* FQCountryQuizStat.swift */; };
@@ -188,7 +191,6 @@
 		5BD3B7692B31ED8000B930E0 /* FQQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B7682B31ED8000B930E0 /* FQQuiz.swift */; };
 		5BD3B76B2B31EDA000B930E0 /* FQQuizRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B76A2B31EDA000B930E0 /* FQQuizRound.swift */; };
 		5BD3B76D2B31F1A300B930E0 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3B76C2B31F1A300B930E0 /* QuizViewModel.swift */; };
-		5BD3B7702B31F4B700B930E0 /* IsoCountryCodes in Frameworks */ = {isa = PBXBuildFile; productRef = 5BD3B76F2B31F4B700B930E0 /* IsoCountryCodes */; };
 		5BDD3C2D2B6642700088D3A3 /* StoreItemDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD3C2C2B6642700088D3A3 /* StoreItemDBRepository.swift */; };
 		5BDD3C302B66479F0088D3A3 /* UserItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD3C2F2B66479F0088D3A3 /* UserItemService.swift */; };
 		5BDD3C322B6647AD0088D3A3 /* StoreItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD3C312B6647AD0088D3A3 /* StoreItemService.swift */; };
@@ -263,6 +265,11 @@
 
 /* Begin PBXFileReference section */
 		5B0050082B76165300D6B8F4 /* WorstCountryQuizStatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorstCountryQuizStatCell.swift; sourceTree = "<group>"; };
+		5B0BFDE62B8E15520010CF2B /* FQQuizDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQQuizDifficulty.swift; sourceTree = "<group>"; };
+		5B0BFDE82B8EAAD10010CF2B /* QuizTypeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTypeSettings.swift; sourceTree = "<group>"; };
+		5B0BFDEA2B8EAD930010CF2B /* QuizSettingTabViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSettingTabViewModifier.swift; sourceTree = "<group>"; };
+		5B0BFDEC2B8EAFAC0010CF2B /* QuizCountSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCountSettings.swift; sourceTree = "<group>"; };
+		5B0BFDEE2B8EB2050010CF2B /* QuizOptionsCountSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOptionsCountSettings.swift; sourceTree = "<group>"; };
 		5B0F29252B517AA800788FE7 /* MakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerView.swift; sourceTree = "<group>"; };
 		5B0F29272B52543300788FE7 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		5B0F292A2B52546100788FE7 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
@@ -500,16 +507,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B16F93E2B282AF60011ACF7 /* FirebaseFirestoreSwift in Frameworks */,
-				5B16F9362B282AF60011ACF7 /* FirebaseAnalytics in Frameworks */,
-				5B0050072B75F54B00D6B8F4 /* FirebaseMessaging in Frameworks */,
-				5B16F9632B284A840011ACF7 /* GoogleSignInSwift in Frameworks */,
-				5B69C6312B6E19A000240D4C /* FirebaseStorage in Frameworks */,
-				5B6171712B54F994005987A5 /* GoogleMobileAds in Frameworks */,
-				5BD3B7702B31F4B700B930E0 /* IsoCountryCodes in Frameworks */,
-				5B16F9382B282AF60011ACF7 /* FirebaseAuth in Frameworks */,
-				5B16F93A2B282AF60011ACF7 /* FirebaseFirestore in Frameworks */,
-				5B16F9612B284A840011ACF7 /* GoogleSignIn in Frameworks */,
+				5B926B982B8D700100C22EE9 /* FirebaseMessaging in Frameworks */,
+				5B926B9A2B8D700100C22EE9 /* FirebaseStorage in Frameworks */,
+				5B926B9D2B8D702500C22EE9 /* GoogleMobileAds in Frameworks */,
+				5B926B942B8D700100C22EE9 /* FirebaseAuth in Frameworks */,
+				5B926BA02B8D703B00C22EE9 /* IsoCountryCodes in Frameworks */,
+				5B926B962B8D700100C22EE9 /* FirebaseFirestore in Frameworks */,
+				5B926BA32B8D705A00C22EE9 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,6 +952,7 @@
 				5B795CC22B3D5B8C004AF9EE /* FQQuizType.swift */,
 				5BD29BBE2B58F31A00404D11 /* FQQuizCount.swift */,
 				5BD29BC02B58F32C00404D11 /* FQQuizOptionsCount.swift */,
+				5B0BFDE62B8E15520010CF2B /* FQQuizDifficulty.swift */,
 				5BD3B76A2B31EDA000B930E0 /* FQQuizRound.swift */,
 				5B9ECB742B340DFD00098BF3 /* FQQuizScore.swift */,
 			);
@@ -1118,6 +1123,10 @@
 			children = (
 				5B559F052B28B84A00B131BE /* QuizSettingView.swift */,
 				5BCFA2902B4987FE0074C998 /* QuizSettingControls.swift */,
+				5B0BFDE82B8EAAD10010CF2B /* QuizTypeSettings.swift */,
+				5B0BFDEC2B8EAFAC0010CF2B /* QuizCountSettings.swift */,
+				5B0BFDEE2B8EB2050010CF2B /* QuizOptionsCountSettings.swift */,
+				5B0BFDEA2B8EAD930010CF2B /* QuizSettingTabViewModifier.swift */,
 				5BD3B7652B31EC7400B930E0 /* QuizView.swift */,
 				5B8A87232B3EC8F100247DB9 /* QuizAnswer.swift */,
 				5B8A87252B3EC9DC00247DB9 /* QuizQuestion.swift */,
@@ -1287,16 +1296,13 @@
 			);
 			name = FlagQuizSwiftUI;
 			packageProductDependencies = (
-				5B16F9352B282AF60011ACF7 /* FirebaseAnalytics */,
-				5B16F9372B282AF60011ACF7 /* FirebaseAuth */,
-				5B16F9392B282AF60011ACF7 /* FirebaseFirestore */,
-				5B16F93D2B282AF60011ACF7 /* FirebaseFirestoreSwift */,
-				5B16F9602B284A840011ACF7 /* GoogleSignIn */,
-				5B16F9622B284A840011ACF7 /* GoogleSignInSwift */,
-				5BD3B76F2B31F4B700B930E0 /* IsoCountryCodes */,
-				5B6171702B54F994005987A5 /* GoogleMobileAds */,
-				5B69C6302B6E19A000240D4C /* FirebaseStorage */,
-				5B0050062B75F54B00D6B8F4 /* FirebaseMessaging */,
+				5B926B932B8D700100C22EE9 /* FirebaseAuth */,
+				5B926B952B8D700100C22EE9 /* FirebaseFirestore */,
+				5B926B972B8D700100C22EE9 /* FirebaseMessaging */,
+				5B926B992B8D700100C22EE9 /* FirebaseStorage */,
+				5B926B9C2B8D702500C22EE9 /* GoogleMobileAds */,
+				5B926B9F2B8D703B00C22EE9 /* IsoCountryCodes */,
+				5B926BA22B8D705A00C22EE9 /* GoogleSignIn */,
 			);
 			productName = FlagQuizSwiftUI;
 			productReference = 5B5C2AC92B280A32009A382B /* FlagQuizSwiftUI.app */;
@@ -1374,10 +1380,10 @@
 			);
 			mainGroup = 5B5C2AC02B280A32009A382B;
 			packageReferences = (
-				5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				5B16F95F2B284A840011ACF7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				5BD3B76E2B31F4B700B930E0 /* XCRemoteSwiftPackageReference "IsoCountryCodes" */,
-				5B61716F2B54F994005987A5 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5B926B9B2B8D702400C22EE9 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				5B926B9E2B8D703B00C22EE9 /* XCRemoteSwiftPackageReference "IsoCountryCodes" */,
+				5B926BA12B8D705A00C22EE9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 5B5C2ACA2B280A32009A382B /* Products */;
 			projectDirPath = "";
@@ -1503,6 +1509,7 @@
 				5BE086652B31D59C00D38C01 /* FQFilledButtonStyle.swift in Sources */,
 				5BFC5CAD2B679F1A00DE0F49 /* CartView.swift in Sources */,
 				5BD3B7662B31EC7400B930E0 /* QuizView.swift in Sources */,
+				5B0BFDE92B8EAAD10010CF2B /* QuizTypeSettings.swift in Sources */,
 				5B9ECB752B340DFD00098BF3 /* FQQuizScore.swift in Sources */,
 				5B16F94E2B2845420011ACF7 /* DIContainer.swift in Sources */,
 				5B16F96A2B2851560011ACF7 /* FQUserQuizStat.swift in Sources */,
@@ -1559,6 +1566,7 @@
 				5B9A81B92B3AE3FE0087142A /* FQCountryQuizStatObject.swift in Sources */,
 				5BF173A62B70B16000E1CD5D /* FrogPhotoBoothView.swift in Sources */,
 				5B4DF92F2B6FA109005AA2DB /* InformationBalloon.swift in Sources */,
+				5B0BFDEB2B8EAD930010CF2B /* QuizSettingTabViewModifier.swift in Sources */,
 				5B19C1732B3C2DD8001A74CE /* QuizStatCell.swift in Sources */,
 				5B0F29282B52543300788FE7 /* InformationView.swift in Sources */,
 				5B697EAF2B386D39003089F8 /* ImageCacheService.swift in Sources */,
@@ -1612,10 +1620,12 @@
 				5B19C1752B3C2E16001A74CE /* TodayCountryCell.swift in Sources */,
 				5BE0865B2B3190AC00D38C01 /* FQCountryName.swift in Sources */,
 				5B8A87262B3EC9DC00247DB9 /* QuizQuestion.swift in Sources */,
+				5B0BFDE72B8E15520010CF2B /* FQQuizDifficulty.swift in Sources */,
 				5BFC5CB02B67A0DD00DE0F49 /* CartModel.swift in Sources */,
 				5B61717E2B566553005987A5 /* OnBoardingDestination.swift in Sources */,
 				5B9ECB772B34255100098BF3 /* QuizRoundsResultScroll.swift in Sources */,
 				5B3448582B35D3F1002E2222 /* HapticsManager.swift in Sources */,
+				5B0BFDED2B8EAFAC0010CF2B /* QuizCountSettings.swift in Sources */,
 				5BFC5C9F2B6768EF00DE0F49 /* ItemStoreFrogView.swift in Sources */,
 				5BFC5CA92B67858100DE0F49 /* ItemStoreCartButtons.swift in Sources */,
 				5BD29BC12B58F32C00404D11 /* FQQuizOptionsCount.swift in Sources */,
@@ -1660,6 +1670,7 @@
 				5B19C16D2B3C1B0C001A74CE /* NewsGrid.swift in Sources */,
 				5B16F95D2B2847610011ACF7 /* LoginView.swift in Sources */,
 				5B16F95A2B28472F0011ACF7 /* AuthenticationViewModel.swift in Sources */,
+				5B0BFDEF2B8EB2050010CF2B /* QuizOptionsCountSettings.swift in Sources */,
 				5B0F311B2B4AA36D00121561 /* QuizResultScoreSection.swift in Sources */,
 				5BE0865D2B3190C500D38C01 /* FQFlagLinks.swift in Sources */,
 				5B8A87222B3EC26D00247DB9 /* NetworkMonitorManager.swift in Sources */,
@@ -2051,31 +2062,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.19.0;
+				minimumVersion = 10.21.0;
 			};
 		};
-		5B16F95F2B284A840011ACF7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
-		5B61716F2B54F994005987A5 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+		5B926B9B2B8D702400C22EE9 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.14.0;
+				minimumVersion = 11.0.1;
 			};
 		};
-		5BD3B76E2B31F4B700B930E0 /* XCRemoteSwiftPackageReference "IsoCountryCodes" */ = {
+		5B926B9E2B8D703B00C22EE9 /* XCRemoteSwiftPackageReference "IsoCountryCodes" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/funky-monkey/IsoCountryCodes.git";
 			requirement = {
@@ -2083,58 +2086,51 @@
 				minimumVersion = 1.0.2;
 			};
 		};
+		5B926BA12B8D705A00C22EE9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5B0050062B75F54B00D6B8F4 /* FirebaseMessaging */ = {
+		5B926B932B8D700100C22EE9 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
-		};
-		5B16F9352B282AF60011ACF7 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		5B16F9372B282AF60011ACF7 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		5B16F9392B282AF60011ACF7 /* FirebaseFirestore */ = {
+		5B926B952B8D700100C22EE9 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		5B16F93D2B282AF60011ACF7 /* FirebaseFirestoreSwift */ = {
+		5B926B972B8D700100C22EE9 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
+			package = 5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
-		5B16F9602B284A840011ACF7 /* GoogleSignIn */ = {
+		5B926B992B8D700100C22EE9 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5B16F95F2B284A840011ACF7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignIn;
-		};
-		5B16F9622B284A840011ACF7 /* GoogleSignInSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B16F95F2B284A840011ACF7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignInSwift;
-		};
-		5B6171702B54F994005987A5 /* GoogleMobileAds */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B61716F2B54F994005987A5 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
-			productName = GoogleMobileAds;
-		};
-		5B69C6302B6E19A000240D4C /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B16F9342B282AF60011ACF7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
-		5BD3B76F2B31F4B700B930E0 /* IsoCountryCodes */ = {
+		5B926B9C2B8D702500C22EE9 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5BD3B76E2B31F4B700B930E0 /* XCRemoteSwiftPackageReference "IsoCountryCodes" */;
+			package = 5B926B9B2B8D702400C22EE9 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+		5B926B9F2B8D703B00C22EE9 /* IsoCountryCodes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B926B9E2B8D703B00C22EE9 /* XCRemoteSwiftPackageReference "IsoCountryCodes" */;
 			productName = IsoCountryCodes;
+		};
+		5B926BA22B8D705A00C22EE9 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B926BA12B8D705A00C22EE9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -17,7 +17,7 @@ protocol QuizRecordServiceType {
     
     func addQuizRecord(ofUser userId: String, from quiz: FQQuiz) throws
 }
-
+    
 final class QuizRecordService: QuizRecordServiceType {
     private let repository: FQQuizRecordRepositoryType
     
