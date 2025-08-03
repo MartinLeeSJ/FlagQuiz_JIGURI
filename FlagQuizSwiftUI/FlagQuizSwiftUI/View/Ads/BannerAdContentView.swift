@@ -16,7 +16,7 @@ struct BannerAdContentView: View {
 
 private struct BannerAdView: UIViewControllerRepresentable {
     @State private var viewWidth: CGFloat = .zero
-    private let bannerAdView = GADBannerView()
+    private let bannerAdView = BannerView()
     //TODO: - 실제 광고 유닛아이디 적용하기
     private let adUnitID: String =  "ca-app-pub-5402872764357733/2692196617"
     
@@ -35,8 +35,8 @@ private struct BannerAdView: UIViewControllerRepresentable {
         
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         guard viewWidth != .zero else { return }
-        bannerAdView.adSize =  GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
-        bannerAdView.load(GADRequest())
+        bannerAdView.adSize =  currentOrientationAnchoredAdaptiveBanner(width: viewWidth)
+        bannerAdView.load(Request())
     }
     
     func makeCoordinator() -> Coordinator {

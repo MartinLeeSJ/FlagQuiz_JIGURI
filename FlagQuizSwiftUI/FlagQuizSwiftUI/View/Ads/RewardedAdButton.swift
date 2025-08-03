@@ -74,8 +74,8 @@ private struct RewardedAdViewControllerRepresentable: UIViewControllerRepresenta
 }
 
 
-private class RewardedAdCoordinator: NSObject, ObservableObject, GADFullScreenContentDelegate {
-    @Published var rewardedAd: GADRewardedAd?
+private class RewardedAdCoordinator: NSObject, ObservableObject, FullScreenContentDelegate {
+    @Published var rewardedAd: RewardedAd?
     
     private let adUnitID: String = "ca-app-pub-5402872764357733/9393019107"
     
@@ -83,14 +83,14 @@ private class RewardedAdCoordinator: NSObject, ObservableObject, GADFullScreenCo
     @MainActor
     func loadAd() async {
         do {
-            self.rewardedAd = try await GADRewardedAd.load(withAdUnitID: adUnitID, request: GADRequest())
+            self.rewardedAd = try await RewardedAd.load(with: adUnitID, request: Request())
             self.rewardedAd?.fullScreenContentDelegate = self
         } catch {
             debugPrint(error.localizedDescription)
         }
     }
     
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
         rewardedAd = nil
         Task(priority: .userInitiated) {
             await loadAd()
@@ -105,7 +105,7 @@ private class RewardedAdCoordinator: NSObject, ObservableObject, GADFullScreenCo
         return
       }
         
-      rewardedAd.present(fromRootViewController: viewController) {
+        rewardedAd.present(from: viewController) {
         let reward = rewardedAd.adReward
         
         completion(reward.amount.intValue)

@@ -238,8 +238,9 @@ extension AuthService {
         }
         
         user.link(with: credetial) { result, error in
+            
             if let error,
-               let errorCode = AuthErrorCode.Code(rawValue: error._code){
+               let errorCode = AuthErrorCode(rawValue: error._code){
                 completion(.failure(errorCode == .credentialAlreadyInUse ? .credentialAlreadyInUse : .custom(error)))
                 return
             }

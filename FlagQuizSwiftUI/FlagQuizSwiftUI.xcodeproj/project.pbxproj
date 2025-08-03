@@ -22,6 +22,7 @@
 		5B0F31182B4A9BEC00121561 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F31172B4A9BEC00121561 /* Line.swift */; };
 		5B0F311B2B4AA36D00121561 /* QuizResultScoreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F311A2B4AA36D00121561 /* QuizResultScoreSection.swift */; };
 		5B0F31382B4AE35100121561 /* FloatingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F31372B4AE35100121561 /* FloatingCard.swift */; };
+		5B1158272E3F90E100A5D31B /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1158262E3F90E100A5D31B /* GoogleMobileAds */; };
 		5B16F9422B2830570011ACF7 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16F9412B2830570011ACF7 /* OnBoardingView.swift */; };
 		5B16F9452B2830A60011ACF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B16F9442B2830A60011ACF7 /* LaunchScreen.storyboard */; };
 		5B16F9472B2831300011ACF7 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B16F9462B2831300011ACF7 /* Colors.xcassets */; };
@@ -130,7 +131,6 @@
 		5B926B962B8D700100C22EE9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B952B8D700100C22EE9 /* FirebaseFirestore */; };
 		5B926B982B8D700100C22EE9 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B972B8D700100C22EE9 /* FirebaseMessaging */; };
 		5B926B9A2B8D700100C22EE9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B992B8D700100C22EE9 /* FirebaseStorage */; };
-		5B926B9D2B8D702500C22EE9 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B9C2B8D702500C22EE9 /* GoogleMobileAds */; };
 		5B926BA02B8D703B00C22EE9 /* IsoCountryCodes in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926B9F2B8D703B00C22EE9 /* IsoCountryCodes */; };
 		5B926BA32B8D705A00C22EE9 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5B926BA22B8D705A00C22EE9 /* GoogleSignIn */; };
 		5B9A81AD2B3AAC660087142A /* CountryDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9A81AC2B3AAC660087142A /* CountryDetailInfo.swift */; };
@@ -509,11 +509,11 @@
 			files = (
 				5B926B982B8D700100C22EE9 /* FirebaseMessaging in Frameworks */,
 				5B926B9A2B8D700100C22EE9 /* FirebaseStorage in Frameworks */,
-				5B926B9D2B8D702500C22EE9 /* GoogleMobileAds in Frameworks */,
 				5B926B942B8D700100C22EE9 /* FirebaseAuth in Frameworks */,
 				5B926BA02B8D703B00C22EE9 /* IsoCountryCodes in Frameworks */,
 				5B926B962B8D700100C22EE9 /* FirebaseFirestore in Frameworks */,
 				5B926BA32B8D705A00C22EE9 /* GoogleSignIn in Frameworks */,
+				5B1158272E3F90E100A5D31B /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1300,9 +1300,9 @@
 				5B926B952B8D700100C22EE9 /* FirebaseFirestore */,
 				5B926B972B8D700100C22EE9 /* FirebaseMessaging */,
 				5B926B992B8D700100C22EE9 /* FirebaseStorage */,
-				5B926B9C2B8D702500C22EE9 /* GoogleMobileAds */,
 				5B926B9F2B8D703B00C22EE9 /* IsoCountryCodes */,
 				5B926BA22B8D705A00C22EE9 /* GoogleSignIn */,
+				5B1158262E3F90E100A5D31B /* GoogleMobileAds */,
 			);
 			productName = FlagQuizSwiftUI;
 			productReference = 5B5C2AC92B280A32009A382B /* FlagQuizSwiftUI.app */;
@@ -1381,9 +1381,9 @@
 			mainGroup = 5B5C2AC02B280A32009A382B;
 			packageReferences = (
 				5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				5B926B9B2B8D702400C22EE9 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				5B926B9E2B8D703B00C22EE9 /* XCRemoteSwiftPackageReference "IsoCountryCodes" */,
 				5B926BA12B8D705A00C22EE9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				5B1158252E3F90E100A5D31B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 5B5C2ACA2B280A32009A382B /* Products */;
 			projectDirPath = "";
@@ -1867,6 +1867,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlagQuizSwiftUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Jiguri;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Opt in for optimized personalized ads, or continue to access basic functionality without consent.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1906,6 +1907,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlagQuizSwiftUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Jiguri;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Opt in for optimized personalized ads, or continue to access basic functionality without consent.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -2062,20 +2064,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5B1158252E3F90E100A5D31B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.8.0;
+			};
+		};
 		5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.21.0;
-			};
-		};
-		5B926B9B2B8D702400C22EE9 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.0.1;
+				minimumVersion = 11.0.0;
 			};
 		};
 		5B926B9E2B8D703B00C22EE9 /* XCRemoteSwiftPackageReference "IsoCountryCodes" */ = {
@@ -2091,12 +2093,17 @@
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
+				minimumVersion = 8.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5B1158262E3F90E100A5D31B /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B1158252E3F90E100A5D31B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
 		5B926B932B8D700100C22EE9 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -2116,11 +2123,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
-		};
-		5B926B9C2B8D702500C22EE9 /* GoogleMobileAds */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B926B9B2B8D702400C22EE9 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
-			productName = GoogleMobileAds;
 		};
 		5B926B9F2B8D703B00C22EE9 /* IsoCountryCodes */ = {
 			isa = XCSwiftPackageProductDependency;

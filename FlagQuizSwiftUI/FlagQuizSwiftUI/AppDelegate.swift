@@ -48,7 +48,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     private func googleAdMobService() {
         DispatchQueue.main.async {
-            let googleMobileAds =  GADMobileAds.sharedInstance()
+            
+            let googleMobileAds = MobileAds.shared
             // Initialize the Google Mobile Ads SDK.
             googleMobileAds.start(completionHandler: nil)
             googleMobileAds.requestConfiguration.testDeviceIdentifiers = [ "d9f08d9cab2fd3e9547c5309d09a0d19" ]
