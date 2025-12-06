@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -502,6 +502,10 @@
 		5BFF43922B46CFD100C3DBCB /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5B9FD6802EE40B34003FAC2C /* FQMarathon */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FQMarathon; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		5B5C2AC62B280A32009A382B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -646,6 +650,7 @@
 		5B16F9662B284FF70011ACF7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5B9FD6802EE40B34003FAC2C /* FQMarathon */,
 				5BE7D29F2B29A63A0044C3D4 /* FQCountryISOCode.swift */,
 				5B0F292C2B5254D000788FE7 /* FQInfo.swift */,
 				5BFF43782B466D9800C3DBCB /* FQFrog.swift */,
@@ -1293,6 +1298,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5B9FD6802EE40B34003FAC2C /* FQMarathon */,
 			);
 			name = FlagQuizSwiftUI;
 			packageProductDependencies = (
