@@ -75,9 +75,9 @@ extension FQQuizRound: Hashable { }
 extension FQQuizRound {
     func toRecordObject() -> FQQuizRoundRecordObject {
         .init(
-            answerCounrtyCode: answerCountryCode.numericCode,
+            answerCounrtyCode: answerCountryCode.numericCode ?? "170",
             submittedCountryCode: submittedCountryCode?.numericCode,
-            optionsCountryCodes: optionsCountryCodes.map { $0.numericCode },
+            optionsCountryCodes: optionsCountryCodes.compactMap { $0.numericCode },
             quizType: quizType?.rawValue
         )
     }

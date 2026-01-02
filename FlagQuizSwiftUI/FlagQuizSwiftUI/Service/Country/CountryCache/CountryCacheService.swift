@@ -48,7 +48,7 @@ final class CountryCacheService: CountryCacheServiceType {
         for codes: [FQCountryISOCode]
     ) -> AnyPublisher<[CountryObject]?, Never> {
         Future { [weak self] promise in
-            let objects: [CountryObject]? = self?.countryMemoryStorage.countryObjects(for: codes.map { $0.numericCode })
+            let objects: [CountryObject]? = self?.countryMemoryStorage.countryObjects(for: codes.map { $0.cca3 })
             promise(.success(objects))
         }
         .eraseToAnyPublisher()
@@ -59,7 +59,7 @@ final class CountryCacheService: CountryCacheServiceType {
     ) -> AnyPublisher<[CountryObject]?, Never>  {
         Future { [weak self] promise in
             do {
-                let objects: [CountryObject]? = try self?.countryDiskStorage.countryObjects(for: codes.map { $0.numericCode })
+                let objects: [CountryObject]? = try self?.countryDiskStorage.countryObjects(for: codes.map { $0.cca3 })
                 promise(.success(objects))
             } catch {
                 promise(.success(nil))

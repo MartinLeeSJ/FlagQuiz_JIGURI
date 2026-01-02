@@ -17,9 +17,9 @@ struct FQCountryQuizStatObject: Codable {
 extension FQCountryQuizStatObject {
     func toModel() -> FQCountryQuizStat? {
         guard let id else { return nil }
-        
+        guard let countryISOCode = FQCountryISOCode(numeric: id) else { return nil }
         return .init(
-            id: FQCountryISOCode(id),
+            id: countryISOCode,
             quizStat: quizStat,
             capitalQuizStat: capitalQuizStat
         )

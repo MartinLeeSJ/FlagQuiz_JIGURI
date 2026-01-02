@@ -45,7 +45,8 @@ struct FQCountryDetail: FQCountryRenderer, Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let ccn3: String = try container.decode(String.self, forKey: .id)
-        self.id = FQCountryISOCode(ccn3)
+        
+        self.id = FQCountryISOCode(numeric: ccn3) ?? FQCountryISOCode("KOR")
         
         self.name = try container.decode(FQCountryName.self, forKey: .name)
         self.capitals = try container.decodeIfPresent([String].self, forKey: .capitals)

@@ -31,7 +31,7 @@ struct CountryRequest: CountryRequestType {
         components.path = Constants.path
         
         let queryString: String = countryCodes
-            .compactMap { $0.numericCode }
+            .compactMap { $0.cca3 }
             .joined(separator: ",")
         
         components.queryItems = [

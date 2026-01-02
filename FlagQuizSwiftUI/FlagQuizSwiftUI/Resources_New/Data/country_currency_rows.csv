@@ -1,0 +1,269 @@
+country_id,currency_code,name,symbol
+4,TND,Tunisian dinar,د.ت
+5,EUR,Euro,€
+6,VND,Vietnamese đồng,₫
+7,USD,United States dollar,$
+8,USD,United States dollar,$
+9,USD,United States dollar,$
+10,GBP,British pound,£
+11,ILS,Israeli new shekel,₪
+12,GBP,British pound,£
+13,USD,United States dollar,$
+14,MMK,Burmese kyat,Ks
+15,PLN,Polish złoty,zł
+16,USD,United States dollar,$
+17,AFN,Afghan afghani,؋
+18,EUR,Euro,€
+19,KES,Kenyan shilling,Sh
+20,USD,United States dollar,$
+21,AOA,Angolan kwanza,Kz
+22,BTN,Bhutanese ngultrum,Nu.
+22,INR,Indian rupee,₹
+23,EUR,Euro,€
+24,GBP,British pound,£
+24,JEP,Jersey pound,£
+25,RUB,Russian ruble,₽
+26,NPR,Nepalese rupee,₨
+27,XOF,West African CFA franc,Fr
+28,IQD,Iraqi dinar,ع.د
+29,SDG,Sudanese pound,ج.س
+30,XPF,CFP franc,₣
+31,DJF,Djiboutian franc,Fr
+32,MZN,Mozambican metical,MT
+33,USD,United States dollar,$
+34,AWG,Aruban florin,ƒ
+35,GBP,Pound sterling,£
+35,SHP,Saint Helena pound,£
+36,ZAR,South African rand,R
+37,CHF,Swiss franc,Fr
+38,STN,São Tomé and Príncipe dobra,Db
+39,BIF,Burundian franc,Fr
+40,RWF,Rwandan franc,Fr
+41,EUR,Euro,€
+42,USD,United States dollar,$
+43,JOD,Jordanian dinar,د.ا
+44,USD,United States dollar,$
+45,XAF,Central African CFA franc,Fr
+46,USD,United States dollar,$
+47,NZD,New Zealand dollar,$
+48,EUR,Euro,€
+49,KGS,Kyrgyzstani som,с
+51,MRU,Mauritanian ouguiya,UM
+52,WST,Samoan tālā,T
+53,MWK,Malawian kwacha,MK
+54,PAB,Panamanian balboa,B/.
+54,USD,United States dollar,$
+55,THB,Thai baht,฿
+56,TRY,Turkish lira,₺
+57,PHP,Philippine peso,₱
+58,NZD,New Zealand dollar,$
+59,EUR,Euro,€
+60,AED,United Arab Emirates dirham,د.إ
+61,GEL,lari,₾
+62,EUR,Euro,€
+63,AMD,Armenian dram,֏
+64,AUD,Australian dollar,$
+65,CRC,Costa Rican colón,₡
+66,AUD,Australian dollar,$
+66,KID,Kiribati dollar,$
+67,TZS,Tanzanian shilling,Sh
+68,SSP,South Sudanese pound,£
+69,IRR,Iranian rial,﷼
+70,USD,United States dollar,$
+71,NOK,krone,kr
+72,MNT,Mongolian tögrög,₮
+73,MDL,Moldovan leu,L
+74,NZD,New Zealand dollar,$
+75,SZL,Swazi lilangeni,L
+75,ZAR,South African rand,R
+76,SOS,Somali shilling,Sh
+77,XCD,Eastern Caribbean dollar,$
+78,GYD,Guyanese dollar,$
+79,GBP,British pound,£
+79,IMP,Manx pound,£
+80,DKK,Danish krone,kr
+80,FOK,Faroese króna,kr
+81,EUR,Euro,€
+82,XPF,CFP franc,₣
+83,INR,Indian rupee,₹
+84,XOF,West African CFA franc,Fr
+85,ANG,Netherlands Antillean guilder,ƒ
+86,CDF,Congolese franc,FC
+87,XAF,Central African CFA franc,Fr
+88,KRW,South Korean won,₩
+89,XOF,West African CFA franc,Fr
+90,MVR,Maldivian rufiyaa,.ރ
+91,RSD,Serbian dinar,дин.
+92,XOF,West African CFA franc,Fr
+93,DZD,Algerian dinar,د.ج
+94,LAK,Lao kip,₭
+95,XAF,Central African CFA franc,Fr
+96,EUR,Euro,€
+97,ZWL,Zimbabwean dollar,$
+98,XCD,Eastern Caribbean dollar,$
+99,BOB,Bolivian boliviano,Bs.
+100,LSL,Lesotho loti,L
+100,ZAR,South African rand,R
+101,HUF,Hungarian forint,Ft
+102,TMT,Turkmenistan manat,m
+103,NOK,Norwegian krone,kr
+104,PEN,Peruvian sol,"S/ "
+105,CUC,Cuban convertible peso,$
+105,CUP,Cuban peso,$
+106,EUR,Euro,€
+107,XCD,Eastern Caribbean dollar,$
+108,GBP,British pound,£
+108,GGP,Guernsey pound,£
+109,MUR,Mauritian rupee,₨
+110,SAR,Saudi riyal,ر.س
+111,ANG,Netherlands Antillean guilder,ƒ
+112,XOF,West African CFA franc,Fr
+113,EUR,Euro,€
+114,USD,United States dollar,$
+115,AUD,Australian dollar,$
+115,TVD,Tuvaluan dollar,$
+116,DKK,krone,kr.
+117,CVE,Cape Verdean escudo,Esc
+118,UZS,Uzbekistani soʻm,so'm
+119,SEK,Swedish krona,kr
+120,BDT,Bangladeshi taka,৳
+121,TWD,New Taiwan dollar,$
+122,EUR,Euro,€
+123,XAF,Central African CFA franc,Fr
+124,SYP,Syrian pound,£
+125,CLP,Chilean peso,$
+126,XOF,West African CFA franc,Fr
+127,XOF,West African CFA franc,Fr
+128,RON,Romanian leu,lei
+129,BRL,Brazilian real,R$
+130,EUR,Euro,€
+131,XCD,Eastern Caribbean dollar,$
+132,EUR,Euro,€
+133,XOF,West African CFA franc,Fr
+134,KHR,Cambodian riel,៛
+134,USD,United States dollar,$
+135,DOP,Dominican peso,$
+136,AUD,Australian dollar,$
+137,CAD,Canadian dollar,$
+138,EUR,Euro,€
+139,PYG,Paraguayan guaraní,₲
+140,KZT,Kazakhstani tenge,₸
+141,IDR,Indonesian rupiah,Rp
+142,EUR,Euro,€
+143,DZD,Algerian dinar,دج
+143,MAD,Moroccan dirham,DH
+143,MRU,Mauritanian ouguiya,UM
+144,KMF,Comorian franc,Fr
+145,XCD,Eastern Caribbean dollar,$
+146,BGN,Bulgarian lev,лв
+147,FKP,Falkland Islands pound,£
+148,HNL,Honduran lempira,L
+149,UYU,Uruguayan peso,$
+150,EUR,Euro,€
+151,ETB,Ethiopian birr,Br
+152,TJS,Tajikistani somoni,ЅМ
+153,NZD,New Zealand dollar,$
+154,BWP,Botswana pula,P
+155,ALL,Albanian lek,L
+156,NGN,Nigerian naira,₦
+157,GMD,dalasi,D
+158,EUR,Euro,€
+159,USD,United States dollar,$
+160,VUV,Vanuatu vatu,Vt
+161,EUR,Euro,€
+162,CNY,Chinese yuan,¥
+163,SGD,Singapore dollar,$
+164,DKK,Danish krone,kr
+165,GHS,Ghanaian cedi,₵
+166,XCD,Eastern Caribbean dollar,$
+167,EUR,Euro,€
+168,LRD,Liberian dollar,$
+169,HKD,Hong Kong dollar,$
+170,GTQ,Guatemalan quetzal,Q
+171,SLE,Leone,Le
+172,EUR,Euro,€
+173,LBP,Lebanese pound,ل.ل
+174,SCR,Seychellois rupee,₨
+175,ZMW,Zambian kwacha,ZK
+176,VES,Venezuelan bolívar soberano,Bs.S.
+177,SRD,Surinamese dollar,$
+178,EUR,Euro,€
+179,UAH,Ukrainian hryvnia,₴
+180,EUR,Euro,€
+181,EUR,Euro,€
+182,ERN,Eritrean nakfa,Nfk
+183,EUR,Euro,€
+184,PGK,Papua New Guinean kina,K
+185,USD,United States dollar,$
+186,BAM,Bosnia and Herzegovina convertible mark,KM
+187,EUR,Euro,€
+188,LYD,Libyan dinar,ل.د
+189,QAR,Qatari riyal,ر.ق
+190,PKR,Pakistani rupee,₨
+191,KPW,North Korean won,₩
+192,EUR,Euro,€
+193,GNF,Guinean franc,Fr
+194,XCD,Eastern Caribbean dollar,$
+195,BND,Brunei dollar,$
+195,SGD,Singapore dollar,$
+196,MGA,Malagasy ariary,Ar
+197,AZN,Azerbaijani manat,₼
+198,EGP,Egyptian pound,E£
+198,ILS,Israeli new shekel,₪
+198,JOD,Jordanian dinar,JD
+199,XAF,Central African CFA franc,Fr
+200,XCD,Eastern Caribbean dollar,$
+201,BHD,Bahraini dinar,.د.ب
+202,EUR,Euro,€
+203,EUR,Euro,€
+204,GIP,Gibraltar pound,£
+205,USD,United States dollar,$
+206,MKD,denar,den
+207,EUR,Euro,€
+208,NAD,Namibian dollar,$
+208,ZAR,South African rand,R
+209,AUD,Australian dollar,$
+210,MAD,Moroccan dirham,د.م.
+211,EUR,Euro,€
+212,BMD,Bermudian dollar,$
+213,NIO,Nicaraguan córdoba,C$
+214,EUR,Euro,€
+215,BSD,Bahamian dollar,$
+215,USD,United States dollar,$
+216,OMR,Omani rial,ر.ع.
+217,CHF,Swiss franc,Fr.
+218,CZK,Czech koruna,Kč
+219,ISK,Icelandic króna,kr
+220,JPY,Japanese yen,¥
+221,EUR,Euro,€
+222,BZD,Belize dollar,$
+223,BBD,Barbadian dollar,$
+224,BYN,Belarusian ruble,Br
+225,USD,United States dollar,$
+226,UGX,Ugandan shilling,Sh
+227,YER,Yemeni rial,﷼
+228,EUR,Euro,€
+229,HTG,Haitian gourde,G
+230,ARS,Argentine peso,$
+231,EGP,Egyptian pound,£
+232,KWD,Kuwaiti dinar,د.ك
+233,KYD,Cayman Islands dollar,$
+234,CKD,Cook Islands dollar,$
+234,NZD,New Zealand dollar,$
+236,XAF,Central African CFA franc,Fr
+237,LKR,Sri Lankan rupee,Rs  රු
+238,TTD,Trinidad and Tobago dollar,$
+239,COP,Colombian peso,$
+240,EUR,Euro,€
+241,AUD,Australian dollar,$
+243,MOP,Macanese pataca,P
+244,MXN,Mexican peso,$
+245,XPF,CFP franc,₣
+246,SBD,Solomon Islands dollar,$
+247,EUR,Euro,€
+248,AUD,Australian dollar,$
+249,TOP,Tongan paʻanga,T$
+250,MYR,Malaysian ringgit,RM
+251,FJD,Fijian dollar,$
+252,JMD,Jamaican dollar,$
+253,USD,United States dollar,$
