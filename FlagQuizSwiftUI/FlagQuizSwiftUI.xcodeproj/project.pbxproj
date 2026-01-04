@@ -67,6 +67,8 @@
 		5B39012E2B5FAEDF009BB9C6 /* UserNameSettingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B39012D2B5FAEDF009BB9C6 /* UserNameSettingSection.swift */; };
 		5B3FA1B02F04091C00C43126 /* CountryRequestV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FA1AF2F04091C00C43126 /* CountryRequestV2.swift */; };
 		5B3FA1B32F040B0000C43126 /* SPCountryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FA1B22F040B0000C43126 /* SPCountryAPIClient.swift */; };
+		5B3FA1D32F08094100C43126 /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 5B3FA1D22F08094100C43126 /* SwiftCSV */; };
+		5B3FA1D52F0A838500C43126 /* CountryDataRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FA1D42F0A838500C43126 /* CountryDataRepositoryTest.swift */; };
 		5B41350E2B7B054C005E8331 /* FQRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41350D2B7B054C005E8331 /* FQRegion.swift */; };
 		5B4135102B7B055F005E8331 /* FQSubregion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B41350F2B7B055F005E8331 /* FQSubregion.swift */; };
 		5B46CF322B79FB750039CE3F /* FQCountryDetailTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B46CF312B79FB750039CE3F /* FQCountryDetailTest.swift */; };
@@ -319,6 +321,7 @@
 		5B39012D2B5FAEDF009BB9C6 /* UserNameSettingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameSettingSection.swift; sourceTree = "<group>"; };
 		5B3FA1AF2F04091C00C43126 /* CountryRequestV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRequestV2.swift; sourceTree = "<group>"; };
 		5B3FA1B22F040B0000C43126 /* SPCountryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCountryAPIClient.swift; sourceTree = "<group>"; };
+		5B3FA1D42F0A838500C43126 /* CountryDataRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDataRepositoryTest.swift; sourceTree = "<group>"; };
 		5B41350D2B7B054C005E8331 /* FQRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQRegion.swift; sourceTree = "<group>"; };
 		5B41350F2B7B055F005E8331 /* FQSubregion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQSubregion.swift; sourceTree = "<group>"; };
 		5B46CF312B79FB750039CE3F /* FQCountryDetailTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQCountryDetailTest.swift; sourceTree = "<group>"; };
@@ -493,6 +496,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5B3FA1B52F07FFCE00C43126 /* Resources_New */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources_New; sourceTree = "<group>"; };
+		5B3FA1D02F08064A00C43126 /* CountryData */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CountryData; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -501,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B926B982B8D700100C22EE9 /* FirebaseMessaging in Frameworks */,
+				5B3FA1D32F08094100C43126 /* SwiftCSV in Frameworks */,
 				5B926B9A2B8D700100C22EE9 /* FirebaseStorage in Frameworks */,
 				5B926B942B8D700100C22EE9 /* FirebaseAuth in Frameworks */,
 				5B926BA02B8D703B00C22EE9 /* IsoCountryCodes in Frameworks */,
@@ -661,6 +666,7 @@
 				5BFF437F2B46799F00C3DBCB /* Item */,
 				5B9FC5FA2B47CDB100B694C7 /* EarthCandy */,
 				5B16F9782B287B700011ACF7 /* DBError.swift */,
+				5B3FA1D02F08064A00C43126 /* CountryData */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -817,6 +823,7 @@
 			children = (
 				5B5C2ADD2B280A34009A382B /* FlagQuizSwiftUITests.swift */,
 				5B46CF312B79FB750039CE3F /* FQCountryDetailTest.swift */,
+				5B3FA1D42F0A838500C43126 /* CountryDataRepositoryTest.swift */,
 			);
 			path = FlagQuizSwiftUITests;
 			sourceTree = "<group>";
@@ -1269,6 +1276,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				5B3FA1B52F07FFCE00C43126 /* Resources_New */,
+				5B3FA1D02F08064A00C43126 /* CountryData */,
 			);
 			name = FlagQuizSwiftUI;
 			packageProductDependencies = (
@@ -1279,6 +1287,7 @@
 				5B926B9F2B8D703B00C22EE9 /* IsoCountryCodes */,
 				5B926BA22B8D705A00C22EE9 /* GoogleSignIn */,
 				5B1158262E3F90E100A5D31B /* GoogleMobileAds */,
+				5B3FA1D22F08094100C43126 /* SwiftCSV */,
 			);
 			productName = FlagQuizSwiftUI;
 			productReference = 5B5C2AC92B280A32009A382B /* FlagQuizSwiftUI.app */;
@@ -1360,7 +1369,7 @@
 				5B926B9E2B8D703B00C22EE9 /* XCRemoteSwiftPackageReference "IsoCountryCodes" */,
 				5B926BA12B8D705A00C22EE9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				5B1158252E3F90E100A5D31B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
-				5B3FA1B12F040AC900C43126 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				5B3FA1D12F08094100C43126 /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 			);
 			productRefGroup = 5B5C2ACA2B280A32009A382B /* Products */;
 			projectDirPath = "";
@@ -1663,6 +1672,7 @@
 			files = (
 				5B46CF322B79FB750039CE3F /* FQCountryDetailTest.swift in Sources */,
 				5B5C2ADE2B280A34009A382B /* FlagQuizSwiftUITests.swift in Sources */,
+				5B3FA1D52F0A838500C43126 /* CountryDataRepositoryTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1903,7 +1913,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SUDPP9C593;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.martin.FlagQuizSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1926,7 +1936,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SUDPP9C593;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.martin.FlagQuizSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2032,12 +2042,12 @@
 				minimumVersion = 12.8.0;
 			};
 		};
-		5B3FA1B12F040AC900C43126 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+		5B3FA1D12F08094100C43126 /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/supabase/supabase-swift.git";
+			repositoryURL = "https://github.com/swiftcsv/SwiftCSV.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.5.1;
+				minimumVersion = 0.10.0;
 			};
 		};
 		5B926B922B8D700100C22EE9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -2071,6 +2081,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B1158252E3F90E100A5D31B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
+		};
+		5B3FA1D22F08094100C43126 /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B3FA1D12F08094100C43126 /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
 		};
 		5B926B932B8D700100C22EE9 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
