@@ -12,7 +12,7 @@ struct CountryDataRepositoryTest {
     let repository: CountryDataRepository = CountryDataRepositoryImpl()
 
     @Test func csvHeader가제대로출력이되는지() async throws {
-        let result = try repository.getDataFromCSV()
+        let result = try await repository.getDataFromCSV()
         #expect(result == ["id",
                            "cca3",
                            "name_common",
