@@ -13,31 +13,31 @@ class CountryData {
     @Attribute(.unique) var id: Int
     
     // country_rows
-    var cca3: String
-    var nameCommon: String
-    var nameOfficial: String
-    var region: String
-    var lat: Double
-    var lng: Double
-    var area: Int
-    var population: Int
+    var cca3: String?
+    var nameCommon: String?
+    var nameOfficial: String?
+    var region: String?
+    var lat: Double?
+    var lng: Double?
+    var area: Int?
+    var population: Int?
     
     // country_timezone_rows
     var timezone: [String]
     
     // country_map_rows
-    var googleMapUrl: String
-    var openstreetMapUrl: String
+    var googleMapUrl: String?
+    var openstreetMapUrl: String?
     
     // country_flag_rows
-    var pngFlagUrl: String
-    var svgFlagUrl: String
-    var flagAlt: String
+    var pngFlagUrl: String?
+    var svgFlagUrl: String?
+    var flagAlt: String?
     
     // country_currency_rows
-    var currencyCode: String
-    var currencyName: String
-    var currencySymbol: String
+    var currencyCode: String?
+    var currencyName: String?
+    var currencySymbol: String?
     
     // country_continent_rows
     var continents: [String]
@@ -46,36 +46,36 @@ class CountryData {
     var capitalsKr: [String]
     
     // country_capital_info_rows
-    var capitalLat: Double
-    var capitalLong: Double
+    var capitalLat: Double?
+    var capitalLong: Double?
     
     // country_border_rows
     var neighborIds: [Int]
     
     init(
         id: Int,
-        cca3: String,
-        nameCommon: String,
-        nameOfficial: String,
-        region: String,
-        lat: Double,
-        lng: Double,
-        area: Int,
-        population: Int,
-        timezone: [String],
-        googleMapUrl: String,
-        openstreetMapUrl: String,
-        pngFlagUrl: String,
-        svgFlagUrl: String,
-        flagAlt: String,
-        currencyCode: String,
-        currencyName: String,
-        currencySymbol: String,
-        continents: [String],
-        capitalsKr: [String],
-        capitalLat: Double,
-        capitalLong: Double,
-        neighborIds: [Int]
+        cca3: String? = nil,
+        nameCommon: String? = nil,
+        nameOfficial: String? = nil,
+        region: String? = nil,
+        lat: Double? = nil,
+        lng: Double? = nil,
+        area: Int? = nil,
+        population: Int? = nil,
+        timezone: [String] = [],
+        googleMapUrl: String? = nil,
+        openstreetMapUrl: String? = nil,
+        pngFlagUrl: String? = nil,
+        svgFlagUrl: String? = nil,
+        flagAlt: String? = nil,
+        currencyCode: String? = nil,
+        currencyName: String? = nil,
+        currencySymbol: String? = nil,
+        continents: [String] = [],
+        capitalsKr: [String] = [],
+        capitalLat: Double? = nil,
+        capitalLong: Double? = nil,
+        neighborIds: [Int] = []
     ) {
         self.id = id
         self.cca3 = cca3

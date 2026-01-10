@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftCSV
 import TabularData
 
 public protocol CountryDataRepository {
@@ -14,18 +13,55 @@ public protocol CountryDataRepository {
 }
 
 public actor CountryDataRepositoryImpl: CountryDataRepository {
+    private var data: [Int: CountryData] = [:]
     public func getDataFromCSV() async throws -> [String] {
-    try getCountryRow()
+        // country csv file name  을 순회한다
+        //  countryCsvData 메서드를 호출해 타입을 얻어온다
+        // 파일 url을 기반으로 데이터프레임을 읽는다
+        // 열들을 순회하며 data에 컨트리데이터를 업데이트한다
+        
+        try CountryCSVFileName.allCases.forEach { name in
+            guard let fileUrl = name.fileURL else { return }
+            let dataFrame = try DataFrame(contentsOfCSVFile: fileUrl, columns: name.csvMetadata.columns, types: name.csvMetadata.types)
+            switch name {
+            default: makeDatafromCountryRow(dataFrame)
+            }
+        }
     return []
     }
     
-    func getCountryRow() throws {
-//        guard let url = CountryRows.fileURL else { throw URLError(.badURL) }
-//        let dataFrame = try DataFrame(contentsOfCSVFile: url, columns: CountryRows.columns, types: CountryRows.csvTypes)
-//        let _ = dataFrame.rows.map { row in
-//            print(row.description)
-//        }
+    private func makeDatafromCountryRow(_ dataFrame: DataFrame) {
+        dataFrame.rows.forEach { row in
+            if let id = row["id"] as? Int {
+               let countryData = data[id, default: .init(id: id)]
+                countryData.cca3 = row["cca3"] as? String
+                countryData.nameCommon = row["name_common"] as? String
+                countryData.nameOfficial = row["name_official"] as? String
+                countryData.region = row["region"] as? String
+                countryData.lat = row["lat"] as? Double
+                countryData.lng = row["lng"] as? Double
+                countryData.area = Int(row["area"] as? Double ?? .zero)
+                countryData.population = row["population"] as? Int
+            }
+        }
     }
+    
+    private func makeDataFromTimeZoneRow(_ dataFrame: DataFrame) {
+        dataFrame.rows.forEach { row in
+            if let id = row["id"] as? Int,
+               let timezone = row["timezone"] as? String {
+                let countryData = data[id, default: .init(id: id)]
+                countryData.timezone.append(timezone)
+            }
+        }
+    }
+    
+    private func makeDataFromMapRows(_ dataFrame: DataFrame) {
+        
+    }
+    
+    
+    
 }
 
 enum CountryCSVFileName: String, CaseIterable {
@@ -51,20 +87,50 @@ enum CountryCSVFileName: String, CaseIterable {
         return nil
     }
     
-    func countryCSVData<T: CountryCSVData>() -> T.Type? {
+    var csvMetadata: (columns: [String], types: [String: CSVType]) {
         switch self {
-        default: CountryRows.self as? T.Type
+        case .border:
+            return (CountryBorderRows.allColumns, CountryBorderRows.csvTypes)
+        case .capital:
+            return (CountryCapitalInfoRows.allColumns, CountryCapitalInfoRows.csvTypes)
+        case .capitalKr:
+            return (CountryCapitalKrRows.allColumns, CountryCapitalKrRows.csvTypes)
+        case .continent:
+            return (CountryContinentRows.allColumns, CountryContinentRows.csvTypes)
+        case .currency:
+            return (CountryCurrencyRows.allColumns, CountryCurrencyRows.csvTypes)
+        case .flag:
+            return (CountryFlagRows.allColumns, CountryFlagRows.csvTypes)
+        case .map:
+            return (CountryMapRows.allColumns, CountryMapRows.csvTypes)
+        case .base:
+            return (CountryRows.allColumns, CountryRows.csvTypes)
+        case .timezone:
+            return (CountryTimezoneRows.allColumns, CountryTimezoneRows.csvTypes)
         }
     }
     
+}
+
+protocol CountryCSVData: CaseIterable, RawRepresentable where RawValue == String {
+    var csvType: CSVType { get }
+    static var allColumns: [String] { get }
+
+}
+
+extension CountryCSVData {
+    static var csvTypes: [String: CSVType] {
+        Self.allCases.reduce(into: [String: CSVType]()) { partialResult, key in
+            return partialResult[key.rawValue] = key.csvType
+        }
+    }
     
+    static var allColumns: [String] {
+        Self.allCases.map { $0.rawValue }
+    }
 }
 
-protocol CountryCSVData {
-    static var csvTypes: [String: CSVType] { get }
-}
-
-enum CountryRows: String, CaseIterable, CountryCSVData  {
+enum CountryRows: String, CountryCSVData  {
     case id
     case cca3
     case nameCommon = "name_common"
@@ -88,64 +154,117 @@ enum CountryRows: String, CaseIterable, CountryCSVData  {
         case .population: .integer
         }
     }
-    
-    static var csvTypes: [String: CSVType] {
-        Self.allCases.reduce(into: [String:CSVType]()) { partialResult, row in
-            partialResult[row.rawValue] = row.csvType
-        }
-    }
 }
 
-enum CountryTimezoneRows: String, CaseIterable, CountryCSVData {
-    case countryId = "country_id"
+enum CountryTimezoneRows: String, CountryCSVData {
+    case id = "country_id"
     case timezone
     
-    private var csvType: CSVType {
+    var csvType: CSVType {
         switch self {
-        case .countryId:
+        case .id:
                 .integer
         case .timezone:
                 .string
         }
     }
-    
-    static var csvTypes: [String: CSVType] {
-        Self.allCases.reduce(into: [String: CSVType]()) { partialResult, key in
-            partialResult[key.rawValue] = key.csvType
-        }
-    }
  }
 
-enum CountryMapRows: String, CaseIterable, CountryCSVData {
+enum CountryMapRows: String, CountryCSVData {
     case id = "country_id"
     case googleMapsUrl = "google_maps_url"
     case openStreetMapsUrl = "openstreetmaps_url"
     
-    private var csvType: CSVType {
+    var csvType: CSVType {
         switch self {
         case .id: .integer
         case .googleMapsUrl: .string
         case .openStreetMapsUrl: .string
         }
     }
+}
+
+enum CountryFlagRows: String, CountryCSVData {
+    case id = "country_id"
+    case pngUrl = "png_url"
+    case svgUrl = "svg_url"
+    case alt
     
-    static var csvTypes: [String: CSVType] {
-        Self.allCases.reduce(into: [String: CSVType]()) { partialResult, key in
-            partialResult[key.rawValue] = key.csvType
+    var csvType: CSVType {
+        switch self {
+        case .id: .integer
+        case .pngUrl: .string
+        case .svgUrl: .string
+        case .alt: .string
         }
     }
 }
 
-enum CountryCurrencyRows {
+enum CountryCurrencyRows: String, CountryCSVData {
+    case id = "country_id"
+    case currencyCode = "currency_code"
+    case name
+    case symbol
     
+    var csvType: CSVType {
+        switch self {
+        case .id: .integer
+        case .currencyCode: .string
+        case .name: .string
+        case .symbol: .string
+        }
+    }
 }
 
-enum CountryContinentRows {}
+enum CountryContinentRows: String, CountryCSVData {
+    case id = "country_id"
+    case continent
+    
+    var csvType: CSVType {
+        switch self {
+        case .id: .integer
+        case .continent: .string
+        }
+    }
+}
 
-enum CountryCapitalKrRows {}
+enum CountryCapitalKrRows: String, CountryCSVData {
+    case id = "country_id"
+    case capitalKr = "capital_kr"
+    
+    var csvType: CSVType {
+        switch self {
+        case .id: .integer
+        case .capitalKr: .string
+        }
+    }
+}
 
-enum CountryCapitalInfoRows {}
+enum CountryCapitalInfoRows: String, CountryCSVData {
+    case id = "country_id"
+    case lat
+    case lng
+    
+    var csvType: CSVType {
+        switch self {
+        case .id: .integer
+        case .lat: .double
+        case .lng: .double
+        }
+    }
+}
 
-enum CountryBorderRows {}
+enum CountryBorderRows: String, CountryCSVData {
+    case id = "country_id"
+    case neighborId = "neighbor_id"
+    
+    var csvType: CSVType {
+        switch self {
+        case .id: .integer
+        case .neighborId: .integer
+        }
+    }
+}
+
 
 
