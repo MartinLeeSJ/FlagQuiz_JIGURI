@@ -7,19 +7,15 @@
 
 import Foundation
 import TabularData
+import SwiftData
 
 public protocol CountryDataRepository {
-    func getDataFromCSV() async throws -> [String]
+    func loadCountries() async throws -> [Int: CountryData]
 }
 
 public actor CountryDataRepositoryImpl: CountryDataRepository {
     private var data: [Int: CountryData] = [:]
-    public func getDataFromCSV() async throws -> [String] {
-        // country csv file name  을 순회한다
-        //  countryCsvData 메서드를 호출해 타입을 얻어온다
-        // 파일 url을 기반으로 데이터프레임을 읽는다
-        // 열들을 순회하며 data에 컨트리데이터를 업데이트한다
-        
+    public func loadCountries() throws -> [Int: CountryData]{
         try CountryCSVFileName.allCases.forEach { name in
             guard let fileUrl = name.fileURL else { return }
             let dataFrame = try DataFrame(contentsOfCSVFile: fileUrl, columns: name.csvMetadata.columns, types: name.csvMetadata.types)
@@ -34,9 +30,9 @@ public actor CountryDataRepositoryImpl: CountryDataRepository {
             case .map: makeDataFromMapRows(dataFrame)
             case .timezone: makeDataFromTimeZoneRow(dataFrame)
             }
-            
         }
-    return []
+        
+        return data
     }
     
     private func makeDatafromCountryRow(_ dataFrame: DataFrame) {
@@ -159,8 +155,7 @@ enum CountryCSVFileName: String, CaseIterable {
     }
     
     var fileURL: URL? {
-        if let filePath = Bundle.main.path(forResource: self.fileName, ofType: "csv"),
-           let url = URL(string: filePath) {
+        if let url = Bundle.main.url(forResource: self.fileName, withExtension: "csv") {
             return url
         }
         return nil
@@ -168,24 +163,15 @@ enum CountryCSVFileName: String, CaseIterable {
     
     var csvMetadata: (columns: [String], types: [String: CSVType]) {
         switch self {
-        case .border:
-            return (CountryBorderRows.allColumns, CountryBorderRows.csvTypes)
-        case .capital:
-            return (CountryCapitalInfoRows.allColumns, CountryCapitalInfoRows.csvTypes)
-        case .capitalKr:
-            return (CountryCapitalKrRows.allColumns, CountryCapitalKrRows.csvTypes)
-        case .continent:
-            return (CountryContinentRows.allColumns, CountryContinentRows.csvTypes)
-        case .currency:
-            return (CountryCurrencyRows.allColumns, CountryCurrencyRows.csvTypes)
-        case .flag:
-            return (CountryFlagRows.allColumns, CountryFlagRows.csvTypes)
-        case .map:
-            return (CountryMapRows.allColumns, CountryMapRows.csvTypes)
-        case .base:
-            return (CountryRows.allColumns, CountryRows.csvTypes)
-        case .timezone:
-            return (CountryTimezoneRows.allColumns, CountryTimezoneRows.csvTypes)
+        case .border: (CountryBorderRows.allColumns, CountryBorderRows.csvTypes)
+        case .capital: (CountryCapitalInfoRows.allColumns, CountryCapitalInfoRows.csvTypes)
+        case .capitalKr: (CountryCapitalKrRows.allColumns, CountryCapitalKrRows.csvTypes)
+        case .continent: (CountryContinentRows.allColumns, CountryContinentRows.csvTypes)
+        case .currency: (CountryCurrencyRows.allColumns, CountryCurrencyRows.csvTypes)
+        case .flag: (CountryFlagRows.allColumns, CountryFlagRows.csvTypes)
+        case .map: (CountryMapRows.allColumns, CountryMapRows.csvTypes)
+        case .base: (CountryRows.allColumns, CountryRows.csvTypes)
+        case .timezone: (CountryTimezoneRows.allColumns, CountryTimezoneRows.csvTypes)
         }
     }
     

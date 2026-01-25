@@ -11,17 +11,10 @@ import Testing
 struct CountryDataRepositoryTest {
     let repository: CountryDataRepository = CountryDataRepositoryImpl()
 
-    @Test func csvHeader가제대로출력이되는지() async throws {
-        let result = try await repository.getDataFromCSV()
-        #expect(result == ["id",
-                           "cca3",
-                           "name_common",
-                           "name_official",
-                           "region",
-                           "lat",
-                           "lng",
-                           "area",
-                           "population"])
+    @Test func csvLoad가잘되는지() async throws {
+        let countries = try await repository.loadCountries()
+//        4,TUN,Tunisia,Tunisian Republic,Africa,34,9,163610,11818618
+        #expect(countries[4]?.cca3 == "TUN")
     }
 
 }

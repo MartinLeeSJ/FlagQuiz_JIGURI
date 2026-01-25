@@ -9,50 +9,50 @@ import Foundation
 import SwiftData
 
 @Model
-class CountryData {
-    @Attribute(.unique) var id: Int
+public final class CountryData: Sendable {
+    @Attribute(.unique) public var id: Int
     
     // country_rows
-    var cca3: String?
-    var nameCommon: String?
-    var nameOfficial: String?
-    var region: String?
-    var lat: Double?
-    var lng: Double?
-    var area: Int?
-    var population: Int?
+    public var cca3: String?
+    public var nameCommon: String?
+    public var nameOfficial: String?
+    public var region: String?
+    public var lat: Double?
+    public var lng: Double?
+    public var area: Int?
+    public var population: Int?
     
     // country_timezone_rows
-    var timezone: [String]
+    public var timezone: [String]
     
     // country_map_rows
-    var googleMapUrl: String?
-    var openstreetMapUrl: String?
+    public var googleMapUrl: String?
+    public var openstreetMapUrl: String?
     
     // country_flag_rows
-    var pngFlagUrl: String?
-    var svgFlagUrl: String?
-    var flagAlt: String?
+    public var pngFlagUrl: String?
+    public var svgFlagUrl: String?
+    public var flagAlt: String?
     
     // country_currency_rows
-    var currencyCode: String?
-    var currencyName: String?
-    var currencySymbol: String?
+    public var currencyCode: String?
+    public var currencyName: String?
+    public var currencySymbol: String?
     
     // country_continent_rows
-    var continents: [String]
+    public var continents: [String]
     
     // country_capital_kr_rows
-    var capitalsKr: [String]
+    public var capitalsKr: [String]
     
     // country_capital_info_rows
-    var capitalLat: Double?
-    var capitalLong: Double?
+    public var capitalLat: Double?
+    public var capitalLong: Double?
     
     // country_border_rows
-    var neighborIds: [Int]
+    public var neighborIds: [Int]
     
-    init(
+    public init(
         id: Int,
         cca3: String? = nil,
         nameCommon: String? = nil,
