@@ -47,93 +47,111 @@ public actor CountryDataRepositoryImpl: CountryDataRepository {
                 countryData.lng = row["lng"] as? Double
                 countryData.area = Int(row["area"] as? Double ?? .zero)
                 countryData.population = row["population"] as? Int
+                data[id] = countryData
             }
         }
+        
+        print(#function, data)
     }
     
     private func makeDataFromTimeZoneRow(_ dataFrame: DataFrame) {
         dataFrame.rows.forEach { row in
-            if let id = row["id"] as? Int,
+            if let id = row["country_id"] as? Int,
                let timezone = row["timezone"] as? String {
                 let countryData = data[id, default: .init(id: id)]
                 countryData.timezone.append(timezone)
+                data[id] = countryData
             }
         }
+        print(#function, data)
     }
     
     private func makeDataFromMapRows(_ dataFrame: DataFrame) {
         dataFrame.rows.forEach { row in
-            if let id = row["id"] as? Int,
+            if let id = row["country_id"] as? Int,
                let googleMapsUrl = row["google_maps_url"] as? String,
                let openStreetMapsUrl = row["openstreetmaps_url"] as? String {
                 let countryData = data[id, default: .init(id: id)]
                 countryData.googleMapUrl = googleMapsUrl
                 countryData.openstreetMapUrl = openStreetMapsUrl
+                data[id] = countryData
             }
         }
+        print(#function, data)
     }
     
     private func makeDataFromFlagRows(_ dataFrame: DataFrame) {
         dataFrame.rows.forEach { row in
-            if let id = row["id"] as? Int {
+            if let id = row["country_id"] as? Int {
                 let countryData = data[id, default: .init(id: id)]
                 countryData.pngFlagUrl = row["png_url"] as? String
                 countryData.svgFlagUrl = row["svg_url"] as? String
                 countryData.flagAlt = row["alt"] as? String
+                data[id] = countryData
             }
         }
+        print(#function, data)
     }
     
     private func makeDataFromCurrencyRows(_ dataFrame: DataFrame) {
         dataFrame.rows.forEach { row in
-            if let id = row["id"] as? Int {
+            if let id = row["country_id"] as? Int {
                 let countryData = data[id, default: .init(id: id)]
                 countryData.currencyCode = row["currency_code"] as? String
                 countryData.currencyName = row["name"] as? String
                 countryData.currencySymbol = row["symbol"] as? String
+                data[id] = countryData
             }
         }
+        print(#function, data)
     }
     
     private func makeDataFromContinentRows(_ dataFrame: DataFrame) {
         dataFrame.rows.forEach { row in
-            if let id = row["id"] as? Int,
+            if let id = row["country_id"] as? Int,
                let continent = row["continent"] as? String {
                 let countryData = data[id, default: .init(id: id)]
                 countryData.continents.append(continent)
+                data[id] = countryData
             }
         }
+        print(#function, data)
     }
     
     private func makeDataFromCapitalKrRows(_ dataFrame: DataFrame) {
         dataFrame.rows.forEach { row in
-            if let id = row["id"] as? Int,
+            if let id = row["country_id"] as? Int,
                let capitalKr = row["capital_kr"] as? String {
                 let countryData = data[id, default: .init(id: id)]
                 countryData.capitalsKr.append(capitalKr)
+                data[id] = countryData
             }
         }
+        print(#function, data)
     }
     
     private func makeDataFromCapitalInfoRows(_ dataFrame: DataFrame) {
         dataFrame.rows.forEach { row in
-            if let id = row["id"] as? Int {
+            if let id = row["country_id"] as? Int {
                 let countryData = data[id, default: .init(id: id)]
                 countryData.capitalLat = row["lat"] as? Double
                 countryData.capitalLat = row["lng"] as? Double
+                data[id] = countryData
             }
         }
+        print(#function, data)
     }
     
     private func makeDataFromBorderRows(_ dataFrame: DataFrame) {
         dataFrame.rows.forEach { row in
-            if let id = row["id"] as? Int,
+            if let id = row["country_id"] as? Int,
                let neighborId = row["neighbor_id"] as? Int {
                 let countryData = data[id, default: .init(id: id)]
                 countryData.neighborIds.append(neighborId)
-                
+                data[id] = countryData
             }
         }
+        print(#function, data)
     }
     
     
