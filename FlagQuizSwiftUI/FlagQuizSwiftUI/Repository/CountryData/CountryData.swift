@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 
+//language -> currency
 @Model
 public final class CountryData: Sendable {
     @Attribute(.unique) public var id: Int
@@ -42,6 +43,8 @@ public final class CountryData: Sendable {
     // country_continent_rows
     public var continents: [String]
     
+    // country_capital_rows
+    public var capitals: [String]
     // country_capital_kr_rows
     public var capitalsKr: [String]
     
@@ -72,6 +75,7 @@ public final class CountryData: Sendable {
         currencyName: String? = nil,
         currencySymbol: String? = nil,
         continents: [String] = [],
+        capitals: [String] = [],
         capitalsKr: [String] = [],
         capitalLat: Double? = nil,
         capitalLong: Double? = nil,
@@ -96,6 +100,7 @@ public final class CountryData: Sendable {
         self.currencyName = currencyName
         self.currencySymbol = currencySymbol
         self.continents = continents
+        self.capitals = capitals
         self.capitalsKr = capitalsKr
         self.capitalLat = capitalLat
         self.capitalLong = capitalLong

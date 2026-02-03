@@ -15,14 +15,16 @@ public protocol CountryDataRepository {
 
 public actor CountryDataRepositoryImpl: CountryDataRepository {
     private var data: [Int: CountryData] = [:]
-    public func loadCountries() throws -> [Int: CountryData]{
+    
+    public func loadCountries() throws -> [Int: CountryData] {
         try CountryCSVFileName.allCases.forEach { name in
             guard let fileUrl = name.fileURL else { return }
             let dataFrame = try DataFrame(contentsOfCSVFile: fileUrl, columns: name.csvMetadata.columns, types: name.csvMetadata.types)
             switch name {
             case .base: makeDatafromCountryRow(dataFrame)
             case .border: makeDataFromBorderRows(dataFrame)
-            case .capital: makeDataFromCapitalInfoRows(dataFrame)
+            case .capitalInfo: makeDataFromCapitalInfoRows(dataFrame)
+            case .capital: makeDataFromCapitalRows(dataFrame)
             case .capitalKr: makeDataFromCapitalKrRows(dataFrame)
             case .continent: makeDataFromContinentRows(dataFrame)
             case .currency: makeDataFromCurrencyRows(dataFrame)
@@ -117,6 +119,16 @@ public actor CountryDataRepositoryImpl: CountryDataRepository {
         }
         print(#function, data)
     }
+    private func makeDataFromCapitalRows(_ dataFrame: DataFrame) {
+        dataFrame.rows.forEach { row in
+            if let id = row["country_id"] as? Int,
+               let capital = row["capital"] as? String {
+                let countryData = data[id, default: .init(id: id)]
+                countryData.capitals.append(capital)
+                data[id] = countryData
+            }
+        }
+    }
     
     private func makeDataFromCapitalKrRows(_ dataFrame: DataFrame) {
         dataFrame.rows.forEach { row in
@@ -160,7 +172,8 @@ public actor CountryDataRepositoryImpl: CountryDataRepository {
 enum CountryCSVFileName: String, CaseIterable {
     case base = ""
     case border
-    case capital = "capital_info"
+    case capital
+    case capitalInfo = "capital_info"
     case capitalKr = "capital_kr"
     case continent
     case currency
@@ -182,7 +195,8 @@ enum CountryCSVFileName: String, CaseIterable {
     var csvMetadata: (columns: [String], types: [String: CSVType]) {
         switch self {
         case .border: (CountryBorderRows.allColumns, CountryBorderRows.csvTypes)
-        case .capital: (CountryCapitalInfoRows.allColumns, CountryCapitalInfoRows.csvTypes)
+        case .capital: (CountryCapitalRows.allColumns, CountryCapitalRows.csvTypes)
+        case .capitalInfo: (CountryCapitalInfoRows.allColumns, CountryCapitalInfoRows.csvTypes)
         case .capitalKr: (CountryCapitalKrRows.allColumns, CountryCapitalKrRows.csvTypes)
         case .continent: (CountryContinentRows.allColumns, CountryContinentRows.csvTypes)
         case .currency: (CountryCurrencyRows.allColumns, CountryCurrencyRows.csvTypes)
@@ -307,6 +321,18 @@ enum CountryContinentRows: String, CountryCSVData {
         switch self {
         case .id: .integer
         case .continent: .string
+        }
+    }
+}
+
+enum CountryCapitalRows: String, CountryCSVData {
+    case id = "country_id"
+    case capital
+    
+    var csvType: CSVType {
+        switch self {
+        case .id: .integer
+        case .capital: .string
         }
     }
 }
