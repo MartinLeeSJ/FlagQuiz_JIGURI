@@ -1,5 +1,5 @@
 {
-  "originHash" : "057e8703de133a9f795a1c4a99435220b9f2bf3d4f6edc25db8ae2ac8446b396",
+  "originHash" : "adc9faeccb6164423094b4456431b9194587aa25f505242e8ca758b9003ec4f7",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -179,6 +179,15 @@
       "state" : {
         "revision" : "65e8f29b2d63c4e38e736b25c27b83e012159be8",
         "version" : "1.25.2"
+      }
+    },
+    {
+      "identity" : "swiftcsv",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftcsv/SwiftCSV.git",
+      "state" : {
+        "revision" : "6ab5d0fe9b6ef3c79d717eefa70862df389e74d9",
+        "version" : "0.10.0"
       }
     }
   ],

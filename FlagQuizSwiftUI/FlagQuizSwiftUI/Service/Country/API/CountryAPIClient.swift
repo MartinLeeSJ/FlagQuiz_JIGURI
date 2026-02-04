@@ -28,7 +28,7 @@ class CountryAPIClient: CountryAPIClientType {
                 }
                 
                 let codesShouldFetch: [FQCountryISOCode] = codes.filter { code in
-                    !cachedObjects.contains { $0.ccn3 == code.numericCode }
+                    !cachedObjects.contains { $0.ccn3 == code.cca3 }
                 }
                 
                 if codesShouldFetch.isEmpty {

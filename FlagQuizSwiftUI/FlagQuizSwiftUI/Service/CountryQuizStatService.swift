@@ -67,8 +67,8 @@ final class CountryQuizStatService: CountryQuizStatServiceType {
     ) async throws {
         try await repository.updateCountryQuizStats(
             userId: userId,
-            addingCodes: adding.map { $0.numericCode },
-            substractingCodes: substracting.map { $0.numericCode }
+            addingCodes: adding.compactMap { $0.numericCode },
+            substractingCodes: substracting.compactMap { $0.numericCode }
         )
     }
 }
@@ -79,7 +79,7 @@ final class StubCountryQuizStatService: CountryQuizStatServiceType {
         of userId: String
     ) async throws -> FQCountryQuizStat? {
         FQCountryQuizStat(
-            id: FQCountryISOCode.randomCode(of: 1, except: nil).first ?? .init("170"),
+            id: FQCountryISOCode.randomCode(of: 1, except: nil).first ?? .init("KOR"),
             quizStat: 10
         )
     }
@@ -88,7 +88,7 @@ final class StubCountryQuizStatService: CountryQuizStatServiceType {
         of userId: String
     ) async throws -> FQCountryQuizStat? {
         FQCountryQuizStat(
-            id: FQCountryISOCode.randomCode(of: 1, except: nil).first ?? .init("170"),
+            id: FQCountryISOCode.randomCode(of: 1, except: nil).first ?? .init("KOR"),
             quizStat: -6
         )
     }
